@@ -19,23 +19,28 @@
         <cart-table>
             <tr>
                 <th colspan="2">상품이미지</th>
-            </tr>
-            <tr>
                 <th>상품 명</th>
                 <th>가격</th>
                 <th>수량</th>
                 <th>삭제</th>
             </tr>
             <tr>
-                <th><ing id="BookImage" src="" alt="상품 이미지"></th>
-                <ht id="BookName"></ht>
-                <ht id="BookMoney"></ht>
-                <ht class="quantity">
+                <td>
+                    <input type="checkbox" id="OrderCheckbox" name="Bookcheck">
+                </td>
+                <td>
+                    <ing id="BookImage" src="" alt="상품 이미지">
+                </th>
+                <hd id="BookName"></hd>
+                <hd id="BookMoney"></hd>
+                <hd class="quantity">
                     <button class="minus">-</button>
                     <input type="text" readonly>
                     <button class="plus">+</button>
-                </ht>
-                <button type="button" class="btn btn-primary btn-sm" id="deleteButton">삭제</button>
+                </hd>
+                <hd>
+                    <button type="button" class="btn btn-primary btn-sm" id="deleteButton">삭제</button>
+                </hd>
             </tr>
         </cart-table>
     </section>
