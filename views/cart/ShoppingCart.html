@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../common/reset.css" />
+    <link rel="stylesheet" href="../common/common.css" />
+    <script src="../common/header-component.js"></script>
+    <title>ShoppingCart</title>
+</head>
+<body>
+    <header-component></header-component>
+    <ShoppingCart-head>
+        
+        <h1>장바구니</h1>
+        <button type="button" class="btn btn-primary btn-sm" id="deleteButton">전체 삭제</button>
+    </ShoppingCart-head>
+    <section>
+        <cart-table>
+            <tr>
+                <th colspan="2">상품이미지</th>
+            </tr>
+            <tr>
+                <th>상품 명</th>
+                <th>가격</th>
+                <th>수량</th>
+                <th>삭제</th>
+            </tr>
+            <tr>
+                <th><ing id="BookImage" src="" alt="상품 이미지"></th>
+                <ht id="BookName"></ht>
+                <ht id="BookMoney"></ht>
+                <ht class="quantity">
+                    <button class="minus">-</button>
+                    <input type="text" readonly>
+                    <button class="plus">+</button>
+                </ht>
+                <button type="button" class="btn btn-primary btn-sm" id="deleteButton">삭제</button>
+            </tr>
+        </cart-table>
+    </section>
+    <aside>
+
+    </aside>
+</body>
+</html>
