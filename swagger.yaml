@@ -683,12 +683,6 @@ components:
           type: string
           example: 오강산
           description: 받는사람
-        orders:
-          type: array
-          items:
-            type: string
-            example: ObjectId(asX31sdF3cVs)
-            description: Order 스키마 ObjectId
         createdAt:
           type: string
           example: 2023-11-01T17:32:28Z
@@ -697,6 +691,10 @@ components:
           type: string
           example: 2023-11-01T17:32:28Z
           description: 수정날짜
+        deletedAt:
+          type: string
+          example: 2023-11-01T17:32:28Z
+          description: 삭제날짜
           
     Book:
       type: object
@@ -776,6 +774,10 @@ components:
           type: string
           example: 2023-11-01T17:32:28Z
           description: 수정날짜
+        deletedAt:
+          type: string
+          example: 2023-11-01T17:32:28Z
+          description: 삭제날짜
           
     Order:
       required:
@@ -861,6 +863,10 @@ components:
           type: string
           example: 2023-11-01T17:32:28Z
           description: 수정날짜
+        deletedAt:
+          type: string
+          example: 2023-11-01T17:32:28Z
+          description: 삭제날짜
           
     Category:
       required:
@@ -888,6 +894,10 @@ components:
           type: string
           example: 2023-11-01T17:32:28Z
           description: 수정날짜
+        deletedAt:
+          type: string
+          example: 2023-11-01T17:32:28Z
+          description: 삭제날짜
 
   requestBodies:
     Book:
