@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Elice SW Track 7th Web Project Team 6 
+  title: Elice SW Track 7th Web Project Team 6
   description: 도서 판매 사이트 API 문서
   version: 1.0.0
 servers:
@@ -25,17 +25,17 @@ paths:
       summary: 도서 목록
       description: 도서 목록을 가져오는 API
       responses:
-        '200':
+        "200":
           description: 성공
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Book'
-        '400':
+                  $ref: "#/components/schemas/Book"
+        "400":
           description: 잘못된 요청
-        '500':
+        "500":
           description: 서버 에러
 
     post:
@@ -63,7 +63,7 @@ paths:
                 content:
                   type: string
                   example: 가나다라마바사 아자차카타파하...
-                pages: 
+                pages:
                   type: integer
                   example: 483
                 publicationDate:
@@ -89,11 +89,11 @@ paths:
                   example: asX31sdF3cVs
         required: true
       responses:
-        '201':
+        "201":
           description: 성공
-        '400':
+        "400":
           description: 잘못된 요청
-        '500':
+        "500":
           description: 서버 에러
 
   /books/{bookId}:
@@ -110,15 +110,15 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: 성공
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Book'
-        '400':
+                $ref: "#/components/schemas/Book"
+        "400":
           description: 잘못된 요청
-        '500':
+        "500":
           description: 서버 에러
 
     put:
@@ -153,7 +153,7 @@ paths:
                 content:
                   type: string
                   example: 가나다라마바사 아자차카타파하...
-                pages: 
+                pages:
                   type: integer
                   example: 483
                 publicationDate:
@@ -179,11 +179,11 @@ paths:
                   example: asX31sdF3cVs
         required: true
       responses:
-        '200':
+        "200":
           description: 성공
-        '400':
+        "400":
           description: 잘못된 요청
-        '500':
+        "500":
           description: 서버 에러
 
     delete:
@@ -201,11 +201,11 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: 성공
-        '400':
+        "400":
           description: 잘못된 요청
-        '500':
+        "500":
           description: 서버 에러
 
   /login:
@@ -220,7 +220,7 @@ paths:
             schema:
               type: object
               properties:
-                email: 
+                email:
                   type: string
                   example: example@example.comm
                 password:
@@ -228,7 +228,7 @@ paths:
                   example: password
         required: true
       responses:
-        '201':
+        "201":
           description: 성공
           content:
             application/json:
@@ -238,9 +238,9 @@ paths:
                   access_token:
                     type: string
                     example: aksdjvlajeiajefliajdsflk
-        '400':
+        "400":
           description: 잘못된 요청
-        '500':
+        "500":
           description: 서버 에러
 
   /signup:
@@ -256,7 +256,7 @@ paths:
             schema:
               type: object
               properties:
-                email: 
+                email:
                   type: string
                   example: example@example.comm
                 password:
@@ -267,7 +267,7 @@ paths:
                   example: 010-1234-1234
         required: true
       responses:
-        '201':
+        "201":
           description: 성공
           content:
             application/json:
@@ -277,9 +277,9 @@ paths:
                   access_token:
                     type: string
                     example: aksdjvlajeiajefliajdsflk
-        '400':
+        "400":
           description: 잘못된 요청
-        '500':
+        "500":
           description: 서버 에러
 
   /logout:
@@ -291,11 +291,11 @@ paths:
       security:
         - BearerAuth: []
       responses:
-        '201':
+        "201":
           description: 성공
-        '400':
+        "400":
           description: 잘못된 요청
-        '500':
+        "500":
           description: 서버 에러
 
   /users/{userId}:
@@ -314,7 +314,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: 성공**(name, address가 없을경우 name, zipcode, detail은 ""로 반환)**
           content:
             application/json:
@@ -345,7 +345,7 @@ paths:
                       detail:
                         type: string
                         example: 서울시 강남구 역삼동 123
-        '500':
+        "500":
           description: 서버 에러
 
     put:
@@ -388,11 +388,11 @@ paths:
                       example: 서울시 강남구 역삼동 123
         required: true
       responses:
-        '200':
+        "200":
           description: 성공
-        '400':
+        "400":
           description: 잘못된 요청
-        '500':
+        "500":
           description: 서버 에러
 
     delete:
@@ -410,11 +410,11 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: 성공
-        '400':
+        "400":
           description: 잘못된 요청
-        '500':
+        "500":
           description: 서버 에러
 
   /users/{userId}/password:
@@ -446,11 +446,11 @@ paths:
                   example: newPassword
         required: true
       responses:
-        '200':
+        "200":
           description: 성공
-        '400':
+        "400":
           description: 잘못된 요청
-        '500':
+        "500":
           description: 서버 에러
 
   /categories:
@@ -460,36 +460,36 @@ paths:
       summary: 카테고리 목록
       description: 카테고리 목록을 가져오는 API
       responses:
-        '200':
+        "200":
           description: 성공
           content:
             application/json:
               schema:
                 type: array
                 items:
-                    type: object
-                    properties:
-                      categoryId:
-                        type: string
-                        example: ObjectId(asdfkv3D2Ec)
-                        description: 카테고리 ID
-                      name:
-                        type: string
-                        example: 전체도서
-                      subCategories:
-                        type: array
-                        items: 
-                          type: object
-                          properties:
-                            categoryId:
-                              type: string
-                              example: ObjectId(asdfjalfkvja)
-                            name:
-                              type: string
-                              example: 소설
-        '400':
+                  type: object
+                  properties:
+                    categoryId:
+                      type: string
+                      example: ObjectId(asdfkv3D2Ec)
+                      description: 카테고리 ID
+                    name:
+                      type: string
+                      example: 전체도서
+                    subCategories:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          categoryId:
+                            type: string
+                            example: ObjectId(asdfjalfkvja)
+                          name:
+                            type: string
+                            example: 소설
+        "400":
           description: 잘못된 요청
-        '500':
+        "500":
           description: 서버 에러
 
   /users/{userId}/orders:
@@ -503,22 +503,22 @@ paths:
       parameters:
         - name: userId
           in: path
-          description: '유저 ID'
+          description: "유저 ID"
           required: true
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: 성공
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Order'
-        '400':
+                  $ref: "#/components/schemas/Order"
+        "400":
           description: 잘못된 요청
-        '500':
+        "500":
           description: 서버 에러
 
     post:
@@ -531,7 +531,7 @@ paths:
       parameters:
         - name: userId
           in: path
-          description: '유저 ID'
+          description: "유저 ID"
           required: true
           schema:
             type: string
@@ -584,11 +584,11 @@ paths:
                   example: 3000
                   description: 배송비
       responses:
-        '201':
+        "201":
           description: 생성 성공
-        '400':
+        "400":
           description: 잘못된 요청
-        '500':
+        "500":
           description: 서버 에러
 
   /users/{userId}/orders/{orderId}:
@@ -602,13 +602,13 @@ paths:
       parameters:
         - name: userId
           in: path
-          description: '유저 ID'
+          description: "유저 ID"
           required: true
           schema:
             type: string
         - name: orderId
           in: path
-          description: '주문 ID'
+          description: "주문 ID"
           required: true
           schema:
             type: string
@@ -625,11 +625,11 @@ paths:
                   example: 주문취소
                   description: 배송 상태
       responses:
-        '200':
-          description: 성공 
-        '400':
+        "200":
+          description: 성공
+        "400":
           description: 잘못된 요청
-        '500':
+        "500":
           description: 서버 에러
 
 components:
@@ -695,7 +695,7 @@ components:
           type: string
           example: 2023-11-01T17:32:28Z
           description: 삭제날짜
-          
+
     Book:
       type: object
       required:
@@ -740,11 +740,11 @@ components:
           description: 전체 쪽수
         publicationDate:
           type: string
-          example: '2022-10-20'
+          example: "2022-10-20"
           description: 발행일자
         releaseDate:
           type: string
-          example: '2022-10-21'
+          example: "2022-10-21"
           description: 출시일자
         image:
           type: string
@@ -778,7 +778,7 @@ components:
           type: string
           example: 2023-11-01T17:32:28Z
           description: 삭제날짜
-          
+
     Order:
       required:
         - _id
@@ -867,7 +867,7 @@ components:
           type: string
           example: 2023-11-01T17:32:28Z
           description: 삭제날짜
-          
+
     Category:
       required:
         - _id
@@ -905,8 +905,8 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Book'
-                
+            $ref: "#/components/schemas/Book"
+
     UserArray:
       description: List of user object
       content:
@@ -914,8 +914,8 @@ components:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/User'
-              
+              $ref: "#/components/schemas/User"
+
   securitySchemes:
     BearerAuth:
       type: http

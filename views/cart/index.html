@@ -1,18 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="../common/reset.css" />
-  <link rel="stylesheet" href="../common/common.css" />
-  <script src="../common/header-component.js"></script>
-</head>
-
-<body>
-  <header-component></header-component>
-  장바구니
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../common/reset.css" />
+    <link rel="stylesheet" href="../common/common.css" />
+    <script src="../common/header-component.js"></script>
+    <title>ShoppingCart</title>
+  </head>
+  <body>
+    <header-component></header-component>
+    <ShoppingCart-head>
+      <h1>장바구니</h1>
+      <button type="button" class="btn btn-primary btn-sm" id="deleteButton">
+        전체 삭제
+      </button>
+    </ShoppingCart-head>
+    <section>
+      <cart-table>
+        <tr>
+          <th colspan="2">상품이미지</th>
+          <th>상품 명</th>
+          <th>가격</th>
+          <th>수량</th>
+          <th>삭제</th>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" id="OrderCheckbox" name="Bookcheck" />
+          </td>
+          <td>
+            <img id="BookImage" src="" alt="상품 이미지" />
+          </td>
+          <td id="BookName"></td>
+          <td id="BookMoney"></td>
+          <td class="quantity">
+            <button class="minus">-</button>
+            <input type="text" readonly />
+            <button class="plus">+</button>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-primary btn-sm"
+              id="deleteButton"
+            >
+              삭제
+            </button>
+          </td>
+        </tr>
+      </cart-table>
+    </section>
+    <aside>
+      <div class="total">
+        <ul class="info">
+          <il class="OrderMoney">
+            <p class="label">상품금액</p>
+            <div>
+              <span class="amount"></span>
+              <p class="unit">원</p>
+            </div>
+          </il>
+          <il class="OrderMoney">
+            <p class="label">배송비</p>
+            <div>
+              <span class="DeliveryAmount">+</span>
+              <p class="unit">원</p>
+            </div>
+          </il>
+          <il class="OrderMoney">
+            <p class="label">할인 금액</p>
+            <div>
+              <span class="DeliveryAmount">+</span>
+              <p class="unit">원</p>
+            </div>
+          </il>
+        </ul>
+        <ul class="infoall">
+          <il class="OrderMoney">
+            <p class="label">총 금액</p>
+            <div>
+              <span class="AmountAll"></span>
+              <p class="unit">원</p>
+            </div>
+          </il>
+          <il class="OrderMoney">
+            <p class="label">적립금액</p>
+            <div>
+              <span class="SaveMoney">+</span>
+              <p class="unit">원</p>
+            </div>
+          </il>
+        </ul>
+        <button type="button" class="btn btn-primary btn-lg">결제하기</button>
+      </div>
+    </aside>
+  </body>
 </html>
