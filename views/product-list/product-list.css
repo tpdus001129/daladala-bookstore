@@ -1,0 +1,73 @@
+ol,
+ul {
+  list-style: none;
+}
+img {
+  max-width: 300px;
+  max-height: 500px;
+}
+.current-category-bar {
+  border: 1px solid black;
+  margin: 50px auto;
+  width: 1200px;
+  height: 50px;
+}
+.product-list {
+  margin: 30px auto;
+  display: flex;
+  /* 자식요소들간의 간격 */
+  gap: 20px;
+  /* 중앙정렬 */
+  justify-content: center;
+  /* align-content는 flex-wrap와 같이 써야 되고
+    요소와 요소사이의 간격을 가운데를 기준으로의 설정을 
+    믜미한다. */
+  flex-wrap: wrap;
+  align-content: space-around;
+
+  height: auto;
+}
+
+.product-item {
+  gap: 200px;
+}
+.product-image {
+  width: 300px;
+  height: 400px;
+}
+.product-name {
+  border: 1px solid black;
+  margin: 5px 0;
+  padding-top: 5%;
+  height: 50px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+}
+.product-author {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+  padding-top: 2%;
+  height: 30px;
+}
+.product-price {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+  padding-top: 2%;
+  height: 30px;
+}
+.product-buy-box {
+  display: flex;
+}
+.product-buy-box a {
+  width: 150px;
+  height: 35px;
+  margin-top: 15px;
+  padding-top: 4%;
+  text-align: center;
+  border: 1px solid black;
+}
