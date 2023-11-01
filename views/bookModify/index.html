@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../common/common.css">
+    <link rel="stylesheet" href="../common/reset.css">
+    <link rel="stylesheet" href="bookModify.css" />
+    <script src="../common/header-component.js"></script>
+  </head>
+  <body>
+    <header-component></header-component>
+    <p class="topTitle">도서 등록/수정</p>
+    <form action="">
+      <table>
+        <tr>
+          <td colspan="3">
+            <select name="" id="">
+              <option value="">국내도서</option>
+              <option value="">해외도서</option>
+            </select>
+
+            <select name="" id="">
+              <option value="">소설</option>
+              <option value="">경제/경영</option>
+              <option value="">종교</option>
+              <option value="">과학</option>
+              <option value="">자기개발</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+            <td rowspan="3">이미지</td>
+            <td colspan="2"><input type="text" placeholder="제목"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="저자"/></td>
+            <td><input type="text" placeholder="출판사"/></td>
+        </tr>
+        <tr>
+          <td colspan="2"><input type="text" placeholder="가격"/></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="file" id="imgUpload" name="imgUpload" />
+            <label for="imgUpload"> 업로드</label>
+          </td>
+          <td colspan="2"><input type="text" placeholder="재고"/></td>
+        </tr>
+      </table>
+    </form>
+    
+    <div class="saveBtn">적용</div>
+  </body>
+</html>
