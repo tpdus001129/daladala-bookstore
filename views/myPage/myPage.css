@@ -1,0 +1,44 @@
+body {
+  width: var(--max-width);
+  margin: 0 auto;
+}
+.topTitle{
+  font-size: 25px;
+  margin: 30px;
+}
+input {
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  padding: 5px;
+  margin: 15px;
+  width: 200px;
+  font-size: 15px;
+}
+table {
+  margin: 0 auto;
+  font-size: 20px;
+}
+td {
+  padding: 10px;
+  text-align: center;
+}
+.address{
+  display: flex;
+  flex-direction: column;
+}
+.address input:last-child{
+  margin-top: 10px;
+}
+.submitBtnBox {
+  text-align: center;
+}
+.submitBtn{
+  width: 100px;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
