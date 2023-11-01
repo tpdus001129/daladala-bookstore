@@ -6,6 +6,11 @@ class HeaderComponent extends HTMLElement {
     const template = document.createElement("template");
     template.innerHTML = `
       <style>
+        header {
+          display: flex;
+          justify-content: center;
+        }
+
         .container {
           display: flex;
           justify-content: space-between;
@@ -14,22 +19,28 @@ class HeaderComponent extends HTMLElement {
         .wrapper {
           display: flex;
         }
+
+        .max-container {
+          width: var(--max-width)
+        }
       </style>
 
       <header>
-        <div class="container">
-          <a href="/"><img src="/logo.png" alt="logo" id="logo"/></a>
-          <div class="wrapper">
-            <a href="/user/login" id="login-button">로그인</a>
-            <a href="/user/signup" id="signup-button">회원가입</a>
-            <a href="/user/cart" id="cart-button">장바구니</a>
+        <div class="max-container">
+          <div class="container">
+            <a href="/"><img src="/logo.png" alt="logo" id="logo"/></a>
+            <div class="wrapper">
+              <a href="/login" id="login-button">로그인</a>
+              <a href="/signup" id="signup-button">회원가입</a>
+              <a href="/cart" id="cart-button">장바구니</a>
+            </div>
           </div>
-        </div>
-        <div class="wrapper">
-          <button id="menu-button"><img src="/menu.png" alt="menu"/></button>
-          <div id="menu">menu</div>
-          <a href="/books/new">신상</a>
-          <a href="/books/best">베스트셀러</a>
+          <div class="wrapper">
+            <button id="menu-button"><img src="/menu.png" alt="menu"/></button>
+            <div id="menu">menu</div>
+            <a href="/books/new">신상</a>
+            <a href="/books/best">베스트셀러</a>
+          </div>
         </div>
       </header>
   `;
