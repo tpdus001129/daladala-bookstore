@@ -1,13 +1,13 @@
 openapi: 3.0.3
 info:
-  title: Elice Web Project 01
-  description: 프로젝트에 관한 설명..
+  title: Elice SW Track 7th Web Project Team 6 
+  description: 도서 판매 사이트 API 문서
   version: 1.0.0
 servers:
-  - url: http://localhost:3000/api/v1
+  - url: http://localhost:5000/api/v1
 tags:
   - name: books
-    description: 도서 API
+    description: 상품 API
   - name: auth
     description: 인증 API
   - name: users
@@ -46,7 +46,6 @@ paths:
       security:
         - BearerAuth: []
       requestBody:
-        description: 새로운 도서 등록 데이터
         content:
           application/json:
             schema:
@@ -90,25 +89,21 @@ paths:
                   example: asX31sdF3cVs
         required: true
       responses:
-        '200':
+        '201':
           description: 성공
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Book'
         '400':
           description: 잘못된 요청
         '500':
           description: 서버 에러
 
-  /books/{id}:
+  /books/{bookId}:
     get:
       tags:
         - books
       summary: 도서 상세
       description: 도서 상세정보을 가져오는 API
       parameters:
-        - name: id
+        - name: bookId
           in: path
           description: 도서 ID
           required: true
@@ -134,14 +129,13 @@ paths:
       security:
         - BearerAuth: []
       parameters:
-        - name: id
+        - name: bookId
           in: path
           description: 도서 ID
           required: true
           schema:
             type: string
       requestBody:
-        description: 도서 수정 데이터
         content:
           application/json:
             schema:
@@ -187,10 +181,6 @@ paths:
       responses:
         '200':
           description: 성공
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Book'
         '400':
           description: 잘못된 요청
         '500':
@@ -204,7 +194,7 @@ paths:
       security:
         - BearerAuth: []
       parameters:
-        - name: id
+        - name: bookId
           in: path
           description: 도서 ID
           required: true
@@ -225,7 +215,6 @@ paths:
       summary: 회원 로그인
       description: 로그인 API
       requestBody:
-        description: 로그인 데이터
         content:
           application/json:
             schema:
@@ -239,7 +228,7 @@ paths:
                   example: password
         required: true
       responses:
-        '200':
+        '201':
           description: 성공
           content:
             application/json:
@@ -278,7 +267,7 @@ paths:
                   example: 010-1234-1234
         required: true
       responses:
-        '200':
+        '201':
           description: 성공
           content:
             application/json:
@@ -302,14 +291,14 @@ paths:
       security:
         - BearerAuth: []
       responses:
-        '200':
+        '201':
           description: 성공
         '400':
           description: 잘못된 요청
         '500':
           description: 서버 에러
 
-  /user:
+  /users/{userId}:
     get:
       tags:
         - users
@@ -317,9 +306,16 @@ paths:
       description: 회원정보를 가져오는 API
       security:
         - BearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          description: 유저 ID
+          required: true
+          schema:
+            type: string
       responses:
         '200':
-          description: 성공
+          description: 성공**(name, address가 없을경우 name, zipcode, detail은 ""로 반환)**
           content:
             application/json:
               schema:
@@ -359,8 +355,14 @@ paths:
       description: 회원 정보를 수정하는 API
       security:
         - BearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          description: 유저 ID
+          required: true
+          schema:
+            type: string
       requestBody:
-        description: 회원 정보 수정 데이터
         content:
           application/json:
             schema:
@@ -397,9 +399,16 @@ paths:
       tags:
         - users
       summary: 회원 정보 삭제
-      description: 회원 정보를 삭제하는 API
+      description: 회원 탈퇴 API
       security:
         - BearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          description: 유저 ID
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: 성공
@@ -408,7 +417,7 @@ paths:
         '500':
           description: 서버 에러
 
-  /user/password:
+  /users/{userId}/password:
     patch:
       tags:
         - users
@@ -416,8 +425,14 @@ paths:
       description: 회원 비밀번호 수정 하는 API
       security:
         - BearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          description: 유저 ID
+          required: true
+          schema:
+            type: string
       requestBody:
-        description: 회원 비밀번호 수정 데이터
         content:
           application/json:
             schema:
@@ -477,12 +492,12 @@ paths:
         '500':
           description: 서버 에러
 
-  /orders/{userId}:
+  /users/{userId}/orders:
     get:
       tags:
         - orders
       summary: 주문 조회
-      description: 주문 정보를 조회하는 API
+      description: 특정 유저의 주문 정보를 조회하는 API
       security:
         - BearerAuth: []
       parameters:
@@ -498,8 +513,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Order'
-  /orders:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+        '400':
+          description: 잘못된 요청
+        '500':
+          description: 서버 에러
+
     post:
       tags:
         - orders
@@ -507,6 +528,13 @@ paths:
       description: 새로운 주문을 생성하는 API
       security:
         - BearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          description: '유저 ID'
+          required: true
+          schema:
+            type: string
       requestBody:
         required: true
         content:
@@ -563,7 +591,7 @@ paths:
         '500':
           description: 서버 에러
 
-  /orders/{orderId}:
+  /users/{userId}/orders/{orderId}:
     patch:
       tags:
         - orders
@@ -572,6 +600,12 @@ paths:
       security:
         - BearerAuth: []
       parameters:
+        - name: userId
+          in: path
+          description: '유저 ID'
+          required: true
+          schema:
+            type: string
         - name: orderId
           in: path
           description: '주문 ID'
@@ -591,10 +625,12 @@ paths:
                   example: 주문취소
                   description: 배송 상태
       responses:
-        '204':
-          description: 생성 성공 
+        '200':
+          description: 성공 
         '400':
           description: 잘못된 요청
+        '500':
+          description: 서버 에러
 
 components:
   schemas:
@@ -643,29 +679,16 @@ components:
               type: string
               example: 서울시 강남구 역삼동 8-2 402호
               description: 상세 주소
-            name:
-              type: string
-              example: 오강산
-              description: 받는사람
+        name:
+          type: string
+          example: 오강산
+          description: 받는사람
         orders:
           type: array
           items:
             type: string
             example: ObjectId(asX31sdF3cVs)
             description: Order 스키마 ObjectId
-        cart:
-          type: array
-          items:
-            type: object
-            properties:
-              bookId: 
-                type: string
-                example: ObjectId(asX31sdF3cVs)
-                description: Book 스키마 ObjectId
-              count: 
-                type: number
-                example: 1
-                description: 수량
         createdAt:
           type: string
           example: 2023-11-01T17:32:28Z
@@ -727,7 +750,7 @@ components:
           description: 출시일자
         image:
           type: string
-          example: https://asdf.com
+          example: https://example.com/images/image.png
           description: 도서 사진
         price:
           type: integer
