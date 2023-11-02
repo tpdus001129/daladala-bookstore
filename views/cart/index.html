@@ -10,9 +10,12 @@
     <script src="../common/footer-component.js"></script>
     <script src="../cart/cart.js"></script>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
+      rel="stylesheet"
+    />
+
     <title>ShoppingCart</title>
   </head>
   <body>
@@ -22,33 +25,43 @@
         <div class="ShoppingCartHead">
           <h1>장바구니</h1>
           <div class="Box">
-            <button type="button" class="Btn" id="DeleteButton">전체 삭제</button>
+            <button type="button" class="Btn" id="DeleteButton">
+              전체 삭제
+            </button>
           </div>
         </div>
         <section>
-          <div class="cart-table">
-            <tr>
-              <th colspan="2">상품이미지</th>
-              <th>상품 명</th>
-              <th>가격</th>
-              <th>수량</th>
-              <th>삭제</th>
+          <table class="CartTable">
+            <tr class="Tr">
+              <th class="AllCheckBox" width="50">
+                <input type="checkbox" id="OrderCheckbox" name="BookCheck" />
+              </th>
+              <th colspan="2" width="150">상품이미지</th>
+              <th width="150">상품 명</th>
+              <th width="150">가격</th>
+              <th width="150">수량</th>
+              <th width="150">삭제</th>
             </tr>
-            <tr>
-              <td>
-                <input type="checkbox" id="OrderCheckbox" name="Bookcheck" />
+          </table>
+        </section>
+
+          <section>
+            <table class="CartTable">
+            <tr class="UserData">
+              <td class="OrderCheckBox" width="50">
+                <input type="checkbox" id="OrderCheckbox" name="OrderCheckBox" />
               </td>
-              <td>
+              <td width="150">
                 <img id="BookImage" src="" alt="상품 이미지" />
               </td>
-              <td id="BookName"></td>
-              <td id="BookMoney"></td>
-              <td class="quantity">
+              <td id="BookName" width="150">어쩌구저쩌구책</td>
+              <td id="BookMoney" width="150">30.000 원</td>
+              <td class="quantity"width="150">
                 <button class="minus">-</button>
                 <input type="text" readonly />
                 <button class="plus">+</button>
               </td>
-              <td>
+              <td width="150">
                 <button
                   type="button"
                   class="btn btn-primary btn-sm"
@@ -58,7 +71,7 @@
                 </button>
               </td>
             </tr>
-          </div>
+          </table>
         </section>
       </div>
       <aside>
