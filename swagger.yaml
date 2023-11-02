@@ -315,7 +315,7 @@ paths:
             type: string
       responses:
         "200":
-          description: 성공**(name, address가 없을경우 name, zipcode, detail은 ""로 반환)**
+          description: 성공**(name, address가 없을경우 name, zipCode, detail은 ""로 반환)**
           content:
             application/json:
               schema:
@@ -339,7 +339,7 @@ paths:
                   address:
                     type: object
                     properties:
-                      zipcode:
+                      zipCode:
                         type: string
                         example: 12345
                       detail:
@@ -380,7 +380,7 @@ paths:
                 address:
                   type: object
                   properties:
-                    zipcode:
+                    zipCode:
                       type: string
                       example: 12345
                     detail:
@@ -556,7 +556,7 @@ paths:
                     address:
                       type: object
                       properties:
-                        zipcode:
+                        zipCode:
                           type: string
                           example: 11234
                           description: 받는사람 우편번호
@@ -671,7 +671,7 @@ components:
         address:
           type: object
           properties:
-            zipcode:
+            zipCode:
               type: string
               example: 11234
               description: 우편번호
@@ -740,11 +740,11 @@ components:
           description: 전체 쪽수
         publicationDate:
           type: string
-          example: "2022-10-20"
+          example: 2023-11-01T17:32:28Z
           description: 발행일자
         releaseDate:
           type: string
-          example: "2022-10-21"
+          example: 2023-11-01T17:32:28Z
           description: 출시일자
         image:
           type: string
@@ -802,14 +802,14 @@ components:
           type: object
           required:
             - phoneNumber
-            - zipcode
+            - zipCode
             - detail
           properties:
             phoneNumber:
               type: string
               example: 010-1234-1234
               description: 받는사람 전화번호
-            zipcode:
+            zipCode:
               type: string
               example: 11234
               description: 받는사람 우편번호
@@ -825,6 +825,9 @@ components:
           type: array
           items:
             type: object
+            required:
+              - bookId
+              - count
             properties:
               bookId:
                 type: string
