@@ -11,14 +11,14 @@ function requestBodyToObject(body) {
 const authController = {
   async signup(req, res) {
     const userData = requestBodyToObject(req.body)
-    const user = await authService.signup(userData);
-    res.status(201).json({ access_token: user.access_token });
+    const { access_token } = await authService.signup(userData);
+    res.status(201).json({ access_token });
   },
 
   async login(req, res) {
     const { email, password } = req.body;
-    const user = await authService.login(email, password);
-    res.status(200).json({ access_token: user.access_token });
+    const { access_token } = await authService.login(email, password);
+    res.status(200).json({ access_token });
   },
 
   async logout(req, res) {
