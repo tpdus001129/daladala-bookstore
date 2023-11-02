@@ -88,14 +88,13 @@ class HeaderComponent extends HTMLElement {
     </style>
   
   
+    <!-- 헤더 -->
     <header>
       <div class="max-container">
-
         <div class="first-header">
           <div class="header-logo-box">
             <a href="/">
-              <img src="./돋보기아이콘.png" alt="logo" id="logo"/>
-              <span>Dala Book Store</span>
+              <img src="./트랙로고.png" alt="logo" id="logo" />
             </a>
           </div>
           <div class="header-login-user">
@@ -105,31 +104,43 @@ class HeaderComponent extends HTMLElement {
               <li><a href="/cart" id="cart-button">장바구니</a></li>
             </ul>
           </div>
-
-          
         </div>
-        
+
         <div class="second-header">
-            <div class="drop-box">
-              <button id="category-btn"><img src="./돋보기아이콘.png" alt="menu"/>
-                <span id="menu">menu</span>
-              </button>
-          
-              <div id="menu-content">
-                <a href="">전체보기</a>
-                <a href="">국내도서</a>
-                <a href="">해외도서</a>
-                <a href="">소설</a>
-                <a href="">자기개발</a>
-                <a href="">경영/경제</a>
-                <a href="">종교</a>
-                <a href="">과학</a>
-              </div>
-            </div>            
-            <div class="category-move-btn">
-              <a href="/books/new">신상 도서</a>
-              <a href="/books/best">베스트 셀러</a>
-            </div>
+          <nav class="category-drop-box">
+            <ul id="first-category">
+              <li>
+                <div class="box">
+                  <a class="head" href="">햄버거</a>
+                </div>
+                <ul id="second-category">
+                  <li><a href="">전체보기</a></li>
+                  <li>
+                    <a class="second-category-detail">국내</a>
+                    <ul id="third-category">
+                      <li><a class="detail" href="">과학</a></li>
+                      <li><a class="detail" href="">경영/경제</a></li>
+                      <li><a class="detail" href="">소설</a></li>
+                      <li><a class="detail" href="">자기개발</a></li>
+                      <li><a class="detail" href="">종교</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a class="second-category-detail" href="">해외</a>
+                    <ul id="third-category">
+                      <li><a class="detail" href="">과학</a></li>
+                      <li><a class="detail" href="">경영/경제</a></li>
+                      <li><a class="detail" href="">소설</a></li>
+                      <li><a class="detail" href="">자기개발</a></li>
+                      <li><a class="detail" href="">종교</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a class="head" href="">신상</a></li>
+              <li><a class="head" href="">베스트</a></li>
+            </ul>
+          </nav>
         </div>
       </div>
     </header>
