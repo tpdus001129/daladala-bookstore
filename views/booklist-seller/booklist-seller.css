@@ -1,0 +1,59 @@
+body {
+  width: var(--max-width);
+  margin: 0 auto;
+}
+.topTitle {
+  font-size: 25px;
+  margin: 30px;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.buttonBox {
+  display: flex;
+  justify-content: flex-end;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.deleteAllBtn {
+  margin-left: 20px;
+}
+.deleteAllBtn,
+.listAddBtn,
+.modifyBtn,
+.deleteBtn {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* 테이블 라쓰고 */
+table {
+  border: 1px solid black;
+  width: 100%;
+  margin: 30px auto;
+}
+tr,
+td {
+  border: 1px solid black;
+  vertical-align: middle;
+}
+.bookImg {
+  background-color: darkgrey;
+  width: 15%;
+  height: 200px;
+}
+.manageBox {
+  width: 15%;
+  margin: 0 auto;
+}
+.modifyBtn,
+.deleteBtn {
+  margin: 20px auto;
+}

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../common/common.css" />
+    <link rel="stylesheet" href="../common/reset.css" />
+    <link rel="stylesheet" href="myPage.css" />
+    <script src="../common/header-component.js"></script>
+  </head>
+  <body>
+    <header-component></header-component>
+    <p class="topTitle">회원 정보 수정</p>
+    <form action="">
+      <table>
+        <tr>
+          <td>이메일</td>
+          <td><input type="text" /></td>
+        </tr>
+        <tr>
+          <td>비민번호</td>
+          <td><input type="password" /></td>
+        </tr>
+        <tr>
+          <td>이름</td>
+          <td><input type="text" /></td>
+        </tr>
+        <tr>
+          <td>전화번호</td>
+          <td><input type="text" /></td>
+        </tr>
+        <tr>
+          <td>주소</td>
+          <td>
+            <div class="address">
+              <input type="text" /><input type="text" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="submitBtnBox" colspan="2">
+            <input type="submit" value="적용" class="submitBtn" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
