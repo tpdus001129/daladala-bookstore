@@ -6,44 +6,52 @@
     <title>Document</title>
     <link rel="stylesheet" href="../common/common.css" />
     <link rel="stylesheet" href="../common/reset.css" />
-    <link rel="stylesheet" href="myPage.css" />
+    <link rel="stylesheet" href="my-page.css" />
     <script src="../common/header-component.js"></script>
+    <script src="../common/sidebar-container.js"></script>
+    <script src="../common/footer-component.js"></script>
   </head>
   <body>
     <header-component></header-component>
-    <p class="topTitle">회원 정보 수정</p>
-    <form action="">
-      <table>
-        <tr>
-          <td>이메일</td>
-          <td><input type="text" /></td>
-        </tr>
-        <tr>
-          <td>비민번호</td>
-          <td><input type="password" /></td>
-        </tr>
-        <tr>
-          <td>이름</td>
-          <td><input type="text" /></td>
-        </tr>
-        <tr>
-          <td>전화번호</td>
-          <td><input type="text" /></td>
-        </tr>
-        <tr>
-          <td>주소</td>
-          <td>
-            <div class="address">
-              <input type="text" /><input type="text" />
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td class="submitBtnBox" colspan="2">
-            <input type="submit" value="적용" class="submitBtn" />
-          </td>
-        </tr>
-      </table>
-    </form>
+    <sidebar-container>
+      <p class="topTitle">회원 정보 수정</p>
+      <form action="">
+        <table>
+          <tr>
+            <td>이메일</td>
+            <td><input type="text" id="email" /></td>
+          </tr>
+          <tr>
+            <td>비밀번호</td>
+            <td><input type="password" id="pw" /></td>
+          </tr>
+          <tr>
+            <td>이름</td>
+            <td><input type="text" id="name" /></td>
+          </tr>
+          <tr>
+            <td>전화번호</td>
+            <td><input type="text" id="phoneNumber" /></td>
+          </tr>
+          <tr>
+            <td>주소</td>
+            <td>
+              <div class="address">
+                <input type="text" id="address1" />
+                <input type="text" id="address2" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="submitBtnBox" colspan="2">
+              <input type="submit" value="적용" class="submitBtn" />
+            </td>
+          </tr>
+        </table>
+
+        <input type="submit" value="회원 탈퇴" class="unregisterBtn" />
+      </form>
+    </sidebar-container>
+    <footer-component></footer-component>
   </body>
 </html>
