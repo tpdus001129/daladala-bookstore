@@ -11,6 +11,6 @@ router.get("/:bookId", bookController.detail);
 
 router.put("/:bookId", bookController.update);
 
-router.delete("/:bookId", bookController.delete);
+router.delete("/:bookId", bookController.remove);
 
 export default router;
