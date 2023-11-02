@@ -17,74 +17,120 @@ class HeaderComponent extends HTMLElement {
         display: flex;
         justify-content: center;
       }
-      .max-container{
-        width: var(--max-width);
-      }
-      .first-header{
+      .max-container {
+        width: 1280px;
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: center;
       }
-      .header-logo-box{
+      .first-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .header-logo-box {
         margin: 16px 0;
+        justify-content: center;
+        text-align: center;
       }
-      .login-user{
+      .login-user {
+        display: flex;
+        gap: 20px;
+        float: right;
+        margin: 0;
+        padding: 0;
+      }
+      .second-header {
         display: flex;
         justify-content: center;
-        gap: 15px;
+        margin: 20px 0 30px 0;
+        padding: 10px 0;
+        /* background-color: hsl(336, 29%, 86%); */
       }
-      .second-header{
+      
+      .category-drop-box {
+        width: 450px;
+        height: 100%;
         display: flex;
-        gap: 5px
-        
+        justify-content: center;
       }
-      #category-btn{
-        border : 1px solid rgb(37, 37, 37);
-        border-radius : 4px;
-        background-color: #f5f5f5;
-        font-weight: 400;
-        color : rgb(37, 37, 37);
-        padding : 12px;
-        width :200px;
+      .category-drop-box a {
+        color: #121212;
+        display: block;
+        padding: 10px 25px;
         text-align: center;
-        cursor : pointer;
-        font-size : 12px;
+        text-decoration: none;
+        -webkit-transition: all 0.25s ease;
+        -moz-transition: all 0.25s ease;
+        -ms-transition: all 0.25s ease;
+        -o-transition: all 0.25s ease;
+        transition: all 0.25s ease;
       }
-      #menu-content{
-        display : none;
-        position : absolute;
-        z-index : 1; /*다른 요소들보다 앞에 배치*/
-        font-weight: 400;
-        background-color: #f9f9f9;
-        min-width : 200px;
+      .category-drop-box ul,
+      .category-drop-box li {
+        margin: 0;
+        padding: 0;
       }
-      #menu-content a{
-        display : block;
-        text-decoration : none;
-        color : rgb(37, 37, 37);
-        font-size: 12px;
-        padding : 12px 20px;
+      .category-drop-box ul {
+        list-style: none;
+        width: 100%;
       }
-      #menu-content a:hover{
-        background-color : #ececec
+      .category-drop-box li {
+        display: inline-block;
+        position: relative;
       }
-      .drop-box:hover #menu-content {
+      
+      #first-category {
+        width: 450px;
+        height: 100%;
+      }
+      #first-category>li {
+        float: left;
+        width: 33%;
+        text-align: center;
+        position: relative;
+      }
+      #first-category >li:hover #second-category {
+        left: 0;
+      }
+      #first-category >li a {
         display: block;
       }
-      .category-move-btn a{
-        border : 1px solid rgb(37, 37, 37);
-        border-radius : 4px;
-        background-color: #f5f5f5;
-        font-weight: 400;
-        padding : 12px;
-        color : rgb(37, 37, 37);
-        display: inline-block;
-        text-align: center;
-        height: 20px;
-        width : 100px;
-        cursor : pointer;
-        font-size : 12px;
+      #first-category li a:hover {
+        color: #121212;
+        font-weight: bold;
       }
-
+      #second-category {
+        position: absolute;
+        top: 40px;
+        left: -9999px;
+        background: #ccc;
+        width: 100%;
+      }
+      #second-category >li {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        width:auto;
+      }
+      #second-category >li:hover #third-category {
+        left: 100%;
+      }
+      #second-category >li a, #third-category >li a {
+        margin: 10px;
+        padding: 10px;
+      }
+      #third-category {
+        position: absolute;
+        top: 0;
+        background: #6BD089;
+        width: 80%;
+        left: -9999px;
+      }
+      #third-category >li:hover {
+        color: #fff;
+      }
     </style>
   
   
