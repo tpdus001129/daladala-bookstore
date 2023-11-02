@@ -8,19 +8,69 @@ body {
 }
 table {
   border: 1px solid black;
-  width: 30%;
+  margin: 30px auto;
+  width: 80%;
 }
 tr,
 td {
   border: 1px solid black;
   vertical-align: middle;
+  height: 80px;
+}
+table select {
+  width: 200px;
+  height: 40px;
+  margin-left: 20px;
+  padding: 5px;
+}
+table input {
+  width: 80%;
+  height: 30px;
+  margin: auto 20px;
+  padding: 5px;
+}
+#price {
+  width: 20%;
+}
+#quantity {
+  width: 15%;
+}
+.quantityBox {
+  margin-left: 20px;
+}
+.quantityBox button {
+  width: 30px;
+  height: 30px;
+}
+label[for="imgUpload"] {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.bookImg {
+  width: 20%;
 }
 #imgUpload {
   display: none;
 }
-label {
-  cursor: pointer;
+
+.explain {
+  border-top: 1px solid black;
+  width: 80%;
+  margin: 0 auto;
 }
+.bottomBox {
+  display: flex;
+  justify-content: center;
+}
+.cancleBtn,
 .saveBtn {
   border: 1px solid black;
   border-radius: 10px;
@@ -29,4 +79,5 @@ label {
   line-height: 40px;
   text-align: center;
   cursor: pointer;
+  margin: 0 20px;
 }
