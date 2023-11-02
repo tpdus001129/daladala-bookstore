@@ -6,19 +6,24 @@ class FooterComponent extends HTMLElement {
     const template = document.createElement("template");
     template.innerHTML = `
     <style>
+    footer {
+      display: flex;
+      justify-content: center;
+      background-color: #c50167;
+    }
     .site-footer {
-        background-color: #c50167;
-        padding: 10px 0;
-        font-size: 15px;
-        line-height: 24px;
-        color: #121212;
-        /* 길이넣기 */
-        max-width: 1280px;
-        max-height: 300px;
-      }
+      /* 길이넣기 */
+      width: var(--max-width);
+      height: 190px;
+      padding: 10px 0;
+      font-size: 15px;
+      line-height: 24px;
+      color: #121212;
+    }
       .site-footer hr {
         border-top-color: #bbb;
         opacity: 0.5;
+        width: 100%;
       }
       .site-footer hr.small {
         margin: 20px 0;
@@ -90,6 +95,7 @@ class FooterComponent extends HTMLElement {
       }
       .social-icons {
         padding-left: 0;
+        margin-top:0;
         margin-bottom: 0;
         list-style: none;
       }
@@ -137,52 +143,54 @@ class FooterComponent extends HTMLElement {
       }      
     </style>
 
-    <footer class="site-footer">
-  <div class="container">
-    <div class="first-row">
-      <div class="about">
-        <h6>About US</h6>
-        <ul class="footer-links">
-          <li>대표이사 <a href="">오강산</a></li>
-          <li>BE <a href="">박철휘</a></li>
-          <li>FE <a href="">송지은</a> <a href="">김세연</a> <a href="">김민희</a></li>
-        </ul>
-      </div>
+    <footer>
+    <div class="site-footer">
+      <div class="container">
+        <div class="first-row">
+          <div class="about">
+            <h6>About US</h6>
+            <ul class="footer-links">
+              <li>대표이사 <a href="">오강산</a></li>
+              <li>BE <a href="">박철휘</a></li>
+              <li>FE <a href="">송지은</a> <a href="">김세연</a> <a href="">김민희</a></li>
+            </ul>
+          </div>
 
-      <div class="links">
-        <h6>Contact</h6>
-        <ul class="footer-links">
-          <li>대한민국 대한시 민국구 만세로 66</li>
-          <li>eliceteam6@abcde.com</li>
-          <li>1234-6666</li>
+          <div class="links">
+            <h6>Contact</h6>
+            <ul class="footer-links">
+              <li>대한민국 대한시 민국구 만세로 66</li>
+              <li>eliceteam6@abcde.com</li>
+              <li>1234-6666</li>
+          </div>
+        </div>
+        <hr/>
+      </div>
+      <div class="container">
+        <div class="second-row">
+          <div class="copyright-box">
+            <p class="copyright-text">
+              ⓒ elice Communication. All Rights Reserved.
+            </p>
+          </div>
+
+          <div class="social-icons-box">
+            <ul class="social-icons">
+              <li>
+                <a class="gitlab" href="#"><i class="icon-gitlab"></i></a>
+              </li>
+              <li>
+                <a class="notion" href="#"><i class="icon-notion"></i></a>
+              </li>
+              <li>
+                <a class="linkedin" href="#"><i class="icon-linkedin"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-    <hr />
-  </div>
-  <div class="container">
-    <div class="second-row">
-      <div class="copyright-box">
-        <p class="copyright-text">
-          ⓒ elice Communication. All Rights Reserved.
-        </p>
-      </div>
-
-      <div class="social-icons-box">
-        <ul class="social-icons">
-          <li>
-            <a class="gitlab" href="#"><i class="icon-gitlab"></i></a>
-          </li>
-          <li>
-            <a class="notion" href="#"><i class="icon-notion"></i></a>
-          </li>
-          <li>
-            <a class="linkedin" href="#"><i class="icon-linkedin"></i></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</footer>    
+  </footer>   
     `;
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
