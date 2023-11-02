@@ -4,7 +4,7 @@ class SidebarContainer extends HTMLElement {
     this.attachShadow({ mode: "open" });
 
     const PATH = {
-      editUser: "/mypage",
+      editUser: "/my-page",
       editPassword: "/password",
       getOrder: "/order",
       getProducts: "/products",
@@ -86,7 +86,7 @@ class SidebarContainer extends HTMLElement {
 
     const pathname = window.location.pathname.slice(0, -1);
     const activedMenu = this.shadowRoot.querySelector(`a[href='${pathname}']`);
-    activedMenu.style["font-weight"] = "bold";
+    if (activedMenu) activedMenu.style["font-weight"] = "bold";
 
     const sellerMenu = this.shadowRoot.querySelector(".seller-menu");
     const queryString = window.location.search;
