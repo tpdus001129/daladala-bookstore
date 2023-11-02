@@ -4,6 +4,7 @@ import YAML from "yamljs";
 import { fileURLToPath } from "url";
 import path from "path";
 import "dotenv/config";
+import router from "./router/index.js";
 
 const { PORT } = process.env;
 
@@ -15,6 +16,8 @@ const swaggerSpec = YAML.load(path.join(__dirname, "./swagger.yaml"));
 const app = express();
 
 app.use(express.static("views"));
+
+app.use("/api", router);
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
