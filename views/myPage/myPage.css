@@ -2,7 +2,7 @@ body {
   width: var(--max-width);
   margin: 0 auto;
 }
-.topTitle{
+.topTitle {
   font-size: 25px;
   margin: 30px;
 }
@@ -23,17 +23,17 @@ td {
   padding: 10px;
   text-align: center;
 }
-.address{
+.address {
   display: flex;
   flex-direction: column;
 }
-.address input:last-child{
+.address input:last-child {
   margin-top: 10px;
 }
 .submitBtnBox {
   text-align: center;
 }
-.submitBtn{
+.submitBtn {
   width: 100px;
   border: 1px solid black;
   border-radius: 10px;

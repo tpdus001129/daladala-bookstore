@@ -2,7 +2,7 @@ body {
   width: var(--max-width);
   margin: 0 auto;
 }
-.topTitle{
+.topTitle {
   font-size: 25px;
   margin: 30px;
 }
@@ -10,9 +10,10 @@ table {
   border: 1px solid black;
   width: 30%;
 }
-tr, td {
+tr,
+td {
   border: 1px solid black;
-  vertical-align : middle;
+  vertical-align: middle;
 }
 #imgUpload {
   display: none;

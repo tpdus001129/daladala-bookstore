@@ -2,11 +2,11 @@ body {
   width: var(--max-width);
   margin: 0 auto;
 }
-.topTitle{
+.topTitle {
   font-size: 25px;
   margin: 30px;
 }
-.container{
+.container {
   width: 80%;
   margin: 0 auto;
 }
@@ -39,21 +39,21 @@ table {
   width: 100%;
   margin: 30px auto;
 }
-tr, td {
+tr,
+td {
   border: 1px solid black;
-  vertical-align : middle;
+  vertical-align: middle;
 }
 .bookImg {
   background-color: darkgrey;
   width: 15%;
   height: 200px;
 }
-.manageBox{
+.manageBox {
   width: 15%;
   margin: 0 auto;
-
 }
 .modifyBtn,
-.deleteBtn{
+.deleteBtn {
   margin: 20px auto;
 }
