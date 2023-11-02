@@ -1,14 +1,10 @@
-body {
-  width: var(--max-width);
-  margin: 0 auto;
-}
 .topTitle {
   font-size: 25px;
   margin: 30px;
 }
 table {
   border: 1px solid black;
-  margin: 30px auto;
+  margin: 50px auto;
   width: 80%;
 }
 tr,
@@ -29,6 +25,9 @@ table input {
   margin: auto 20px;
   padding: 5px;
 }
+.quantityBox input {
+  margin: 5px;
+}
 #price {
   width: 20%;
 }
@@ -39,8 +38,11 @@ table input {
   margin-left: 20px;
 }
 .quantityBox button {
-  width: 30px;
-  height: 30px;
+  background-color: white;
+  vertical-align: middle;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
 }
 label[for="imgUpload"] {
   border: 1px solid black;
@@ -55,16 +57,27 @@ label[for="imgUpload"] {
   margin: 0 auto;
 }
 .bookImg {
-  width: 20%;
+  width: 25%;
 }
 #imgUpload {
   display: none;
 }
-
-.explain {
-  border-top: 1px solid black;
+.explainBox {
+  border-top: 2px solid black;
   width: 80%;
-  margin: 0 auto;
+  margin: 50px auto;
+}
+.explain p {
+  margin-top: 30px;
+  font-size: 25px;
+}
+#bookExplain {
+  display: block;
+  margin: 30px auto;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  resize: none;
 }
 .bottomBox {
   display: flex;

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="bookmodify-seller.css" />
     <script src="../common/header-component.js"></script>
     <script src="../common/sidebar-container.js"></script>
+    <script src="../common/footer-component.js"></script>
   </head>
   <body>
     <header-component></header-component>
@@ -18,12 +19,12 @@
         <table>
           <tr>
             <td colspan="3">
-              <select name="" id="">
+              <select name="" id="mainCategory">
                 <option value="">국내도서</option>
                 <option value="">해외도서</option>
               </select>
 
-              <select name="" id="">
+              <select name="" id="subCategory">
                 <option value="">소설</option>
                 <option value="">경제/경영</option>
                 <option value="">종교</option>
@@ -33,7 +34,7 @@
             </td>
           </tr>
           <tr>
-            <td class="bookImg" rowspan="3">이미지</td>
+            <td class="bookImg" rowspan="3"></td>
             <td colspan="2"><input type="text" placeholder="제목" /></td>
           </tr>
           <tr>
@@ -64,16 +65,20 @@
             </td>
           </tr>
         </table>
-      </form>
 
-      <div class="explain">
-        상품설명
+        <div class="explainBox">
+          <div class="explain">
+            <p>책 소개</p>
+            <textarea rows="30" id="bookExplain"></textarea>
+          </div>
 
-        <div class="bottomBox">
-          <div class="cancleBtn">취소</div>
-          <div class="saveBtn">등록</div>
+          <div class="bottomBox">
+            <div class="cancleBtn">취소</div>
+            <input type="submit" value="등록" class="saveBtn" />
+          </div>
         </div>
-      </div>
+      </form>
     </sidebar-container>
+    <footer-component></footer-component>
   </body>
 </html>
