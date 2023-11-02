@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../common/reset.css" />
+    <link rel="stylesheet" href="../common/common.css" />
+    <script src="../common/header-component.js"></script>
+    <title>Checkout</title>
+  </head>
+  <body>
+    <header-component></header-component>
+    <div class="user-delivery-order">
+      <div class="cartbox">
+        <cart-table>
+          <tr>
+            <th colspan="2">상품이미지</th>
+            <th>상품 명</th>
+            <th>가격</th>
+            <th>수량</th>
+            <th>삭제</th>
+          </tr>
+          <!-- /** 정보 가지고 오는 거 장바구니랑 같은 맥락으로 */ -->
+          <tr>
+            <td>
+              <input type="checkbox" id="OrderCheckbox" name="Bookcheck" />
+            </td>
+            <td>
+              <img id="BookImage" src="" alt="상품 이미지" />
+            </td>
+            <td id="BookName"></td>
+            <td id="BookMoney"></td>
+            <td class="quantity">
+              <button class="minus">-</button>
+              <input type="text" readonly />
+              <button class="plus">+</button>
+            </td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-primary btn-sm"
+                id="deleteButton"
+              >
+                삭제
+              </button>
+            </td>
+          </tr>
+        </cart-table>
+        <div class="order-info">
+          <h2>배송지 정보</h2>
+          <div class="delivery-info">
+            <div class="address">
+              <label for="UserAddress">주소</label>
+              <input type="text" id="UserAddress" name="UserAddress" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="delivery">
+        <p>배송 정보</p>
+        <ul>
+          <input
+            class="UserName"
+            type="text"
+            name="UserName"
+            placeholder="수령인"
+          />
+          <input
+            class="UserNumber"
+            type="text"
+            name="UserNumber"
+            placeholder="전화번호"
+          />
+          <input
+            class="UserPost"
+            type="text"
+            name="UserPost"
+            placeholder="우편번호"
+          />
+          <input
+            class="UserAddress"
+            type="text"
+            name="UserAddress"
+            placeholder="주소"
+          />
+          <input
+            class="UserDetail"
+            type="text"
+            name="UserAddressDetail"
+            placeholder="상세주소"
+          />
+        </ul>
+        <ul>
+          <p>배송 메모</p>
+          <select
+            class="delivmemo"
+            name="delivmemo"
+            title="memo"
+            data-group="shipping"
+          >
+            <option value="">배송메모를 선택해 주세요.</option>
+            <option value="배송 전에 미리 연락 바랍니다.">
+              배송 전에 미리 연락 바랍니다.
+            </option>
+            <option value="부재시 경비실에 맡겨주세요.">
+              부재시 경비실에 맡겨주세요.
+            </option>
+            <option value="부재시 전화나 문자를 남겨주세요.">
+              부재시 전화나 문자를 남겨주세요.
+            </option>
+            <option value="custom">직접입력</option>
+          </select>
+        </ul>
+      </div>
+
+      <div class="pay">
+        <a href="" class="Apay"> <span>무통장입금</span> </a>
+      </div>
+    </div>
+    <aside>
+      <div class="total">
+        <ul class="info">
+          <il class="OrderMoney">
+            <p class="label">상품금액</p>
+            <div>
+              <span class="amount"></span>
+              <p class="unit">원</p>
+            </div>
+          </il>
+          <il class="OrderMoney">
+            <p class="label">배송비</p>
+            <div>
+              <span class="DeliveryAmount">+</span>
+              <p class="unit">원</p>
+            </div>
+          </il>
+          <il class="OrderMoney">
+            <p class="label">할인 금액</p>
+            <div>
+              <span class="DeliveryAmount">+</span>
+              <p class="unit">원</p>
+            </div>
+          </il>
+        </ul>
+        <ul class="infoall">
+          <il class="OrderMoney">
+            <p class="label">총 금액</p>
+            <div>
+              <span class="AmountAll"></span>
+              <p class="unit">원</p>
+            </div>
+          </il>
+          <il class="OrderMoney">
+            <p class="label">적립금액</p>
+            <div>
+              <span class="SaveMoney">+</span>
+              <p class="unit">원</p>
+            </div>
+          </il>
+        </ul>
+        <button type="button" class="btn btn-primary btn-lg">결제하기</button>
+      </div>
+    </aside>
+  </body>
+</html>
