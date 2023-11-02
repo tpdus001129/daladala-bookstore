@@ -1,4 +1,4 @@
-class HeaderComponent extends HTMLElement {
+class FooterComponent extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -136,9 +136,56 @@ class HeaderComponent extends HTMLElement {
         }
       }      
     </style>
+
+    <footer class="site-footer">
+  <div class="container">
+    <div class="first-row">
+      <div class="about">
+        <h6>About US</h6>
+        <ul class="footer-links">
+          <li>대표이사 <a href="">오강산</a></li>
+          <li>BE <a href="">박철휘</a></li>
+          <li>FE <a href="">송지은</a> <a href="">김세연</a> <a href="">김민희</a></li>
+        </ul>
+      </div>
+
+      <div class="links">
+        <h6>Contact</h6>
+        <ul class="footer-links">
+          <li>대한민국 대한시 민국구 만세로 66</li>
+          <li>eliceteam6@abcde.com</li>
+          <li>1234-6666</li>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <div class="container">
+    <div class="second-row">
+      <div class="copyright-box">
+        <p class="copyright-text">
+          ⓒ elice Communication. All Rights Reserved.
+        </p>
+      </div>
+
+      <div class="social-icons-box">
+        <ul class="social-icons">
+          <li>
+            <a class="gitlab" href="#"><i class="icon-gitlab"></i></a>
+          </li>
+          <li>
+            <a class="notion" href="#"><i class="icon-notion"></i></a>
+          </li>
+          <li>
+            <a class="linkedin" href="#"><i class="icon-linkedin"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>    
     `;
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 }
 
-customElements.define("header-component", HeaderComponent);
+customElements.define("footer-component", FooterComponent);
