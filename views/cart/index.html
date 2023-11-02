@@ -8,95 +8,104 @@
     <link rel="stylesheet" href="../cart/shoppingcart.css" />
     <script src="../common/header-component.js"></script>
     <script src="../common/footer-component.js"></script>
+    <script src="../cart/cart.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    
     <title>ShoppingCart</title>
   </head>
   <body>
     <header-component></header-component>
-    <div class="ShoppingCart-head">
-      <h1>장바구니</h1>
-      <button type="button" class="btn btn-primary btn-sm" id="deleteButton">
-        전체 삭제
-      </button>
+    <div class="ShoppingCartContainer">
+      <div class="ShoppingCart">
+        <div class="ShoppingCartHead">
+          <h1>장바구니</h1>
+          <div class="Box">
+            <button type="button" class="Btn" id="DeleteButton">전체 삭제</button>
+          </div>
+        </div>
+        <section>
+          <div class="cart-table">
+            <tr>
+              <th colspan="2">상품이미지</th>
+              <th>상품 명</th>
+              <th>가격</th>
+              <th>수량</th>
+              <th>삭제</th>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" id="OrderCheckbox" name="Bookcheck" />
+              </td>
+              <td>
+                <img id="BookImage" src="" alt="상품 이미지" />
+              </td>
+              <td id="BookName"></td>
+              <td id="BookMoney"></td>
+              <td class="quantity">
+                <button class="minus">-</button>
+                <input type="text" readonly />
+                <button class="plus">+</button>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm"
+                  id="deleteButton"
+                >
+                  삭제
+                </button>
+              </td>
+            </tr>
+          </div>
+        </section>
+      </div>
+      <aside>
+        <div class="total">
+          <ul class="info">
+            <il class="OrderMoney">
+              <p class="label">상품금액</p>
+              <div>
+                <span class="amount"></span>
+                <p class="unit">원</p>
+              </div>
+            </il>
+            <il class="OrderMoney">
+              <p class="label">배송비</p>
+              <div>
+                <span class="DeliveryAmount">+</span>
+                <p class="unit">원</p>
+              </div>
+            </il>
+            <il class="OrderMoney">
+              <p class="label">할인 금액</p>
+              <div>
+                <span class="DeliveryAmount">+</span>
+                <p class="unit">원</p>
+              </div>
+            </il>
+          </ul>
+          <ul class="infoall">
+            <il class="OrderMoney">
+              <p class="label">총 금액</p>
+              <div>
+                <span class="AmountAll"></span>
+                <p class="unit">원</p>
+              </div>
+            </il>
+            <il class="OrderMoney">
+              <p class="label">적립금액</p>
+              <div>
+                <span class="SaveMoney">+</span>
+                <p class="unit">원</p>
+              </div>
+            </il>
+          </ul>
+          <button type="button" class="btn btn-primary btn-lg">결제하기</button>
+        </div>
+      </aside>
     </div>
-    <section>
-      <div class="cart-table">
-        <tr>
-          <th colspan="2">상품이미지</th>
-          <th>상품 명</th>
-          <th>가격</th>
-          <th>수량</th>
-          <th>삭제</th>
-        </tr>
-        <tr>
-          <td>
-            <input type="checkbox" id="OrderCheckbox" name="Bookcheck" />
-          </td>
-          <td>
-            <img id="BookImage" src="" alt="상품 이미지" />
-          </td>
-          <td id="BookName"></td>
-          <td id="BookMoney"></td>
-          <td class="quantity">
-            <button class="minus">-</button>
-            <input type="text" readonly />
-            <button class="plus">+</button>
-          </td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-primary btn-sm"
-              id="deleteButton"
-            >
-              삭제
-            </button>
-          </td>
-        </tr>
-      </div>
-    </section>
-    <aside>
-      <div class="total">
-        <ul class="info">
-          <il class="OrderMoney">
-            <p class="label">상품금액</p>
-            <div>
-              <span class="amount"></span>
-              <p class="unit">원</p>
-            </div>
-          </il>
-          <il class="OrderMoney">
-            <p class="label">배송비</p>
-            <div>
-              <span class="DeliveryAmount">+</span>
-              <p class="unit">원</p>
-            </div>
-          </il>
-          <il class="OrderMoney">
-            <p class="label">할인 금액</p>
-            <div>
-              <span class="DeliveryAmount">+</span>
-              <p class="unit">원</p>
-            </div>
-          </il>
-        </ul>
-        <ul class="infoall">
-          <il class="OrderMoney">
-            <p class="label">총 금액</p>
-            <div>
-              <span class="AmountAll"></span>
-              <p class="unit">원</p>
-            </div>
-          </il>
-          <il class="OrderMoney">
-            <p class="label">적립금액</p>
-            <div>
-              <span class="SaveMoney">+</span>
-              <p class="unit">원</p>
-            </div>
-          </il>
-        </ul>
-        <button type="button" class="btn btn-primary btn-lg">결제하기</button>
-      </div>
-    </aside>
     <footer-component></footer-component>
   </body>
 </html>
