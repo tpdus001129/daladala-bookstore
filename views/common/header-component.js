@@ -18,9 +18,6 @@ class HeaderComponent extends HTMLElement {
         background: white;
         display: flex;
         justify-content: center;
-        position: fixed;
-        top: 0;
-        z-index: 100;
       }
       .max-container {
         width: var(--max-width);
