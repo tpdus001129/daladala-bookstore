@@ -469,7 +469,7 @@ paths:
                 items:
                   type: object
                   properties:
-                    categoryId:
+                    _id:
                       type: string
                       example: ObjectId(asdfkv3D2Ec)
                       description: 카테고리 ID
@@ -481,7 +481,7 @@ paths:
                       items:
                         type: object
                         properties:
-                          categoryId:
+                          _id:
                             type: string
                             example: ObjectId(asdfjalfkvja)
                           name:
