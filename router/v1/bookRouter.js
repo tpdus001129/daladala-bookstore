@@ -1,16 +1,23 @@
 import express from "express";
 import bookController from "../../controllers/bookController.js";
+import { jwtAuthentication } from "../../middleware/jwtAuthentication.js";
+import { bookInputValidator } from "../../middleware/inputValidator/bookInputValidator.js";
 
 const router = express.Router();
 
 router.get("/", bookController.list);
 
-router.post("/", bookController.create);
+router.post("/", jwtAuthentication, bookInputValidator, bookController.create);
 
 router.get("/:bookId", bookController.detail);
 
-router.put("/:bookId", bookController.update);
+router.put(
+  "/:bookId",
+  jwtAuthentication,
+  bookInputValidator,
+  bookController.update,
+);
 
-router.delete("/:bookId", bookController.remove);
+router.delete("/:bookId", jwtAuthentication, bookController.remove);
 
 export default router;
