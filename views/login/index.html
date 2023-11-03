@@ -1,39 +1,43 @@
-<!doctype html>
-<html lang="en">
+<!-- 로그인 페이지 -->
+<!DOCTYPE html>
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="./login.css" />
     <link rel="stylesheet" href="../common/reset.css" />
     <link rel="stylesheet" href="../common/common.css" />
-    <link rel="stylesheet" href="./login.css" />
     <script src="../common/header-component.js"></script>
+    <script src="../common/footer-component.js"></script>
   </head>
-
   <body>
-    <script src="./login.js"></script>
     <header-component></header-component>
     <main>
-      <div>
-        <h2>안녕하세요!</h2>
-      </div>
+      
+      <div class="content-wrapper">
+        <p>안녕하세요!</p>
 
-      <div class="login-input">
-        <input
-          class="email-input"
-          type="email"
-          placeholder="이메일을 입력해주세요"
-        />
-        <input
-          class="password-input"
-          type="password"
-          placeholder="비밀번호를 입력해주세요"
-        />
-      </div>
-      <p class="login-error-message">유효성멘트자리</p>
-      <div class="login-btn-box">
-        <button class="login-btn">로그인</button>
+        <div class="login-input">
+          <input
+            class="email-input"
+            type="email"
+            placeholder="이메일을 입력해주세요"
+          />
+          <input
+            class="password-input"
+            type="password"
+            placeholder="비밀번호를 입력해주세요"
+          />
+        </div>
+        <p class="login-error-message">유효성멘트자리</p>
+
+        <div class="login-btn-box">
+          <button class="login-btn">로그인</button>
+        </div>
       </div>
     </main>
+    <footer-component></footer-component>
+    <script src="./login.js"></script>
   </body>
 </html>

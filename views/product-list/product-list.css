@@ -2,72 +2,97 @@ ol,
 ul {
   list-style: none;
 }
-img {
-  max-width: 300px;
-  max-height: 500px;
+.product-box {
+  width: var(--max-width);
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-top: 140px;
+  padding-bottom: 200px;
 }
 .current-category-bar {
-  border: 1px solid black;
-  margin: 50px auto;
-  width: 1200px;
-  height: 50px;
+  width: 100%;
+  height:max-content;
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  background: white;
+  position: fixed;
+  z-index: 100;
 }
 .product-list {
-  margin: 30px auto;
+  width: 100%;
+  margin: 150px auto;
   display: flex;
-  /* 자식요소들간의 간격 */
-  gap: 20px;
-  /* 중앙정렬 */
-  justify-content: center;
-  /* align-content는 flex-wrap와 같이 써야 되고
-    요소와 요소사이의 간격을 가운데를 기준으로의 설정을 
-    믜미한다. */
   flex-wrap: wrap;
-  align-content: space-around;
-
-  height: auto;
+  align-content: space-evenly;
+  
+  grid-row-gap: 70px;
 }
-
-.product-item {
-  gap: 200px;
+.product-item{
+  width: 25%;
+}
+a{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  text-decoration: none;
+}
+span {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+img{
+  width: 150px;
+  height: 220px;
 }
 .product-image {
-  width: 300px;
-  height: 400px;
+  width:90%;
+  margin: 0 auto 20px auto;
+}
+.product-item-info{
+  width:90%;
+  margin: auto;
 }
 .product-name {
-  border: 1px solid black;
-  margin: 5px 0;
-  padding-top: 5%;
-  height: 50px;
-  text-align: center;
+  padding: 0 15px;
+  height: 45px;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
+  text-align : center;
+}
+.product-name a{
+  line-height: 45px;
+  text-align : center; 
+  white-space: break-word; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box ; 
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 .product-author {
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   margin: 5px 0;
-  padding-top: 2%;
   height: 30px;
 }
 .product-price {
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   margin: 5px 0;
-  padding-top: 2%;
   height: 30px;
+  font-weight: bold;
 }
 .product-buy-box {
   display: flex;
+  gap: 5px;
+  margin-top: 15px;
 }
 .product-buy-box a {
+  border: 1px solid black;
   width: 150px;
   height: 35px;
-  margin-top: 15px;
-  padding-top: 4%;
-  text-align: center;
-  border: 1px solid black;
+  text-align: center; 
 }
