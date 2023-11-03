@@ -6,51 +6,81 @@
     <title>Document</title>
     <link rel="stylesheet" href="../common/common.css" />
     <link rel="stylesheet" href="../common/reset.css" />
-    <link rel="stylesheet" href="bookModify.css" />
+    <link rel="stylesheet" href="bookmodify-seller.css" />
     <script src="../common/header-component.js"></script>
+    <script src="../common/sidebar-container.js"></script>
+    <script src="../common/footer-component.js"></script>
   </head>
   <body>
     <header-component></header-component>
-    <p class="topTitle">도서 등록/수정</p>
-    <form action="">
-      <table>
-        <tr>
-          <td colspan="3">
-            <select name="" id="">
-              <option value="">국내도서</option>
-              <option value="">해외도서</option>
-            </select>
+    <sidebar-container>
+      <p class="topTitle">도서 등록/수정</p>
+      <form action="">
+        <table>
+          <tr>
+            <td colspan="3">
+              <select name="" id="mainCategory">
+                <option value="">국내도서</option>
+                <option value="">해외도서</option>
+              </select>
 
-            <select name="" id="">
-              <option value="">소설</option>
-              <option value="">경제/경영</option>
-              <option value="">종교</option>
-              <option value="">과학</option>
-              <option value="">자기개발</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td rowspan="3">이미지</td>
-          <td colspan="2"><input type="text" placeholder="제목" /></td>
-        </tr>
-        <tr>
-          <td><input type="text" placeholder="저자" /></td>
-          <td><input type="text" placeholder="출판사" /></td>
-        </tr>
-        <tr>
-          <td colspan="2"><input type="text" placeholder="가격" /></td>
-        </tr>
-        <tr>
-          <td>
-            <input type="file" id="imgUpload" name="imgUpload" />
-            <label for="imgUpload"> 업로드</label>
-          </td>
-          <td colspan="2"><input type="text" placeholder="재고" /></td>
-        </tr>
-      </table>
-    </form>
+              <select name="" id="subCategory">
+                <option value="">소설</option>
+                <option value="">경제/경영</option>
+                <option value="">종교</option>
+                <option value="">과학</option>
+                <option value="">자기개발</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="bookImg" rowspan="3"></td>
+            <td colspan="2">
+              <input type="text" placeholder="제목" id="title" />
+            </td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="저자" id="writer" /></td>
+            <td><input type="text" placeholder="출판사" id="publisher" /></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input type="text" placeholder="가격" id="price" />원
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="file"
+                id="imgUpload"
+                name="imgUpload"
+                accept="image/*"
+              />
+              <label for="imgUpload"> 업로드</label>
+            </td>
+            <td colspan="2">
+              <div class="quantityBox">
+                <button>-</button>
+                <input type="text" placeholder="재고" id="quantity" />
+                <button>+</button>
+              </div>
+            </td>
+          </tr>
+        </table>
 
-    <div class="saveBtn">적용</div>
+        <div class="explainBox">
+          <div class="explain">
+            <p>책 소개</p>
+            <textarea rows="30" id="bookExplain"></textarea>
+          </div>
+
+          <div class="bottomBox">
+            <div class="cancleBtn"><a href="#">취소</a></div>
+            <input type="submit" value="등록" class="saveBtn" />
+          </div>
+        </div>
+      </form>
+    </sidebar-container>
+    <footer-component></footer-component>
   </body>
 </html>
