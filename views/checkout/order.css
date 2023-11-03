@@ -90,3 +90,118 @@ td {
   text-align: center;
   padding: 2px;
 }
+
+.delivery {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pay {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+aside {
+  width: 20%;
+  float: right;
+  padding-top: 60px;
+  background-color: rgb(255, 255, 255);
+}
+
+.total {
+  margin: 15px;
+  padding: 20px;
+  border: solid 1px;
+  border-radius: 15px;
+  border-color: #c9c9c9;
+}
+
+.total-box {
+  margin: 10px;
+  padding: 0px;
+  height: 200px;
+  border: solid 1px;
+  border-radius: 10px;
+  border-color: #e3e3e3;
+}
+
+.info {
+  padding: 5px;
+}
+
+.item-price {
+  margin: 0;
+  padding: 0;
+  width: 300px;
+}
+
+.delivery-price {
+  margin: 0;
+  padding: 0;
+  width: 300px;
+}
+
+.discount-price {
+  margin: 0;
+  padding: 0;
+  width: 300px;
+}
+
+.final-price {
+  margin: 0;
+  padding: 0;
+  width: 300px;
+}
+
+.points-price {
+  margin: 0;
+  padding: 0;
+  width: 300px;
+}
+
+.label {
+  float: left;
+  color: #464646;
+}
+
+.label-box {
+  float: right;
+  width: 150px;
+}
+
+.unit {
+  float: right;
+}
+
+.price {
+  float: left;
+  margin-left: 50%;
+}
+
+.delivery {
+  float: left;
+  margin-left: 50%;
+}
+
+.discount {
+  float: left;
+  margin-left: 50%;
+}
+
+.final {
+  float: left;
+  margin-left: 50%;
+}
+
+.points {
+  float: left;
+  margin-left: 50%;
+}
