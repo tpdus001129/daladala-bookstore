@@ -12,7 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
-      rel="stylesheet"/>
+      rel="stylesheet"
+    />
     <title>order</title>
   </head>
 
@@ -35,7 +36,7 @@
               </tr>
             </table>
           </section>
-  
+
           <section>
             <table class="CartTable">
               <tr class="UserData">
@@ -66,114 +67,114 @@
           </section>
         </div>
 
-      <div class="delivery">
-        <p>배송 정보</p>
-        <ul>
-          <input
-            class="UserName"
-            type="text"
-            name="UserName"
-            placeholder="수령인"
-          />
-          <input
-            class="UserNumber"
-            type="text"
-            name="UserNumber"
-            placeholder="전화번호"
-          />
-          <input
-            class="UserPost"
-            type="text"
-            name="UserPost"
-            placeholder="우편번호"
-          />
-          <input
-            class="UserAddress"
-            type="text"
-            name="UserAddress"
-            placeholder="주소"
-          />
-          <input
-            class="UserDetail"
-            type="text"
-            name="UserAddressDetail"
-            placeholder="상세주소"
-          />
-        </ul>
-        <ul>
-          <p>배송 메모</p>
-          <select
-            class="delivmemo"
-            name="delivmemo"
-            title="memo"
-            data-group="shipping"
-          >
-            <option value="">배송메모를 선택해 주세요.</option>
-            <option value="배송 전에 미리 연락 바랍니다.">
-              배송 전에 미리 연락 바랍니다.
-            </option>
-            <option value="부재시 경비실에 맡겨주세요.">
-              부재시 경비실에 맡겨주세요.
-            </option>
-            <option value="부재시 전화나 문자를 남겨주세요.">
-              부재시 전화나 문자를 남겨주세요.
-            </option>
-            <option value="custom">직접입력</option>
-          </select>
-        </ul>
-      </div>
-
-      <div class="pay">
-        <a href="" class="Apay"> <span>무통장입금</span> </a>
-      </div>
-      </div>
-      <aside>
-      <div class="total">
-        <div class="total-box">
-          <ul class="info">
-            <il class="item-price">
-              <span class="label">상품금액</span>
-              <div class="label-box">
-                <span class="price">2000</span>
-                <span class="unit">원</span>
-              </div>
-            </il>
-            <il class="delivery-price">
-              <span class="label">배송비</span>
-              <div class="label-box">
-                <span class="delivery">+ 3000</span>
-                <span class="unit">원</span>
-              </div>
-            </il>
-            <il class="discount-price">
-              <span class="label">할인 금액</span>
-              <div class="label-box">
-                <span class="discount">- 1000</span>
-                <span class="unit">원</span>
-              </div>
-            </il>
+        <div class="delivery-address">
+          <ul class="delivery-address-detail">
+            <p>배송 정보</p>
+            <input
+              class="UserName"
+              type="text"
+              name="UserName"
+              placeholder="수령인"
+            />
+            <input
+              class="UserNumber"
+              type="text"
+              name="UserNumber"
+              placeholder="전화번호"
+            />
+            <input
+              class="UserPost"
+              type="text"
+              name="UserPost"
+              placeholder="우편번호"
+            />
+            <input
+              class="UserAddress"
+              type="text"
+              name="UserAddress"
+              placeholder="주소"
+            />
+            <input
+              class="UserDetail"
+              type="text"
+              name="UserAddressDetail"
+              placeholder="상세주소"
+            />
           </ul>
-          <ul class="infoall">
-            <il class="final-price">
-              <p class="label">총 금액</p>
-              <div class="label-box">
-                <span class="final">4000</span>
-                <p class="unit">원</p>
-              </div>
-            </il>
-            <il class="points-price">
-              <p class="label">적립금액</p>
-              <div class="label-box">
-                <span class="points">+ 50</span>
-                <p class="unit">원</p>
-              </div>
-            </il>
+          <ul class="delivery-address-memo">
+            <p>배송 메모</p>
+            <select
+              class="delivmemo"
+              name="delivmemo"
+              title="memo"
+              data-group="shipping"
+            >
+              <option value="">배송메모를 선택해 주세요.</option>
+              <option value="배송 전에 미리 연락 바랍니다.">
+                배송 전에 미리 연락 바랍니다.
+              </option>
+              <option value="부재시 경비실에 맡겨주세요.">
+                부재시 경비실에 맡겨주세요.
+              </option>
+              <option value="부재시 전화나 문자를 남겨주세요.">
+                부재시 전화나 문자를 남겨주세요.
+              </option>
+              <option value="custom">직접입력</option>
+            </select>
           </ul>
         </div>
-        <a href="../index.html">
-          <button type="button" class="btn" id="orderButton" >결제하기</button>
-        </a>
+
+        <div class="pay">
+          <a href="" class="Apay"> <span>무통장입금</span> </a>
+        </div>
       </div>
+      <aside>
+        <div class="total">
+          <div class="total-box">
+            <ul class="info">
+              <il class="item-price">
+                <span class="label">상품금액</span>
+                <div class="label-box">
+                  <span class="price">2000</span>
+                  <span class="unit">원</span>
+                </div>
+              </il>
+              <il class="delivery-price">
+                <span class="label">배송비</span>
+                <div class="label-box">
+                  <span class="delivery">+ 3000</span>
+                  <span class="unit">원</span>
+                </div>
+              </il>
+              <il class="discount-price">
+                <span class="label">할인 금액</span>
+                <div class="label-box">
+                  <span class="discount">- 1000</span>
+                  <span class="unit">원</span>
+                </div>
+              </il>
+            </ul>
+            <ul class="infoall">
+              <il class="final-price">
+                <p class="label">총 금액</p>
+                <div class="label-box">
+                  <span class="final">4000</span>
+                  <p class="unit">원</p>
+                </div>
+              </il>
+              <il class="points-price">
+                <p class="label">적립금액</p>
+                <div class="label-box">
+                  <span class="points">+ 50</span>
+                  <p class="unit">원</p>
+                </div>
+              </il>
+            </ul>
+          </div>
+          <a href="../index.html">
+            <button type="button" class="btn" id="orderButton">결제하기</button>
+          </a>
+        </div>
       </aside>
     </div>
     <footer-component></footer-component>

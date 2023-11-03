@@ -91,23 +91,55 @@ td {
   padding: 2px;
 }
 
-.delivery {
+.delivery-address {
   float: left;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+.delivery-address-detail {
+  list-style: none;
+  margin: 10px;
+  padding: 0;
+}
+
+.delivery-address-detail p {
+  margin: 10px;
+}
+
+.delivery-address-detail input {
+  margin-bottom: 10px;
+  width: 50%;
+  padding: 5px;
+}
+
+.delivery-address-memo {
+  list-style: none;
+  margin: 10px;
+  padding: 0;
+}
+
+.delivery-address-memo p {
+  margin: 10px;
+}
+
+.delivery-address-memo select {
+  width: 50%;
+  padding: 5px;
 }
 
 .pay {
+  margin: 50px;
+  padding: 10px;
+  border: solid 1px;
   float: left;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
-
-
 
 aside {
   width: 20%;
