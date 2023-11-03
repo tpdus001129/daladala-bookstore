@@ -40,7 +40,7 @@ const bookController = {
 
   async update(req, res) {
     const { bookId } = req.params;
-    const bookData = requestBodyToObject(req.body)
+    const bookData = requestBodyToObject(req.body);
     const book = await bookService.update(bookId, bookData);
     if (book) {
       res.status(200).send();
@@ -53,7 +53,7 @@ const bookController = {
     if (book) {
       res.status(200).send();
     }
-  }
-}
+  },
+};
 
 export default bookController;

@@ -22,7 +22,7 @@ const bookService = {
   async remove(bookId) {
     console.log("Book Delete", bookId);
     return true;
-  }
-}
+  },
+};
 
 export default bookService;
