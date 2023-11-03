@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../common/reset.css" />
     <link rel="stylesheet" href="../common/common.css" />
+    <link rel="stylesheet" href="../cart/shoppingcart.css">
     <script src="../common/header-component.js"></script>
+    <script src="../common/footer-component.js"></script>
     <title>ShoppingCart</title>
   </head>
   <body>
@@ -17,7 +19,7 @@
       </button>
     </ShoppingCart-head>
     <section>
-      <cart-table>
+      <div class="cart-table">
         <tr>
           <th colspan="2">상품이미지</th>
           <th>상품 명</th>
@@ -49,7 +51,7 @@
             </button>
           </td>
         </tr>
-      </cart-table>
+      </div>
     </section>
     <aside>
       <div class="total">
@@ -95,5 +97,6 @@
         <button type="button" class="btn btn-primary btn-lg">결제하기</button>
       </div>
     </aside>
+    <footer-component></footer-component>
   </body>
 </html>

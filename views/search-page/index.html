@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../common/reset.css" />
+    <link rel="stylesheet" href="../common/common.css" />
+    <script src="../common/header-component.js"></script>
+    <script src="../common/footer-component.js"></script>
+    <title>SearchPage</title>
+  </head>
+  <body>
+    <header-component></header-component>
+    <h1>주문 배송 조회</h1>
+    <div class="banner">
+      <h2>조회기간</h2>
+      <button type="button" class="btn btn-primary btn-sm" id="deleteButton">
+        내 주문내역에서 삭제
+      </button>
+    </div>
+    <cart-table>
+      <tr>
+        <th>주문번호</th>
+        <th>주문날짜</th>
+        <th>주문내역</th>
+        <th>금액</th>
+        <th>주문상태</th>
+        <th><input type="checkbox" id="OrderCheckbox" name="Checkbox" /></th>
+      </tr>
+      <tr>
+        <td id="OrderNumber"></td>
+        <td id="OrderDate"></td>
+        <td id="OrderDetail"></td>
+        <td id="OrderAmount"></td>
+        <td id="OrderSituation"></td>
+        <td>
+          <input type="checkbox" id="OrderCheckbox" name="Checkbox" />
+        </td>
+      </tr>
+    </cart-table>
+    <footer-component></footer-component>
+  </body>
+</html>
