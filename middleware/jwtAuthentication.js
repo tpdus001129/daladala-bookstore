@@ -15,7 +15,7 @@ const jwtAuthentication = (req, res, next) => {
       if (error) {
         throw new Error(error.message);
       }
-      req.user = decoded;
+      req.body.auth = decoded;
       next();
     });
   } catch (error) {
