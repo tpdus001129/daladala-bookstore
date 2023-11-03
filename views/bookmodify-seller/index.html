@@ -19,12 +19,12 @@
         <table>
           <tr>
             <td colspan="3">
-              <select name="" id="mainCategory">
+              <select name="" class="mainCategory">
                 <option value="">국내도서</option>
                 <option value="">해외도서</option>
               </select>
 
-              <select name="" id="subCategory">
+              <select name="" class="subCategory">
                 <option value="">소설</option>
                 <option value="">경제/경영</option>
                 <option value="">종교</option>
@@ -36,23 +36,25 @@
           <tr>
             <td class="bookImg" rowspan="3"></td>
             <td colspan="2">
-              <input type="text" placeholder="제목" id="title" />
+              <input type="text" placeholder="제목" class="title" />
             </td>
           </tr>
           <tr>
-            <td><input type="text" placeholder="저자" id="writer" /></td>
-            <td><input type="text" placeholder="출판사" id="publisher" /></td>
+            <td><input type="text" placeholder="저자" class="writer" /></td>
+            <td>
+              <input type="text" placeholder="출판사" class="publisher" />
+            </td>
           </tr>
           <tr>
             <td colspan="2">
-              <input type="text" placeholder="가격" id="price" />원
+              <input type="text" placeholder="가격" class="price" />원
             </td>
           </tr>
           <tr>
             <td>
               <input
                 type="file"
-                id="imgUpload"
+                class="imgUpload"
                 name="imgUpload"
                 accept="image/*"
               />
@@ -61,7 +63,7 @@
             <td colspan="2">
               <div class="quantityBox">
                 <button>-</button>
-                <input type="text" placeholder="재고" id="quantity" />
+                <input type="text" placeholder="재고" class="quantity" />
                 <button>+</button>
               </div>
             </td>
@@ -71,12 +73,14 @@
         <div class="explainBox">
           <div class="explain">
             <p>책 소개</p>
-            <textarea rows="30" id="bookExplain"></textarea>
+            <textarea rows="30" class="bookExplain"></textarea>
           </div>
 
           <div class="bottomBox">
-            <div class="cancleBtn"><a href="#">취소</a></div>
-            <input type="submit" value="등록" class="saveBtn" />
+            <button class="cancleBtn">
+              <a href="../booklist-seller/index.html">취소</a>
+            </button>
+            <button class="saveBtn">등록</button>
           </div>
         </div>
       </form>
