@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Information</title>
+    <link rel="stylesheet" href="./product-detail.css" />
+    <link rel="stylesheet" href="../common/reset.css" />
+    <link rel="stylesheet" href="../common/common.css" />
+    <script src="../common/header-component.js"></script>
+    <script src="../common/footer-component.js"></script>
+  </head>
+  <body>
+    <header-component></header-component>
+
+    <div class="product-box">
+      <!-- 카테고리 -->
+      <div class="current-category-bar">
+        <div class="second-category">국내</div>
+        <div class="third-category">> 경영 / 경제</div>
+      </div>
+
+      <div class="product-info-wrapper">
+        <div class="product-info-board">
+          <div class="product-info-box">
+            <div class="product-image">
+              <figure>
+                <img src="./엘리스도서.jpg" />
+              </figure>
+            </div>
+
+            <div class="product-detial-info-01">
+              <div class="product-detail-info-book">
+                <h2>엘리스 도서</h2>
+                <span>엘리스코딩(지은이)</span>
+                <span>출판사</span>
+                <span>출간일</span>
+              </div>
+
+              <div class="product-detail-info-delivery">
+                <div>배송안내</div>
+                <div>무료배송</div>
+                <div>재고</div>
+                <div>3권</div>
+              </div>
+
+              <div class="product-detail-info-price">
+                <div>구매 수량</div>
+                <div>
+                  <butto>+</butto>
+                  <input />
+                  <butto>-</butto>
+                </div>
+                <div>구매 금액</div>
+                <div>20,000</div>
+                <div>적립</div>
+                <div>100P</div>
+              </div>
+
+              <div class="product-buy-confirm">
+                <button class="add-btn">장바구니</button>
+                <button class="buy-btn">바로구매</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-detail-info-02">
+          <div class="product-detail-content">책의 세부 내용을 담아요</div>
+        </div>
+      </div>
+    </div>
+    <footer-component></footer-component>
+  </body>
+</html>
