@@ -11,7 +11,7 @@ body {
 
 .user-delivery-order {
   flex: 1;
-  width: 70%;
+  width: 80%;
   flex-direction: column;
   background-color: #e7f3d2;
 }
@@ -144,7 +144,7 @@ td {
 aside {
   width: 20%;
   float: right;
-  padding-top: 60px;
+  /* padding-top: 30px; */
   background-color: rgb(255, 255, 255);
 }
 
