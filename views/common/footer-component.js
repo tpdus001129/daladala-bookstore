@@ -7,12 +7,14 @@ class FooterComponent extends HTMLElement {
     template.innerHTML = `
     <style>
     footer {
+      width: 100%;
       display: flex;
       justify-content: center;
-      background-color: #c50167;
+      background-color: rgb(231, 181, 209);
+      position : relative;
+      transform : translateY(0%);
     }
     .site-footer {
-      /* 길이넣기 */
       width: var(--max-width);
       height: 190px;
       padding: 10px 0;
@@ -177,10 +179,10 @@ class FooterComponent extends HTMLElement {
           <div class="social-icons-box">
             <ul class="social-icons">
               <li>
-                <a class="gitlab" href="#"><i class="icon-gitlab"></i></a>
+                <a class="gitlab" href="https://kdt-gitlab.elice.io/sw_track/class_07/web_project/team06/daladala"><i class="icon-gitlab"></i></a>
               </li>
               <li>
-                <a class="notion" href="#"><i class="icon-notion"></i></a>
+                <a class="notion" href="https://www.notion.so/59aa94f2cc3647208dcf4293cda6bd85"><i class="icon-notion"></i></a>
               </li>
               <li>
                 <a class="linkedin" href="#"><i class="icon-linkedin"></i></a>

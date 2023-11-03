@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../common/reset.css" />
+    <link rel="stylesheet" href="../common/common.css" />
+    <link rel="stylesheet" href="../checkout/order.css" />
+    <script src="../common/header-component.js"></script>
+    <script src="../common/footer-component.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
+      rel="stylesheet"
+    />
+    <title>order</title>
+  </head>
+
+  <body>
+    <header-component></header-component>
+    <div class="user-delivery-order-page">
+      <div class="user-delivery-order">
+        <div class="ShoppingCartHead">
+          <section>
+            <table class="CartTable">
+              <tr class="Tr">
+                <th class="AllCheckBox" width="50">
+                  <input type="checkbox" id="OrderCheckbox" name="BookCheck" />
+                </th>
+                <th colspan="2" width="150">상품이미지</th>
+                <th width="200">상품 명</th>
+                <th width="150">가격</th>
+                <th width="150">수량</th>
+                <th width="150">삭제</th>
+              </tr>
+            </table>
+          </section>
+
+          <section>
+            <table class="CartTable">
+              <tr class="UserData">
+                <td class="OrderCheckBox" width="50">
+                  <input
+                    type="checkbox"
+                    id="OrderCheckbox"
+                    name="OrderCheckBox"
+                  />
+                </td>
+                <td width="150">
+                  <img id="BookImage" src="" alt="상품 이미지" />
+                </td>
+                <td id="BookName" width="200">어쩌구저쩌구책</td>
+                <td id="BookMoney" width="150">30.000 원</td>
+                <td class="quantity" width="150">
+                  <button class="minus">-</button>
+                  <input type="text" readonly />
+                  <button class="plus">+</button>
+                </td>
+                <td width="150">
+                  <button type="button" class="btn" id="deleteButton">
+                    삭제
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </section>
+        </div>
+
+        <div class="delivery-address">
+          <ul class="delivery-address-detail">
+            <p>배송 정보</p>
+            <input
+              class="UserName"
+              type="text"
+              name="UserName"
+              placeholder="수령인"
+            />
+            <input
+              class="UserNumber"
+              type="text"
+              name="UserNumber"
+              placeholder="전화번호"
+            />
+            <input
+              class="UserPost"
+              type="text"
+              name="UserPost"
+              placeholder="우편번호"
+            />
+            <input
+              class="UserAddress"
+              type="text"
+              name="UserAddress"
+              placeholder="주소"
+            />
+            <input
+              class="UserDetail"
+              type="text"
+              name="UserAddressDetail"
+              placeholder="상세주소"
+            />
+          </ul>
+          <ul class="delivery-address-memo">
+            <p>배송 메모</p>
+            <select
+              class="delivmemo"
+              name="delivmemo"
+              title="memo"
+              data-group="shipping"
+            >
+              <option value="">배송메모를 선택해 주세요.</option>
+              <option value="배송 전에 미리 연락 바랍니다.">
+                배송 전에 미리 연락 바랍니다.
+              </option>
+              <option value="부재시 경비실에 맡겨주세요.">
+                부재시 경비실에 맡겨주세요.
+              </option>
+              <option value="부재시 전화나 문자를 남겨주세요.">
+                부재시 전화나 문자를 남겨주세요.
+              </option>
+              <option value="custom">직접입력</option>
+            </select>
+          </ul>
+        </div>
+
+        <div class="pay">
+          <a href="" class="Apay"> <span>무통장입금</span> </a>
+        </div>
+      </div>
+      <aside>
+        <div class="total">
+          <div class="total-box">
+            <ul class="info">
+              <il class="item-price">
+                <span class="label">상품금액</span>
+                <div class="label-box">
+                  <span class="price">2000</span>
+                  <span class="unit">원</span>
+                </div>
+              </il>
+              <il class="delivery-price">
+                <span class="label">배송비</span>
+                <div class="label-box">
+                  <span class="delivery">+ 3000</span>
+                  <span class="unit">원</span>
+                </div>
+              </il>
+              <il class="discount-price">
+                <span class="label">할인 금액</span>
+                <div class="label-box">
+                  <span class="discount">- 1000</span>
+                  <span class="unit">원</span>
+                </div>
+              </il>
+            </ul>
+            <ul class="infoall">
+              <il class="final-price">
+                <p class="label">총 금액</p>
+                <div class="label-box">
+                  <span class="final">4000</span>
+                  <p class="unit">원</p>
+                </div>
+              </il>
+              <il class="points-price">
+                <p class="label">적립금액</p>
+                <div class="label-box">
+                  <span class="points">+ 50</span>
+                  <p class="unit">원</p>
+                </div>
+              </il>
+            </ul>
+          </div>
+          <a href="../index.html">
+            <button type="button" class="btn" id="orderButton">결제하기</button>
+          </a>
+        </div>
+      </aside>
+    </div>
+    <footer-component></footer-component>
+  </body>
+</html>
