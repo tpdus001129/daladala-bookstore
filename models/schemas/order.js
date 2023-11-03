@@ -13,7 +13,7 @@ const OrderSchema = new Schema(
         type: String,
         required: true,
       },
-      zipcode: {
+      zipCode: {
         type: String,
         required: true,
       },
@@ -21,8 +21,10 @@ const OrderSchema = new Schema(
         type: String,
         required: true,
       },
-      name: String,
-      required: true,
+      name: {
+        type: String,
+        required: true,
+      }
     },
     books: {
       type: [
