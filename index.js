@@ -6,6 +6,7 @@ import path from "path";
 import "dotenv/config";
 import mongoose from "mongoose";
 import router from "./router/index.js";
+import cookieParser from "cookie-parser";
 
 const { PORT, MONGODB_URI } = process.env;
 
@@ -23,12 +24,18 @@ mongoose.connection.on("connected", () => {
 });
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(express.static("views"));
 
 app.use("/api", router);
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+app.use(function (err, req, res, next) {
+  res.status(500).json({ message: err.message });
+  next();
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening at http://localhost:${PORT}`);
