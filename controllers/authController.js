@@ -14,32 +14,24 @@ function requestBodyToObject(body) {
 }
 
 const authController = {
-  async signup(req, res, next) {
-    try {
-      const { email, password, phoneNumber } = requestBodyToObject(req.body);
-      const { accessToken } = await authService.signup({
-        email,
-        password,
-        phoneNumber,
-      });
+  async signup(req, res) {
+    const { email, password, phoneNumber } = requestBodyToObject(req.body);
+    const { accessToken } = await authService.signup({
+      email,
+      password,
+      phoneNumber,
+    });
 
-      res.cookie("accessToken", accessToken);
-      res.status(201).json({ accessToken });
-    } catch (error) {
-      next(error);
-    }
+    res.cookie("accessToken", accessToken);
+    res.status(201).json({ accessToken });
   },
 
-  async login(req, res, next) {
-    try {
-      const { email, password } = req.body;
-      const { accessToken } = await authService.login({ email, password });
+  async login(req, res) {
+    const { email, password } = req.body;
+    const { accessToken } = await authService.login({ email, password });
 
-      res.cookie("accessToken", accessToken);
-      res.status(200).json({ accessToken });
-    } catch (error) {
-      next(error);
-    }
+    res.cookie("accessToken", accessToken);
+    res.status(200).json({ accessToken });
   },
 
   async logout(req, res) {
