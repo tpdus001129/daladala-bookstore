@@ -1,26 +1,90 @@
-body {
-  width: var(--max-width);
-  margin: 0 auto;
-}
 .topTitle {
   font-size: 25px;
   margin: 30px;
 }
 table {
   border: 1px solid black;
-  width: 30%;
+  margin: 50px auto;
+  width: 80%;
 }
 tr,
 td {
   border: 1px solid black;
   vertical-align: middle;
+  height: 80px;
+}
+table select {
+  width: 200px;
+  height: 40px;
+  margin-left: 20px;
+  padding: 5px;
+  font-size: 15px;
+}
+table input {
+  width: 80%;
+  height: 30px;
+  margin: auto 20px;
+  padding: 5px;
+}
+.quantityBox input {
+  margin: 5px;
+}
+#price {
+  width: 20%;
+}
+#quantity {
+  width: 15%;
+}
+.quantityBox {
+  margin-left: 20px;
+}
+.quantityBox button {
+  background-color: white;
+  vertical-align: middle;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+}
+label[for="imgUpload"] {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.bookImg {
+  width: 25%;
 }
 #imgUpload {
   display: none;
 }
-label {
-  cursor: pointer;
+.explainBox {
+  border-top: 2px solid black;
+  width: 80%;
+  margin: 50px auto;
 }
+.explain p {
+  margin-top: 30px;
+  font-size: 25px;
+}
+#bookExplain {
+  display: block;
+  margin: 30px auto;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  resize: none;
+}
+.bottomBox {
+  display: flex;
+  justify-content: center;
+}
+.cancleBtn,
 .saveBtn {
   border: 1px solid black;
   border-radius: 10px;
@@ -29,4 +93,15 @@ label {
   line-height: 40px;
   text-align: center;
   cursor: pointer;
+  margin: 0 20px;
+}
+.saveBtn {
+  font-size: 16px;
+}
+.cancleBtn a {
+  display: block;
+  color: black;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
 }
