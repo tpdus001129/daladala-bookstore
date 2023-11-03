@@ -35,7 +35,6 @@ input[type="tel"] {
 }
 
 .error-message {
-  /* opacity: 0; */
   color: #e53935;
   font-size: 12px;
   padding: 5px 15px 10px;
