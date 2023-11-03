@@ -29,10 +29,10 @@ table input {
 .quantityBox input {
   margin: 5px;
 }
-#price {
+.price {
   width: 20%;
 }
-#quantity {
+.quantity {
   width: 15%;
 }
 .quantityBox {
@@ -60,7 +60,7 @@ label[for="imgUpload"] {
 .bookImg {
   width: 25%;
 }
-#imgUpload {
+.imgUpload {
   display: none;
 }
 .explainBox {
@@ -72,7 +72,7 @@ label[for="imgUpload"] {
   margin-top: 30px;
   font-size: 25px;
 }
-#bookExplain {
+.bookExplain {
   display: block;
   margin: 30px auto;
   padding: 10px;
@@ -86,22 +86,19 @@ label[for="imgUpload"] {
 }
 .cancleBtn,
 .saveBtn {
-  border: 1px solid black;
+  border: none;
   border-radius: 10px;
   width: 100px;
   height: 40px;
   line-height: 40px;
   text-align: center;
   cursor: pointer;
+  font-size: 16px;
   margin: 0 20px;
 }
-.saveBtn {
-  font-size: 16px;
-}
+
 .cancleBtn a {
   display: block;
   color: black;
-  width: 100%;
-  height: 100%;
   text-decoration: none;
 }
