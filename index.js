@@ -15,6 +15,8 @@ const swaggerSpec = YAML.load(path.join(__dirname, "./swagger.yaml"));
 
 const app = express();
 
+app.use(express.json());
+
 app.use(express.static("views"));
 
 app.use("/api", router);
