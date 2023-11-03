@@ -14,11 +14,16 @@ class HeaderComponent extends HTMLElement {
         padding: 0;
       }
       header {
+        width: 100%;
+        background: white;
         display: flex;
         justify-content: center;
+        position: fixed;
+        top: 0;
+        z-index: 100;
       }
       .max-container {
-        width: 1280px;
+        width: var(--max-width);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -43,7 +48,7 @@ class HeaderComponent extends HTMLElement {
       .second-header {
         display: flex;
         justify-content: center;
-        margin: 20px 0 30px 0;
+        margin: 20px 0 0 0;
         padding: 10px 0;
         /* background-color: hsl(336, 29%, 86%); */
       }
@@ -140,7 +145,7 @@ class HeaderComponent extends HTMLElement {
         <div class="first-header">
           <div class="header-logo-box">
             <a href="/">
-              <img src="./트랙로고.png" alt="logo" id="logo" />
+              DALADALA BOOK STORE
             </a>
           </div>
           <div class="header-login-user">
@@ -157,12 +162,12 @@ class HeaderComponent extends HTMLElement {
             <ul id="first-category">
               <li>
                 <div class="box">
-                  <a class="head" href="">햄버거</a>
+                  <a class="head" href="/product-list">햄버거</a>
                 </div>
                 <ul id="second-category">
-                  <li><a href="">전체보기</a></li>
+                  <li><a href="/product-list">전체보기</a></li>
                   <li>
-                    <a class="second-category-detail">국내</a>
+                    <a class="second-category-name" href="">국내</a>
                     <ul id="third-category">
                       <li><a class="detail" href="">과학</a></li>
                       <li><a class="detail" href="">경영/경제</a></li>
@@ -172,7 +177,7 @@ class HeaderComponent extends HTMLElement {
                     </ul>
                   </li>
                   <li>
-                    <a class="second-category-detail" href="">해외</a>
+                    <a class="second-category-name" href="">해외</a>
                     <ul id="third-category">
                       <li><a class="detail" href="">과학</a></li>
                       <li><a class="detail" href="">경영/경제</a></li>
@@ -183,7 +188,7 @@ class HeaderComponent extends HTMLElement {
                   </li>
                 </ul>
               </li>
-              <li><a class="head" href="">신상</a></li>
+              <li><a class="head" href="/new">신상</a></li>
               <li><a class="head" href="">베스트</a></li>
             </ul>
           </nav>
