@@ -81,7 +81,11 @@ function editCart(bookId, newQuantity) {
     const cartItem = event.target.result;
     if (cartItem) {
       cartItem.quantity = newQuantity;
-      cartStore.put(cartItem);
+      if (newQuantity <= 0) {
+        cartStore.delete(bookId);
+      } else {
+        cartStore.put(cartItem);
+      }
       location.reload();
     }
   };
