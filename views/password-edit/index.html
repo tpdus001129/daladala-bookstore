@@ -18,12 +18,15 @@
     <div class="sidebar-layout-container">
       <div class="sidebar-layout-wrapper">
         <sidebar-component></sidebar-component>
-        <div class="container">
-          <h1>비밀번호 변경</h1>
+        <div class="form-container container">
+          <h1 class="form-title">비밀번호 변경</h1>
           <form id="password-edit-form">
             <div class="form-group">
-              <label for="password-origin">기존 비밀번호</label>
+              <label class="form-label" for="password-origin"
+                >기존 비밀번호</label
+              >
               <input
+                class="form-input"
                 type="password"
                 id="password-origin"
                 name="password-origin"
@@ -31,10 +34,11 @@
                 required
               />
             </div>
-            <div class="error-message" id="password-origin-error"></div>
+            <div class="form-error-message" id="password-origin-error"></div>
             <div class="form-group">
-              <label for="password">새 비밀번호</label>
+              <label class="form-label" for="password">새 비밀번호</label>
               <input
+                class="form-input"
                 type="password"
                 id="password"
                 name="password"
@@ -42,19 +46,22 @@
                 required
               />
             </div>
-            <div class="error-message" id="password-error"></div>
+            <div class="form-error-message" id="password-error"></div>
             <div class="form-group">
-              <label for="password-confirm">새 비밀번호 확인</label>
+              <label class="form-label" for="password-confirm"
+                >새 비밀번호 확인</label
+              >
               <input
+                class="form-input"
                 type="password"
                 id="password-confirm"
                 name="password-confirm"
-                placeholder="비밀번호와 일치하는 문자 입력"
+                placeholder="새 비밀번호를 다시 입력"
                 required
               />
             </div>
-            <div class="error-message" id="password-confirm-error"></div>
-            <button type="submit">비밀번호 변경하기</button>
+            <div class="form-error-message" id="password-confirm-error"></div>
+            <button class="form-button" type="submit">비밀번호 변경하기</button>
           </form>
         </div>
       </div>
