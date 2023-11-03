@@ -1,44 +1,58 @@
-body {
-  width: var(--max-width);
-  margin: 0 auto;
-}
 .topTitle {
   font-size: 25px;
   margin: 30px;
 }
-input {
+table {
+  margin: 50px auto 0 auto;
+  font-size: 20px;
+  width: 550px;
+}
+tr,
+td {
+  padding: 10px 20px;
+  text-align: left;
+  vertical-align: middle;
+}
+tr {
+  border-bottom: 1px solid #a4a4a4;
+}
+tr:last-child {
   border: none;
-  border-bottom: 1px solid black;
-  outline: none;
+}
+input {
+  width: 300px;
+  height: 20px;
   padding: 5px;
   margin: 15px;
-  width: 200px;
-  font-size: 15px;
-}
-table {
-  margin: 0 auto;
-  font-size: 20px;
-}
-td {
-  padding: 10px;
-  text-align: center;
 }
 .address {
   display: flex;
   flex-direction: column;
 }
-.address input:last-child {
-  margin-top: 10px;
+.address1 {
+  margin-bottom: 0;
 }
 .submitBtnBox {
   text-align: center;
 }
 .submitBtn {
-  width: 100px;
-  border: 1px solid black;
+  border: none;
   border-radius: 10px;
   width: 100px;
   height: 40px;
   text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+.unregisterBtn {
+  border: none;
+  background-color: white;
+  border-bottom: 1px solid #a4a4a4;
+  color: #a4a4a4;
+  width: 70px;
+  height: 30px;
+  margin-left: 50px;
+  margin-bottom: 30px;
   cursor: pointer;
 }

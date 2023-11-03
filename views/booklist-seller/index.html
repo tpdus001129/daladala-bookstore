@@ -6,40 +6,49 @@
     <title>Document</title>
     <link rel="stylesheet" href="../common/common.css" />
     <link rel="stylesheet" href="../common/reset.css" />
-    <link rel="stylesheet" href="bookList.css" />
+    <link rel="stylesheet" href="booklist-seller.css" />
     <script src="../common/header-component.js"></script>
+    <script src="../common/sidebar-container.js"></script>
+    <script src="../common/footer-component.js"></script>
   </head>
   <body>
     <header-component></header-component>
-    <p class="topTitle">도서 목록</p>
+    <sidebar-container>
+      <p class="topTitle">도서 목록</p>
 
-    <div class="container">
-      <div class="buttonBox">
-        <div class="listAddBtn">등록</div>
-        <div class="deleteAllBtn">전체삭제</div>
+      <div class="container">
+        <div class="buttonBox">
+          <button class="listAddBtn">
+            <a href="../bookmodify-seller/index.html">등록</a>
+          </button>
+          <button class="deleteAllBtn">전체삭제</button>
+        </div>
+
+        <table>
+          <tr>
+            <td class="bookImg" rowspan="4"></td>
+            <td class="category" colspan="3">국내도서 / 소설</td>
+            <td class="manageBox" rowspan="4">
+              <button class="modifyBtn">
+                <a href="../bookmodify-seller/index.html">수정</a>
+              </button>
+              <button class="deleteBtn">삭제</button>
+            </td>
+          </tr>
+          <tr>
+            <td class="title" colspan="3">짜라투스트라는 이렇게 말했다</td>
+          </tr>
+          <tr>
+            <td class="price">가격</td>
+            <td class="writer">저자</td>
+            <td class="publisher">출판</td>
+          </tr>
+          <tr>
+            <td class="quantity" colspan="3">재고 10개</td>
+          </tr>
+        </table>
       </div>
-
-      <table>
-        <tr>
-          <td class="bookImg" rowspan="4">이미지</td>
-          <td class="category" colspan="3">국내도서 - 소설</td>
-          <td class="manageBox" rowspan="4">
-            <div class="modifyBtn">수정</div>
-            <div class="deleteBtn">삭제</div>
-          </td>
-        </tr>
-        <tr>
-          <td class="title" colspan="3">짜라투스트라는 이렇게 말했다</td>
-        </tr>
-        <tr>
-          <td>가격</td>
-          <td>저자</td>
-          <td>출판</td>
-        </tr>
-        <tr>
-          <td class="quantity" colspan="3">재고 10개</td>
-        </tr>
-      </table>
-    </div>
+    </sidebar-container>
+    <footer-component></footer-component>
   </body>
 </html>
