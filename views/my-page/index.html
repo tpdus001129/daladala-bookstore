@@ -19,37 +19,32 @@
         <table>
           <tr>
             <td>이메일</td>
-            <td><input type="text" id="email" /></td>
-          </tr>
-          <tr>
-            <td>비밀번호</td>
-            <td><input type="password" id="pw" /></td>
+            <td><input type="email" class="email-input" /></td>
           </tr>
           <tr>
             <td>이름</td>
-            <td><input type="text" id="name" /></td>
+            <td><input type="text" class="name" /></td>
           </tr>
           <tr>
             <td>전화번호</td>
-            <td><input type="text" id="phoneNumber" /></td>
+            <td><input type="text" class="phone-number" /></td>
           </tr>
           <tr>
             <td>주소</td>
             <td>
               <div class="address">
-                <input type="text" id="address1" />
-                <input type="text" id="address2" />
+                <input type="text" class="address1" />
+                <input type="text" class="address2" />
               </div>
             </td>
           </tr>
           <tr>
             <td class="submitBtnBox" colspan="2">
-              <input type="submit" value="적용" class="submitBtn" />
+              <button class="submitBtn">적용</button>
             </td>
           </tr>
         </table>
-
-        <input type="submit" value="회원 탈퇴" class="unregisterBtn" />
+        <button class="unregisterBtn">회원 탈퇴</button>
       </form>
     </sidebar-container>
     <footer-component></footer-component>

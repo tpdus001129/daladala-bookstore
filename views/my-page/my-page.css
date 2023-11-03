@@ -29,19 +29,21 @@ input {
   display: flex;
   flex-direction: column;
 }
-.address input:first-child {
+.address1 {
   margin-bottom: 0;
 }
 .submitBtnBox {
   text-align: center;
 }
 .submitBtn {
-  border: 1px solid black;
+  border: none;
   border-radius: 10px;
   width: 100px;
   height: 40px;
   text-align: center;
   cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
 }
 .unregisterBtn {
   border: none;
