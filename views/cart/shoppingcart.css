@@ -41,64 +41,62 @@ h1 {
   color: #2a300d;
 }
 
-.btn:hover{
+.btn:hover {
   background-color: #767676;
 }
 
 section {
-    
-    /* display: table-row-group; */
+  /* display: table-row-group; */
   /* padding: 2%; */
 }
 
-.CartTable{
-    /* padding: 10%; */
-    border-width: 1px;
-    border-style: solid;
-    border-color: #e9e9e9; 
+.CartTable {
+  /* padding: 10%; */
+  border-width: 1px;
+  border-style: solid;
+  border-color: #e9e9e9;
 }
 
 .Tr {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-    /* justify-content: space-between; */
-    background-color: #767676;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  /* justify-content: space-between; */
+  background-color: #767676;
 }
 
-.AllCheckBox{
-    text-align: center;
-    padding: 2px;
+.AllCheckBox {
+  text-align: center;
+  padding: 2px;
 }
 
 th {
-    margin: 0px 10px;
-    text-align: center;
+  margin: 0px 10px;
+  text-align: center;
 }
 
 .UserData {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-    /* justify-content: space-between; */
-    background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  /* justify-content: space-between; */
+  background-color: #ffffff;
 }
 
-.OrderCheckBox{
-    text-align: center;
-    padding: 2px;
+.OrderCheckBox {
+  text-align: center;
+  padding: 2px;
 }
 
 td {
-    margin: 0px 10px;
-    text-align: center;
+  margin: 0px 10px;
+  text-align: center;
 }
 
-.OrderCheckBox{
-    text-align: center;
-    padding: 2px;
+.OrderCheckBox {
+  text-align: center;
+  padding: 2px;
 }
-
 
 aside {
   width: 300px;
