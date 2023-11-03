@@ -1,0 +1,92 @@
+body {
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.user-delivery-order-page {
+  display: flex;
+  max-width: 1280px;
+  margin: 0 auto;
+  background-color: #ededed;
+}
+
+.user-delivery-order {
+  flex: 1;
+  width: 70%;
+  flex-direction: column;
+  background-color: #e7f3d2;
+}
+
+.ShoppingCartHead {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+section {
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.btn {
+  display: block;
+  margin: 0 auto;
+  padding: 7px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(221, 221, 221);
+  color: #2a300d;
+}
+
+.btn:hover {
+  background-color: #767676;
+}
+
+.CartTable {
+  /* padding: 10%; */
+  border-width: 1px;
+  border-style: solid;
+  border-color: #e9e9e9;
+}
+
+.Tr {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  /* justify-content: space-between; */
+  background-color: #ffffff;
+}
+
+.AllCheckBox {
+  text-align: center;
+  padding: 2px;
+}
+
+th {
+  margin: 0px 10px;
+  text-align: center;
+}
+
+.UserData {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  /* justify-content: space-between; */
+  background-color: #e4e4e4;
+}
+
+.OrderCheckBox {
+  text-align: center;
+  padding: 2px;
+}
+
+td {
+  margin: 0px 10px;
+  text-align: center;
+}
+
+.OrderCheckBox {
+  text-align: center;
+  padding: 2px;
+}
