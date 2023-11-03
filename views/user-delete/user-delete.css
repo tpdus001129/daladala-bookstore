@@ -1,0 +1,18 @@
+p {
+  padding: 16px 0px;
+  line-height: 20px;
+}
+
+.form-group {
+  margin: 16px 0px;
+}
+
+button {
+  background-color: var(--red);
+  border-radius: 3px;
+  color: #fff;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
