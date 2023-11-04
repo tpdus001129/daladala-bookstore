@@ -3,6 +3,10 @@
 ### 실행 방법
 
 ```bash
+cp .env.sample .env
+```
+ 생성된 .env파일에 배포할 포트 번호와 Mongo DB URL을 입력
+``` bash
 npm i
 npm run dev
 ```
@@ -11,7 +15,13 @@ npm run dev
 
 http://kdt-sw-7-team06.elicecoding.com/
 
-### 구현 사항
+### 프론트엔드
+- views/{폴더 이름}/index.html 를 정적으로 배포, 폴더 이름이 배포될 url 이름
+
+### 백엔드
+- swagger로 schema 및 api 명세, 테스트 (http://kdt-sw-7-team06.elicecoding.com/api-docs)
+
+### 기능 구현 사항
 
 - 사용자 관련 기능
   - [x] 회원가입 - 회원가입 폼의 입력 값이 조건에 안 맞을 시 (이메일 형식, 비밀번호와 비밀번호확인의 일치 여부 등) 이를 사용자에게 알려준다.
