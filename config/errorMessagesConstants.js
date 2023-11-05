@@ -1,3 +1,7 @@
+// 권한
+export const LOGIN_ERROR = "이메일 또는 비밀번호가 일치하지 않습니다.";
+export const DUPLICATE_EMAIL = "이미 이메일이 존재합니다.";
+
 // 필수 입력
 // 유저 정보
 export const USER_EMAIL_REQUIRED = "이메일을 입력해주세요.";

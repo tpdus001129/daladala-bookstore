@@ -1,17 +1,9 @@
 import authService from "../services/authService.js";
 import cookieOptions from "../config/cookieOptions.js";
 
-function requestBodyToObject(body) {
-  return {
-    email: body.email,
-    password: body.password,
-    phoneNumber: body.phoneNumber,
-  };
-}
-
 const authController = {
   async signup(req, res) {
-    const { email, password, phoneNumber } = requestBodyToObject(req.body);
+    const { email, password, phoneNumber } = req.body;
     const { accessToken } = await authService.signup({
       email,
       password,

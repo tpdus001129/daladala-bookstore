@@ -33,10 +33,17 @@ class AuthError extends CustomError {
   }
 }
 
+class DuplicateError extends CustomError {
+  constructor(message) {
+    super(message, 400, "DuplicateError");
+  }
+}
+
 export {
   CustomError,
   ValidationError,
   DbValidationError,
   SchemaNotFoundError,
   AuthError,
+  DuplicateError,
 };
