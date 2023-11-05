@@ -20,6 +20,7 @@ export const BOOK_RELEASE_DATE_REQUIRED = "출시일자를 입력해주세요.";
 export const BOOK_IMAGE_REQUIRED = "도서 사진을 선택해주세요.";
 export const BOOK_PRICE_REQUIRED = "도서 가격을 입력해주세요.";
 export const BOOK_INVENTORY_COUNT_REQUIRED = "도서 재고 수량을 입력해주세요.";
+export const BOOK_SELLER_REQUIRED = "판매자 정보를 입력해주세요.";
 
 // 주문 정보
 export const ORDER_COUNT_REQUIRED = "수량을 입력해주세요.";
@@ -37,6 +38,7 @@ export const USER_ADDRESS_DETAIL_FORMAT =
   "상세 주소는 100자 이하이어야 합니다.";
 
 // 기타
+export const UNAUTHORIZED_ERROR = "권한이 없습니다.";
 export const SCHEMA_NOT_FOUND_ERROR = "스키마가 존재하지 않습니다.";
 export const DATA_VALIDATION_ERROR =
   "요청받은 데이터의 유효성 검사에 실패했습니다.";

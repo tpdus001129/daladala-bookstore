@@ -27,4 +27,16 @@ class SchemaNotFoundError extends CustomError {
   }
 }
 
-export { CustomError, ValidationError, DbValidationError, SchemaNotFoundError };
+class AuthError extends CustomError {
+  constructor(message) {
+    super(message, 401, "Unauthorized");
+  }
+}
+
+export {
+  CustomError,
+  ValidationError,
+  DbValidationError,
+  SchemaNotFoundError,
+  AuthError,
+};

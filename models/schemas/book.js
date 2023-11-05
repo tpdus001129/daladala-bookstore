@@ -12,6 +12,7 @@ import {
   BOOK_PRICE_REQUIRED,
   BOOK_INVENTORY_COUNT_REQUIRED,
   BOOK_CATEGORY_REQUIRED,
+  BOOK_SELLER_REQUIRED,
 } from "../../config/errorMessagesConstants.js";
 
 const BookSchema = new Schema(
@@ -64,6 +65,7 @@ const BookSchema = new Schema(
     seller: {
       type: ObjectId,
       ref: "User",
+      required: [true, BOOK_SELLER_REQUIRED],
     },
     deletedAt: Date,
   },
