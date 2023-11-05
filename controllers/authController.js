@@ -1,9 +1,5 @@
 import authService from "../services/authService.js";
-
-const cookieOptions = {
-  httpOnly: true,
-  sameSite: "None",
-};
+import cookieOptions from "../config/cookieOptions.js";
 
 function requestBodyToObject(body) {
   return {
@@ -22,7 +18,7 @@ const authController = {
       phoneNumber,
     });
 
-    res.cookie("accessToken", accessToken);
+    res.cookie("accessToken", accessToken, cookieOptions);
     res.status(201).json({ accessToken });
   },
 
@@ -30,7 +26,7 @@ const authController = {
     const { email, password } = req.body;
     const { accessToken } = await authService.login({ email, password });
 
-    res.cookie("accessToken", accessToken);
+    res.cookie("accessToken", accessToken, cookieOptions);
     res.status(200).json({ accessToken });
   },
 
