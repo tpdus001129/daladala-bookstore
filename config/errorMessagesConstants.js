@@ -28,9 +28,15 @@ export const ORDER_DELIVERY_PRICE_REQUIRED = "배송비를 입력해주세요.";
 // 포멧
 // 유저 정보
 export const USER_EMAIL_FORMAT = "이메일 형식이 올바르지 않습니다.";
+export const USER_PASSWORD_FORMAT = "비밀번호 형식이 올바르지 않습니다.";
 export const USER_NAME_FORMAT = "이름은 10자 이하이어야 합니다.";
 export const USER_PHONE_NUMBER_FORMAT =
   "전화번호 형식이 올바르지 않습니다. (예: 010-1234-1234)";
 export const USER_ADDRESS_ZIP_CODE_FORMAT = "우편번호는 5자 이하이어야 합니다.";
 export const USER_ADDRESS_DETAIL_FORMAT =
   "상세 주소는 100자 이하이어야 합니다.";
+
+// 기타
+export const SCHEMA_NOT_FOUND_ERROR = "스키마가 존재하지 않습니다.";
+export const DATA_VALIDATION_ERROR =
+  "요청받은 데이터의 유효성 검사에 실패했습니다.";

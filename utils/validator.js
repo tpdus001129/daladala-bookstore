@@ -1,8 +1,11 @@
+import { EMAIL_REGEX, PASSWORD_REGEX, PHONE_NUMBER_REGEX } from "./regex.js";
+
 const emailValidator = (value) => {
-  return {
-    result: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value),
-    message: "Asdf",
-  };
+  return EMAIL_REGEX.test(value);
+};
+
+const passwordValidator = (value) => {
+  return PASSWORD_REGEX.test(value);
 };
 
 const userNameValidator = (value) => {
@@ -10,7 +13,7 @@ const userNameValidator = (value) => {
 };
 
 const phoneNumberValidator = (value) => {
-  return /^\d{3}-\d{4}-\d{4}$/.test(value);
+  return PHONE_NUMBER_REGEX.test(value);
 };
 
 const zipCodeValidator = (value) => {
@@ -23,6 +26,7 @@ const addressDetailValidator = (value) => {
 
 export {
   emailValidator,
+  passwordValidator,
   userNameValidator,
   phoneNumberValidator,
   zipCodeValidator,
