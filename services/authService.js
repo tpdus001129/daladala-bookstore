@@ -24,6 +24,7 @@ const authService = {
     const accessToken = createAccessToken({
       _id: user._id,
       email: user.email,
+      authority: user.authority,
     });
 
     return { accessToken };
@@ -38,6 +39,7 @@ const authService = {
     const accessToken = createAccessToken({
       _id: user._id,
       email: user.email,
+      authority: user.authority,
     });
 
     return { accessToken };
