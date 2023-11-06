@@ -14,8 +14,6 @@ tags:
     description: 유저 API
   - name: categories
     description: 카테고리 API
-  - name: orders
-    description: 주문 API
 
 paths:
   /books:
@@ -339,9 +337,12 @@ paths:
                       zipCode:
                         type: string
                         example: 12345
-                      detail:
+                      detail1:
                         type: string
                         example: 서울시 강남구 역삼동 123
+                      detail2:
+                        type: string
+                        example: 403호
         "500":
           description: 서버 에러
 
@@ -380,9 +381,12 @@ paths:
                     zipCode:
                       type: string
                       example: 12345
-                    detail:
+                    detail1:
                       type: string
                       example: 서울시 강남구 역삼동 123
+                    detail2:
+                      type: string
+                      example: 111호
         required: true
       responses:
         "200":
@@ -406,6 +410,15 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: password
       responses:
         "200":
           description: 성공
@@ -450,49 +463,10 @@ paths:
         "500":
           description: 서버 에러
 
-  /categories:
-    get:
-      tags:
-        - categories
-      summary: 카테고리 목록
-      description: 카테고리 목록을 가져오는 API
-      responses:
-        "200":
-          description: 성공
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    _id:
-                      type: string
-                      example: ObjectId(asdfkv3D2Ec)
-                      description: 카테고리 ID
-                    name:
-                      type: string
-                      example: 전체도서
-                    subCategories:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          _id:
-                            type: string
-                            example: ObjectId(asdfjalfkvja)
-                          name:
-                            type: string
-                            example: 소설
-        "400":
-          description: 잘못된 요청
-        "500":
-          description: 서버 에러
-
   /users/{userId}/orders:
     get:
       tags:
-        - orders
+        - users
       summary: 주문 조회
       description: 특정 유저의 주문 정보를 조회하는 API
       security:
@@ -520,7 +494,7 @@ paths:
 
     post:
       tags:
-        - orders
+        - users
       summary: 주문 요청
       description: 새로운 주문을 생성하는 API
       security:
@@ -557,10 +531,14 @@ paths:
                           type: string
                           example: 11234
                           description: 받는사람 우편번호
-                        detail:
+                        detail1:
                           type: string
-                          example: 서울시 강남구 역삼동 8-2 402호
+                          example: 서울시 강남구 역삼동 8-2
                           description: 받는사람 주소
+                        detail2:
+                          type: string
+                          example: 402호
+                          description: 받는사람 주소(상세)
                 books:
                   type: array
                   items:
@@ -591,7 +569,7 @@ paths:
   /users/{userId}/orders/{orderId}:
     patch:
       tags:
-        - orders
+        - users
       summary: 주문 변경
       description: 주문 상태를 변경하는 API
       security:
@@ -624,6 +602,45 @@ paths:
       responses:
         "200":
           description: 성공
+        "400":
+          description: 잘못된 요청
+        "500":
+          description: 서버 에러
+
+  /categories:
+    get:
+      tags:
+        - categories
+      summary: 카테고리 목록
+      description: 카테고리 목록을 가져오는 API
+      responses:
+        "200":
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                      example: ObjectId(asdfkv3D2Ec)
+                      description: 카테고리 ID
+                    name:
+                      type: string
+                      example: 전체도서
+                    subCategories:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          _id:
+                            type: string
+                            example: ObjectId(asdfjalfkvja)
+                          name:
+                            type: string
+                            example: 소설
         "400":
           description: 잘못된 요청
         "500":
@@ -672,9 +689,13 @@ components:
               type: string
               example: 11234
               description: 우편번호
-            detail:
+            detail1:
               type: string
               example: 서울시 강남구 역삼동 8-2 402호
+              description: 상세 주소
+            detail2:
+              type: string
+              example: 111호
               description: 상세 주소
         name:
           type: string
@@ -798,26 +819,36 @@ components:
         recipient:
           type: object
           required:
+            - name
             - phoneNumber
-            - zipCode
-            - detail
+            - address
           properties:
-            phoneNumber:
-              type: string
-              example: 010-1234-1234
-              description: 받는사람 전화번호
-            zipCode:
-              type: string
-              example: 11234
-              description: 받는사람 우편번호
-            detail:
-              type: string
-              example: 서울시 강남구 역삼동 8-2 402호
-              description: 받는사람 주소
             name:
               type: string
               example: 오강산
               description: 받는사람
+            phoneNumber:
+              type: string
+              example: 010-1234-1234
+              description: 받는사람 전화번호
+            address:
+              type: object
+              required:
+                - zipCode
+                - detail1
+              properties:
+                zipCode:
+                  type: string
+                  example: 11234
+                  description: 받는사람 우편번호
+                detail1:
+                  type: string
+                  example: 서울시 강남구 역삼동 8-2
+                  description: 받는사람 주소
+                detail2:
+                  type: string
+                  example: 402호
+                  description: 받는사람 주소(상세)
         books:
           type: array
           items:

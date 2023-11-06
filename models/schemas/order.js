@@ -36,22 +36,6 @@ const OrderSchema = new Schema(
           message: USER_PHONE_NUMBER_FORMAT,
         },
       },
-      zipCode: {
-        type: String,
-        required: [true, USER_ADDRESS_ZIP_CODE_REQUIRED],
-        validate: {
-          validator: zipCodeValidator,
-          message: USER_ADDRESS_ZIP_CODE_FORMAT,
-        },
-      },
-      detail: {
-        type: String,
-        required: [true, USER_ADDRESS_DETAIL_REQUIRED],
-        validate: {
-          validator: addressDetailValidator,
-          message: USER_ADDRESS_DETAIL_FORMAT,
-        },
-      },
       name: {
         type: String,
         required: [true, USER_NAME_REQUIRED],
@@ -60,6 +44,27 @@ const OrderSchema = new Schema(
           message: USER_NAME_FORMAT,
         },
       },
+      address: {
+        zipCode: {
+          type: String,
+          required: [true, USER_ADDRESS_ZIP_CODE_REQUIRED],
+          validate: {
+            validator: zipCodeValidator,
+            message: USER_ADDRESS_ZIP_CODE_FORMAT,
+          },
+        },
+        detail1: {
+          type: String,
+          required: [true, USER_ADDRESS_DETAIL_REQUIRED],
+          validate: {
+            validator: addressDetailValidator,
+            message: USER_ADDRESS_DETAIL_FORMAT,
+          },
+        },
+        detail2: {
+          type: String,
+        },
+      }
     },
     books: {
       type: [

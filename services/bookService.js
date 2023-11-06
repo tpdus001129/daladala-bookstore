@@ -8,7 +8,7 @@ const bookService = {
   // TODO: 페이지네이션 구현하기
   // TODO: 정렬(최신순, 조회수 등) 구현, 나중에 시간 남으면?..
   async list() {
-    const books = await Book.find({}).sort({ createdAt: -1 }).exec();
+    const books = await Book.find({ deletedAt: { $exists: false } }).sort({ createdAt: -1 }).exec();
     return books;
   },
 
@@ -17,7 +17,11 @@ const bookService = {
       throw new NotFoundError(BOOK_NOT_FOUND);
     }
 
-    const book = await Book.findOne({ _id }).exec();
+    const book = await Book.findOne({
+      _id,
+      deletedAt: { $exists: false },
+    }).exec();
+
     return book;
   },
 
@@ -36,9 +40,11 @@ const bookService = {
     return true;
   },
 
-  // TODO: 물리삭제 -> 논리삭제로 변경
   async remove(bookId) {
-    const book = await Book.findByIdAndDelete(bookId);
+    const book = await Book.findByIdAndUpdate(bookId, {
+      deletedAt: new Date(),
+    });
+
     if (!book) {
       throw new Error("삭제할 도서가 존재하지 않습니다.");
     }
