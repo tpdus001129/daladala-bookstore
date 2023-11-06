@@ -1,12 +1,13 @@
 import express from "express";
+import { asyncHandler } from "../../middleware/asyncHandler.js";
 import orderController from "../../controllers/orderController.js";
 
 const router = express.Router();
 
-router.get("/", orderController.list);
+router.get("/", asyncHandler(orderController.list));
 
-router.post("/", orderController.create);
+router.post("/", asyncHandler(orderController.create));
 
-router.patch("/:orderId", orderController.update);
+router.patch("/:orderId", asyncHandler(orderController.update));
 
 export default router;
