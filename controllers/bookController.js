@@ -1,5 +1,4 @@
 import bookService from "../services/bookService.js";
-import { bookRequestBodyToObject } from "../middleware/inputValidator/bookInputValidator.js";
 
 const bookController = {
   async list(req, res) {
@@ -14,7 +13,8 @@ const bookController = {
   },
 
   async create(req, res) {
-    const bookData = bookRequestBodyToObject(req.body);
+    const bookData = req.body;
+    bookData.seller = req.user._id;
     const book = await bookService.create(bookData);
     if (book) {
       res.status(201).send();
@@ -23,7 +23,8 @@ const bookController = {
 
   async update(req, res) {
     const { bookId } = req.params;
-    const bookData = bookRequestBodyToObject(req.body);
+    const bookData = req.body;
+    bookData.seller = req.user._id;
     const book = await bookService.update(bookId, bookData);
     if (book) {
       res.status(200).send();

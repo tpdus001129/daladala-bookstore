@@ -2,31 +2,31 @@ import { Category } from "../models/index.js";
 
 const categoryService = {
   async list() {
-    const categories = await Category.find({}, "_id name parent")
-      .sort({ parent: 1 })
-      .exec();
+    const categories = await Category.aggregate([
+      {
+        $lookup: {
+          from: "categories",
+          localField: "_id",
+          foreignField: "parent",
+          as: "subCategories",
+        },
+      },
+      {
+        $match: { parent: null },
+      },
+      {
+        $project: {
+          _id: true,
+          name: true,
+          subCategories: {
+            _id: true,
+            name: true,
+          },
+        },
+      },
+    ]);
 
-    return categories.reduce((arr, cur) => {
-      const category = { ...cur }._doc;
-
-      if (!cur.parent) {
-        arr.push(category);
-      } else {
-        const index = arr.findIndex(
-          (parentCategory) =>
-            parentCategory._id.toString() === category.parent.toString(),
-        );
-
-        if (index !== -1) {
-          const { _id, name } = category;
-          const subCategory = { _id, name };
-          arr[index].subCategories = arr[index].subCategories || [];
-          arr[index].subCategories.push(subCategory);
-        }
-      }
-
-      return arr;
-    }, []);
+    return categories;
   },
 };
 
