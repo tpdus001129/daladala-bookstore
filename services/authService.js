@@ -31,7 +31,7 @@ const authService = {
   },
 
   async login({ email, password }) {
-    const user = await User.findOne({ email }).exec();
+    const user = await User.findOne({ email, deletedAt: { $exists: false } }).exec();
     if (!user || !comparePassword(password, user.password)) {
       throw new AuthError(LOGIN_ERROR);
     }
