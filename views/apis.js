@@ -7,18 +7,17 @@ export default {
   auth: {
     signup: async ({ email, password, phoneNumber }) =>
       makeFetch("POST", "/api/v1/signup", { email, password, phoneNumber }),
-    logout: async () => {
-      makeFetch("POST", "/api/v1/logout");
-    },
+    logout: async () => makeFetch("POST", "/api/v1/logout"),
   },
+  categories: async () => makeFetch("GET", "/api/v1/categories"),
 };
 
-async function makeFetch(method = "GET", url = "", body = {}) {
+async function makeFetch(method = "GET", url = "", body) {
   return fetch(url, {
     method,
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(body),
+    body: body ? JSON.stringify(body) : undefined,
   });
 }
