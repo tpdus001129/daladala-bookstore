@@ -10,7 +10,7 @@
     <script src="../common/footer-component.js"></script>
 
     <title>order</title>
-    <script type="module" src="index.js"></script>
+    <script src="index.js"></script>
   </head>
 
   <body>
@@ -32,7 +32,7 @@
               </thead>
               <tbody id="cart-body">
                 <tr>
-                  <td span="6">장바구니 가져오는 중</td>
+                  <td colspan="6">장바구니 가져오는 중</td>
                 </tr>
               </tbody>
             </table>
@@ -40,27 +40,27 @@
               <ul class="delivery-address-detail">
                 <p>배송 정보</p>
                 <input
-                  class="UserName"
+                  class="name"
                   type="text"
-                  name="UserName"
+                  name="name"
                   placeholder="수령인"
                 />
                 <input
-                  class="UserNumber"
+                  class="phoneNumber"
                   type="text"
-                  name="UserNumber"
+                  name="phoneNumber"
                   placeholder="전화번호"
                 />
                 <input
-                  class="UserPost"
+                  class="zipCode"
                   type="text"
-                  name="UserPost"
+                  name="zipCode"
                   placeholder="우편번호"
                 />
                 <input
-                  class="UserAddress"
+                  class="detail"
                   type="text"
-                  name="UserAddress"
+                  name="detail"
                   placeholder="주소"
                 />
                 <input
@@ -92,9 +92,9 @@
                 </select>
               </ul>
             </div>
-            <div class="delivery-pay">
+            <!-- <div class="delivery-pay">
               <a href="" class="Apay"> <span>무통장입금</span> </a>
-            </div>
+            </div> -->
           </div>
           <div class="payments">
             <aside>
@@ -112,7 +112,7 @@
                   <p><span id="total-price"></span><span>원</span></p>
                 </li>
               </ul>
-              <button>주문하기</button>
+              <button id="paybutton">주문하기</button>
             </aside>
           </div>
         </div>
