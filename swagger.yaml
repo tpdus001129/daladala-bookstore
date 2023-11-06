@@ -337,9 +337,12 @@ paths:
                       zipCode:
                         type: string
                         example: 12345
-                      detail:
+                      detail1:
                         type: string
                         example: 서울시 강남구 역삼동 123
+                      detail2:
+                        type: string
+                        example: 403호
         "500":
           description: 서버 에러
 
@@ -528,10 +531,14 @@ paths:
                           type: string
                           example: 11234
                           description: 받는사람 우편번호
-                        detail:
+                        detail1:
                           type: string
-                          example: 서울시 강남구 역삼동 8-2 402호
+                          example: 서울시 강남구 역삼동 8-2
                           description: 받는사람 주소
+                        detail2:
+                          type: string
+                          example: 402호
+                          description: 받는사람 주소(상세)
                 books:
                   type: array
                   items:
@@ -812,26 +819,36 @@ components:
         recipient:
           type: object
           required:
+            - name
             - phoneNumber
-            - zipCode
-            - detail
+            - address
           properties:
-            phoneNumber:
-              type: string
-              example: 010-1234-1234
-              description: 받는사람 전화번호
-            zipCode:
-              type: string
-              example: 11234
-              description: 받는사람 우편번호
-            detail:
-              type: string
-              example: 서울시 강남구 역삼동 8-2 402호
-              description: 받는사람 주소
             name:
               type: string
               example: 오강산
               description: 받는사람
+            phoneNumber:
+              type: string
+              example: 010-1234-1234
+              description: 받는사람 전화번호
+            address:
+              type: object
+              required:
+                - zipCode
+                - detail1
+              properties:
+                zipCode:
+                  type: string
+                  example: 11234
+                  description: 받는사람 우편번호
+                detail1:
+                  type: string
+                  example: 서울시 강남구 역삼동 8-2
+                  description: 받는사람 주소
+                detail2:
+                  type: string
+                  example: 402호
+                  description: 받는사람 주소(상세)
         books:
           type: array
           items:

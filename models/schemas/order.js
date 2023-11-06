@@ -63,11 +63,6 @@ const OrderSchema = new Schema(
         },
         detail2: {
           type: String,
-          required: [true, USER_ADDRESS_DETAIL_REQUIRED],
-          validate: {
-            validator: addressDetailValidator,
-            message: USER_ADDRESS_DETAIL_FORMAT,
-          },
         },
       }
     },
