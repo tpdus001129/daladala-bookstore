@@ -39,7 +39,7 @@ submitBtn.addEventListener("click", (e) => {
   }
   if (!/^\d{3}-\d{4}-\d{4}$/.test(phoneNumber.value)) {
     document.querySelector(".phone-number-error").innerText =
-      "'-'를 포함한 올바른 형식의 전화번호를 입력해주세요.";
+      "'-'을 포함한 올바른 형식의 전화번호를 입력해주세요.";
   }
   if (!address2.value) {
     document.querySelector(".address-error").innerText =

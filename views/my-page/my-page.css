@@ -66,8 +66,8 @@ input {
   height: 100%;
   line-height: 30px;
 }
-.email-error,
 .name-error,
+.email-error,
 .phone-number-error,
 .address-error {
   color: #e53935;
