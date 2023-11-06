@@ -6,6 +6,12 @@ class CustomError extends Error {
   }
 }
 
+class NotFoundError extends CustomError {
+  constructor(message) {
+    super(message, 404, "Not Found");
+  }
+}
+
 class ValidationError extends CustomError {
   constructor(message, opt = []) {
     super(message, 400, "ValidationError");
@@ -41,6 +47,7 @@ class DuplicateError extends CustomError {
 
 export {
   CustomError,
+  NotFoundError,
   ValidationError,
   DbValidationError,
   SchemaNotFoundError,
