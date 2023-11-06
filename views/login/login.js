@@ -1,3 +1,5 @@
+import { storage, storageKey } from "../storage.js";
+
 const emailInput = document.querySelector(".email-input");
 const pwInput = document.querySelector(".password-input");
 const loginBtn = document.querySelector(".login-btn");
@@ -25,7 +27,8 @@ loginBtn.addEventListener("click", async () => {
       });
 
       if (res.ok) {
-        window.location.href = "/"
+        storage.setItem(storageKey.userId, res.body.userId);
+        window.location.href = "/";
       } else {
         errorMes.innerHTML = "올바른 아이디 또는 비밀번호를 입력해주세요.";
       }
