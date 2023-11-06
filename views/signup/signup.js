@@ -1,3 +1,6 @@
+import apis from "../apis.js";
+import { storage, storageKey } from "../storage.js";
+
 const form = document.getElementById("signup-form");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
@@ -44,20 +47,15 @@ form.addEventListener("submit", function (event) {
   if (!isValid) return;
 
   (async () => {
-    const res = await fetch("/api/v1/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: emailInput.value,
-        password: passwordInput.value,
-        phoneNumber: telInput.value,
-      }),
+    const res = await apis.auth.signup({
+      email: emailInput.value,
+      password: passwordInput.value,
+      phoneNumber: telInput.value,
     });
 
     if (res.ok) {
       alert("회원가입 성공");
+      storage.setItem(storageKey.userId, res.body.userId);
       location.href = "/";
     } else {
       alert("회원가입에 실패했습니다.");
