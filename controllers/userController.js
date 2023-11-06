@@ -1,14 +1,5 @@
 import userService from "../services/userService.js";
 
-function requestBodyToObject(body) {
-  return {
-    password: body.password,
-    phoneNumber: body.phoneNumber,
-    name: body.name,
-    address: body.address,
-  };
-}
-
 const userController = {
   async detail(req, res) {
     const { userId } = req.params;
@@ -18,8 +9,7 @@ const userController = {
 
   async update(req, res) {
     const { userId } = req.params;
-    const userData = requestBodyToObject(req.body);
-    const user = await userService.update(userId, userData);
+    const user = await userService.update(userId, req.body);
     if (user) {
       res.status(200).json(user);
     }
