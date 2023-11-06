@@ -41,7 +41,7 @@ const userController = {
 
     const user = await userService.passwordUpdate(userId, userPassword);
     if (user) {
-      res.status(200).send();
+      res.status(200).json(user);
     }
   },
 };

@@ -46,6 +46,19 @@ const user = {
         .messages(error.userErrorMessage.password),
     }),
   },
+
+  passwordUpdate: {
+    body: Joi.object().keys({
+      password: Joi.string()
+        .required()
+        .pattern(PASSWORD_REGEX)
+        .messages(error.userErrorMessage.password),
+      newPassword: Joi.string()
+        .required()
+        .pattern(PASSWORD_REGEX)
+        .messages(error.userErrorMessage.password),
+    }),
+  },
 };
 
 export default user;

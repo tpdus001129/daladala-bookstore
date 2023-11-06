@@ -24,7 +24,13 @@ router.delete(
   asyncHandler(userController.remove),
 );
 
-router.patch("/:userId/password", asyncHandler(userController.passwordUpdate));
+router.patch(
+  "/:userId/password",
+  jwtAuthentication,
+  isMySelf,
+  inputValidator(user.passwordUpdate),
+  asyncHandler(userController.passwordUpdate),
+);
 
 router.use("/:userId/orders", orderRouter);
 
