@@ -1,18 +1,19 @@
 h2 {
   text-align: center;
+  font-size: 25px;
 }
 main{
   width: 100%; 
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 140px;
+  padding: 150px 0 0 0;
 }
 .content-wrapper{
   width: var(--max-width);
   justify-content: center;
-  height: 300px;
-  margin: 0 auto 50px auto;
+  height: 100%;
+  margin: 30px auto 50px auto;
 }
 .content-wrapper div {
   width: 60%; 
@@ -58,7 +59,7 @@ p {
 }
 .login-btn {
   margin: 0 auto;
-  height: 40px;
+  height: 50px;
   width: 300px;
   text-align: center;
   cursor: pointer;

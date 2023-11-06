@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../common/reset.css" />
     <link rel="stylesheet" href="../common/common.css" />
     <link rel="stylesheet" href="../search-page/search-page.css" />
-    <script src="../common/header-component.js"></script>
+    <script type="module" src="../common/header-component.js"></script>
     <script src="../common/footer-component.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,6 +17,7 @@
 
     <title>SearchPage</title>
   </head>
+
   <body>
     <header-component></header-component>
     <div class="box">
@@ -47,7 +48,11 @@
           <table class="CartTable">
             <tr class="UserData">
               <td class="OrderCheckBox" width="50">
-                <input type="checkbox" id="OrderCheckbox2" name="OrderCheckBox"/>
+                <input
+                  type="checkbox"
+                  id="OrderCheckbox2"
+                  name="OrderCheckBox"
+                />
               </td>
               <td width="150">
                 <img id="BookImage" src="" alt="상품 이미지" />

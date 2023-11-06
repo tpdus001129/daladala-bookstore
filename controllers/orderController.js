@@ -17,7 +17,8 @@ const orderController = {
 
   async create(req, res) {
     const { userId } = req.params;
-    const orderData = requestBodyToObject(req.body);
+    const orderData = req.body;
+    orderData.user = userId;
     const order = await orderService.create(userId, orderData);
     if (order) {
       res.status(201).send();
