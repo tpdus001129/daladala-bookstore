@@ -1,7 +1,7 @@
 import express from "express";
 import { asyncHandler } from "../../middleware/asyncHandler.js";
-import orderRouter from "./orderRouter.js";
 import userController from "../../controllers/userController.js";
+import orderController from "../../controllers/orderController.js";
 import { jwtAuthentication } from "../../middleware/jwtAuthentication.js";
 import { isMySelf } from "../../middleware/isMySelf.js";
 import { inputValidator, user } from "../../middleware/validator/index.js";
@@ -39,6 +39,11 @@ router.patch(
   asyncHandler(userController.passwordUpdate),
 );
 
-router.use("/:userId/orders", orderRouter);
+
+router.get("/:userId/orders", asyncHandler(orderController.list));
+
+router.post("/:userId/orders", asyncHandler(orderController.create));
+
+router.patch("/:userId/orders/:orderId", asyncHandler(orderController.update));
 
 export default router;

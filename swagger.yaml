@@ -14,8 +14,6 @@ tags:
     description: 유저 API
   - name: categories
     description: 카테고리 API
-  - name: orders
-    description: 주문 API
 
 paths:
   /books:
@@ -462,49 +460,10 @@ paths:
         "500":
           description: 서버 에러
 
-  /categories:
-    get:
-      tags:
-        - categories
-      summary: 카테고리 목록
-      description: 카테고리 목록을 가져오는 API
-      responses:
-        "200":
-          description: 성공
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    _id:
-                      type: string
-                      example: ObjectId(asdfkv3D2Ec)
-                      description: 카테고리 ID
-                    name:
-                      type: string
-                      example: 전체도서
-                    subCategories:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          _id:
-                            type: string
-                            example: ObjectId(asdfjalfkvja)
-                          name:
-                            type: string
-                            example: 소설
-        "400":
-          description: 잘못된 요청
-        "500":
-          description: 서버 에러
-
   /users/{userId}/orders:
     get:
       tags:
-        - orders
+        - users
       summary: 주문 조회
       description: 특정 유저의 주문 정보를 조회하는 API
       security:
@@ -532,7 +491,7 @@ paths:
 
     post:
       tags:
-        - orders
+        - users
       summary: 주문 요청
       description: 새로운 주문을 생성하는 API
       security:
@@ -603,7 +562,7 @@ paths:
   /users/{userId}/orders/{orderId}:
     patch:
       tags:
-        - orders
+        - users
       summary: 주문 변경
       description: 주문 상태를 변경하는 API
       security:
@@ -636,6 +595,45 @@ paths:
       responses:
         "200":
           description: 성공
+        "400":
+          description: 잘못된 요청
+        "500":
+          description: 서버 에러
+
+  /categories:
+    get:
+      tags:
+        - categories
+      summary: 카테고리 목록
+      description: 카테고리 목록을 가져오는 API
+      responses:
+        "200":
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                      example: ObjectId(asdfkv3D2Ec)
+                      description: 카테고리 ID
+                    name:
+                      type: string
+                      example: 전체도서
+                    subCategories:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          _id:
+                            type: string
+                            example: ObjectId(asdfjalfkvja)
+                          name:
+                            type: string
+                            example: 소설
         "400":
           description: 잘못된 요청
         "500":
