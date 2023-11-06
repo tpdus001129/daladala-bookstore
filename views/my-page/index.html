@@ -15,26 +15,42 @@
     <header-component></header-component>
     <sidebar-container>
       <p class="topTitle">회원 정보 수정</p>
-      <form action="">
+      <form action="" name="userForm">
         <table>
           <tr>
             <td>이메일</td>
-            <td><input type="email" class="email-input" /></td>
+            <td>
+              <input type="email" class="email-input" />
+              <div class="email-error error-text"></div>
+            </td>
           </tr>
           <tr>
             <td>이름</td>
-            <td><input type="text" class="name" /></td>
+            <td>
+              <input type="text" class="name" />
+              <div class="name-error error-text"></div>
+            </td>
           </tr>
           <tr>
             <td>전화번호</td>
-            <td><input type="text" class="phone-number" /></td>
+            <td>
+              <input type="text" class="phone-number" />
+              <div class="phone-number-error error-text"></div>
+            </td>
           </tr>
           <tr>
             <td>주소</td>
             <td>
               <div class="address">
-                <input type="text" class="address1" />
-                <input type="text" class="address2" />
+                <input
+                  type="text"
+                  class="postNumber"
+                  name="postNumber"
+                  readonly
+                />
+                <input type="text" class="address1" name="address1" readonly />
+                <input type="text" class="address2" name="address2" />
+                <div class="address-error error-text"></div>
               </div>
             </td>
           </tr>
@@ -44,9 +60,13 @@
             </td>
           </tr>
         </table>
-        <button class="unregisterBtn">회원 탈퇴</button>
+        <button class="unregisterBtn">
+          <a href="../user-delete/index.html">회원 탈퇴</a>
+        </button>
       </form>
     </sidebar-container>
     <footer-component></footer-component>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="./my-page.js"></script>
   </body>
 </html>
