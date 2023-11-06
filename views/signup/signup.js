@@ -5,6 +5,8 @@ const passwordConfirmInput = document.getElementById("password-confirm");
 const telInput = document.getElementById("tel");
 
 form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
   let isValid = true;
 
   if (!emailInput.value.includes("@") || !emailInput.value.includes(".")) {
@@ -39,7 +41,27 @@ form.addEventListener("submit", function (event) {
     document.getElementById("tel-error").textContent = "";
   }
 
-  if (!isValid) {
-    event.preventDefault();
-  }
+  if (!isValid) return;
+
+  (async () => {
+    const res = await fetch("/api/v1/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: emailInput.value,
+        password: passwordInput.value,
+        phoneNumber: telInput.value,
+      }),
+    });
+
+    if (res.ok) {
+      alert("회원가입 성공");
+      location.href = "/";
+    } else {
+      alert("회원가입에 실패했습니다.");
+      console.log(res);
+    }
+  })();
 });
