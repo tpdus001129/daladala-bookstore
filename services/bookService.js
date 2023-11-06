@@ -1,4 +1,7 @@
+import { Types } from "mongoose";
 import { Book } from "../models/index.js";
+import { NotFoundError } from "../utils/errors.js";
+import { BOOK_NOT_FOUND } from "../config/errorMessagesConstants.js";
 
 const bookService = {
   // TODO: 카테고리별(query parameter)로 카테고리별 목록 구현
@@ -10,6 +13,10 @@ const bookService = {
   },
 
   async detail(_id) {
+    if (!Types.ObjectId.isValid(_id)) {
+      throw new NotFoundError(BOOK_NOT_FOUND);
+    }
+
     const book = await Book.findOne({ _id }).exec();
     return book;
   },

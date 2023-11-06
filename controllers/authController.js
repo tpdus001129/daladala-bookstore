@@ -1,37 +1,28 @@
 import authService from "../services/authService.js";
-
-const cookieOptions = {
-  httpOnly: true,
-  sameSite: "None",
-};
-
-function requestBodyToObject(body) {
-  return {
-    email: body.email,
-    password: body.password,
-    phoneNumber: body.phoneNumber,
-  };
-}
+import cookieOptions from "../config/cookieOptions.js";
 
 const authController = {
   async signup(req, res) {
-    const { email, password, phoneNumber } = requestBodyToObject(req.body);
-    const { accessToken } = await authService.signup({
+    const { email, password, phoneNumber } = req.body;
+    const { accessToken, userId } = await authService.signup({
       email,
       password,
       phoneNumber,
     });
 
-    res.cookie("accessToken", accessToken);
-    res.status(201).json({ accessToken });
+    res.cookie("accessToken", accessToken, cookieOptions);
+    res.status(201).json({ userId });
   },
 
   async login(req, res) {
     const { email, password } = req.body;
-    const { accessToken } = await authService.login({ email, password });
+    const { accessToken, userId } = await authService.login({
+      email,
+      password,
+    });
 
-    res.cookie("accessToken", accessToken);
-    res.status(200).json({ accessToken });
+    res.cookie("accessToken", accessToken, cookieOptions);
+    res.status(200).json({ userId });
   },
 
   async logout(req, res) {

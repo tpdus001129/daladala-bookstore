@@ -84,9 +84,6 @@ paths:
                 category:
                   type: string
                   example: asX31sdF3cVs
-                seller:
-                  type: string
-                  example: asX31sdF3cVs
         required: true
       responses:
         "201":
