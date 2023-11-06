@@ -27,7 +27,7 @@ const authService = {
       authority: user.authority,
     });
 
-    return { accessToken };
+    return { accessToken, userId: user._id };
   },
 
   async login({ email, password }) {
@@ -42,7 +42,7 @@ const authService = {
       authority: user.authority,
     });
 
-    return { accessToken };
+    return { accessToken, userId: user._id };
   },
 };
 
