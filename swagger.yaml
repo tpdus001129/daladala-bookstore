@@ -380,9 +380,12 @@ paths:
                     zipCode:
                       type: string
                       example: 12345
-                    detail:
+                    detail1:
                       type: string
                       example: 서울시 강남구 역삼동 123
+                    detail2:
+                      type: string
+                      example: 111호
         required: true
       responses:
         "200":
@@ -406,6 +409,15 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: password
       responses:
         "200":
           description: 성공
@@ -672,9 +684,13 @@ components:
               type: string
               example: 11234
               description: 우편번호
-            detail:
+            detail1:
               type: string
               example: 서울시 강남구 역삼동 8-2 402호
+              description: 상세 주소
+            detail2:
+              type: string
+              example: 111호
               description: 상세 주소
         name:
           type: string
