@@ -4,7 +4,11 @@ import userController from "../../controllers/userController.js";
 import orderController from "../../controllers/orderController.js";
 import { jwtAuthentication } from "../../middleware/jwtAuthentication.js";
 import { isMySelf } from "../../middleware/isMySelf.js";
-import { inputValidator, user } from "../../middleware/validator/index.js";
+import {
+  inputValidator,
+  user,
+  order,
+} from "../../middleware/validator/index.js";
 
 const router = express.Router();
 
@@ -40,10 +44,26 @@ router.patch(
 );
 
 
-router.get("/:userId/orders", asyncHandler(orderController.list));
+router.get(
+  "/:userId/orders",
+  jwtAuthentication,
+  // TODO: 관리자, 판매자, 구매자만 요청가능하게 관련 미들웨어 추가
+  asyncHandler(orderController.list),
+);
 
-router.post("/:userId/orders", asyncHandler(orderController.create));
+router.post(
+  "/:userId/orders",
+  jwtAuthentication,
+  isMySelf,
+  inputValidator(order.post),
+  asyncHandler(orderController.create),
+);
 
-router.patch("/:userId/orders/:orderId", asyncHandler(orderController.update));
+router.patch(
+  "/:userId/orders/:orderId",
+  jwtAuthentication,
+  // TODO: 관리자, 판매자, 구매자만 요청가능하게 관련 미들웨어 추가
+  asyncHandler(orderController.update),
+);
 
 export default router;

@@ -9,7 +9,8 @@ export const USER_NAME_REQUIRED = "이름을 입력해주세요.";
 export const USER_PASSWORD_REQUIRED = "비밀번호를 입력해주세요.";
 export const USER_PHONE_NUMBER_REQUIRED = "전화번호를 입력해주세요.";
 export const USER_ADDRESS_ZIP_CODE_REQUIRED = "우편번호를 입력해주세요.";
-export const USER_ADDRESS_DETAIL_REQUIRED = "상세주소를 입력해주세요.";
+export const USER_ADDRESS_DETAIL_REQUIRED = "주소를 입력해주세요.";
+export const USER_ADDRESS_DETAIL2_REQUIRED = "상세주소를 입력해주세요.";
 
 // 도서 정보
 export const BOOK_NOT_FOUND = "도서 정보를 찾을 수 없습니다.";
@@ -20,16 +21,23 @@ export const BOOK_TITLE_REQUIRED = "도서제목를 입력해주세요.";
 export const BOOK_AUTHOR_REQUIRED = "도서저자를 입력해주세요.";
 export const BOOK_CONTENT_REQUIRED = "도서내용를 입력해주세요.";
 export const BOOK_PAGES_REQUIRED = "전체 페이지 수를 입력해주세요.";
+export const BOOK_PAGES_FORMAT = "전체 페이지 수는 숫자로 입력해주세요.";
 export const BOOK_PUBLICATION_DATE_REQUIRED = "발행일자를 입력해주세요.";
 export const BOOK_RELEASE_DATE_REQUIRED = "출시일자를 입력해주세요.";
 export const BOOK_IMAGE_REQUIRED = "도서 사진을 선택해주세요.";
 export const BOOK_PRICE_REQUIRED = "도서 가격을 입력해주세요.";
+export const BOOK_PRICE_FORMAT = "도서 가격은 숫자로 입력해주세요.";
 export const BOOK_INVENTORY_COUNT_REQUIRED = "도서 재고 수량을 입력해주세요.";
+export const BOOK_INVENTORY_COUNT_FORMAT = "도서 재고 수량은 숫자로 입력해주세요.";
 export const BOOK_SELLER_REQUIRED = "판매자 정보를 입력해주세요.";
 
 // 주문 정보
 export const ORDER_COUNT_REQUIRED = "수량을 입력해주세요.";
 export const ORDER_DELIVERY_PRICE_REQUIRED = "배송비를 입력해주세요.";
+export const ORDER_DELIVERY_PRICE_FORMAT = "배송비는 숫자로 입력해주세요.";
+export const ORDER_TOTAL_PRICE_REQUIRED = "상품 총 가격을 입력해주세요.";
+export const ORDER_TOTAL_PRICE_FORMAT = "상품 총 가격을 입력해주세요.";
+export const ORDER_ERROR = "주문에 실패했습니다.";
 
 // 유저 정보
 export const USER_NOT_FOUND = "유저 정보를 찾을 수 없습니다.";
