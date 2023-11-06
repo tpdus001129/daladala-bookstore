@@ -27,9 +27,10 @@ const userController = {
 
   async remove(req, res) {
     const { userId } = req.params;
-    const user = await userService.remove(userId);
+    const { password } = req.body;
+    const user = await userService.remove({ userId, password });
     if (user) {
-      res.status(200).send();
+      res.status(200).json(user);
     }
   },
 

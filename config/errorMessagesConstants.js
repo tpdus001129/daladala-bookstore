@@ -31,8 +31,9 @@ export const BOOK_SELLER_REQUIRED = "판매자 정보를 입력해주세요.";
 export const ORDER_COUNT_REQUIRED = "수량을 입력해주세요.";
 export const ORDER_DELIVERY_PRICE_REQUIRED = "배송비를 입력해주세요.";
 
-// 포멧
 // 유저 정보
+export const USER_NOT_FOUND = "유저 정보를 찾을 수 없습니다.";
+export const USER_PASSWORD_MISMATCH = "비밀번호가 일치하지 않습니다.";
 export const USER_EMAIL_FORMAT = "이메일 형식이 올바르지 않습니다.";
 export const USER_PASSWORD_FORMAT = "비밀번호 형식이 올바르지 않습니다.";
 export const USER_NAME_FORMAT = "이름은 10자 이하이어야 합니다.";
