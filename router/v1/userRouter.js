@@ -15,11 +15,18 @@ router.get(
   asyncHandler(userController.detail),
 );
 
-router.put("/:userId", asyncHandler(userController.update));
+router.put(
+  "/:userId",
+  jwtAuthentication,
+  isMySelf,
+  inputValidator(user.put),
+  asyncHandler(userController.update),
+);
 
 router.delete(
   "/:userId",
   jwtAuthentication,
+  isMySelf,
   inputValidator(user.remove),
   asyncHandler(userController.remove),
 );

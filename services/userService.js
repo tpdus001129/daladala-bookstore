@@ -27,9 +27,32 @@ const userService = {
     return { _id, email, authority, phoneNumber, address, name, createdAt, updatedAt };
   },
 
-  async update(userId, user) {
-    console.log("User Update", userId, user);
-    return true;
+  async update(userId, userData) {
+    if (!Types.ObjectId.isValid(userId)) {
+      throw new NotFoundError(USER_NOT_FOUND);
+    }
+
+    let user = await User.findOne({
+      _id: userId,
+      deletedAt: { $exists: false },
+    }).exec();
+
+    if (!user) {
+      throw new NotFoundError(USER_NOT_FOUND);
+    }
+
+    if (!comparePassword(userData.password, user.password)) {
+      throw new AuthError(USER_PASSWORD_MISMATCH);
+    }
+
+    user = await User.findByIdAndUpdate(userId, {
+      phoneNumber: userData.phoneNumber,
+      address: userData.address,
+      name: userData.name
+    });
+    
+    const { _id, email, authority, phoneNumber, address, name, createdAt, updatedAt } = user;
+    return { _id, email, authority, phoneNumber, address, name, createdAt, updatedAt };
   },
 
   async remove({ userId, password }) {

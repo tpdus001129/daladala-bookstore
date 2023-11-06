@@ -54,7 +54,14 @@ const UserSchema = new Schema(
           message: USER_ADDRESS_ZIP_CODE_FORMAT,
         },
       },
-      detail: {
+      detail1: {
+        type: String,
+        validate: {
+          validator: addressDetailValidator,
+          message: USER_ADDRESS_DETAIL_FORMAT,
+        },
+      },
+      detail2: {
         type: String,
         validate: {
           validator: addressDetailValidator,

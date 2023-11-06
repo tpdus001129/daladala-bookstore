@@ -21,7 +21,7 @@ const userController = {
     const userData = requestBodyToObject(req.body);
     const user = await userService.update(userId, userData);
     if (user) {
-      res.status(200).send();
+      res.status(200).json(user);
     }
   },
 

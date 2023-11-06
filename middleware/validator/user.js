@@ -38,6 +38,25 @@ const user = {
     }),
   },
 
+  put: {
+    body: Joi.object().keys({
+      password: Joi.string()
+        .required()
+        .pattern(PASSWORD_REGEX)
+        .messages(error.userErrorMessage.password),
+      phoneNumber: Joi.string()
+        .required()
+        .pattern(PHONE_NUMBER_REGEX)
+        .messages(error.userErrorMessage.phoneNumber),
+      name: Joi.string().messages(error.userErrorMessage.name),
+      address: Joi.object().keys({
+        zipCode: Joi.string(),
+        detail1: Joi.string(),
+        detail2: Joi.string(),
+      })
+    }),
+  },
+
   remove: {
     body: Joi.object().keys({
       password: Joi.string()
