@@ -10,8 +10,21 @@ import { AuthError } from "../utils/errors.js";
 
 const userService = {
   async detail(userId) {
-    console.log("User Detail", userId);
-    return {};
+    if (!Types.ObjectId.isValid(userId)) {
+      throw new NotFoundError(USER_NOT_FOUND);
+    }
+
+    const user = await User.findOne({
+      _id: userId,
+      deletedAt: { $exists: false },
+    }).exec();
+
+    if (!user) {
+      throw new NotFoundError(USER_NOT_FOUND);
+    }
+
+    const { _id, email, authority, phoneNumber, address, name, createdAt, updatedAt } = user;
+    return { _id, email, authority, phoneNumber, address, name, createdAt, updatedAt };
   },
 
   async update(userId, user) {
@@ -24,7 +37,10 @@ const userService = {
       throw new NotFoundError(USER_NOT_FOUND);
     }
 
-    let user = await User.findOne({ _id: userId }).exec();
+    let user = await User.findOne({
+      _id: userId,
+      deletedAt: { $exists: false },
+    }).exec();
     if (!user) {
       throw new NotFoundError(USER_NOT_FOUND);
     }
