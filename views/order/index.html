@@ -72,12 +72,7 @@
               </ul>
               <ul class="delivery-address-memo">
                 <p>배송 메모</p>
-                <select
-                  class="delivmemo"
-                  name="delivmemo"
-                  title="memo"
-                  data-group="shipping"
-                >
+                <select id="deliverySelect">
                   <option value="">배송메모를 선택해 주세요.</option>
                   <option value="배송 전에 미리 연락 바랍니다.">
                     배송 전에 미리 연락 바랍니다.
@@ -94,6 +89,18 @@
             </div>
             <div class="delivery-pay">
               <input type="radio" name="pay-type" value="pay" /> 무통장입금
+              <input
+                class="pay-name"
+                type="text"
+                name="pay-name"
+                placeholder="입금자명(주문자명)"
+              />
+              <select>
+                <option value="custom">(농협)808-6666-7777-33 아무개</option>
+              </select>
+              <p class="pay-text">
+                주문 후 48시간 이내 미입금시 자동 취소됩니다.
+              </p>
             </div>
           </div>
           <div class="payments">
@@ -112,7 +119,7 @@
                   <p><span id="total-price"></span><span>원</span></p>
                 </li>
               </ul>
-              <button id="paybutton">주문하기</button>
+              <button id="payButton">주문하기</button>
             </aside>
           </div>
         </div>

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const paybutton = document.getElementById("paybutton");
+  const payButton = document.getElementById("payButton");
 
-  paybutton.addEventListener("click", function(){
+  payButton.addEventListener("click", function(){
     const confirmation = confirm("결제 하겠습니까?")
 
     if(confirmation) {
