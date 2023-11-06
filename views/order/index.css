@@ -10,12 +10,6 @@
     width: 100%;
   }
   
-
-  /* .delivery-order{
-
-  } */
-
-
   .flex-space-between {
     display: flex;
     justify-content: space-between;
@@ -38,10 +32,6 @@
     display: flex;
     justify-content: space-between;
   }
-  
-  /* .payments {
-
-  } */
 
   aside {
     border: 1px solid black;
