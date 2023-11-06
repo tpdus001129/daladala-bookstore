@@ -44,3 +44,8 @@
       font-size: 12px;
       color: #3a0d0d;
     }
+
+    #customDelivery {
+      display: none;
+    }
+    
