@@ -1,6 +1,6 @@
-body {
+/* body {
   font-family: "Nanum Gothic", sans-serif;
-}
+} */
 
 .ShoppingCartContainer {
   display: flex;
@@ -20,8 +20,9 @@ body {
 }
 
 h1 {
+  font-size: 20px;
+  margin: 20px 0px;
   padding: 2%;
-  font-size: 40px;
   font-weight: bold;
   color: #2a300d;
 }
@@ -45,10 +46,10 @@ h1 {
   background-color: #767676;
 }
 
-section {
-  /* display: table-row-group; */
-  /* padding: 2%; */
-}
+/* section {
+  display: table-row-group;
+  padding: 2%;
+} */
 
 .CartTable {
   /* padding: 10%; */

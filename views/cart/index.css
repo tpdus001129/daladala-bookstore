@@ -1,0 +1,41 @@
+h1 {
+  font-size: 20px;
+  margin: 20px 0px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  max-width: var(--max-width);
+  width: 100%;
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+td img {
+  width: 80px;
+}
+
+.payments-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+aside {
+  border: 1px solid black;
+  width: 200px;
