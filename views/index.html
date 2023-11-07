@@ -1,17 +1,75 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>책책</title>
+    <title>Main</title>
+
+    <!-- 공통 컴포넌트 -->
     <link rel="stylesheet" href="./common/reset.css" />
     <link rel="stylesheet" href="./common/common.css" />
-    <script src="./common/header-component.js"></script>
+    <script type="module" src="./common/header-component.js"></script>
+    <script src="./common/footer-component.js"></script>
+
+    <!-- SWIPER 외부 라이브러리 연결-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+    <!--google material icon 사용-->
+    <link
+      rel="stylesheet"
+      href="http://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+
+    <link rel="stylesheet" href="./main.css" />
   </head>
 
   <body>
     <header-component></header-component>
 
-    <div>메인 페이지</div>
+    <main>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="#" />
+          </div>
+          <div class="swiper-slide">2</div>
+          <div class="swiper-slide">3</div>
+          <div class="swiper-slide">4</div>
+          <div class="swiper-slide">5</div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+
+        <div class="swiper-button-prev">
+          <div class="material-icons">arrow_back</div>
+        </div>
+        <div class="swiper-button-next">
+          <div class="material-icons">arrow_forward</div>
+        </div>
+      </div>
+    </main>
+
+    <footer-component></footer-component>
+    <script>
+      new Swiper(".swiper", {
+        autoplay: {
+          delay: 5000,
+        },
+        loop: true,
+        centeredSlides: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          prevEl: ".swiper-button-prev",
+          nextEl: ".swiper-button-next",
+        },
+      });
+    </script>
   </body>
 </html>

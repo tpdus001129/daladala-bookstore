@@ -1,5 +1,5 @@
 <!-- 상품 목록 페이지 -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,181 +8,23 @@
     <link rel="stylesheet" href="./product-list.css" />
     <link rel="stylesheet" href="../common/reset.css" />
     <link rel="stylesheet" href="../common/common.css" />
-    <script src="../common/header-component.js"></script>
+    <script type="module" src="../common/header-component.js"></script>
     <script src="../common/footer-component.js"></script>
   </head>
+
   <body>
     <header-component></header-component>
-    
-    <div class="product-box">
 
+    <div class="product-box">
       <!-- 카테고리부분 -->
       <div class="current-category-bar">
-        <div class="second-category">
-          국내
-        </div>
-        <div class="third-category">
-          > 경영 / 경제
-        </div>
+        <div class="second-category">국내</div>
+        <div class="third-category">> 경영 / 경제</div>
       </div>
 
-      <div class="product-list">
-        <div class="product-item">
-          <div class="product-image">
-            <a href="">
-              <img alt="엘리스도서(책제목그대로하기)" src="./images/엘리스도서.jpg" />
-            </a>
-          </div>
-
-          <div class="product-item-info">
-            <div class="product-name">
-              <a href="">어떻게 이별까지 사랑하겠어 널 사랑하는거지 어떻게 이별까지 사랑하겠어 널 사랑하는거지</a>
-            </div>
-
-            <div class="product-author">
-              <span>엘리스 코딩 지음</span>
-            </div>
-
-            <div class="product-price">
-              <span>가격</span>
-            </div>
-
-            <div class="product-buy-box">
-              <a href="">
-                <span>장바구니</span>
-              </a>
-              <a href="">
-                <span>바로구매</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-item">
-          <div class="product-image">
-            <a href="">
-              <img alt="엘리스도서(책제목그대로하기)" src="./images/엘리스도서.jpg" />
-            </a>
-          </div>
-
-          <div class="product-item-info">
-            <div class="product-name">
-              <a href="">엘리스 도서</a>
-            </div>
-
-            <div class="product-author">
-              <span>엘리스 코딩 지음</span>
-            </div>
-
-            <div class="product-price">
-              <span>가격</span>
-            </div>
-
-            <div class="product-buy-box">
-              <a href="">
-                <span>장바구니</span>
-              </a>
-              <a href="">
-                <span>바로구매</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-item">
-          <div class="product-image">
-            <a href="">
-              <img alt="엘리스도서(책제목그대로하기)" src="./images/엘리스도서.jpg" />
-            </a>
-          </div>
-
-          <div class="product-item-info">
-            <div class="product-name">
-              <a href="">엘리스 도서</a>
-            </div>
-
-            <div class="product-author">
-              <span>엘리스 코딩 지음</span>
-            </div>
-
-            <div class="product-price">
-              <span>가격</span>
-            </div>
-
-            <div class="product-buy-box">
-              <a href="">
-                <span>장바구니</span>
-              </a>
-              <a href="">
-                <span>바로구매</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-item">
-          <div class="product-image">
-            <a href="">
-              <img alt="엘리스도서(책제목그대로하기)" src="./images/엘리스도서.jpg" />
-            </a>
-          </div>
-
-          <div class="product-item-info">
-            <div class="product-name">
-              <a href="">엘리스 도서</a>
-            </div>
-
-            <div class="product-author">
-              <span>엘리스 코딩 지음</span>
-            </div>
-
-            <div class="product-price">
-              <span>가격</span>
-            </div>
-
-            <div class="product-buy-box">
-              <a href="">
-                <span>장바구니</span>
-              </a>
-              <a href="">
-                <span>바로구매</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-item">
-          <div class="product-image">
-            <a href="">
-              <img alt="엘리스도서(책제목그대로하기)" src="./images/엘리스도서.jpg" />
-            </a>
-          </div>
-
-          <div class="product-item-info">
-            <div class="product-name">
-              <a href="">엘리스 도서</a>
-            </div>
-
-            <div class="product-author">
-              <span>엘리스 코딩 지음</span>
-            </div>
-
-            <div class="product-price">
-              <span>가격</span>
-            </div>
-
-            <div class="product-buy-box">
-              <a href="">
-                <span>장바구니</span>
-              </a>
-              <a href="">
-                <span>바로구매</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="product-list" id="product-list"></div>
     </div>
     <footer-component></footer-component>
+    <script type="module" src="index.js"></script>
   </body>
 </html>

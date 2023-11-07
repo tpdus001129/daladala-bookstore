@@ -3,9 +3,9 @@ import "dotenv/config";
 
 const { ACCESS_TOKEN_SECRET } = process.env;
 
-const createAccessToken = ({ _id, email }) => {
-  return jwt.sign({ _id, email }, ACCESS_TOKEN_SECRET, {
-    expiresIn: "30s",
+const createAccessToken = ({ _id, email, authority }) => {
+  return jwt.sign({ _id, email, authority }, ACCESS_TOKEN_SECRET, {
+    expiresIn: "1d",
   });
 };
 
