@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="../common/form.css" />
     <link rel="stylesheet" href="../common/common.css" />
     <link rel="stylesheet" href="../common/reset.css" />
     <link rel="stylesheet" href="my-page.css" />
@@ -12,62 +13,83 @@
     <script src="../common/footer-component.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   </head>
-
   <body>
     <header-component></header-component>
     <sidebar-container>
-      <p class="topTitle">회원 정보 수정</p>
-      <form action="" name="userForm">
-        <table>
-          <tr>
-            <td>이메일</td>
-            <td>
-              <input type="email" class="email-input" />
-              <div class="email-error error-text"></div>
-            </td>
-          </tr>
-          <tr>
-            <td>이름</td>
-            <td>
-              <input type="text" class="name" />
-              <div class="name-error error-text"></div>
-            </td>
-          </tr>
-          <tr>
-            <td>전화번호</td>
-            <td>
-              <input type="text" class="phone-number" />
-              <div class="phone-number-error error-text"></div>
-            </td>
-          </tr>
-          <tr>
-            <td>주소</td>
-            <td>
-              <div class="address">
-                <input
-                  type="text"
-                  class="postNumber"
-                  name="postNumber"
-                  readonly
-                />
-                <input type="text" class="address1" name="address1" readonly />
-                <input type="text" class="address2" name="address2" />
-                <div class="address-error error-text"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="submitBtnBox" colspan="2">
-              <button class="submitBtn">적용</button>
-            </td>
-          </tr>
-        </table>
-        <button class="unregisterBtn">
-          <a href="../user-delete/index.html">회원 탈퇴</a>
-        </button>
-      </form>
+      <div class="form-container">
+        <h1 class="form-title">회원 정보 수정</h1>
+        <form action="" name="userForm">
+          <div class="form-group">
+            <label class="form-label" for="email">이메일</label>
+            <input class="form-input" type="email" id="email" disabled />
+          </div>
+
+          <div class="form-group input-margin">
+            <label class="form-label" for="name">이름</label>
+            <input
+              class="form-input"
+              type="text"
+              id="name"
+              name="name"
+              required
+            />
+          </div>
+
+          <div class="form-group input-margin">
+            <label class="form-label" for="tel">전화번호</label>
+            <input class="form-input" type="tel" id="tel" name="tel" required />
+          </div>
+
+          <div class="form-group input-margin">
+            <label class="form-label" for="주소">주소</label>
+            <input
+              type="text"
+              class="form-input"
+              id="postNumber"
+              name="postNumber"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-input" name="address1" />
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-input" name="address2" />
+          </div>
+
+          <button class="form-button" type="submit">적용</button>
+        </form>
+      </div>
+
+      <button class="unregisterBtn">
+        <a href="/user-delete">회원 탈퇴</a>
+      </button>
     </sidebar-container>
     <footer-component></footer-component>
     <script src="./my-page.js"></script>
+    <script>
+      const postNumber = document.getElementById("postNumber");
+
+      postNumber.addEventListener("click", () => {
+        new daum.Postcode({
+          oncomplete: function (data) {
+            let fullAddress = data.roadAddress;
+            let building = "";
+
+            if (data.userSelectedType == "R") {
+              if (data.bname !== "" || data.buildingName !== "") {
+                fullAddress += ` (${data.bname} ${data.buildingName})`;
+              }
+              fullAddress += building !== "" ? " (" + building + ")" : "";
+            } else {
+              fullAddress = data.jibunAddress;
+            }
+            document.userForm.postNumber.value = data.zonecode;
+            document.userForm.address1.value = fullAddress;
+            document.userForm.address2.focus();
+          },
+        }).open();
+      });
+    </script>
   </body>
 </html>
