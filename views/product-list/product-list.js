@@ -9,24 +9,34 @@ if ("content" in document.createElement("template")) {
     const books = await (await fetch("/api/v1/books")).json();
 
     // const { books, category } = await (await fetch("/api/v1/books")).json();
-    // const templateCategoryElement =
-    //   document.querySelector("#template-category");
-    // const categoryClone = document.importNode(
-    //   templateCategoryElement.content,
-    //   true,
-    // );
-    // const categoryElement = categoryClone.querySelector(".category");
-    // categoryElement.innerText = category.name;
+    // if (category) {
+    //   const categoryContainerElement =
+    //     document.querySelector("category-container");
+    //   const templateCategoryElement =
+    //     document.querySelector("#template-category");
+    //   const categoryClone = document.importNode(
+    //     templateCategoryElement.content,
+    //     true,
+    //   );
+    //   const categoryElement = categoryClone.querySelector(".category");
+    //   categoryElement.innerText = " > " + category.name;
 
-    // let categoryLoop = { ...category };
-    // while (categoryLoop.subCategory) {
-    //   const dividerElement = document.createElement("span");
-    //   dividerElement.innerText = " > ";
-    //   dividerElement.className = "category";
-    //   const subCategoryElement = document.createElement("span");
-    //   subCategoryElement.innerText = categoryLoop.subCategory.name;
-    //   subCategoryElement.className = "category";
-    //   categoryLoop = { ...category.subCategory };
+    //   let categoryLoop = { ...category };
+    //   while (categoryLoop) {
+    //     const dividerElement = document.createElement("span");
+    //     dividerElement.innerText = " > ";
+    //     dividerElement.className = "category";
+
+    //     const subCategoryElement = document.createElement("a");
+    //     subCategoryElement.innerText = categoryLoop.subCategory.name;
+    //     subCategoryElement.className = "category";
+    //     subCategoryElement.href = `/product-list?category=${categoryLoop._id}`;
+
+    //     categoryContainerElement.appendChild(dividerElement);
+    //     categoryContainerElement.appendChild(subCategoryElement);
+
+    //     categoryLoop = { ...category.subCategory };
+    //   }
     // }
 
     const templateProductElement = document.querySelector("#template-product");
