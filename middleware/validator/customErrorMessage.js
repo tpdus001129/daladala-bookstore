@@ -29,6 +29,8 @@ import {
   ORDER_COUNT_REQUIRED,
   ORDER_TOTAL_PRICE_REQUIRED,
   ORDER_TOTAL_PRICE_FORMAT,
+  ORDER_DELIVERY_STATE_REQUIRED,
+  ORDER_DELIVERY_STATE_INVALID,
 } from "../../config/errorMessagesConstants.js";
 
 const error = {
@@ -114,6 +116,10 @@ const error = {
     productsPrice: {
       "any.required": ORDER_TOTAL_PRICE_REQUIRED,
       "number.base": ORDER_TOTAL_PRICE_FORMAT,
+    },
+    deliveryState: {
+      "any.required": ORDER_DELIVERY_STATE_REQUIRED,
+      "any.only": ORDER_DELIVERY_STATE_INVALID,
     },
   },
 };

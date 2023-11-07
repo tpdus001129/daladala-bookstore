@@ -5,6 +5,19 @@ import { jwtAuthentication } from "../../middleware/jwtAuthentication.js";
 import { inputValidator, book } from "../../middleware/validator/index.js";
 import { isAuthority } from "../../middleware/isAuthority.js";
 import { AUTHORITY_ADMIN, AUTHORITY_SELLER } from "../../config/constants.js";
+import multer from "multer";
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/images/books/");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, uniqueSuffix + file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
 
 const router = express.Router();
 
@@ -14,6 +27,7 @@ router.post(
   "/",
   jwtAuthentication,
   isAuthority([AUTHORITY_ADMIN, AUTHORITY_SELLER]),
+  upload.single('image'),
   inputValidator(book.post),
   asyncHandler(bookController.create),
 );
