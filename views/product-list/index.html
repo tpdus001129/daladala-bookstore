@@ -1,6 +1,6 @@
 <!-- 상품 목록 페이지 -->
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,21 +10,43 @@
     <link rel="stylesheet" href="../common/common.css" />
     <script type="module" src="../common/header-component.js"></script>
     <script src="../common/footer-component.js"></script>
+    <script type="module" src="product-list.js"></script>
   </head>
 
   <body>
     <header-component></header-component>
 
-    <div class="product-box">
-      <!-- 카테고리부분 -->
-      <div class="current-category-bar">
-        <div class="second-category">국내</div>
-        <div class="third-category">> 경영 / 경제</div>
+    <main class="container">
+      <div class="wrapper">
+        <!-- 카테고리 -->
+        <div class="current-category-bar">
+          <template id="template-category">
+            <span class="category"></span>
+          </template>
+        </div>
+        <!-- 상품목록 -->
+        <div class="product-list" id="product-list">
+          <template id="template-product">
+            <div class="product-item">
+              <a class="product-link">
+                <div class="product-image-container">
+                  <img class="product-image" />
+                </div>
+                <div class="product-item-info">
+                  <div class="product-name"></div>
+                  <div class="product-author"></div>
+                  <div class="product-price"></div>
+                </div>
+              </a>
+              <div class="product-button-container">
+                <button class="add-cart-button">장바구니</button>
+                <button>바로구매</button>
+              </div>
+            </div>
+          </template>
+        </div>
       </div>
-
-      <div class="product-list" id="product-list"></div>
-    </div>
+    </main>
     <footer-component></footer-component>
-    <script type="module" src="index.js"></script>
   </body>
 </html>
