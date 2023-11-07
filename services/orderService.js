@@ -6,6 +6,8 @@ import { NotFoundError } from "../utils/errors.js";
 import {
   USER_NOT_FOUND,
   BOOK_NOT_FOUND,
+  ORDER_NOT_FOUND,
+  ORDER_DELIVERY_STATE_ERROR,
 } from "../config/errorMessagesConstants.js";
 
 const orderService = {
@@ -61,8 +63,29 @@ const orderService = {
   },
 
   async update(userId, orderId, orderData) {
-    console.log("Order Update", userId, orderId, orderData);
-    return true;
+    if (!Types.ObjectId.isValid(userId)) {
+      throw new NotFoundError(USER_NOT_FOUND);
+    }
+
+    if (!Types.ObjectId.isValid(orderId)) {
+      throw new NotFoundError(ORDER_NOT_FOUND);
+    }
+
+    const order = await Order.findOneAndUpdate(
+      {
+        _id: orderId,
+        user: userId,
+      },
+      {
+        deliveryState: orderData.deliveryState,
+      },
+    );
+
+    if (!order) {
+      throw new CustomError(ORDER_DELIVERY_STATE_ERROR);
+    }
+
+    return order;
   },
 };
 

@@ -1,13 +1,5 @@
 import orderService from "../services/orderService.js";
 
-function requestBodyToObject(body) {
-  return {
-    recipient: body.recipient,
-    books: body.books,
-    deliveryPrice: body.deliveryPrice,
-  };
-}
-
 const orderController = {
   async list(req, res) {
     const { userId } = req.params;
@@ -27,10 +19,9 @@ const orderController = {
 
   async update(req, res) {
     const { userId, orderId } = req.params;
-    const orderData = requestBodyToObject(req.body);
-    const order = await orderService.update(userId, orderId, orderData);
+    const order = await orderService.update(userId, orderId, req.body);
     if (order) {
-      res.status(200).send();
+      res.status(200).json(order);
     }
   },
 };

@@ -63,6 +63,7 @@ router.patch(
   "/:userId/orders/:orderId",
   jwtAuthentication,
   // TODO: 관리자, 판매자, 구매자만 요청가능하게 관련 미들웨어 추가
+  inputValidator(order.deliveryStateUpdate),
   asyncHandler(orderController.update),
 );
 

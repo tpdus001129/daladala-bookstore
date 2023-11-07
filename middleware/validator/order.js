@@ -3,6 +3,13 @@ import { error } from "./customErrorMessage.js";
 import {
   PHONE_NUMBER_REGEX,
 } from "../../utils/regex.js";
+import {
+  ORDER_CANCELED,
+  ORDER_COMPLETED,
+  ORDER_PREPARING_FOR_DELIVERY,
+  ORDER_IN_TRANSIT,
+  ORDER_DELIVERED,
+} from "../../config/constants.js";
 
 const order = {
   post: {
@@ -44,6 +51,23 @@ const order = {
       productsPrice: Joi.number()
         .required()
         .messages(error.orderErrorMessage.productsPrice),
+    }),
+  },
+
+  deliveryStateUpdate: {
+    body: Joi.object().keys({
+      deliveryState: Joi.string()
+        .required()
+        .valid(
+          ...[
+            ORDER_CANCELED,
+            ORDER_COMPLETED,
+            ORDER_PREPARING_FOR_DELIVERY,
+            ORDER_IN_TRANSIT,
+            ORDER_DELIVERED,
+          ],
+        )
+        .messages(error.orderErrorMessage.deliveryState),
     }),
   },
 };
