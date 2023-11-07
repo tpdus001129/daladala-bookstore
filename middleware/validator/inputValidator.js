@@ -28,6 +28,11 @@ const inputValidator = (schema) => (req, res, next) => {
       return next();
     }
 
+    if (req.file) {
+      req.body.image = req.file;
+      req.body.image.path = `/${req.body.image.path}`;
+    }
+
     const { error, value } = schema.body.validate(req.body, validationOptions);
 
     if (error) {

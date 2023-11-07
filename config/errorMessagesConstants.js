@@ -13,6 +13,7 @@ export const USER_ADDRESS_DETAIL_REQUIRED = "주소를 입력해주세요.";
 export const USER_ADDRESS_DETAIL2_REQUIRED = "상세주소를 입력해주세요.";
 
 // 도서 정보
+export const CATEGORY_NOT_FOUND = "카테고리 정보를 찾을 수 없습니다.";
 export const BOOK_NOT_FOUND = "도서 정보를 찾을 수 없습니다.";
 export const BOOK_CATEGORY_REQUIRED = "카테고리를 선택해주세요.";
 export const BOOK_ID_REQUIRED = "도서 정보를 입력해주세요.";

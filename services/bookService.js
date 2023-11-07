@@ -1,7 +1,10 @@
 import { Types } from "mongoose";
 import { Book } from "../models/index.js";
 import { NotFoundError } from "../utils/errors.js";
-import { BOOK_NOT_FOUND } from "../config/errorMessagesConstants.js";
+import {
+  BOOK_NOT_FOUND,
+  CATEGORY_NOT_FOUND,
+} from "../config/errorMessagesConstants.js";
 
 const bookService = {
   // TODO: 카테고리별(query parameter)로 카테고리별 목록 구현
@@ -25,8 +28,11 @@ const bookService = {
     return book;
   },
 
-  // TODO: 이미지 등록 구현
   async create(bookData) {
+    if (!Types.ObjectId.isValid(bookData.category)) {
+      throw new NotFoundError(CATEGORY_NOT_FOUND);
+    }
+
     await Book.create(bookData);
     return true;
   },

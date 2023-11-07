@@ -45,7 +45,7 @@ paths:
         - BearerAuth: []
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
               properties:
@@ -71,7 +71,7 @@ paths:
                   type: string
                   example: 2023-11-01
                 image:
-                  type: string
+                  type: file
                   example: https://example.com/image/image.png
                 price:
                   type: integer

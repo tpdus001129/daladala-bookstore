@@ -46,8 +46,38 @@ const BookSchema = new Schema(
       required: [true, BOOK_RELEASE_DATE_REQUIRED],
     },
     image: {
-      type: String,
-      required: [true, BOOK_IMAGE_REQUIRED],
+      fieldname: {
+        type: String,
+        required: [true, BOOK_IMAGE_REQUIRED],
+      },
+      originalname: {
+        type: String,
+        required: [true, BOOK_IMAGE_REQUIRED],
+      },
+      encoding: {
+        type: String,
+        required: [true, BOOK_IMAGE_REQUIRED],
+      },
+      mimetype: {
+        type: String,
+        required: [true, BOOK_IMAGE_REQUIRED],
+      },
+      destination: {
+        type: String,
+        required: [true, BOOK_IMAGE_REQUIRED],
+      },
+      filename: {
+        type: String,
+        required: [true, BOOK_IMAGE_REQUIRED],
+      },
+      path: {
+        type: String,
+        required: [true, BOOK_IMAGE_REQUIRED],
+      },
+      size: {
+        type: Number,
+        required: [true, BOOK_IMAGE_REQUIRED],
+      },
     },
     price: {
       type: Number,
