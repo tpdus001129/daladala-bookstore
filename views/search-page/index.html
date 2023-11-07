@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../common/reset.css" />
+    <link rel="stylesheet" href="../common/common.css" />
+    <link rel="stylesheet" href="../search-page/search-page.css" />
+    <script type="module" src="../common/header-component.js"></script>
+    <script src="../common/footer-component.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>SearchPage</title>
+  </head>
+
+  <body>
+    <header-component></header-component>
+    <div class="box">
+      <h1>주문 배송 조회</h1>
+      <div class="banner">
+        <h2>조회기간</h2>
+        <button type="button" class="btn" id="deleteButton1">
+          내 주문내역에서 삭제
+        </button>
+      </div>
+      <div class="ShoppingCartHead">
+        <section>
+          <table class="CartTable">
+            <tr class="Tr">
+              <th class="AllCheckBox">
+                <input type="checkbox" id="OrderCheckbox1" name="BookCheck" />
+              </th>
+              <th colspan="2" width="150">상품이미지</th>
+              <th width="200">상품 명</th>
+              <th width="150">가격</th>
+              <th width="150">수량</th>
+              <th width="150">삭제</th>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <table class="CartTable">
+            <tr class="UserData">
+              <td class="OrderCheckBox" width="50">
+                <input
+                  type="checkbox"
+                  id="OrderCheckbox2"
+                  name="OrderCheckBox"
+                />
+              </td>
+              <td width="150">
+                <img id="BookImage" src="" alt="상품 이미지" />
+              </td>
+              <td id="BookName" width="200">어쩌구저쩌구책</td>
+              <td id="BookMoney" width="150">30.000 원</td>
+              <td class="quantity" width="150">
+                <button class="minus">-</button>
+                <input type="text" readonly />
+                <button class="plus">+</button>
+              </td>
+              <td width="150">
+                <button type="button" class="btn" id="deleteButton2">
+                  삭제
+                </button>
+              </td>
+            </tr>
+          </table>
+        </section>
+      </div>
+    </div>
+    <footer-component></footer-component>
+  </body>
+</html>

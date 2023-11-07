@@ -1,0 +1,44 @@
+<!-- 로그인 페이지 -->
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="../common/reset.css" />
+    <link rel="stylesheet" href="../common/common.css" />
+    <script type="module" src="../common/header-component.js"></script>
+    <script src="../common/footer-component.js"></script>
+
+    <link rel="stylesheet" href="./login.css" />
+    <script type="module" defer src="./login.js"></script>
+  </head>
+
+  <body>
+    <header-component></header-component>
+    <main>
+      <div class="content-wrapper">
+        <h2>안녕하세요!</h2>
+
+        <div class="login-input">
+          <input
+            class="email-input"
+            type="email"
+            placeholder="이메일을 입력해주세요"
+          />
+          <input
+            class="password-input"
+            type="password"
+            placeholder="비밀번호를 입력해주세요"
+          />
+        </div>
+        <p class="login-error-message"></p>
+
+        <div class="login-btn-box">
+          <button class="login-btn">로그인</button>
+        </div>
+      </div>
+    </main>
+    <footer-component></footer-component>
+  </body>
+</html>

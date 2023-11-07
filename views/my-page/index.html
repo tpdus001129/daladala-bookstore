@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../common/form.css" />
+    <link rel="stylesheet" href="../common/common.css" />
+    <link rel="stylesheet" href="../common/reset.css" />
+    <link rel="stylesheet" href="my-page.css" />
+    <script type="module" src="../common/header-component.js"></script>
+    <script src="../common/sidebar-container.js"></script>
+    <script src="../common/footer-component.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  </head>
+  <body>
+    <header-component></header-component>
+    <sidebar-container>
+      <div class="form-container">
+        <h1 class="form-title">회원 정보 수정</h1>
+        <form action="" name="userForm">
+          <div class="form-group">
+            <label class="form-label" for="email">이메일</label>
+            <input class="form-input" type="email" id="email" disabled />
+          </div>
+
+          <div class="form-group input-margin">
+            <label class="form-label" for="name">이름</label>
+            <input
+              class="form-input"
+              type="text"
+              id="name"
+              name="name"
+              required
+            />
+          </div>
+
+          <div class="form-group input-margin">
+            <label class="form-label" for="tel">전화번호</label>
+            <input class="form-input" type="tel" id="tel" name="tel" required />
+          </div>
+
+          <div class="form-group input-margin">
+            <label class="form-label" for="주소">주소</label>
+            <input
+              type="text"
+              class="form-input"
+              id="postNumber"
+              name="postNumber"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-input" name="address1" />
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-input" name="address2" />
+          </div>
+
+          <button class="form-button" type="submit">적용</button>
+        </form>
+      </div>
+
+      <button class="unregisterBtn">
+        <a href="/user-delete">회원 탈퇴</a>
+      </button>
+    </sidebar-container>
+    <footer-component></footer-component>
+    <script src="./my-page.js"></script>
+    <script>
+      const postNumber = document.getElementById("postNumber");
+
+      postNumber.addEventListener("click", () => {
+        new daum.Postcode({
+          oncomplete: function (data) {
+            let fullAddress = data.roadAddress;
+            let building = "";
+
+            if (data.userSelectedType == "R") {
+              if (data.bname !== "" || data.buildingName !== "") {
+                fullAddress += ` (${data.bname} ${data.buildingName})`;
+              }
+              fullAddress += building !== "" ? " (" + building + ")" : "";
+            } else {
+              fullAddress = data.jibunAddress;
+            }
+            document.userForm.postNumber.value = data.zonecode;
+            document.userForm.address1.value = fullAddress;
+            document.userForm.address2.focus();
+          },
+        }).open();
+      });
+    </script>
+  </body>
+</html>

@@ -1,11 +1,43 @@
-const express = require("express");
-const app = express();
-const port = 3000;
+import express from "express";
+import swaggerUi from "swagger-ui-express";
+import YAML from "yamljs";
+import { fileURLToPath } from "url";
+import path from "path";
+import "dotenv/config";
+import mongoose from "mongoose";
+import router from "./router/index.js";
+import cookieParser from "cookie-parser";
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+const { PORT, MONGODB_URI } = process.env;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const swaggerSpec = YAML.load(path.join(__dirname, "./swagger.yaml"));
+
+const app = express();
+
+mongoose.connect(MONGODB_URI);
+
+mongoose.connection.on("connected", () => {
+  console.log("Successfully connected to MongoDB");
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+app.use(express.json());
+app.use(cookieParser());
+
+app.use(express.static("views"));
+app.use("/public", express.static("public"));
+
+app.use("/api", router);
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+app.use(function (err, req, res, next) {
+  res.status(err.statusCode).json(err);
+  next();
+});
+
+app.listen(PORT, () => {
+  console.log(`Example app listening at http://localhost:${PORT}`);
 });

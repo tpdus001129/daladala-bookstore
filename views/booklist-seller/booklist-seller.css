@@ -1,0 +1,63 @@
+.topTitle {
+  font-size: 25px;
+  margin: 30px;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+.buttonBox {
+  display: flex;
+  justify-content: flex-end;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.listAddBtn,
+.deleteAllBtn,
+.modifyBtn,
+.deleteBtn {
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+.deleteAllBtn {
+  margin-left: 20px;
+}
+table {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  width: 100%;
+  margin: 30px auto;
+}
+tr,
+td {
+  vertical-align: middle;
+  padding: 10px 20px;
+}
+.bookImg {
+  background-color: black;
+  width: 20%;
+  height: 200px;
+}
+.manageBox {
+  width: 15%;
+  margin: 0 auto;
+}
+.modifyBtn,
+.deleteBtn {
+  margin: 10px auto;
+}
+.listAddBtn a,
+.modifyBtn a {
+  display: block;
+  color: black;
+  text-decoration: none;
+}
+.title {
+  font-weight: bold;
+}
