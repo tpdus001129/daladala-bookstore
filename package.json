@@ -36,7 +36,7 @@
   },
   "lint-staged": {
     "*.{html, css, js}": "prettier --cache --write",
-    "*.js": "eslint --cache --report-unused-disable-directives --max-warnings 0"
+    "*.js": "eslint --cache --max-warnings 0"
   },
   "type": "module"
 }
