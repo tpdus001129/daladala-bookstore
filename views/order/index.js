@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (confirmation) {
       alert("감사합니다.");
+      window.location.href = "../index.html";
     } else {
       alert("취소되었습니다.");
     }
