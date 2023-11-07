@@ -10,8 +10,35 @@ import {
 
 const orderService = {
   async list(userId) {
-    console.log("Order List", userId);
-    return [];
+    if (!Types.ObjectId.isValid(userId)) {
+      throw new NotFoundError(USER_NOT_FOUND);
+    }
+
+    const orders = await Order.find({ user: userId })
+      .populate({
+        path: "user",
+        select: "_id name email authority phoneNumber address",
+      })
+      .populate({
+        path: "books.book",
+        populate: [
+          {
+            path: "seller",
+            select: "_id name email authority",
+          },
+          {
+            path: "category",
+            populate: [
+              {
+                path: "parent",
+                select: "_id name parent",
+              },
+            ],
+          },
+        ],
+      })
+      .exec();
+    return orders;
   },
 
   async create(userId, orderData) {
