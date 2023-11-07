@@ -11,7 +11,25 @@ const bookService = {
   // TODO: 페이지네이션 구현하기
   // TODO: 정렬(최신순, 조회수 등) 구현, 나중에 시간 남으면?..
   async list() {
-    const books = await Book.find({ deletedAt: { $exists: false } }).sort({ createdAt: -1 }).exec();
+    const books = await Book.find({ deletedAt: { $exists: false } })
+      .populate([
+        {
+          path: "category",
+          populate: [
+            {
+              path: "parent",
+              select: "_id name parent",
+            },
+          ],
+          select: "_id name",
+        },
+        {
+          path: "seller",
+          select: "_id name",
+        },
+      ])
+      .sort({ createdAt: -1 })
+      .exec();
     return books;
   },
 
