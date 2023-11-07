@@ -1,59 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>장바구니</title>
     <link rel="stylesheet" href="../common/reset.css" />
     <link rel="stylesheet" href="../common/common.css" />
     <script type="module" src="../common/header-component.js"></script>
     <script src="../common/footer-component.js"></script>
-
-    <title>ShoppingCart</title>
-    <style>
-      h1 {
-        font-size: 20px;
-        margin: 20px 0px;
-      }
-
-      .container {
-        display: flex;
-        justify-content: center;
-      }
-
-      .wrapper {
-        max-width: var(--max-width);
-        width: 100%;
-      }
-
-      .flex-space-between {
-        display: flex;
-        justify-content: space-between;
-      }
-
-      table {
-        width: 100%;
-      }
-
-      td {
-        text-align: center;
-        vertical-align: middle;
-      }
-
-      td img {
-        width: 80px;
-      }
-
-      .payments-item {
-        display: flex;
-        justify-content: space-between;
-      }
-
-      aside {
-        border: 1px solid black;
-        width: 200px;
-      }
-    </style>
-    <script type="module" src="index.js"></script>
+    <link rel="stylesheet" href="cart.css" />
+    <script type="module" src="cart.js"></script>
   </head>
 
   <body>
@@ -63,26 +19,54 @@
         <div class="wrapper">
           <h1>장바구니</h1>
 
-          <button id="clear-cart">장바구니 비우기</button>
-          <div class="flex-space-between">
-            <table>
-              <thead>
-                <tr>
-                  <th>상품이미지</th>
-                  <th>상품명</th>
-                  <th>상품가격</th>
-                  <th>수량</th>
-                  <th>총가격</th>
-                  <th>삭제</th>
-                </tr>
-              </thead>
-              <tbody id="cart-body">
-                <tr>
-                  <td span="6">장바구니 가져오는 중</td>
-                </tr>
-              </tbody>
-            </table>
-            <aside>
+          <div class="table-bill-container">
+            <div class="table-container">
+              <div class="cart-options">
+                <button id="clear-cart">장바구니 비우기</button>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>상품이미지</th>
+                    <th>상품명</th>
+                    <th>상품가격</th>
+                    <th>수량</th>
+                    <th>총가격</th>
+                    <th>삭제</th>
+                  </tr>
+                </thead>
+                <tbody id="cart-body">
+                  <template id="template-cart">
+                    <tr>
+                      <td>
+                        <!-- 상품이미지 -->
+                        <img />
+                      </td>
+                      <td>
+                        <!-- 상품명 -->
+                      </td>
+                      <td>
+                        <!-- 상품가격 -->
+                      </td>
+                      <td>
+                        <div class="cart-product-quantity-container">
+                          <button>-</button>
+                          <span>
+                            <!-- 수량 -->
+                          </span>
+                          <button>+</button>
+                        </div>
+                      </td>
+                      <td>
+                        <!-- 총가격 -->
+                      </td>
+                      <td><button class="cart-delete-button">X</button></td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </div>
+            <aside class="bill">
               <ul>
                 <li class="payments-item">
                   <p>상품금액</p>
