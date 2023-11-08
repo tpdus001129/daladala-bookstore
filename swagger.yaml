@@ -614,6 +614,29 @@ paths:
         "500":
           description: 서버 에러
 
+  /users/{userId}/books:
+    get:
+      tags:
+        - users
+      summary: 유저가 등록한 상품(도서) 목록
+      description: 유저가 등록한 상품(도서) 목록 API
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          description: "유저 ID"
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 성공
+        "400":
+          description: 잘못된 요청
+        "500":
+          description: 서버 에러
+
   /categories:
     get:
       tags:
