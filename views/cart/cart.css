@@ -38,6 +38,7 @@ button {
 
 .table-container table {
   width: 100%;
+  table-layout: fixed;
 }
 
 .table-container table td {
