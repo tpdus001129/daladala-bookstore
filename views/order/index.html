@@ -1,182 +1,202 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../common/reset.css" />
     <link rel="stylesheet" href="../common/common.css" />
-    <link rel="stylesheet" href="../checkout/order.css" />
+    <link rel="stylesheet" href="../order/index.css" />
+
     <script type="module" src="../common/header-component.js"></script>
     <script src="../common/footer-component.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
-      rel="stylesheet"
-    />
     <title>order</title>
   </head>
 
   <body>
     <header-component></header-component>
-    <div class="user-delivery-order-page">
-      <div class="user-delivery-order">
-        <div class="ShoppingCartHead">
-          <section>
-            <table class="CartTable">
-              <tr class="Tr">
-                <th class="AllCheckBox" width="50">
-                  <input type="checkbox" id="OrderCheckbox" name="BookCheck" />
-                </th>
-                <th colspan="2" width="150">상품이미지</th>
-                <th width="200">상품 명</th>
-                <th width="150">가격</th>
-                <th width="150">수량</th>
-                <th width="150">삭제</th>
-              </tr>
+    <main>
+      <div class="container">
+        <div class="wrapper">
+          <div class="delivery-order">
+            <table>
+              <thead>
+                <tr>
+                  <th>상품이미지</th>
+                  <th>상품명</th>
+                  <th>상품가격</th>
+                  <th>수량</th>
+                  <th>총가격</th>
+                </tr>
+              </thead>
+              <tbody id="cart-body">
+                <tr>
+                  <!-- 장바구니 가져오기 -->
+                  <td colspan="5"></td>
+                </tr>
+              </tbody>
             </table>
-          </section>
-
-          <section>
-            <table class="CartTable">
-              <tr class="UserData">
-                <td class="OrderCheckBox" width="50">
+            <div class="delivery-address">
+              <ul class="delivery-address-detail">
+                <p>배송 정보</p>
+                <input id="name" type="text" name="name" placeholder="수령인" />
+                <input
+                  id="phoneNumber"
+                  type="text"
+                  name="phoneNumber"
+                  placeholder="전화번호"
+                />
+                <input
+                  id="zipCode"
+                  type="text"
+                  name="zipCode"
+                  placeholder="우편번호"
+                />
+                <button id="openAddressPopupButton">주소 검색</button>
+                <input
+                  id="detail1"
+                  type="text"
+                  name="detail"
+                  placeholder="주소"
+                />
+                <input
+                  id="detail2"
+                  type="text"
+                  name="UserAddressDetail"
+                  placeholder="상세주소"
+                />
+              </ul>
+              <ul class="delivery-address-memo">
+                <p>배송 메모</p>
+                <select id="deliverySelect">
+                  <option value="">배송메모를 선택해 주세요.</option>
+                  <option value="배송 전에 미리 연락 바랍니다.">
+                    배송 전에 미리 연락 바랍니다.
+                  </option>
+                  <option value="부재시 경비실에 맡겨주세요.">
+                    부재시 경비실에 맡겨주세요.
+                  </option>
+                  <option value="부재시 전화나 문자를 남겨주세요.">
+                    부재시 전화나 문자를 남겨주세요.
+                  </option>
+                  <option value="custom">직접입력</option>
+                </select>
+                <div id="custom" style="display: none">
                   <input
-                    type="checkbox"
-                    id="OrderCheckbox"
-                    name="OrderCheckBox"
+                    type="text"
+                    id="customInput"
+                    placeholder="입력해주세요."
                   />
-                </td>
-                <td width="150">
-                  <img id="BookImage" src="" alt="상품 이미지" />
-                </td>
-                <td id="BookName" width="200">어쩌구저쩌구책</td>
-                <td id="BookMoney" width="150">30.000 원</td>
-                <td class="quantity" width="150">
-                  <button class="minus">-</button>
-                  <input type="text" readonly />
-                  <button class="plus">+</button>
-                </td>
-                <td width="150">
-                  <button type="button" class="btn" id="deleteButton">
-                    삭제
-                  </button>
-                </td>
-              </tr>
-            </table>
-          </section>
-        </div>
-
-        <div class="delivery-address">
-          <ul class="delivery-address-detail">
-            <p>배송 정보</p>
-            <input
-              class="UserName"
-              type="text"
-              name="UserName"
-              placeholder="수령인"
-            />
-            <input
-              class="UserNumber"
-              type="text"
-              name="UserNumber"
-              placeholder="전화번호"
-            />
-            <input
-              class="UserPost"
-              type="text"
-              name="UserPost"
-              placeholder="우편번호"
-            />
-            <input
-              class="UserAddress"
-              type="text"
-              name="UserAddress"
-              placeholder="주소"
-            />
-            <input
-              class="UserDetail"
-              type="text"
-              name="UserAddressDetail"
-              placeholder="상세주소"
-            />
-          </ul>
-          <ul class="delivery-address-memo">
-            <p>배송 메모</p>
-            <select
-              class="delivmemo"
-              name="delivmemo"
-              title="memo"
-              data-group="shipping"
-            >
-              <option value="">배송메모를 선택해 주세요.</option>
-              <option value="배송 전에 미리 연락 바랍니다.">
-                배송 전에 미리 연락 바랍니다.
-              </option>
-              <option value="부재시 경비실에 맡겨주세요.">
-                부재시 경비실에 맡겨주세요.
-              </option>
-              <option value="부재시 전화나 문자를 남겨주세요.">
-                부재시 전화나 문자를 남겨주세요.
-              </option>
-              <option value="custom">직접입력</option>
-            </select>
-          </ul>
-        </div>
-
-        <div class="pay">
-          <a href="" class="Apay"> <span>무통장입금</span> </a>
+                </div>
+              </ul>
+            </div>
+            <div class="delivery-pay">
+              <input
+                type="radio"
+                name="pay-type"
+                value="bank-pay"
+                id="bankPay"
+              />
+              <label for="bankPay">무통장입금</label>
+              <div class="bank-pay-details" style="display: none">
+                <input
+                  class="pay-name"
+                  type="text"
+                  name="pay-name"
+                  placeholder="입금자명(주문자명)"
+                />
+                <select>
+                  <option value="custom">(농협)808-6666-7777-33 아무개</option>
+                </select>
+                <p class="pay-text">
+                  주문 후 48시간 이내 미입금시 자동 취소됩니다.
+                </p>
+              </div>
+              <input type="radio" name="pay-type" value="card" id="card" />
+              <label for="card">신용카드</label>
+              <input
+                type="radio"
+                name="pay-type"
+                value="payment-method-1"
+                id="kakaopay"
+              />
+              <label for="kakaopay">카카오페이</label>
+              <input
+                type="radio"
+                name="pay-type"
+                value="payment-method-2"
+                id="naverpay"
+              />
+              <label for="naverpay">네이버페이</label>
+            </div>
+          </div>
+          <div class="payments">
+            <aside>
+              <ul>
+                <li class="payments-item">
+                  <p>상품금액</p>
+                  <p><span id="book-price"></span><span>원</span></p>
+                </li>
+                <li class="payments-item">
+                  <p>배송비</p>
+                  <p><span id="delivery-fee"></span><span>원</span></p>
+                </li>
+                <li class="payments-item">
+                  <p>결제 예정 금액</p>
+                  <p><span id="total-price"></span><span>원</span></p>
+                </li>
+              </ul>
+              <button id="payButton">주문하기</button>
+            </aside>
+          </div>
         </div>
       </div>
-      <aside>
-        <div class="total">
-          <div class="total-box">
-            <ul class="info">
-              <il class="item-price">
-                <span class="label">상품금액</span>
-                <div class="label-box">
-                  <span class="price">2000</span>
-                  <span class="unit">원</span>
-                </div>
-              </il>
-              <il class="delivery-price">
-                <span class="label">배송비</span>
-                <div class="label-box">
-                  <span class="delivery">+ 3000</span>
-                  <span class="unit">원</span>
-                </div>
-              </il>
-              <il class="discount-price">
-                <span class="label">할인 금액</span>
-                <div class="label-box">
-                  <span class="discount">- 1000</span>
-                  <span class="unit">원</span>
-                </div>
-              </il>
-            </ul>
-            <ul class="infoall">
-              <il class="final-price">
-                <p class="label">총 금액</p>
-                <div class="label-box">
-                  <span class="final">4000</span>
-                  <p class="unit">원</p>
-                </div>
-              </il>
-              <il class="points-price">
-                <p class="label">적립금액</p>
-                <div class="label-box">
-                  <span class="points">+ 50</span>
-                  <p class="unit">원</p>
-                </div>
-              </il>
-            </ul>
-          </div>
-          <a href="../index.html">
-            <button type="button" class="btn" id="orderButton">결제하기</button>
-          </a>
-        </div>
-      </aside>
-    </div>
+    </main>
     <footer-component></footer-component>
+    <script src="index.js"></script>
+    <!-- 주소 api js 파일에 넣으니 오류가 떠서 코드 이동 -->
+    <script>
+      const openAddressButton = document.getElementById(
+        "openAddressPopupButton",
+      );
+      openAddressButton.addEventListener("click", openAddressPopup);
+
+      function openAddressPopup() {
+        new daum.Postcode({
+          oncomplete: function (data) {
+            var addr = "";
+            var extraAddr = "";
+
+            if (data.userSelectedType === "R") {
+              addr = data.roadAddress;
+            } else {
+              addr = data.jibunAddress;
+            }
+
+            if (data.userSelectedType === "R") {
+              if (data.bname !== "" && /[동|로|가]$/g.test(data.bname)) {
+                extraAddr += data.bname;
+              }
+              if (data.buildingName !== "" && data.apartment === "Y") {
+                extraAddr +=
+                  extraAddr !== ""
+                    ? ", " + data.buildingName
+                    : data.buildingName;
+              }
+              if (extraAddr !== "") {
+                extraAddr = " (" + extraAddr + ")";
+              }
+              document.getElementById("zipCode").value = data.zonecode;
+              document.getElementById("detail1").value = addr;
+              document.getElementById("detail2").focus();
+            } else {
+              document.getElementById("zipCode").value = "";
+              document.getElementById("detail1").value = "";
+            }
+          },
+        }).open();
+      }
+    </script>
   </body>
 </html>
