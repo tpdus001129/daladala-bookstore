@@ -1,3 +1,5 @@
+import { addCartItem, initIndexedDB } from "../indexedDB.js";
+
 const productImg = document.querySelector("img");
 
 const productName = document.querySelector(".product-name");
@@ -21,6 +23,7 @@ const bookId = "654a254ab48028e071e58cf8";
 
 async function fetchData() {
   try {
+    await initIndexedDB();
     const res = await fetch(`/api/v1/books/${bookId}`);
     if (res.status === 200) {
       const data = await res.json();
@@ -85,9 +88,8 @@ function updatePrice() {
 
 // 장바구니
 addBtn.addEventListener("click", function () {
-  if (confirm("장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?")) {
-    location.href = "/cart";
-  }
+  const newQuantity = Number(resultElement.innerText)
+  addCartItem(bookId, newQuantity);
 });
 // 바로구매
 buyBtn.addEventListener("click", function () {});
