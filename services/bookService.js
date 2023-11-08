@@ -100,7 +100,24 @@ const bookService = {
     const book = await Book.findOne({
       _id,
       deletedAt: { $exists: false },
-    }).exec();
+    })
+      .populate([
+        {
+          path: "category",
+          populate: [
+            {
+              path: "parent",
+              select: "_id name parent",
+            },
+          ],
+          select: "_id name",
+        },
+        {
+          path: "seller",
+          select: "_id name",
+        },
+      ])
+      .exec();
 
     return book;
   },
