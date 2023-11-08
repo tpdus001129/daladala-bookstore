@@ -10,7 +10,7 @@
     <script src="../common/footer-component.js"></script>
 
     <link rel="stylesheet" href="./product-detail.css" />
-    <script defer type="module" src="./product-detail.js"></script>
+    <script defer src="./product-detail.js"></script>
   </head>
 
   <body>
@@ -29,55 +29,30 @@
           <div class="product-info-box">
             <div class="product-image">
               <figure>
-                <img src="#" />
+                <img />
               </figure>
             </div>
 
             <div class="product-detial-info-01">
               <div class="product-detail-info-book">
-                <h2 class="product-name">책 이름</h2>
-                <span class="product-author">저자 이름</span>
-                <span class="product-company">출판사</span>
-                <span class="product-date">출간일</span>
+                <h2 class="product-name"></h2>
+                <span class="product-author"></span>
+                <span class="product-company"></span>
+                <span class="product-date">(출간일)</span>
               </div>
               <hr />
               <div class="product-detail-info-content">
-                <p class="product-content">
-                  “눈에 잡히고 숫자로 세어지는 것 말고 그것보다 더 귀하고 쉽게
-                  변하지 않는 가치를 추구하면 좋겠다. 멋있게 살자. 부끄럽지
-                  않게, 여유 있게. 그렇게 우리 좀 멋있게 살자.” 여러분은 어떤
-                  사람이고 싶은가요? 바라는 삶이, 꿈꾸는 인생이 있나요? 과연
-                  멋있는 삶이란 어떤 것일는지, 현녕 작가의 책 <멋있게 좀 살자
-                  우리>를 펼치기에 앞서 생각해 봅니다. 우리는 매일 누군가를
-                  만나며 살아갑니다. 퇴근 후 친구를 만나 하루의 회포를 풀기도,
-                  새로운 사람들과 어색한 만남을 갖기도 합니다. 어떤 날에는
-                  조용한 자리에 앉아 어떤 순간을 곱씹기도 하겠지요. 이 책은 현녕
-                  작가가 만난 사람들과 내면에서 피어난 생각, 그녀의 고민과
-                  다짐이 담겨있습니다. 무엇보다 현녕 작가가 무용담을 들려주듯 해
-                  새들이 지저귀는 숲길을 산책하는 기분이기도 하고, 초등학생 시절
-                  단짝인 친구와 나누는 담소처럼 느껴지기도 합니다. 책의 시작부터
-                  끝까지 현녕 작가는 단단하고도 다정한 목소리로 말합니다. 아마
-                  우리는 이 책을 덮으며 진짜 멋있는 삶을 알 것 같다고 생각하게
-                  될 것입니다. "그래, 더 열심히 살자. 더 많이 사랑하고 아낌없이
-                  나누고, 주변을 돌보자. 누구도 함께 가줄 수 없는 그 길을 떠날
-                  때 적어도 후회는 말아야지. 상상을 한다. 죽음의 문턱에서 나는
-                  생애 더 못 가진 것을 후회할까, 더 못 나누어서 후회할까.
-                  사랑하지 못 했던 걸 후회할까, 사랑 받지 못 했던 걸 후회할까.
-                  용서하지 못 했던 걸 후회할까, 복수하지 못 했던 걸 후회할까.
-                  거대한 자연의 섭리 앞에 다시 본래의 나로 돌아간다. 생사의
-                  종잇장 같은 그 얇은 갈림길 앞에 나는 대범해질 수 있다. 용기와
-                  사랑으로 살 수 있게 한다."
-                </p>
+                <p class="product-content"></p>
               </div>
 
               <div class="product-detail-info-delivery">
                 <div class="product-detail-info-delivery-01">
                   <div>배송안내</div>
-                  <div id="right" class="product-delivery">무료</div>
+                  <div id="right" class="product-delivery">(무료)</div>
                 </div>
                 <div class="product-detail-info-delivery-02">
-                  <div>현재재고</div>
-                  <div id="right" class="product-num">000</div>
+                  <div>현재 재고</div>
+                  <div id="right" class="product-num"></div>
                 </div>
               </div>
               <hr />
@@ -85,20 +60,20 @@
                 <div>
                   <div>구매 수량</div>
                   <div id="right-count">
-                    <button onclick="count('plus')">+</button>
-                    <div id="result">0</div>
-                    <button onclick="count('minus')">-</button>
+                    <button class="minus-btn">-</button>
+                    <div id="result">1</div>
+                    <button class="plus-btn">+</button>
                   </div>
                 </div>
 
                 <div>
                   <div>적립</div>
-                  <div id="right" class="product-point"></div>
+                  <div id="right" class="product-point">(--p)</div>
                 </div>
 
                 <div>
                   <div>구매 금액</div>
-                  <div id="right" class="product-price">15,000</div>
+                  <div id="right" class="product-price"></div>
                 </div>
               </div>
 
