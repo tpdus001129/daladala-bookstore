@@ -6,8 +6,6 @@
     <title>장바구니</title>
     <link rel="stylesheet" href="../common/reset.css" />
     <link rel="stylesheet" href="../common/common.css" />
-    <link rel="stylesheet" href="../cart/index.css" />
-    <script src="../common/header-component.js"></script>
     <script type="module" src="../common/header-component.js"></script>
     <script src="../common/footer-component.js"></script>
     <link rel="stylesheet" href="cart.css" />
@@ -29,6 +27,10 @@
               <table>
                 <thead>
                   <tr>
+                    <th>
+                      <!-- <input type="checkbox" id="check-all" /> -->
+                      선택
+                    </th>
                     <th>상품이미지</th>
                     <th>상품명</th>
                     <th>상품가격</th>
@@ -38,8 +40,9 @@
                   </tr>
                 </thead>
                 <tbody id="cart-body">
-                  <template id="template-cart">
+                  <template id="cart-template">
                     <tr>
+                      <td><input type="checkbox" /></td>
                       <td>
                         <!-- 상품이미지 -->
                         <img />
@@ -59,7 +62,7 @@
                           <button>+</button>
                         </div>
                       </td>
-                      <td>
+                      <td class="products-price">
                         <!-- 총가격 -->
                       </td>
                       <td><button class="cart-delete-button">X</button></td>
@@ -72,15 +75,15 @@
               <ul>
                 <li class="payments-item">
                   <p>상품금액</p>
-                  <p><span id="book-price"></span><span>원</span></p>
+                  <p><span id="products-price">0</span><span>원</span></p>
                 </li>
                 <li class="payments-item">
                   <p>배송비</p>
-                  <p><span id="delivery-fee"></span><span>원</span></p>
+                  <p><span id="delivery-fee">0</span><span>원</span></p>
                 </li>
                 <li class="payments-item">
                   <p>결제 예정 금액</p>
-                  <p><span id="total-price"></span><span>원</span></p>
+                  <p><span id="total-price">0</span><span>원</span></p>
                 </li>
               </ul>
               <button>주문하기</button>
