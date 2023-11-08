@@ -7,15 +7,10 @@ const { ACCESS_TOKEN_SECRET } = process.env;
 
 const jwtAuthentication = (req, res, next) => {
   try {
-    const auth = req.headers["authorization"];
-    if (!auth) {
-      throw new AuthError(UNAUTHORIZED_ERROR);
-    }
-
-    const accessToken = auth.split(" ")[1];
+    const accessToken = req.cookies.accessToken;
     jwt.verify(accessToken, ACCESS_TOKEN_SECRET, (error, decoded) => {
       if (error) {
-        throw new AuthError(error.message);
+        throw new AuthError(UNAUTHORIZED_ERROR);
       }
       req.user = decoded;
       next();
