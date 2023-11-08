@@ -68,8 +68,7 @@ h2 {
 .contain-inner-02,
 .contain-inner-03 {
   text-align: center;
-  display: flex;
-  gap: 1000px;
+  gap: 20px !important;
 }
 .price{
   color: var(--point-color);
