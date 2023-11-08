@@ -19,35 +19,41 @@
 
       <div class="container">
         <div class="buttonBox">
-          <button class="listAddBtn">
-            <a href="../bookmodify-seller/index.html">등록</a>
-          </button>
           <button class="deleteAllBtn">전체삭제</button>
         </div>
 
-        <table>
-          <tr>
-            <td class="bookImg" rowspan="4"></td>
-            <td class="category" colspan="3">국내도서 / 소설</td>
-            <td class="manageBox" rowspan="4">
-              <button class="modifyBtn">
-                <a href="../bookmodify-seller/index.html">수정</a>
-              </button>
-              <button class="deleteBtn">삭제</button>
-            </td>
-          </tr>
-          <tr>
-            <td class="title" colspan="3">짜라투스트라는 이렇게 말했다</td>
-          </tr>
-          <tr>
-            <td class="price">가격</td>
-            <td class="writer">저자</td>
-            <td class="publisher">출판</td>
-          </tr>
-          <tr>
-            <td class="quantity" colspan="3">재고 10개</td>
-          </tr>
-        </table>
+        <div class="contain-inner">
+          <div class="contain-inner-01">
+            <span class="category">국내 / 소설</span>
+            <div class="bookImg">
+              <img />
+            </div>
+          </div>
+
+          <div class="contain-inner-02">
+            <h2 class="title">짜라짜라짜</h2>
+            <span class="price">15,000</span>
+            <span class="quantity">현재 재고 5</span>
+          </div>
+
+          <div class="contain-inner-03">
+            <span class="writer">지은이</span>
+            <span class="publisher">출판사</span>
+          </div>
+
+          <div class="contain-inner-04">
+            <button class="modifyBtn">
+              <a href="../bookmodify-seller/index.html">수정</a>
+            </button>
+            <button class="deleteBtn">삭제</button>
+          </div>
+        </div>
+
+        <div class="buttonBox">
+          <button class="listAddBtn">
+            <a href="../bookmodify-seller/index.html">등록</a>
+          </button>
+        </div>
       </div>
     </sidebar-container>
     <footer-component></footer-component>
