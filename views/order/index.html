@@ -92,8 +92,6 @@
               </ul>
             </div>
             <div class="delivery-pay">
-              <input type="radio" name="pay-type" value="card" id="card" />
-              <label for="card">다른결제방법</label>
               <input
                 type="radio"
                 name="pay-type"
@@ -115,6 +113,22 @@
                   주문 후 48시간 이내 미입금시 자동 취소됩니다.
                 </p>
               </div>
+              <input type="radio" name="pay-type" value="card" id="card" />
+              <label for="card">신용카드</label>
+              <input
+                type="radio"
+                name="pay-type"
+                value="payment-method-1"
+                id="kakaopay"
+              />
+              <label for="kakaopay">카카오페이</label>
+              <input
+                type="radio"
+                name="pay-type"
+                value="payment-method-2"
+                id="naverpay"
+              />
+              <label for="naverpay">네이버페이</label>
             </div>
           </div>
           <div class="payments">

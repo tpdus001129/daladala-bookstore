@@ -2,7 +2,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const payButton = document.getElementById("payButton");
   const bankPayRadioButton = document.getElementById("bankPay");
   const cardRadioButton = document.getElementById("card")
+  const kakaopayRadioButton = document.getElementById("kakaopay");
+  const naverpayRadioButton = document.getElementById("naverpay");
   const bankPayDetails = document.querySelector(".bank-pay-details");
+
+
 
 
   /** 결제 알림창 */
@@ -28,6 +32,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     cardRadioButton.addEventListener("change", function () {
         if (cardRadioButton.checked) {
+          bankPayDetails.style.display = "none";
+        }
+      });
+
+      kakaopayRadioButton.addEventListener("change", function () {
+        if (kakaopayRadioButton.checked) {
+          bankPayDetails.style.display = "none";
+        }
+      });
+
+      naverpayRadioButton.addEventListener("change", function () {
+        if (naverpayRadioButton.checked) {
           bankPayDetails.style.display = "none";
         }
       });
