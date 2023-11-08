@@ -1,5 +1,6 @@
 import apis from "../apis.js";
 import { addCartItem, initIndexedDB } from "../indexedDB.js";
+import path from "../path.js";
 
 /** 현재 브라우저의 template 태그 지원 여부 확인 */
 if ("content" in document.createElement("template")) {
@@ -62,10 +63,15 @@ if ("content" in document.createElement("template")) {
       const priceElement = productClone.querySelector(".product-price");
       priceElement.innerText = price.toLocaleString("ko-KR") + "원";
 
-      const cartButtonElement = productClone.querySelector(".add-cart-button");
+      const cartButtonElement = productClone.querySelector("#add-cart-button");
+      const buyButtonElement = productClone.querySelector("#direct-buy-button");
 
       cartButtonElement.addEventListener("click", () => {
         addCartItem(_id);
+      });
+
+      buyButtonElement.addEventListener("click", () => {
+        location.href = `${path.ORDER_PAYMENT}?id=${_id}&quantity=1`;
       });
 
       listElement.appendChild(productClone);

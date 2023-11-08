@@ -14,14 +14,19 @@ async function handleOrderList() {
   const bookIdQuery = searchParams.get("id");
   const quantityQuery = searchParams.get("quantity");
 
+  let totalPrice = 0;
   /** 바로 구매 시 query param으로 물품 아이디와 수량 전달 됨 */
   if (bookIdQuery && quantityQuery) {
-    renderTemplate({ bookId: bookIdQuery, quantity: quantityQuery });
+    totalPrice +=
+      (await renderTemplate({
+        bookId: bookIdQuery,
+        quantity: quantityQuery,
+      })) * quantityQuery;
   } else {
     await initIndexedDB();
     const cartItems = await getCartItems();
-    const DELIVERY_FEE = 3000;
-    const totalPrice = (
+
+    totalPrice += (
       await Promise.all(
         cartItems.map(async ({ bookId, quantity, isChecked }) => {
           if (!isChecked) return 0;
@@ -30,15 +35,16 @@ async function handleOrderList() {
         }),
       )
     ).reduce((acc, cur) => acc + cur, 0);
-
-    document.querySelector("#products-price").innerText =
-      totalPrice.toLocaleString("ko-KR");
-    document.querySelector("#delivery-fee").innerText =
-      DELIVERY_FEE.toLocaleString("ko-KR");
-    document.querySelector("#total-price").innerText = (
-      totalPrice + DELIVERY_FEE
-    ).toLocaleString("ko-KR");
   }
+
+  const DELIVERY_FEE = 3000;
+  document.querySelector("#products-price").innerText =
+    totalPrice.toLocaleString("ko-KR");
+  document.querySelector("#delivery-fee").innerText =
+    DELIVERY_FEE.toLocaleString("ko-KR");
+  document.querySelector("#total-price").innerText = (
+    totalPrice + DELIVERY_FEE
+  ).toLocaleString("ko-KR");
 }
 
 async function renderTemplate({ bookId, quantity }) {
