@@ -1,5 +1,5 @@
 import { Types } from "mongoose";
-import { Book } from "../models/index.js";
+import { Book, Category } from "../models/index.js";
 import { NotFoundError } from "../utils/errors.js";
 import {
   BOOK_NOT_FOUND,
@@ -7,11 +7,11 @@ import {
 } from "../config/errorMessagesConstants.js";
 
 const bookService = {
-  // TODO: 카테고리별(query parameter)로 카테고리별 목록 구현
   // TODO: 페이지네이션 구현하기
   // TODO: 정렬(최신순, 조회수 등) 구현, 나중에 시간 남으면?..
-  async list() {
-    const books = await Book.find({ deletedAt: { $exists: false } })
+  async list(categoryId) {
+    const result = {};
+    let books = await Book.find({ deletedAt: { $exists: false } })
       .populate([
         {
           path: "category",
@@ -30,7 +30,66 @@ const bookService = {
       ])
       .sort({ createdAt: -1 })
       .exec();
-    return books;
+
+    result.books = books;
+
+    if (categoryId) {
+      const booksFilter = books.filter(
+        (book) =>
+          book.category.id.toString() === categoryId ||
+          book.category.parent._id.toString() === categoryId,
+      );
+      result.books = booksFilter;
+
+      let categories = await await Category.aggregate([
+        {
+          $lookup: {
+            from: "categories",
+            localField: "_id",
+            foreignField: "parent",
+            as: "subCategories",
+          },
+        },
+        {
+          $match: { parent: null },
+        },
+        {
+          $project: {
+            _id: true,
+            name: true,
+            subCategories: {
+              _id: true,
+              name: true,
+            },
+          },
+        },
+      ]);
+
+      let customCategory = {};
+      outer : for (let i = 0; i < categories.length; i++) {
+        if (categories[i]._id.toString() === categoryId) {
+          customCategory = {
+            _id: categories[i]._id,
+            name: categories[i].name,
+          }
+          break;
+        }
+
+        for (let j = 0; j < categories[i].subCategories.length; j++) {
+          if (categories[i].subCategories[j]._id.toString() === categoryId) {
+            customCategory = {
+              _id: categories[i]._id,
+              name: categories[i].name,
+              subCategory: categories[i].subCategories[j]
+            };
+            break outer;
+          }
+        }
+      }
+
+      result.category = customCategory;
+    }
+    return result;
   },
 
   async detail(_id) {
