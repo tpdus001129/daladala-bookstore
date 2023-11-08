@@ -19,6 +19,12 @@ body {
     border: solid 1px;
 }
 
+.order-box{
+  max-width: 1200px;
+  margin: 0 auto;
+  border: solid 1px;
+}
+
 .banner {
     margin: 30px;
     border: solid 1px;
