@@ -1,4 +1,4 @@
-import { addCart, initIndexedDB } from "../indexedDB.js";
+import { addCartItem, initIndexedDB } from "../indexedDB.js";
 
 /** 현재 브라우저의 template 태그 지원 여부 확인 */
 if ("content" in document.createElement("template")) {
@@ -67,7 +67,7 @@ if ("content" in document.createElement("template")) {
       const cartButtonElement = productClone.querySelector(".add-cart-button");
 
       cartButtonElement.addEventListener("click", () => {
-        addCart(_id);
+        addCartItem(_id);
       });
 
       listElement.appendChild(productClone);
