@@ -27,7 +27,8 @@ loginBtn.addEventListener("click", async () => {
       });
 
       if (res.ok) {
-        storage.setItem(storageKey.userId, res.body.userId);
+        const { userId } = await res.json();
+        storage.setItem(storageKey.userId, userId);
         window.location.href = "/";
       } else {
         errorMes.innerHTML = "올바른 아이디 또는 비밀번호를 입력해주세요.";
