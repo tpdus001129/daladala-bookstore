@@ -31,6 +31,7 @@ import {
   ORDER_TOTAL_PRICE_FORMAT,
   ORDER_DELIVERY_STATE_REQUIRED,
   ORDER_DELIVERY_STATE_INVALID,
+  CATEGORY_NAME_REQUIRED,
 } from "../../config/errorMessagesConstants.js";
 
 const error = {
@@ -120,6 +121,11 @@ const error = {
     deliveryState: {
       "any.required": ORDER_DELIVERY_STATE_REQUIRED,
       "any.only": ORDER_DELIVERY_STATE_INVALID,
+    },
+  },
+  categoryErrorMessage: {
+    name: {
+      "any.required": CATEGORY_NAME_REQUIRED,
     },
   },
 };

@@ -24,7 +24,21 @@ const userService = {
     }
 
     const { _id, email, authority, phoneNumber, address, name, createdAt, updatedAt } = user;
-    return { _id, email, authority, phoneNumber, address, name, createdAt, updatedAt };
+    const userData = {
+      _id,
+      email,
+      authority,
+      phoneNumber,
+      createdAt,
+      updatedAt,
+    };
+    if (Object.values(address).filter(value => value).length > 0) {
+      userData.address = address;
+    }
+    if (name) {
+      userData.name = name;
+    }
+    return userData;
   },
 
   async update(userId, userData) {
