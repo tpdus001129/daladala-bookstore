@@ -132,6 +132,10 @@ const bookService = {
   },
 
   async update(bookId, bookData) {
+    if (!Types.ObjectId.isValid(bookId)) {
+      throw new NotFoundError(BOOK_NOT_FOUND);
+    }
+
     const book = await Book.findByIdAndUpdate(bookId, bookData);
     if (!book) {
       throw new Error("수정할 도서가 존재하지 않습니다.");
@@ -141,6 +145,10 @@ const bookService = {
   },
 
   async remove(bookId) {
+    if (!Types.ObjectId.isValid(bookId)) {
+      throw new NotFoundError(BOOK_NOT_FOUND);
+    }
+
     const book = await Book.findByIdAndUpdate(bookId, {
       deletedAt: new Date(),
     });
