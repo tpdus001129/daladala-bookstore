@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../common/reset.css" />
     <link rel="stylesheet" href="../common/common.css" />
-
     <link rel="stylesheet" href="../order/index.css" />
 
-    <script src="../common/header-component.js"></script>
     <script type="module" src="../common/header-component.js"></script>
     <script src="../common/footer-component.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <title>order</title>
-
-    <script src="index.js"></script>
   </head>
 
   <body>
@@ -31,44 +28,40 @@
                   <th>상품가격</th>
                   <th>수량</th>
                   <th>총가격</th>
-                  <th>삭제</th>
                 </tr>
               </thead>
               <tbody id="cart-body">
                 <tr>
-                  <td colspan="6">장바구니 가져오는 중</td>
+                  <!-- 장바구니 가져오기 -->
+                  <td colspan="5"></td>
                 </tr>
               </tbody>
             </table>
             <div class="delivery-address">
               <ul class="delivery-address-detail">
                 <p>배송 정보</p>
+                <input id="name" type="text" name="name" placeholder="수령인" />
                 <input
-                  class="name"
-                  type="text"
-                  name="name"
-                  placeholder="수령인"
-                />
-                <input
-                  class="phoneNumber"
+                  id="phoneNumber"
                   type="text"
                   name="phoneNumber"
                   placeholder="전화번호"
                 />
                 <input
-                  class="zipCode"
+                  id="zipCode"
                   type="text"
                   name="zipCode"
                   placeholder="우편번호"
                 />
+                <button id="openAddressPopupButton">주소 검색</button>
                 <input
-                  class="detail"
+                  id="detail1"
                   type="text"
                   name="detail"
                   placeholder="주소"
                 />
                 <input
-                  class="UserDetail"
+                  id="detail2"
                   type="text"
                   name="UserAddressDetail"
                   placeholder="상세주소"
@@ -147,5 +140,49 @@
       </div>
     </main>
     <footer-component></footer-component>
+    <script src="index.js"></script>
+    <!-- 주소 api js 파일에 넣으니 오류가 떠서 코드 이동 -->
+    <script>
+      const openAddressButton = document.getElementById(
+        "openAddressPopupButton",
+      );
+      openAddressButton.addEventListener("click", openAddressPopup);
+
+      function openAddressPopup() {
+        new daum.Postcode({
+          oncomplete: function (data) {
+            var addr = "";
+            var extraAddr = "";
+
+            if (data.userSelectedType === "R") {
+              addr = data.roadAddress;
+            } else {
+              addr = data.jibunAddress;
+            }
+
+            if (data.userSelectedType === "R") {
+              if (data.bname !== "" && /[동|로|가]$/g.test(data.bname)) {
+                extraAddr += data.bname;
+              }
+              if (data.buildingName !== "" && data.apartment === "Y") {
+                extraAddr +=
+                  extraAddr !== ""
+                    ? ", " + data.buildingName
+                    : data.buildingName;
+              }
+              if (extraAddr !== "") {
+                extraAddr = " (" + extraAddr + ")";
+              }
+              document.getElementById("zipCode").value = data.zonecode;
+              document.getElementById("detail1").value = addr;
+              document.getElementById("detail2").focus();
+            } else {
+              document.getElementById("zipCode").value = "";
+              document.getElementById("detail1").value = "";
+            }
+          },
+        }).open();
+      }
+    </script>
   </body>
 </html>

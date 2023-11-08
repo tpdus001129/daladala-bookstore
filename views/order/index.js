@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const cardRadioButton = document.getElementById("card")
   const bankPayDetails = document.querySelector(".bank-pay-details");
 
+
+  /** 결제 알림창 */
   payButton.addEventListener("click", function () {
     const confirmation = confirm("결제 하겠습니까?");
 
@@ -30,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
 
+      /** 주소 직적입력창 */
       const deliverySelect = document.getElementById("deliverySelect");
       const custom = document.getElementById("custom");
       const customInput = document.getElementById("customInput");
@@ -43,4 +46,32 @@ document.addEventListener("DOMContentLoaded", function () {
           customInput.value ='';
         }
       });
+
+   
+
+      /** 주소 값 미리 가져오기 */
+      const userId = localStorage.getItem("USER_ID");
+
+      async function getUserData() {
+        try {
+          const res = await fetch(`/api/v1/users/${userId}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const jsonData = await res.json();
+      
+          document.querySelector('#name').value = jsonData.name; 
+          document.querySelector('#phoneNumber').value = jsonData.phoneNumber; 
+      
+          console.log(jsonData);
+        } catch (error) {
+          console.error('API 호출 중 오류 발생', error);
+        }
+      }
+      
+      getUserData();
+      
+
 });
