@@ -1,14 +1,35 @@
 import { Types } from "mongoose";
 import { Book } from "../models/index.js";
 import { NotFoundError } from "../utils/errors.js";
-import { BOOK_NOT_FOUND } from "../config/errorMessagesConstants.js";
+import {
+  BOOK_NOT_FOUND,
+  CATEGORY_NOT_FOUND,
+} from "../config/errorMessagesConstants.js";
 
 const bookService = {
   // TODO: 카테고리별(query parameter)로 카테고리별 목록 구현
   // TODO: 페이지네이션 구현하기
   // TODO: 정렬(최신순, 조회수 등) 구현, 나중에 시간 남으면?..
   async list() {
-    const books = await Book.find({ deletedAt: { $exists: false } }).sort({ createdAt: -1 }).exec();
+    const books = await Book.find({ deletedAt: { $exists: false } })
+      .populate([
+        {
+          path: "category",
+          populate: [
+            {
+              path: "parent",
+              select: "_id name parent",
+            },
+          ],
+          select: "_id name",
+        },
+        {
+          path: "seller",
+          select: "_id name",
+        },
+      ])
+      .sort({ createdAt: -1 })
+      .exec();
     return books;
   },
 
@@ -25,8 +46,11 @@ const bookService = {
     return book;
   },
 
-  // TODO: 이미지 등록 구현
   async create(bookData) {
+    if (!Types.ObjectId.isValid(bookData.category)) {
+      throw new NotFoundError(CATEGORY_NOT_FOUND);
+    }
+
     await Book.create(bookData);
     return true;
   },

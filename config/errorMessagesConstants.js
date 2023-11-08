@@ -13,6 +13,7 @@ export const USER_ADDRESS_DETAIL_REQUIRED = "주소를 입력해주세요.";
 export const USER_ADDRESS_DETAIL2_REQUIRED = "상세주소를 입력해주세요.";
 
 // 도서 정보
+export const CATEGORY_NOT_FOUND = "카테고리 정보를 찾을 수 없습니다.";
 export const BOOK_NOT_FOUND = "도서 정보를 찾을 수 없습니다.";
 export const BOOK_CATEGORY_REQUIRED = "카테고리를 선택해주세요.";
 export const BOOK_ID_REQUIRED = "도서 정보를 입력해주세요.";
@@ -32,10 +33,14 @@ export const BOOK_INVENTORY_COUNT_FORMAT = "도서 재고 수량은 숫자로 �
 export const BOOK_SELLER_REQUIRED = "판매자 정보를 입력해주세요.";
 
 // 주문 정보
+export const ORDER_NOT_FOUND = "주문정보를 찾을 수 없습니다.";
 export const ORDER_COUNT_REQUIRED = "수량을 입력해주세요.";
 export const ORDER_DELIVERY_PRICE_REQUIRED = "배송비를 입력해주세요.";
 export const ORDER_DELIVERY_PRICE_FORMAT = "배송비는 숫자로 입력해주세요.";
 export const ORDER_TOTAL_PRICE_REQUIRED = "상품 총 가격을 입력해주세요.";
+export const ORDER_DELIVERY_STATE_REQUIRED = "배송상태을 입력해주세요.";
+export const ORDER_DELIVERY_STATE_INVALID = "유효하지 않은 배송상태 입니다.";
+export const ORDER_DELIVERY_STATE_ERROR = "배송상태 수정에 실패했습니다.";
 export const ORDER_TOTAL_PRICE_FORMAT = "상품 총 가격을 입력해주세요.";
 export const ORDER_ERROR = "주문에 실패했습니다.";
 

@@ -69,7 +69,7 @@ const OrderSchema = new Schema(
     books: {
       type: [
         {
-          bookId: {
+          book: {
             type: ObjectId,
             ref: "Book",
             required: [true, BOOK_ID_REQUIRED],

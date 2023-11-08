@@ -20,6 +20,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.2.0",
     "mongoose": "^7.6.3",
+    "multer": "^1.4.5-lts.1",
     "swagger-ui-express": "^5.0.0",
     "swiper": "^11.0.3",
     "yamljs": "^0.3.0"
@@ -35,7 +36,7 @@
   },
   "lint-staged": {
     "*.{html, css, js}": "prettier --cache --write",
-    "*.js": "eslint --cache --report-unused-disable-directives --max-warnings 0"
+    "*.js": "eslint --cache --max-warnings 0"
   },
   "type": "module"
 }

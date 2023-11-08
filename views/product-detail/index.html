@@ -21,12 +21,13 @@
         <div class="third-category">> 경영 / 경제</div>
       </div>
 
+      <!-- 도서 이미지, 제목, 가격, 각 버튼부분 -->
       <div class="product-info-wrapper">
         <div class="product-info-board">
           <div class="product-info-box">
             <div class="product-image">
               <figure>
-                <img src="./엘리스도서.jpg" />
+                <img src="../product-list/엘리스도서.jpg" />
               </figure>
             </div>
 
@@ -39,23 +40,36 @@
               </div>
 
               <div class="product-detail-info-delivery">
-                <div>배송안내</div>
-                <div>무료배송</div>
-                <div>재고</div>
-                <div>3권</div>
+                <div class="product-detail-info-delivery-01">
+                  <div>배송안내</div>
+                  <div id="right">무료</div>
+                </div>
+
+                <div class="product-detail-info-delivery-02">
+                  <div>현재재고</div>
+                  <div id="right">3권</div>
+                </div>
               </div>
 
               <div class="product-detail-info-price">
-                <div>구매 수량</div>
                 <div>
-                  <butto>+</butto>
-                  <input />
-                  <butto>-</butto>
+                  <div>구매 수량</div>
+                  <div id="right-count">
+                    <input type="button" onclick='count("plus")' value="+" />
+                    <div id="result">0</div>
+                    <input type="button" onclick='count("minus")' value="-" />
+                  </div>
                 </div>
-                <div>구매 금액</div>
-                <div>20,000</div>
-                <div>적립</div>
-                <div>100P</div>
+
+                <div>
+                  <div>구매 금액</div>
+                  <div id="right">20,000</div>
+                </div>
+
+                <div>
+                  <div>적립</div>
+                  <div id="right">100P</div>
+                </div>
               </div>
 
               <div class="product-buy-confirm">
