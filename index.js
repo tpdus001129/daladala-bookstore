@@ -34,7 +34,7 @@ app.use("/api", router);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(function (err, req, res, next) {
-  res.status(err.statusCode).json(err);
+  res.status(err.statusCode).json({ ...err, message: err.message });
   next();
 });
 
