@@ -19,25 +19,26 @@ let bookData = null; // 도서 정보저장
 
 const bookId = "654a254ab48028e071e58cf8";
 
-async function fetchData() {
-  try {
-    const res = await fetch(`/api/v1/books/${bookId}`);
+fetch(`/api/v1/books/${bookId}`)
+  .then((res) => {
     if (res.status === 200) {
-      const data = await res.json();
-      updateBookInfo(data);
-      updatePrice();
+      return res.json();
     } else if (res.status === 400) {
       throw new Error("Book not found");
     } else {
       throw new Error("Internal Server Error");
     }
-  } catch (error) {
-    console.error("도서 정보를 불러오는 중 오류가 발생했습니다:", error);
-  }
-}
+  })
+  .then((data) => {
+    // data보여주고
+    updateBookInfo(data);
 
-// 호출
-fetchData();
+    // 가격 업데이트
+    updatePrice();
+  })
+  .catch((error) => {
+    console.error("도서 정보를 불러오는 중 오류가 발생했습니다:", error);
+  });
 
 function count(type) {
   let number = resultElement.innerText;
@@ -45,14 +46,10 @@ function count(type) {
   if (type === "plus") {
     number = parseInt(number) + 1;
   } else if (type === "minus") {
-    if (number < 1) {
-      alert("구매가능한 수량이 없습니다.");
-      location.reload();
-    }
     number = parseInt(number) - 1;
   }
   resultElement.innerText = number;
-  updatePrice(); 
+  updatePrice(); // count 함수에서 updatePrice 함수 호출
   return number;
 }
 minusBtn.addEventListener("click", function () {
@@ -79,12 +76,15 @@ function updatePrice() {
   let resultNum = Number(resultElement.innerText);
   if (bookData) {
     let priceToKr = bookData.price;
-    productPrice.innerHTML = (priceToKr * resultNum).toLocaleString("ko-KR") + "원";
+    productPrice.innerHTML = (priceToKr * resultNum).toLocaleString("ko-KR");
   }
 }
 
 // 장바구니
 addBtn.addEventListener("click", function () {
+  
+
+
   if (confirm("장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?")) {
     location.href = "/cart";
   }
