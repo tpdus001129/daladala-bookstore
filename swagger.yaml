@@ -22,6 +22,13 @@ paths:
         - books
       summary: 도서 목록
       description: 도서 목록을 가져오는 API
+      parameters:
+        - name: category
+          in: query
+          description: 카테고리 ID
+          required: false
+          schema:
+            type: string
       responses:
         "200":
           description: 성공
@@ -81,7 +88,7 @@ paths:
                   example: 50
                 category:
                   type: string
-                  example: asX31sdF3cVs
+                  example: 6543b8d140274d4982ec7e91
         required: true
       responses:
         "201":
@@ -765,9 +772,32 @@ components:
           example: 2023-11-01T17:32:28Z
           description: 출시일자
         image:
-          type: string
-          example: https://example.com/images/image.png
-          description: 도서 사진
+          type: object
+          properties:
+            fieldname:
+              type: string
+              example: image
+            originalname:
+              type: string
+              example: image.jpg
+            encoding:
+              type: string
+              example: 7bit
+            mimetype:
+              type: string
+              example: image/jpeg
+            destination:
+              type: string
+              example: public/images/books/
+            filename:
+              type: string
+              example: 1699358026207-383193119image.jpg
+            path:
+              type: string
+              example: /public/images/books/1699358026207-383193119image.jpg
+            size:
+              type: number
+              example: 89349
         price:
           type: integer
           example: 15000
@@ -777,13 +807,9 @@ components:
           example: 50
           description: 재고 수량
         category:
-          type: string
-          example: ObjectId(asX31sdF3cVs)
-          description: Category 스키마 ObjectId
+          $ref: "#/components/schemas/Category"
         seller:
-          type: string
-          example: ObjectId(asX31sdF3cVs)
-          description: User 스키마 ObjectId
+          $ref: "#/components/schemas/User"
         createdAt:
           type: string
           example: 2023-11-01T17:32:28Z
