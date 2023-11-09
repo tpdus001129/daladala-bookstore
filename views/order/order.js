@@ -51,7 +51,7 @@ async function renderTemplate({ bookId, quantity }) {
   const orderTableBodyElement = document.querySelector("#order-table-body");
   const orderTemplateElement = document.querySelector("#order-template");
 
-  const res = await apis.books.get({ bookId });
+  const res = await apis.books.detail({ bookId });
   const { title, image, price } = await res.json();
 
   const orderTemplateClone = document.importNode(
@@ -63,7 +63,7 @@ async function renderTemplate({ bookId, quantity }) {
     orderTemplateClone.querySelectorAll("td");
 
   const imageElement = imageCell.querySelector("img");
-  imageElement.src = image;
+  imageElement.src = image.path;
   imageElement.alt = title;
   titleCell.innerText = title;
   priceCell.innerText = price.toLocaleString("ko-KR") + " 원";

@@ -1,6 +1,11 @@
 export default {
   users: {
     get: ({ userId }) => customFetch("GET", `/users/${userId}`),
+    editPassword: ({ userId, password, newPassword }) =>
+      customFetch("PATCH", `/users/${userId}/password`, {
+        password,
+        newPassword,
+      }),
     delete: ({ userId, password }) =>
       customFetch("DELETE", `/users/${userId}`, { userId, password }),
   },
@@ -11,8 +16,10 @@ export default {
   },
   categories: () => customFetch("GET", `/categories`),
   books: {
-    get: (props) =>
-      customFetch("GET", `/books${props ? `/${props.bookId}` : ""}`),
+    list: () => customFetch("GET", `/books`),
+    detail: ({ bookId }) => customFetch("GET", `/books/${bookId}`),
+    category: ({ category }) =>
+      customFetch("GET", `/books?category=${category}`),
   },
 };
 

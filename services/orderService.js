@@ -16,7 +16,10 @@ const orderService = {
       throw new NotFoundError(USER_NOT_FOUND);
     }
 
-    const orders = await Order.find({ user: userId })
+    const orders = await Order.find({
+      user: userId,
+      deletedAt: { $exists: false },
+    })
       .populate({
         path: "user",
         select: "_id name email authority phoneNumber address",
@@ -48,11 +51,11 @@ const orderService = {
       throw new NotFoundError(USER_NOT_FOUND);
     }
 
-    orderData.books.forEach(book => {
+    orderData.books.forEach((book) => {
       if (!Types.ObjectId.isValid(book.bookId)) {
         throw new NotFoundError(BOOK_NOT_FOUND);
       }
-    })
+    });
 
     const order = await Order.create(orderData);
     if (!order) {
@@ -78,6 +81,32 @@ const orderService = {
       },
       {
         deliveryState: orderData.deliveryState,
+      },
+    );
+
+    if (!order) {
+      throw new CustomError(ORDER_DELIVERY_STATE_ERROR);
+    }
+
+    return order;
+  },
+
+  async remove(userId, orderId) {
+    if (!Types.ObjectId.isValid(userId)) {
+      throw new NotFoundError(USER_NOT_FOUND);
+    }
+
+    if (!Types.ObjectId.isValid(orderId)) {
+      throw new NotFoundError(ORDER_NOT_FOUND);
+    }
+
+    const order = await Order.findOneAndUpdate(
+      {
+        _id: orderId,
+        user: userId,
+      },
+      {
+        deletedAt: new Date(),
       },
     );
 

@@ -77,7 +77,7 @@ async function renderCartItem(
   cartTemplateElement,
   { bookId, quantity, isChecked },
 ) {
-  const res = await apis.books.get({ bookId });
+  const res = await apis.books.detail({ bookId });
   const { title, image, price } = await res.json();
 
   const cartTemplateClone = document.importNode(
@@ -114,7 +114,7 @@ async function renderCartItem(
   });
 
   const imageElement = imageCell.querySelector("img");
-  imageElement.src = image;
+  imageElement.src = image.path;
   imageElement.alt = title;
 
   titleCell.innerText = title;
