@@ -16,8 +16,10 @@ export default {
   },
   categories: () => customFetch("GET", `/categories`),
   books: {
-    get: (props) =>
-      customFetch("GET", `/books${props ? `/${props.bookId}` : ""}`),
+    list: () => customFetch("GET", `/books`),
+    detail: ({ bookId }) => customFetch("GET", `/books/${bookId}`),
+    category: ({ category }) =>
+      customFetch("GET", `/books?category=${category}`),
   },
 };
 
