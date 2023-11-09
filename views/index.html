@@ -28,40 +28,43 @@
   </head>
 
   <body>
-    <header-component></header-component>
+    <div class="flex-container">
+      <header-component></header-component>
 
-    <main>
-      <div class="swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="../public/images/books/main_01.png" />
+      <main>
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="../public/images/books/main_01.png" />
+            </div>
+            <div class="swiper-slide">
+              <img src="../public/images/books/main_02.png" />
+            </div>
+            <div class="swiper-slide">
+              <img src="../public/images/books/main_03.png" />
+            </div>
+            <div class="swiper-slide">
+              <img src="../public/images/books/main_04.png" />
+            </div>
+            <div class="swiper-slide">
+              <img src="../public/images/books/main_05.png" />
+            </div>
           </div>
-          <div class="swiper-slide">
-            <img src="../public/images/books/main_02.png" />
+
+          <div class="swiper-pagination"></div>
+
+          <div class="swiper-button-prev">
+            <span class="material-symbols-outlined"> arrow_back_ios </span>
           </div>
-          <div class="swiper-slide">
-            <img src="../public/images/books/main_03.png" />
-          </div>
-          <div class="swiper-slide">
-            <img src="../public/images/books/main_04.png" />
-          </div>
-          <div class="swiper-slide">
-            <img src="../public/images/books/main_05.png" />
+          <div class="swiper-button-next">
+            <span class="material-symbols-outlined"> arrow_forward_ios </span>
           </div>
         </div>
+      </main>
 
-        <div class="swiper-pagination"></div>
+      <footer-component></footer-component>
+    </div>
 
-        <div class="swiper-button-prev">
-          <span class="material-symbols-outlined"> arrow_back_ios </span>
-        </div>
-        <div class="swiper-button-next">
-          <span class="material-symbols-outlined"> arrow_forward_ios </span>
-        </div>
-      </div>
-    </main>
-
-    <footer-component></footer-component>
     <script>
       new Swiper(".swiper", {
         autoplay: {
