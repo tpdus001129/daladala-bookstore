@@ -148,14 +148,27 @@ function updateButtonDOM(category, flg) {
 }
 
 function subCategoryAddButtonDOM() {
+  const divContainer = document.createElement("div");
+  divContainer.style.paddingLeft = "40px";
+  
   const button = document.createElement("button");
   button.innerHTML = ADD_BUTTON_TEXT;
   button.addEventListener("click", (e) => {
+    const parentElement = e.target.parentElement.parentElement;
+    const groupArr = parentElement.querySelectorAll(".subcategory");
+    const group = groupArr[groupArr.length - 1];
+    const inputGroup = group.querySelector("input");
+    const idValue = inputGroup.getAttribute("data-id");
+    if (!idValue) {
+      return;
+    }
     const div = createSubCategoryGroup();
-    e.target.parentElement.appendChild(div);
+    e.target.parentElement.parentElement.appendChild(div);
   })
 
-  return button;
+  divContainer.appendChild(button);
+
+  return divContainer;
 }
 
 function deleteButtonDOM(category) {
