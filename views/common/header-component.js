@@ -195,12 +195,16 @@ class HeaderComponent extends HTMLElement {
   firstCategory(categories) {
     return `
       <ul id="first-category">
+        <li>
+          <a class="box" href="/product-list">
+            전체보기
+          </a>
+        </li>
         ${categories.reduce((acc, category) => {
-          console.log(category)
           return `
               ${acc}
               <li>
-                <a class="box" href=/product-list?category=${category._id.toString()}>
+                <a class="box" href="/product-list?category=${category._id.toString()}">
                   ${category.name}
                 </a>
                 <ul id="second-category">
