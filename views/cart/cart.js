@@ -1,3 +1,4 @@
+import apis from "../apis.js";
 import {
   initIndexedDB,
   getCartItems,
@@ -12,6 +13,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const clearCartButtonElement = document.querySelector("#clear-cart");
   clearCartButtonElement.addEventListener("click", () => clearCartItems());
+
+  const orderButtonElement = document.querySelector("#order-button");
+  orderButtonElement.addEventListener("click", () => {
+    location.href = "/order";
+  });
 
   const cartItems = await getCartItems();
   await renderCartItems(cartItems);
@@ -34,6 +40,7 @@ async function renderCartItems(cartItems) {
   );
 
   if (cartItems.length === 0) {
+    cartTableBodyElement.removeChild(loadingElement);
     appendTdElement(cartTableBodyElement, "장바구니가 비어있습니다.");
     return;
   }
@@ -70,7 +77,7 @@ async function renderCartItem(
   cartTemplateElement,
   { bookId, quantity, isChecked },
 ) {
-  const res = await fetch(`/api/v1/books/${bookId}`);
+  const res = await apis.books.get({ bookId });
   const { title, image, price } = await res.json();
 
   const cartTemplateClone = document.importNode(

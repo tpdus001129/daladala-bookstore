@@ -6,6 +6,7 @@
     <title>장바구니</title>
     <link rel="stylesheet" href="../common/reset.css" />
     <link rel="stylesheet" href="../common/common.css" />
+    <link rel="stylesheet" href="../common/table.css" />
     <script type="module" src="../common/header-component.js"></script>
     <script src="../common/footer-component.js"></script>
     <link rel="stylesheet" href="cart.css" />
@@ -18,7 +19,6 @@
       <div class="container">
         <div class="wrapper">
           <h1>장바구니</h1>
-
           <div class="table-bill-container">
             <div class="table-container">
               <div class="cart-options">
@@ -73,20 +73,20 @@
             </div>
             <aside class="bill">
               <ul>
-                <li class="payments-item">
-                  <p>상품금액</p>
+                <li class="payment-item">
+                  <h3>상품금액</h3>
                   <p><span id="products-price">0</span><span>원</span></p>
                 </li>
-                <li class="payments-item">
-                  <p>배송비</p>
+                <li class="payment-item">
+                  <h3>배송비</h3>
                   <p><span id="delivery-fee">0</span><span>원</span></p>
                 </li>
-                <li class="payments-item">
-                  <p>결제 예정 금액</p>
+                <li class="payment-item">
+                  <h3>결제예정금액</h3>
                   <p><span id="total-price">0</span><span>원</span></p>
                 </li>
               </ul>
-              <button>주문하기</button>
+              <button id="order-button">주문하기</button>
             </aside>
           </div>
         </div>
