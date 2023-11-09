@@ -9,6 +9,11 @@ const addCategoryButton = document.getElementsByClassName("add-category")[0];
 addCategoryButton.addEventListener("click", () => {
   const categoryGroupDiv = document.getElementsByClassName("category-group");
   const lastCategoryGroup = categoryGroupDiv[categoryGroupDiv.length - 1];
+  if (!lastCategoryGroup) {
+    const dom = createCategoryDOM();
+    categoryContainer.appendChild(dom);
+    return;
+  }
   const inputCategoryGroup = lastCategoryGroup.querySelector("input");
   const idValue = inputCategoryGroup.getAttribute("data-id");
   if (!idValue) {
@@ -157,6 +162,11 @@ function subCategoryAddButtonDOM() {
     const parentElement = e.target.parentElement.parentElement;
     const groupArr = parentElement.querySelectorAll(".subcategory");
     const group = groupArr[groupArr.length - 1];
+    if (!group) {
+      const div = createSubCategoryGroup();
+      e.target.parentElement.parentElement.appendChild(div);
+      return;
+    }
     const inputGroup = group.querySelector("input");
     const idValue = inputGroup.getAttribute("data-id");
     if (!idValue) {
