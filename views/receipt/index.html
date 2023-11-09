@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../common/reset.css" />
+    <link rel="stylesheet" href="../common/common.css" />
+    <link rel="stylesheet" href="../common/form.css" />
+    <link rel="stylesheet" href="../search-page/search-page.css" />
+    <link rel="stylesheet" href="../common/table.css" />
+
+    <script src="../common/sidebar-container.js"></script>
+    <script type="module" src="../common/header-component.js"></script>
+    <script src="../common/footer-component.js"></script>
+
+    <title>receipt</title>
+  </head>
+
+  <body>
+    <header-component></header-component>
+    <sidebar-container>
+      <div class="box">
+        <h1>주문 배송 조회</h1>
+        <div class="order-box">
+          <div class="banner">
+            <h2>조회기간</h2>
+            <button type="button" class="btn" id="deleteButton1">
+              내 주문내역에서 삭제
+            </button>
+          </div>
+          <div class="ShoppingCartHead">
+            <table>
+              <thead>
+                <tr>
+                  <th>체크박스</th>
+                  <th>구매일</th>
+                  <th>결제 내역</th>
+                  <th>주문금액</th>
+                  <th>수량</th>
+                  <th>배송상태</th>
+                  <th>배송취소</th>
+                </tr>
+              </thead>
+
+              <tr id="UserData">
+                <td><input type="checkbox" /></td>
+                <td>
+                  <!-- 구매일 -->
+                </td>
+                <td>
+                  <!-- 결제 내역 -->
+                </td>
+                <td>
+                  <!-- 총 금액 -->
+                </td>
+                <td>
+                  <!-- 수량 -->
+                </td>
+                <td>
+                  <!-- 배송상태 -->
+                </td>
+                <td>
+                  <button type="button" class="btn" id="deleteButton2">
+                    주문취소
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </sidebar-container>
+    <footer-component></footer-component>
+  </body>
+</html>
