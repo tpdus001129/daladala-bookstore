@@ -29,60 +29,36 @@
 
         <div id="main-container">
           <!-- 1 -->
-          <div class="contain-inner">
-            <div class="contain-inner-01">
-              <span class="category">국내 / 소설</span>
-              <div class="bookImg">
-                <img />
+          <template id="template-product">
+            <div class="contain-inner">
+              <div class="contain-inner-01">
+                <span class="category">(국내 / 소설)</span>
+                <div class="bookImg">
+                  <img />
+                </div>
+              </div>
+
+              <div class="contain-inner-02">
+                <h2 class="title"></h2>
+                <span class="price"></span>
+                <span class="author"></span>
+                <span class="publisher"></span>
+              </div>
+
+              <div class="contain-inner-03">
+                <span>현재재고</span>
+                <span class="quantity"></span>
+              </div>
+
+              <div class="contain-inner-04">
+                <button class="modifyBtn">
+                  <a href="../bookmodify-seller/index.html">수정</a>
+                </button>
+                <button class="deleteBtn">삭제</button>
               </div>
             </div>
-
-            <div class="contain-inner-02">
-              <h2 class="title">짜라짜라짜</h2>
-              <span class="price">15,000</span>
-              <span class="quantity">현재 재고 5</span>
-            </div>
-
-            <div class="contain-inner-03">
-              <span class="author">지은이</span>
-              <span class="publisher">출판사</span>
-            </div>
-
-            <div class="contain-inner-04">
-              <button class="modifyBtn">
-                <a href="../bookmodify-seller/index.html">수정</a>
-              </button>
-              <button class="deleteBtn">삭제</button>
-            </div>
-          </div>
-
-          <!-- 2 -->
-          <div class="contain-inner">
-            <div class="contain-inner-01">
-              <span class="category">국내 / 소설</span>
-              <div class="bookImg">
-                <img />
-              </div>
-            </div>
-
-            <div class="contain-inner-02">
-              <h2 class="title">짜라짜라짜</h2>
-              <span class="price">15,000</span>
-              <span class="quantity">현재 재고 5</span>
-            </div>
-
-            <div class="contain-inner-03">
-              <span class="author">지은이</span>
-              <span class="publisher">출판사</span>
-            </div>
-
-            <div class="contain-inner-04">
-              <button class="modifyBtn">
-                <a href="../bookmodify-seller/index.html">수정</a>
-              </button>
-              <button class="deleteBtn">삭제</button>
-            </div>
-          </div>
+            <hr />
+          </template>
         </div>
       </div>
     </sidebar-container>
