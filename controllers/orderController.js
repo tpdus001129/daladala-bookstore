@@ -24,6 +24,14 @@ const orderController = {
       res.status(200).json(order);
     }
   },
+
+  async remove(req, res) {
+    const { userId, orderId } = req.params;
+    const order = await orderService.remove(userId, orderId);
+    if (order) {
+      res.status(200).json(order);
+    }
+  },
 };
 
 export default orderController;
