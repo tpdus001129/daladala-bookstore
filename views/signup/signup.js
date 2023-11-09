@@ -55,8 +55,9 @@ form.addEventListener("submit", function (event) {
 
     if (res.ok) {
       alert("회원가입 성공");
-      const { userId } = await res.json();
+      const { userId, authority } = await res.json();
       storage.setItem(storageKey.userId, userId);
+      storage.setItem(storageKey.authority, authority);
       location.href = "/";
     } else {
       alert("회원가입에 실패했습니다.");
