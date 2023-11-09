@@ -12,6 +12,9 @@ export const USER_ADDRESS_ZIP_CODE_REQUIRED = "우편번호를 입력해주세�
 export const USER_ADDRESS_DETAIL_REQUIRED = "주소를 입력해주세요.";
 export const USER_ADDRESS_DETAIL2_REQUIRED = "상세주소를 입력해주세요.";
 
+// 카테고리
+export const CATEGORY_NAME_REQUIRED = "카테고리 이름을 입력해주세요";
+
 // 도서 정보
 export const CATEGORY_NOT_FOUND = "카테고리 정보를 찾을 수 없습니다.";
 export const BOOK_NOT_FOUND = "도서 정보를 찾을 수 없습니다.";

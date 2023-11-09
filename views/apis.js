@@ -1,19 +1,23 @@
 export default {
   users: {
-    delete: async ({ userId, password }) =>
-      makeFetch("DELETE", `/api/v1/users/${userId}`, { userId, password }),
+    get: ({ userId }) => customFetch("GET", `/users/${userId}`),
+    delete: ({ userId, password }) =>
+      customFetch("DELETE", `/users/${userId}`, { userId, password }),
   },
-
   auth: {
-    signup: async ({ email, password, phoneNumber }) =>
-      makeFetch("POST", "/api/v1/signup", { email, password, phoneNumber }),
-    logout: async () => makeFetch("POST", "/api/v1/logout"),
+    signup: ({ email, password, phoneNumber }) =>
+      customFetch("POST", `/signup`, { email, password, phoneNumber }),
+    logout: () => customFetch("POST", `/logout`),
   },
-  categories: async () => makeFetch("GET", "/api/v1/categories"),
+  categories: () => customFetch("GET", `/categories`),
+  books: {
+    get: (props) =>
+      customFetch("GET", `/books${props ? `/${props.bookId}` : ""}`),
+  },
 };
 
-async function makeFetch(method = "GET", url = "", body) {
-  return fetch(url, {
+function customFetch(method = "GET", url = "", body) {
+  return fetch(`/api/v1${url}`, {
     method,
     headers: {
       "Content-Type": "application/json",

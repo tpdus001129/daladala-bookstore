@@ -34,6 +34,12 @@ const userController = {
       res.status(200).json(user);
     }
   },
+
+  async getMyBooks(req, res) {
+    const { userId } = req.params;
+    const books = await userService.getMyBooks(userId);
+    res.status(200).json(books);
+  }
 };
 
 export default userController;

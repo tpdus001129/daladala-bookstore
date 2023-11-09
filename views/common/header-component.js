@@ -21,7 +21,7 @@ class HeaderComponent extends HTMLElement {
           .header-padding {
             content: "";
             display: block;
-            height: 130px; 
+            height: 160px; 
           }
 
           header {
@@ -34,6 +34,7 @@ class HeaderComponent extends HTMLElement {
             z-index: 100;
           }
           .max-container {
+            margin-top: 30px;
             width: var(--max-width);
             height: 130px;
             display: flex;
@@ -56,6 +57,13 @@ class HeaderComponent extends HTMLElement {
             float: right;
             margin: 0;
             padding: 0;
+          }
+          .login-user a {
+            text-decoration: none;
+            color: inherit;
+          }
+          .login-user a:hover {
+            color: var(--point-color);
           }
           .second-header {
             display: flex;
@@ -161,7 +169,7 @@ class HeaderComponent extends HTMLElement {
           <div class="first-header">
             <div class="header-logo-box">
               <a href="/">
-                DALADALA BOOK STORE
+                <img src="/public/images/logo.png" alt="로고" width="240px;">
               </a>
             </div>
             <div class="header-login-user">
@@ -201,18 +209,19 @@ class HeaderComponent extends HTMLElement {
         template.innerHTML = template.innerHTML.replace(
           `WHETHER_AUTH`,
           `
-        <li><button id="logout-button">로그아웃</button></li>
-        <li><a href="/cart" id="cart-button">장바구니</a></li>
-      `,
+            <li><a href="/my-page">마이페이지</a></li>
+            <li><a href="/cart">장바구니</a></li>
+            <li><a href="/" id="logout-button">로그아웃</a></li>
+          `,
         );
       } else {
         template.innerHTML = template.innerHTML.replace(
           `WHETHER_AUTH`,
           `
-          <li><a href="/login" id="login-button">로그인</a></li>
-          <li><a href="/signup" id="signup-button">회원가입</a></li>
-          <li><a href="/cart" id="cart-button">장바구니</a></li>
-        `,
+            <li><a href="/login">로그인</a></li>
+            <li><a href="/signup">회원가입</a></li>
+            <li><a href="/cart">장바구니</a></li>
+          `,
         );
       }
 
@@ -251,7 +260,8 @@ class HeaderComponent extends HTMLElement {
       const logoutButton = this.shadowRoot.querySelector("#logout-button");
 
       if (logoutButton) {
-        logoutButton.addEventListener("click", async () => {
+        logoutButton.addEventListener("click", async (e) => {
+          e.preventDefault();
           await apis.auth.logout();
           storage.removeItem(storageKey.userId);
           location.href = "/";
