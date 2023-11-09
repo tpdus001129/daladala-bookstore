@@ -1,16 +1,16 @@
 .box {
     /* display: flex; */
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
     /* margin: 10px; */
     border: solid 1px;
 }
 
-.order-box{
+/* .order-box{
   max-width: 1200px;
   margin: 0 auto;
   border: solid 1px;
-}
+} */
 
 .banner {
     margin: 30px;

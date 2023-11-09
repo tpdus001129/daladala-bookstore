@@ -1,17 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../common/reset.css" />
     <link rel="stylesheet" href="../common/common.css" />
     <link rel="stylesheet" href="../common/form.css" />
-    <link rel="stylesheet" href="../search-page/search-page.css" />
+    <link rel="stylesheet" href="../receipt/receipt.css" />
     <link rel="stylesheet" href="../common/table.css" />
 
     <script src="../common/sidebar-container.js"></script>
     <script type="module" src="../common/header-component.js"></script>
     <script src="../common/footer-component.js"></script>
+    <script src="../receipt/receipt..js"></script>
 
     <title>receipt</title>
   </head>
@@ -32,41 +33,36 @@
             <table>
               <thead>
                 <tr>
-                  <th>체크박스</th>
+                  <th>ㅁ</th>
                   <th>구매일</th>
                   <th>결제 내역</th>
                   <th>주문금액</th>
-                  <th>수량</th>
                   <th>배송상태</th>
                   <th>배송취소</th>
                 </tr>
               </thead>
 
-              <tr id="UserData">
-                <td><input type="checkbox" /></td>
-                <td>
-                  <!-- 구매일 -->
-                </td>
-                <td>
-                  <!-- 결제 내역 -->
-                </td>
-                <td>
-                  <!-- 총 금액 -->
-                </td>
-                <td>
-                  <!-- 수량 -->
-                </td>
-                <td>
-                  <!-- 배송상태 -->
-                </td>
-                <td>
-                  <button type="button" class="btn" id="deleteButton2">
-                    주문취소
-                  </button>
-                </td>
-              </tr>
+              <tbody>
+                <template id="order-complete">
+                  <tr class="up">
+                    <td><input type="checkbox" /></td>
+                    <td id="createdAt"><!-- 구매일 --></td>
+                    <td id="books"><!-- 결제 내역 --></td>
+                    <td id="aproductsPrice"><!-- 총 금액 --></td>
+                    <td id="deliveryState"><!-- 배송상태 --></td>
+                    <td>
+                      <button type="button" class="btn" id="deleteButton2">
+                        주문취소
+                      </button>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
             </table>
           </div>
+        </div>
+        <div id="order-list-message" style="display: none">
+          주문 내역이 없습니다.
         </div>
       </div>
     </sidebar-container>
