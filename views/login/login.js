@@ -2,16 +2,18 @@ import { storage, storageKey } from "../storage.js";
 
 const emailInput = document.querySelector(".email-input");
 const pwInput = document.querySelector(".password-input");
-const loginBtn = document.querySelector(".login-btn");
+const loginForm = document.querySelector("#login-form");
 const errorMes = document.querySelector(".login-error-message");
 
-loginBtn.addEventListener("click", async () => {
+loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
   const emailInputVal = emailInput.value;
   const pwInputVal = pwInput.value;
 
-  if (emailInputVal === "") {
+  if (!emailInputVal.includes("@") || !emailInputVal.includes(".")) {
     errorMes.innerHTML = "올바른 아이디를 입력해주세요.";
-  } else if (pwInputVal === "") {
+  } else if (!/^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/.test(pwInputVal)) {
     errorMes.innerHTML = "올바른 비밀번호를 입력해주세요.";
   } else {
     try {
