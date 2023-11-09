@@ -25,14 +25,18 @@
           </div>
 
           <div class="form-group input-margin">
-            <label class="form-label" for="name">이름</label>
+            <label class="form-label" for="password">비밀번호</label>
             <input
               class="form-input"
-              type="text"
-              id="name"
-              name="name"
-              required
+              type="password"
+              id="password"
+              placeholder="정보 수정을 위해 비번을 입력하세요."
             />
+          </div>
+
+          <div class="form-group input-margin">
+            <label class="form-label" for="name">이름</label>
+            <input class="form-input" type="text" id="name" required />
           </div>
 
           <div class="form-group input-margin">
@@ -51,13 +55,23 @@
             />
           </div>
           <div class="form-group">
-            <input type="text" class="form-input" name="address1" />
+            <input
+              type="text"
+              class="form-input"
+              id="address1"
+              name="address1"
+            />
           </div>
           <div class="form-group">
-            <input type="text" class="form-input" name="address2" />
+            <input
+              type="text"
+              class="form-input"
+              id="address2"
+              name="address2"
+            />
           </div>
 
-          <button class="form-button" type="submit">적용</button>
+          <button class="form-button" id="submitBtn" type="submit">적용</button>
         </form>
       </div>
 
