@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../common/common.css" />
     <script type="module" src="../common/header-component.js"></script>
     <script src="../common/footer-component.js"></script>
+    <script src="../common/common.js"></script>
     <script type="module" src="product-list.js"></script>
   </head>
 
@@ -23,6 +24,8 @@
           <a class="category" href="/product-list">전체</a>
           <template id="template-category">
             <!-- 서브 카테고리 -->
+            <span> > </span>
+            <a class="category"></a>
           </template>
         </div>
         <!-- 상품목록 -->

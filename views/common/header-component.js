@@ -196,7 +196,6 @@ class HeaderComponent extends HTMLElement {
     return `
       <ul id="first-category">
         ${categories.reduce((acc, category) => {
-          console.log(category)
           return `
               ${acc}
               <li>
