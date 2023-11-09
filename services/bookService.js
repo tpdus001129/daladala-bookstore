@@ -34,14 +34,17 @@ const bookService = {
     result.books = books;
 
     if (categoryId) {
+      if (!Types.ObjectId.isValid(categoryId)) {
+        throw new NotFoundError(CATEGORY_NOT_FOUND);
+      }
+      
       const booksFilter = books.filter(
         (book) =>
-          book.category.id.toString() === categoryId ||
-          book.category.parent._id.toString() === categoryId,
+        book.category?.id.toString() === categoryId ||
+        book.category?.parent?._id.toString() === categoryId,
       );
       result.books = booksFilter;
-
-      let categories = await await Category.aggregate([
+      let categories = await Category.aggregate([
         {
           $lookup: {
             from: "categories",
