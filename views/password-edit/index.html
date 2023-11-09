@@ -1,72 +1,50 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>비밀번호 변경</title>
-    <link rel="stylesheet" href="../common/reset.css" />
-    <link rel="stylesheet" href="../common/common.css" />
-    <link rel="stylesheet" href="../common/sidebar-layout.css" />
-    <link rel="stylesheet" href="../common/form.css" />
-    <link rel="stylesheet" href="password-edit.css" />
-    <script type="module" src="../common/header-component.js"></script>
-    <script src="../common/sidebar-component.js"></script>
-  </head>
 
-  <body>
-    <header-component></header-component>
-    <div class="sidebar-layout-container">
-      <div class="sidebar-layout-wrapper">
-        <sidebar-component></sidebar-component>
-        <div class="form-container container">
-          <h1 class="form-title">비밀번호 변경</h1>
-          <form id="password-edit-form">
-            <div class="form-group">
-              <label class="form-label" for="password-origin"
-                >기존 비밀번호</label
-              >
-              <input
-                class="form-input"
-                type="password"
-                id="password-origin"
-                name="password-origin"
-                placeholder="기존 비밀번호 입력"
-                required
-              />
-            </div>
-            <div class="form-error-message" id="password-origin-error"></div>
-            <div class="form-group">
-              <label class="form-label" for="password">새 비밀번호</label>
-              <input
-                class="form-input"
-                type="password"
-                id="password"
-                name="password"
-                placeholder="영문, 숫자를 조합한 8자 이상 20자이하"
-                required
-              />
-            </div>
-            <div class="form-error-message" id="password-error"></div>
-            <div class="form-group">
-              <label class="form-label" for="password-confirm"
-                >새 비밀번호 확인</label
-              >
-              <input
-                class="form-input"
-                type="password"
-                id="password-confirm"
-                name="password-confirm"
-                placeholder="새 비밀번호를 다시 입력"
-                required
-              />
-            </div>
-            <div class="form-error-message" id="password-confirm-error"></div>
-            <button class="form-button" type="submit">비밀번호 변경하기</button>
-          </form>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>비밀번호 변경</title>
+  <link rel="stylesheet" href="../common/reset.css" />
+  <link rel="stylesheet" href="../common/common.css" />
+  <link rel="stylesheet" href="../common/form.css" />
+  <link rel="stylesheet" href="password-edit.css" />
+  <script type="module" src="../common/header-component.js"></script>
+  <script type="module" src="../common/sidebar-container.js"></script>
+  <script type="module" src="password-edit.js"></script>
+</head>
+
+<body>
+  <header-component></header-component>
+  <sidebar-container>
+    <div class="form-container container">
+      <h1 class="form-title">비밀번호 변경</h1>
+      <form id="password-edit-form">
+        <div class="form-group">
+          <label class="form-label" for="password-origin">기존 비밀번호</label>
+          <input class="form-input" type="password" id="password-origin" name="password-origin" placeholder="기존 비밀번호 입력"
+            required />
         </div>
-      </div>
+        <div class="form-error-message" id="password-origin-error"></div>
+        <div class="form-group">
+          <label class="form-label" for="password">새 비밀번호</label>
+          <input class="form-input" type="password" id="password" name="password" placeholder="영문, 숫자를 조합한 8자 이상 20자이하"
+            required />
+        </div>
+        <div class="form-error-message" id="password-error"></div>
+        <div class="form-group">
+          <label class="form-label" for="password-confirm">새 비밀번호 확인</label>
+          <input class="form-input" type="password" id="password-confirm" name="password-confirm"
+            placeholder="새 비밀번호를 다시 입력" required />
+        </div>
+        <div class="form-error-message" id="password-confirm-error"></div>
+        <button class="form-button" type="submit">비밀번호 변경하기</button>
+      </form>
     </div>
+  </sidebar-container>
+  </div>
+  </div>
 
-    <script src="password-edit.js"></script>
-  </body>
+</body>
+
 </html>

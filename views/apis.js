@@ -1,6 +1,11 @@
 export default {
   users: {
     get: ({ userId }) => customFetch("GET", `/users/${userId}`),
+    editPassword: ({ userId, password, newPassword }) =>
+      customFetch("PATCH", `/users/${userId}/password`, {
+        password,
+        newPassword,
+      }),
     delete: ({ userId, password }) =>
       customFetch("DELETE", `/users/${userId}`, { userId, password }),
   },
