@@ -4,25 +4,25 @@ import cookieOptions from "../config/cookieOptions.js";
 const authController = {
   async signup(req, res) {
     const { email, password, phoneNumber } = req.body;
-    const { accessToken, userId } = await authService.signup({
+    const { accessToken, userId, authority } = await authService.signup({
       email,
       password,
       phoneNumber,
     });
 
     res.cookie("accessToken", accessToken, cookieOptions);
-    res.status(201).json({ userId });
+    res.status(201).json({ userId, authority });
   },
 
   async login(req, res) {
     const { email, password } = req.body;
-    const { accessToken, userId } = await authService.login({
+    const { accessToken, userId, authority } = await authService.login({
       email,
       password,
     });
 
     res.cookie("accessToken", accessToken, cookieOptions);
-    res.status(200).json({ userId });
+    res.status(200).json({ userId, authority });
   },
 
   async logout(req, res) {
