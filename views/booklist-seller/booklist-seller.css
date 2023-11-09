@@ -1,16 +1,25 @@
 .topTitle {
   font-size: 25px;
   margin: 30px;
+  width: 100%;
 }
 .container {
-  width: 80%;
-  margin: 0 auto;
+  width: 100%;
+  margin: 50px 0;
+  display: flex;
+  flex-direction: column;
 }
 .buttonBox {
   display: flex;
   justify-content: flex-end;
   text-align: center;
-  margin-bottom: 40px;
+  gap: 10px;
+  width: 100%;
+  margin: 10px 0;
+}
+h2 {
+  font-weight: bold;
+  font-size: 25px;
 }
 .listAddBtn,
 .deleteAllBtn,
@@ -25,39 +34,62 @@
   cursor: pointer;
   font-size: 16px;
 }
-.deleteAllBtn {
-  margin-left: 20px;
-}
-table {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  width: 100%;
-  margin: 30px auto;
-}
-tr,
-td {
-  vertical-align: middle;
-  padding: 10px 20px;
-}
-.bookImg {
-  background-color: black;
-  width: 20%;
-  height: 200px;
-}
-.manageBox {
-  width: 15%;
-  margin: 0 auto;
-}
-.modifyBtn,
-.deleteBtn {
-  margin: 10px auto;
-}
 .listAddBtn a,
 .modifyBtn a {
   display: block;
   color: black;
   text-decoration: none;
 }
-.title {
-  font-weight: bold;
+.modifyBtn,
+.deleteBtn {
+  margin: 10px auto;
+}
+#main-container {
+  background-color: rgba(146, 146, 146, 0.952);
+  border-top: 8px solid;
+  border-bottom: 8px solid;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+.contain-inner {
+  background-color: var(--white);
+  display: flex;
+  width: 100%;
+}
+.contain-inner > div {
+  /* border: 1px solid; */
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 30px;
+}
+.category {
+  color: var(--point-color);
+}
+.bookImg {
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100px;
+  height: 200px;
+}
+.contain-inner-02,
+.contain-inner-03 {
+  text-align: center;
+  gap: 20px !important;
+}
+.price {
+  color: var(--point-color);
+}
+.quantity {
+  margin-top: 30px;
+}
+.contain-inner-04 {
+  justify-content: center;
+  gap: 0 !important;
 }
