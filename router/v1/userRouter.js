@@ -67,4 +67,11 @@ router.patch(
   asyncHandler(orderController.update),
 );
 
+router.get(
+  "/:userId/books",
+  jwtAuthentication,
+  isMySelf,
+  asyncHandler(userController.getMyBooks),
+);
+
 export default router;

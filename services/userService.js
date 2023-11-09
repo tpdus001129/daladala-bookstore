@@ -1,5 +1,5 @@
 import { Types } from "mongoose";
-import { User } from "../models/index.js";
+import { User, Book } from "../models/index.js";
 import { hashPassword, comparePassword } from "../utils/utils.js";
 import { NotFoundError } from "../utils/errors.js";
 import {
@@ -121,6 +121,18 @@ const userService = {
 
     return true;
   },
+
+  async getMyBooks(userId) {
+    if (!Types.ObjectId.isValid(userId)) {
+      throw new NotFoundError(USER_NOT_FOUND);
+    }
+
+    const books = await Book.find({ deletedAt: { $exists: false }, seller: { $eq: userId } })
+      .sort({ createdAt: -1 })
+      .exec();
+
+    return books;
+  }
 };
 
 export default userService;
