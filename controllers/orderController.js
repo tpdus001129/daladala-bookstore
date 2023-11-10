@@ -2,8 +2,13 @@ import orderService from "../services/orderService.js";
 
 const orderController = {
   async list(req, res) {
+    const orders = await orderService.list();
+    res.status(200).json(orders);
+  },
+
+  async listByUser(req, res) {
     const { userId } = req.params;
-    const orders = await orderService.list(userId);
+    const orders = await orderService.listByUser(userId);
     res.status(200).json(orders);
   },
 
