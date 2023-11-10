@@ -1,12 +1,13 @@
 :root {
   --max-width: 1280px;
-  --point-color: #C60167;
+  --point-color: #c60167;
   --red: #e53935;
-  --white: #FFFFFF;
-  --light-gray: #EBEBEB;
-  --gray: #C5C5C5;
+  --white: #ffffff;
+  --light-gray: #ebebeb;
+  --gray: #c5c5c5;
   --dark-gray: #484848;
   --black: #000000;
+  --blue: #2341dd;
 }
 
 .flex-container {
@@ -18,4 +19,8 @@
 
 .flex-item {
   flex: 1;
+}
+
+button:disabled {
+  cursor: not-allowed;
 }

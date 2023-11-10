@@ -12,7 +12,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   await initIndexedDB();
 
   const clearCartButtonElement = document.querySelector("#clear-cart");
-  clearCartButtonElement.addEventListener("click", () => clearCartItems());
+  clearCartButtonElement.addEventListener("click", () => {
+    clearCartItems();
+    location.reload();
+  });
 
   const orderButtonElement = document.querySelector("#order-button");
   orderButtonElement.addEventListener("click", () => {
@@ -157,6 +160,7 @@ async function renderCartItem(
 
   deleteCell.querySelector("button").addEventListener("click", () => {
     deleteCartItem(bookId);
+    location.reload();
   });
   cartTableBodyElement.appendChild(cartTemplateClone);
 
