@@ -82,6 +82,46 @@ const orderService = {
     return orders;
   },
 
+  async detail(userId, orderId) {
+    if (!Types.ObjectId.isValid(userId)) {
+      throw new NotFoundError(USER_NOT_FOUND);
+    }
+
+    if (!Types.ObjectId.isValid(orderId)) {
+      throw new NotFoundError(ORDER_NOT_FOUND);
+    }
+
+    const order = await Order.findOne({
+      _id: orderId,
+      user: userId,
+      deletedAt: { $exists: false },
+    })
+      .populate({
+        path: "user",
+        select: "_id name email authority phoneNumber address",
+      })
+      .populate({
+        path: "books.book",
+        populate: [
+          {
+            path: "seller",
+            select: "_id name email authority",
+          },
+          {
+            path: "category",
+            populate: [
+              {
+                path: "parent",
+                select: "_id name parent",
+              },
+            ],
+          },
+        ],
+      })
+      .exec();
+    return order;
+  },
+
   async create(userId, orderData) {
     if (!Types.ObjectId.isValid(userId)) {
       throw new NotFoundError(USER_NOT_FOUND);

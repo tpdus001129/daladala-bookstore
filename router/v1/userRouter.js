@@ -4,6 +4,7 @@ import userController from "../../controllers/userController.js";
 import orderController from "../../controllers/orderController.js";
 import { jwtAuthentication } from "../../middleware/jwtAuthentication.js";
 import { isMySelf } from "../../middleware/isMySelf.js";
+import { isMySelfOrAdmin } from "../../middleware/isMySelfOrAdmin.js";
 import { isAuthority } from "../../middleware/isAuthority.js";
 import { AUTHORITY_ADMIN } from "../../config/constants.js";
 import {
@@ -59,6 +60,13 @@ router.post(
   isMySelf,
   inputValidator(order.post),
   asyncHandler(orderController.create),
+);
+
+router.get(
+  "/:userId/orders/:orderId",
+  jwtAuthentication,
+  isMySelfOrAdmin,
+  asyncHandler(orderController.detail),
 );
 
 router.patch(
