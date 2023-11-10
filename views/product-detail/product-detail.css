@@ -6,9 +6,11 @@ img {
   /* TODO: 이미지 크기 정하기 */
   width: 400px;
   height: 600px;
+  object-fit: cover;
 }
 h2 {
   font-size: 30px !important;
+  line-height: 150%;;
 }
 hr {
   border-top-color: #bbb;
@@ -36,7 +38,6 @@ hr {
   flex-direction: row;
 }
 .product-image {
-  border: 1px solid;
   width: 55%;
   display: flex;
   justify-content: center;
@@ -69,10 +70,17 @@ figure {
   font-size: 25px;
   font-weight: bold;
 }
-.product-detail-info-content {
+.product-content {
   overflow-y: scroll;
-  height: 200px;
+  height: 250px;
   margin: 10px 10px 50px 10px;
+  line-height: 150%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  
+}
+.product-content::-webkit-scrollbar {
+  display: none;
 }
 #right {
   text-align: right;
@@ -88,7 +96,7 @@ figure {
 .product-detail-info-price > div {
   display: flex;
 }
-.product-total-price{
+.product-total-price {
   font-size: 25px;
   font-weight: bold;
   color: var(--point-color);
@@ -110,4 +118,3 @@ figure {
   background-color: var(--point-color);
   color: var(--white);
 }
-
