@@ -59,11 +59,17 @@ figure {
 .product-detail-info-price {
   display: flex;
   flex-direction: column;
-  gap: 20px 10px;
+  gap: 20px;
 }
 .product-detail-info-book > span {
   text-align: right;
   margin-left: auto;
+}
+
+.product-price {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 10px;
 }
 .product-detail-info-content {
   overflow-y: scroll;
@@ -84,8 +90,8 @@ figure {
 .product-detail-info-price > div {
   display: flex;
 }
-.product-price {
-  font-size: large;
+.product-total-price{
+  font-size: 25px;
   font-weight: bold;
   color: var(--point-color);
 }

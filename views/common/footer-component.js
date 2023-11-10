@@ -10,7 +10,7 @@ class FooterComponent extends HTMLElement {
       width: 100%;
       display: flex;
       justify-content: center;
-      background-color: rgb(231, 181, 209);
+      background-color: var(--dark-gray);
       position : relative;
       transform : translateY(0%);
     }
@@ -20,10 +20,9 @@ class FooterComponent extends HTMLElement {
       padding: 10px 0;
       font-size: 15px;
       line-height: 24px;
-      color: #121212;
     }
       .site-footer hr {
-        border-top-color: #bbb;
+        border-top-color: var(--light-gray);
         opacity: 0.5;
         width: 100%;
       }
@@ -31,7 +30,7 @@ class FooterComponent extends HTMLElement {
         margin: 20px 0;
       }
       .site-footer h6 {
-        color: #121212;
+        color: var(--light-gray);
         font-size: 16px;
         font-weight: 800;
         text-transform: uppercase;
@@ -39,10 +38,10 @@ class FooterComponent extends HTMLElement {
         letter-spacing: 2px;
       }
       .site-footer a {
-        color: #737373;
+        color: var(--light-gray);
       }
       .site-footer a:hover {
-        color: #f6f6f6;
+        color: var(--black);
         text-decoration: none;
         font-weight: bolder;
       }
@@ -64,10 +63,12 @@ class FooterComponent extends HTMLElement {
         list-style: none;
       }
       .footer-links li {
+        color: var(--light-gray);
         display: block;
       }
       .footer-links a {
-        color: #121212;
+        text-decoration: none;
+        color: var(--light-gray);
       }
       .site-footer .social-icons {
         text-align: right;
@@ -79,7 +80,7 @@ class FooterComponent extends HTMLElement {
         margin-left: 6px;
         margin-right: 0;
         border-radius: 100%;
-        background-color: #33353d;
+        background-color: var(--black);
       }
       .second-row {
         padding: 0 20px;
@@ -90,6 +91,7 @@ class FooterComponent extends HTMLElement {
         width: 50%;
       }
       .copyright-text {
+        color: var(--light-gray);
         margin: 0;
       }
       .social-icons-box {
@@ -106,8 +108,6 @@ class FooterComponent extends HTMLElement {
         margin-bottom: 4px;
       }
       .social-icons a {
-        background-color: #eceeef;
-        color: #818a91;
         font-size: 16px;
         display: inline-block;
         line-height: 44px;
@@ -120,7 +120,6 @@ class FooterComponent extends HTMLElement {
         -o-transition: all 0.2s linear;
         transition: all 0.2s linear;
       }
-      
       .social-icons.size-sm a {
         line-height: 34px;
         height: 34px;
@@ -133,8 +132,8 @@ class FooterComponent extends HTMLElement {
       .social-icons a.notion:hover {
         background-color: #dbe4e7;
       }
-      .social-icons a.linkedin:hover {
-        background-color: #007bb6;
+      .social-icons a.elice:hover {
+        background-color: #6700e6;
       }
       @media (max-width: 767px) {
         .social-icons li.title {
@@ -185,7 +184,7 @@ class FooterComponent extends HTMLElement {
                 <a class="notion" href="https://www.notion.so/59aa94f2cc3647208dcf4293cda6bd85"><i class="icon-notion"></i></a>
               </li>
               <li>
-                <a class="linkedin" href="#"><i class="icon-linkedin"></i></a>
+                <a class="elice" href="https://elice.io/"><i class="icon-elice"></i></a>
               </li>
             </ul>
           </div>
