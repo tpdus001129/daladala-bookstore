@@ -91,7 +91,8 @@ if (bookId) {
   });
 
   buyBtn.addEventListener("click", function () {
-    location.href = `${path.ORDER_PAYMENT}?id=${bookId}&quantity=1`;
+    const newQuantity = Number(resultElement.innerText);
+    location.href = `${path.ORDER_PAYMENT}?id=${bookId}&quantity=${newQuantity}`;
   });
 } else {
   console.error("URL에서 bookId를 찾을 수 없습니다.");

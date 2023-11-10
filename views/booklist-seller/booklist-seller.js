@@ -20,7 +20,33 @@ async function fetchData(sellerId) {
         clone.querySelector(".publisher").textContent = ` / ${book.publisher}`;
 
         const deleteBtn = clone.querySelector(".deleteBtn");
-        deleteBtn.addEventListener("click", function () {});
+        deleteBtn.addEventListener("click", function () {
+          if (confirm("삭제하시겠습니까?")) {
+            deleteBook(book._id);
+          }
+        });
+
+        async function deleteBook(bookId) {
+          try {
+            const res = await fetch(`/api/v1/books/${bookId}`, {
+              method: "DELETE",
+            });
+            if (res.status === 200) {
+              console.log("책이 삭제되었습니다.");
+              alert("삭제되었습니다.");
+              location.reload();
+              // 책이 성공적으로 삭제되었을 때 실행할 코드 추가
+            } else if (res.status === 404) {
+              console.log("책을 찾을 수 없습니다.");
+            } else if (res.status === 500) {
+              console.log("서버 오류로 책을 삭제할 수 없습니다.");
+            } else {
+              console.log("알 수 없는 오류가 발생했습니다.");
+            }
+          } catch (error) {
+            console.error("책을 삭제하는 중 오류가 발생했습니다:", error);
+          }
+        }
 
         container.appendChild(clone);
       });
@@ -36,6 +62,3 @@ async function fetchData(sellerId) {
 
 // 호출
 fetchData(sellerId);
-
-const deleteAllBtn = document.querySelector(".deleteAllBtn");
-deleteAllBtn.addEventListener("click", function () {});
