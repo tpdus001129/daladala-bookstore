@@ -21,12 +21,11 @@ h2 {
   font-size: 25px;
 }
 hr {
-  border-top-color: #bbb;
+  border-top-color: var(--light-gray);
   opacity: 0.5;
   width: 100%;
 }
 .listAddBtn,
-.deleteAllBtn,
 .modifyBtn,
 .deleteBtn {
   border: none;
@@ -37,11 +36,21 @@ hr {
   text-align: center;
   cursor: pointer;
   font-size: 16px;
+  background-color: var(--light-gray);
+}
+.listAddBtn:hover,
+.modifyBtn:hover,
+.deleteBtn:hover {
+  background-color: var(--point-color);
+  color: var(--white);
+}
+.listAddBtn:hover a,
+.modifyBtn:hover a {
+  color: var(--white);
 }
 .listAddBtn a,
 .modifyBtn a {
-  display: block;
-  color: black;
+  color: var(--black);
   text-decoration: none;
 }
 .modifyBtn,
@@ -61,7 +70,6 @@ hr {
   width: 100%;
 }
 .contain-inner > div {
-  /* border: 1px solid; */
   width: 25%;
   display: flex;
   flex-direction: column;
@@ -84,12 +92,12 @@ hr {
   text-align: center;
   gap: 10px !important;
 }
-.price{
+.price {
   margin-top: 30px;
   color: var(--point-color);
   font-size: 20px;
 }
-.author{
+.author {
   margin-top: 30px;
 }
 .contain-inner-03 {
