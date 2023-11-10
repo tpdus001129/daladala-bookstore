@@ -11,7 +11,37 @@ import {
 } from "../config/errorMessagesConstants.js";
 
 const orderService = {
-  async list(userId) {
+  async list() {
+    const orders = await Order.find({
+      deletedAt: { $exists: false },
+    })
+      .populate({
+        path: "user",
+        select: "_id name email authority phoneNumber address",
+      })
+      .populate({
+        path: "books.book",
+        populate: [
+          {
+            path: "seller",
+            select: "_id name email authority",
+          },
+          {
+            path: "category",
+            populate: [
+              {
+                path: "parent",
+                select: "_id name parent",
+              },
+            ],
+          },
+        ],
+      })
+      .exec();
+    return orders;
+  },
+
+  async listByUser(userId) {
     if (!Types.ObjectId.isValid(userId)) {
       throw new NotFoundError(USER_NOT_FOUND);
     }

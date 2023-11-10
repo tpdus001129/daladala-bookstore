@@ -92,8 +92,8 @@ const OrderSchema = new Schema(
     },
     deliveryState: {
       type: String,
-      enum: ["주문취소", "주문완료", "배송준비중", "배송중", "배송완료"],
-      default: "주문완료",
+      enum: ["주문취소", "배송준비중", "배송중", "배송완료"],
+      default: "배송준비중",
     },
     deletedAt: Date,
   },
