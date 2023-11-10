@@ -8,65 +8,70 @@
     <link rel="stylesheet" href="../common/common.css" />
     <link rel="stylesheet" href="../common/form.css" />
     <script type="module" src="../common/header-component.js"></script>
+    <script type="module" src="../common/footer-component.js"></script>
+    <script type="module" src="signup.js"></script>
   </head>
 
   <body>
-    <header-component></header-component>
-    <div class="form-container">
-      <h1 class="form-title">회원가입</h1>
-      <form id="signup-form">
-        <div class="form-group">
-          <label class="form-label" for="email">이메일</label>
-          <input
-            class="form-input"
-            type="email"
-            id="email"
-            name="email"
-            placeholder="example@example.com"
-            required
-          />
-        </div>
-        <div class="form-error-message" id="email-error"></div>
-        <div class="form-group">
-          <label class="form-label" for="password">비밀번호</label>
-          <input
-            class="form-input"
-            type="password"
-            id="password"
-            name="password"
-            placeholder="영문, 숫자를 조합한 8자 이상 20자이하"
-            required
-          />
-        </div>
-        <div class="form-error-message" id="password-error"></div>
-        <div class="form-group">
-          <label class="form-label" for="password-confirm">비밀번호 확인</label>
-          <input
-            class="form-input"
-            type="password"
-            id="password-confirm"
-            name="password-confirm"
-            placeholder="비밀번호와 일치하는 문자 입력"
-            required
-          />
-        </div>
-        <div class="form-error-message" id="password-confirm-error"></div>
-        <div class="form-group">
-          <label class="form-label" for="tel">전화번호</label>
-          <input
-            class="form-input"
-            type="tel"
-            id="tel"
-            name="tel"
-            placeholder="010-8888-9999"
-            required
-          />
-        </div>
-        <div class="form-error-message" id="tel-error"></div>
-        <button class="form-button" type="submit">가입하기</button>
-      </form>
+    <div class="flex-container">
+      <header-component></header-component>
+      <div class="form-container flex-item">
+        <h1 class="form-title">회원가입</h1>
+        <form id="signup-form">
+          <div class="form-group">
+            <label class="form-label" for="email">이메일</label>
+            <input
+              class="form-input"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="example@example.com"
+              required
+            />
+          </div>
+          <div class="form-error-message" id="email-error"></div>
+          <div class="form-group">
+            <label class="form-label" for="password">비밀번호</label>
+            <input
+              class="form-input"
+              type="password"
+              id="password"
+              name="password"
+              placeholder="영문, 숫자를 조합한 8자 이상 20자이하"
+              required
+            />
+          </div>
+          <div class="form-error-message" id="password-error"></div>
+          <div class="form-group">
+            <label class="form-label" for="password-confirm"
+              >비밀번호 확인</label
+            >
+            <input
+              class="form-input"
+              type="password"
+              id="password-confirm"
+              name="password-confirm"
+              placeholder="비밀번호와 일치하는 문자 입력"
+              required
+            />
+          </div>
+          <div class="form-error-message" id="password-confirm-error"></div>
+          <div class="form-group">
+            <label class="form-label" for="tel">전화번호</label>
+            <input
+              class="form-input"
+              type="tel"
+              id="tel"
+              name="tel"
+              placeholder="010-8888-9999"
+              required
+            />
+          </div>
+          <div class="form-error-message" id="tel-error"></div>
+          <button class="form-button" type="submit">가입하기</button>
+        </form>
+      </div>
+      <footer-component></footer-component>
     </div>
-
-    <script type="module" src="signup.js"></script>
   </body>
 </html>

@@ -9,27 +9,35 @@
     <link rel="stylesheet" href="../common/reset.css" />
     <link rel="stylesheet" href="./categories.css" />
     <script type="module" src="../common/header-component.js"></script>
-    <script src="../common/sidebar-container.js"></script>
+    <script type="module" src="../common/sidebar-container.js"></script>
     <script src="../common/footer-component.js"></script>
     <script src="./categories.js" defer></script>
   </head>
-  <body>
-    <header-component></header-component>
-    <sidebar-container>
-      <h1>카테고리</h1>
-      <button class="add-category">추가</button>
 
-      <div class="category-container">
-        <div class="category-header">
-          <div class="category">
-            <div class="column">카테고리명</div>
-            <div class="column">서브카테고리</div>
-            <div class="column">수정</div>
-            <div class="column">삭제</div>
-          </div>
-        </div>
-      </div>
-    </sidebar-container>
-    <footer-component></footer-component>
+  <body>
+    <div class="flex-container">
+      <header-component></header-component>
+        <main class="flex-item">
+          <sidebar-container>
+            <h1 class="form-title">카테고리 등록 / 수정</h1>
+
+            <div class="btn-container">
+              <button class="add-category">추가하기</button>
+            </div>
+
+            <div class="category-container">
+              <div class="category-header">
+                <div class="category">
+                  <div class="column">카테고리명</div>
+                  <div class="column">서브카테고리</div>
+                  <div class="column">수정</div>
+                  <div class="column">삭제</div>
+                </div>
+              </div>
+            </div>
+          </sidebar-container>
+        </main>
+      <footer-component></footer-component>
+    </div>
   </body>
 </html>

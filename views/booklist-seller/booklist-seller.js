@@ -1,27 +1,55 @@
-const bookImg = document.querySelector("img");
-const bookTitle = document.querySelector(".title");
-const bookPrice = document.querySelector(".price");
-const bookQuantity = document.querySelector(".quantity");
-const bookAuthor = document.querySelector(".author");
-const bookPublisher = document.querySelector(".publisher");
+const sellerId = "6545dc26e7a26c5e20c8cdea";
 
-// const deleteAll = document.querySelector(".deleteAllBtn");
-// const deleteItem = document.querySelector(".deleteBtn");
-
-const bookId = "654a254ab48028e071e58cf8";
-
-async function fetchData() {
+async function fetchData(sellerId) {
   try {
-    // await initIndexedDB();
-    const res = await fetch(`/api/v1/books/${bookId}`);
+    const res = await fetch(`/api/v1/users/${sellerId}/books`);
     if (res.status === 200) {
       const data = await res.json();
-      bookImg.alt = data.title;
-      bookTitle.innerHTML = data.title;
-      bookPrice.innerHTML = data.price.toLocaleString("ko-KR") + "원";
-      bookQuantity.innerHTML = `현재 재고: ${data.inventoryCount}권`;
-      bookAuthor.innerHTML = data.author;
-      bookPublisher.innerHTML = `/ ${data.publisher}`;
+      const template = document.querySelector("#template-product");
+      const container = document.getElementById("main-container");
+
+      data.forEach((book) => {
+        const clone = document.importNode(template.content, true);
+        clone.querySelector(".title").textContent = book.title;
+        clone.querySelector(".price").textContent =
+          book.price.toLocaleString("ko-KR") + "원";
+        clone.querySelector(
+          ".quantity",
+        ).textContent = `${book.inventoryCount} 권`;
+        clone.querySelector(".author").textContent = book.author;
+        clone.querySelector(".publisher").textContent = ` / ${book.publisher}`;
+
+        const deleteBtn = clone.querySelector(".deleteBtn");
+        deleteBtn.addEventListener("click", function () {
+          if (confirm("삭제하시겠습니까?")) {
+            deleteBook(book._id);
+          }
+        });
+
+        async function deleteBook(bookId) {
+          try {
+            const res = await fetch(`/api/v1/books/${bookId}`, {
+              method: "DELETE",
+            });
+            if (res.status === 200) {
+              console.log("책이 삭제되었습니다.");
+              alert("삭제되었습니다.");
+              location.reload();
+              // 책이 성공적으로 삭제되었을 때 실행할 코드 추가
+            } else if (res.status === 404) {
+              console.log("책을 찾을 수 없습니다.");
+            } else if (res.status === 500) {
+              console.log("서버 오류로 책을 삭제할 수 없습니다.");
+            } else {
+              console.log("알 수 없는 오류가 발생했습니다.");
+            }
+          } catch (error) {
+            console.error("책을 삭제하는 중 오류가 발생했습니다:", error);
+          }
+        }
+
+        container.appendChild(clone);
+      });
     } else if (res.status === 400) {
       throw new Error("Book not found");
     } else {
@@ -31,20 +59,6 @@ async function fetchData() {
     console.error("도서 정보를 불러오는 중 오류가 발생했습니다:", error);
   }
 }
+
 // 호출
-fetchData();
-
-// deleteAll.addEventListener("click", function () {
-//   fetch("http://백엔드 주소/cart", {
-//     method: "DELETE",
-//     headers: {
-//       Authorization: localStorage.getItem("access_token"),
-//     },
-//     body: JSON.stringify({
-//       //삭제하고싶은 데이터의 물건 id
-//       cart_id: data.cart_id,
-//     }),
-//   });
-// });
-
-// deleteItem.addEventListener("click", function () {});
+fetchData(sellerId);

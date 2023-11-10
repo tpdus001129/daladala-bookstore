@@ -4,6 +4,9 @@ import userController from "../../controllers/userController.js";
 import orderController from "../../controllers/orderController.js";
 import { jwtAuthentication } from "../../middleware/jwtAuthentication.js";
 import { isMySelf } from "../../middleware/isMySelf.js";
+import { isMySelfOrAdmin } from "../../middleware/isMySelfOrAdmin.js";
+import { isAuthority } from "../../middleware/isAuthority.js";
+import { AUTHORITY_ADMIN } from "../../config/constants.js";
 import {
   inputValidator,
   user,
@@ -48,7 +51,7 @@ router.get(
   "/:userId/orders",
   jwtAuthentication,
   // TODO: 관리자, 판매자, 구매자만 요청가능하게 관련 미들웨어 추가
-  asyncHandler(orderController.list),
+  asyncHandler(orderController.listByUser),
 );
 
 router.post(
@@ -59,12 +62,26 @@ router.post(
   asyncHandler(orderController.create),
 );
 
+router.get(
+  "/:userId/orders/:orderId",
+  jwtAuthentication,
+  isMySelfOrAdmin,
+  asyncHandler(orderController.detail),
+);
+
 router.patch(
   "/:userId/orders/:orderId",
   jwtAuthentication,
   // TODO: 관리자, 판매자, 구매자만 요청가능하게 관련 미들웨어 추가
   inputValidator(order.deliveryStateUpdate),
   asyncHandler(orderController.update),
+);
+
+router.delete(
+  "/:userId/orders/:orderId",
+  jwtAuthentication,
+  isAuthority([AUTHORITY_ADMIN]),
+  asyncHandler(orderController.remove),
 );
 
 router.get(

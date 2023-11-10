@@ -13,13 +13,17 @@
   display: flex;
   justify-content: flex-end;
   text-align: center;
-  gap: 10px;
   width: 100%;
   margin: 10px 0;
 }
 h2 {
   font-weight: bold;
   font-size: 25px;
+}
+hr {
+  border-top-color: #bbb;
+  opacity: 0.5;
+  width: 100%;
 }
 .listAddBtn,
 .deleteAllBtn,
@@ -45,7 +49,6 @@ h2 {
   margin: 10px auto;
 }
 #main-container {
-  background-color: rgba(146, 146, 146, 0.952);
   border-top: 8px solid;
   border-bottom: 8px solid;
   display: flex;
@@ -54,7 +57,6 @@ h2 {
   gap: 20px;
 }
 .contain-inner {
-  background-color: var(--white);
   display: flex;
   width: 100%;
 }
@@ -78,16 +80,21 @@ h2 {
   width: 100px;
   height: 200px;
 }
-.contain-inner-02,
+.contain-inner-02 {
+  text-align: center;
+  gap: 10px !important;
+}
+.price{
+  margin-top: 30px;
+  color: var(--point-color);
+  font-size: 20px;
+}
+.author{
+  margin-top: 30px;
+}
 .contain-inner-03 {
   text-align: center;
   gap: 20px !important;
-}
-.price {
-  color: var(--point-color);
-}
-.quantity {
-  margin-top: 30px;
 }
 .contain-inner-04 {
   justify-content: center;

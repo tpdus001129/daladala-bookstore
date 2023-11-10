@@ -35,7 +35,7 @@ const order = {
 
       books: Joi.array().items(
         Joi.object().keys({
-          bookId: Joi.string()
+          book: Joi.string()
             .required()
             .messages(error.orderErrorMessage.bookId),
           count: Joi.number()
@@ -57,7 +57,6 @@ const order = {
   deliveryStateUpdate: {
     body: Joi.object().keys({
       deliveryState: Joi.string()
-        .required()
         .valid(
           ...[
             ORDER_CANCELED,
@@ -68,6 +67,20 @@ const order = {
           ],
         )
         .messages(error.orderErrorMessage.deliveryState),
+      recipient: Joi.object().keys({
+        phoneNumber: Joi.string()
+          .pattern(PHONE_NUMBER_REGEX)
+          .messages(error.userErrorMessage.phoneNumber),
+        name: Joi.string().messages(error.userErrorMessage.name),
+        address: Joi.object().keys({
+          zipCode: Joi.string()
+            .messages(error.userErrorMessage.zipCode),
+          detail1: Joi.string()
+            .messages(error.userErrorMessage.detail1),
+          detail2: Joi.string()
+            .messages(error.userErrorMessage.detail2),
+        }),
+      }),
     }),
   },
 };

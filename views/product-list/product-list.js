@@ -7,34 +7,38 @@ if ("content" in document.createElement("template")) {
   (async () => {
     await initIndexedDB();
 
-    const { books, category } = await (await apis.books.get()).json();
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const currentCategory = urlParams.get("category");
+
+    const { books, category } = currentCategory
+      ? await (await apis.books.category({ category: currentCategory })).json()
+      : await (await apis.books.list()).json();
+
     if (category) {
-      const categoryContainerElement =
-        document.querySelector("category-container");
+      const categoryContainerElement = document.querySelector(
+        ".category-container",
+      );
       const templateCategoryElement =
         document.querySelector("#template-category");
-      const categoryClone = document.importNode(
-        templateCategoryElement.content,
-        true,
-      );
-      const categoryElement = categoryClone.querySelector(".category");
-      categoryElement.innerText = " > " + category.name;
 
       let categoryLoop = { ...category };
       while (categoryLoop) {
-        const dividerElement = document.createElement("span");
-        dividerElement.innerText = " > ";
-        dividerElement.className = "category";
+        const categoryClone = document.importNode(
+          templateCategoryElement.content,
+          true,
+        );
 
-        const subCategoryElement = document.createElement("a");
-        subCategoryElement.innerText = categoryLoop.subCategory.name;
-        subCategoryElement.className = "category";
-        subCategoryElement.href = `/product-list?category=${categoryLoop._id}`;
+        const categoryElement = categoryClone.querySelector("a");
+        categoryElement.innerText = categoryLoop.name;
+        categoryElement.className = "category";
+        categoryElement.href = `${path.BOOKS}?category=${categoryLoop._id}`;
 
-        categoryContainerElement.appendChild(dividerElement);
-        categoryContainerElement.appendChild(subCategoryElement);
+        categoryContainerElement.appendChild(categoryClone);
 
-        categoryLoop = { ...category.subCategory };
+        categoryLoop = categoryLoop.subCategory
+          ? { ...category.subCategory }
+          : null;
       }
     }
 
@@ -51,7 +55,7 @@ if ("content" in document.createElement("template")) {
       linkElement.href = `/product-detail?id=${_id}`;
 
       const imageElement = productClone.querySelector(".product-image");
-      imageElement.src = image;
+      imageElement.src = image.path;
       imageElement.alt = title;
 
       const nameElement = productClone.querySelector(".product-name");
@@ -76,6 +80,10 @@ if ("content" in document.createElement("template")) {
 
       listElement.appendChild(productClone);
     });
+
+    console.log("before");
+    window.dispatchEvent(new Event("resize"));
+    console.log("done");
   })();
 } else {
   alert(

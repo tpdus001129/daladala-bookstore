@@ -17,16 +17,14 @@ class HeaderComponent extends HTMLElement {
             margin: 0;
             padding: 0;
           }
-
           .header-padding {
             content: "";
             display: block;
-            height: 160px; 
+            height: 180px; 
           }
-
           header {
             width: 100%;
-            background: white;
+            background: #fff;
             display: flex;
             justify-content: center;
             position: fixed;
@@ -34,17 +32,10 @@ class HeaderComponent extends HTMLElement {
             z-index: 100;
           }
           .max-container {
-            margin-top: 30px;
             width: var(--max-width);
-            height: 130px;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-          }
-          .first-header {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
           }
           .header-logo-box {
             margin: 16px 0;
@@ -53,34 +44,30 @@ class HeaderComponent extends HTMLElement {
           }
           .login-user {
             display: flex;
+            justify-content: flex-end;
             gap: 20px;
-            float: right;
             margin: 0;
             padding: 0;
           }
           .login-user a {
             text-decoration: none;
-            color: inherit;
+            color: var(--black);
           }
           .login-user a:hover {
             color: var(--point-color);
           }
           .second-header {
-            display: flex;
-            justify-content: center;
-            padding: 10px 0;
+            width: 100%;
           }
-
           .category-drop-box {
-            width: 450px;
             height: 100%;
             display: flex;
             justify-content: center;
           }
           .category-drop-box a {
-            color: #121212;
+            color: var(--black);
             display: block;
-            padding: 15px 25px;
+            padding: 15px 10px;
             text-align: center;
             text-decoration: none;
             -webkit-transition: all 0.25s ease;
@@ -95,6 +82,9 @@ class HeaderComponent extends HTMLElement {
             padding: 0;
           }
           .category-drop-box ul {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
             list-style: none;
             width: 100%;
           }
@@ -102,63 +92,31 @@ class HeaderComponent extends HTMLElement {
             display: inline-block;
             position: relative;
           }
-
-          #first-category {
-            width: 450px;
-            height: 100%;
-          }
           #first-category > li {
-            float: left;
-            width: 33%;
+            width: 100%;
+            max-width: 160px;
             text-align: center;
             position: relative;
           }
           #first-category > li:hover #second-category {
             left: 0;
           }
-          #first-category > li a {
-            display: block;
-          }
           #first-category li a:hover {
-            color: #121212;
-            font-weight: bold;
+            color: var(--point-color);
+            transition: .3s
           }
           #second-category {
+            display: flex;
+            flex-direction: column;
             position: absolute;
             top: 40px;
             left: -9999px;
-            background: #ccc;
+            background: #28292e;
             width: 100%;
+            border-radius: 10px;
           }
-          #second-category > li {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            width: 100%;
-            height: 50px;
-          }
-          #second-category > li:hover #third-category {
-            left: 100%;
-          }
-          #second-category > li a,
-          #third-category > li a {
-            margin: 10px;
-            padding: 10px;
-          }
-          #third-category {
-            position: absolute;
-            top: 0;
-            background: #6bd089;
-            width: 100%;
-            left: -9999px;
-          }
-          #third-category > li {
-            width: 100%;
-            height: 50px;
-          }
-          #third-category > li:hover {
-            color: #fff;
+          #second-category a {
+            color: var(--white);
           }
         </style>`;
 
@@ -172,28 +130,14 @@ class HeaderComponent extends HTMLElement {
                 <img src="/public/images/logo.png" alt="로고" width="240px;">
               </a>
             </div>
-            <div class="header-login-user">
-              <ul class="login-user">
-              WHETHER_AUTH
-              </ul>
-            </div>
+            <ul class="login-user">
+            WHETHER_AUTH
+            </ul>
           </div>
 
           <div class="second-header">
             <nav class="category-drop-box">
-              <ul id="first-category">
-                <li>
-                  <div class="box">
-                    <a class="head" href="/product-list">햄버거</a>
-                  </div>
-                  <ul id="second-category">
-                    <li><a href="/product-list">전체보기</a></li>
-                    CATEGORY
-                  </ul>
-                </li>
-                <li><a class="head" href="/new">신상</a></li>
-                <li><a class="head" href="">베스트</a></li>
-              </ul>
+              CATEGORY
             </nav>
           </div>
         </div>
@@ -226,29 +170,7 @@ class HeaderComponent extends HTMLElement {
       }
 
       const categories = await (await apis.categories()).json();
-
-      const categoriesHTML = categories.reduce(
-        (acc, { _id, name, subCategories }) => {
-          return (
-            acc +
-            `
-              <li>
-                <a class="second-category-name" href="/product-list?category=${_id}">${name}</a>
-                <ul id="third-category">
-                  ${subCategories.reduce((innerAcc, { _id: innerId, name }) => {
-                    return (
-                      innerAcc +
-                      `<li><a class="detail" href="/product-list?category=${innerId}">${name}</a></li>`
-                    );
-                  }, "")}
-                </ul>
-              </li>
-              
-            `
-          );
-        },
-        "",
-      );
+      const categoriesHTML = this.firstCategory(categories);
 
       template.innerHTML = template.innerHTML.replace(
         "CATEGORY",
@@ -268,6 +190,36 @@ class HeaderComponent extends HTMLElement {
         });
       }
     })();
+  }
+
+  firstCategory(categories) {
+    return `
+      <ul id="first-category">
+        <li>
+          <a class="box" href="/product-list">
+            전체보기
+          </a>
+        </li>
+        ${categories.reduce((acc, category) => {
+          return `
+              ${acc}
+              <li>
+                <a class="box" href="/product-list?category=${category._id.toString()}">
+                  ${category.name}
+                </a>
+                <ul id="second-category">
+                  ${category.subCategories.reduce((innerAcc, subCategory) => {
+                    return (
+                      innerAcc +
+                      `<li><a href="/product-list?category=${subCategory._id}">${subCategory.name}</a></li>`
+                    );
+                  }, "")}
+                </ul>
+              </li>
+            `;
+        }, "")}
+      </ul>
+    `;
   }
 }
 
