@@ -14,4 +14,10 @@ router.get(
   asyncHandler(orderController.list),
 );
 
+router.get(
+  "/:orderId",
+  jwtAuthentication,
+  asyncHandler(orderController.detail),
+);
+
 export default router;

@@ -1,12 +1,13 @@
 import { Types } from "mongoose";
 import { Order } from "../models/index.js";
-import { CustomError, DeliveryError } from "../utils/errors.js";
+import { AUTHORITY_ADMIN } from "../config/constants.js";
+import { CustomError, DeliveryError, AuthError } from "../utils/errors.js";
 import { ORDER_ERROR } from "../config/errorMessagesConstants.js";
 import { NotFoundError } from "../utils/errors.js";
 import {
   ORDER_CANCELED,
   ORDER_IN_TRANSIT,
-  ORDER_DELIVERED
+  ORDER_DELIVERED,
 } from "../config/constants.js";
 import {
   USER_NOT_FOUND,
@@ -14,6 +15,7 @@ import {
   ORDER_NOT_FOUND,
   ORDER_DELIVERY_STATE_ERROR,
   DELIVERY_IN_PROGRESS_CANCELLATION_ERROR,
+  UNAUTHORIZED_ERROR,
 } from "../config/errorMessagesConstants.js";
 
 const orderService = {
@@ -82,8 +84,9 @@ const orderService = {
     return orders;
   },
 
-  async detail(userId, orderId) {
-    if (!Types.ObjectId.isValid(userId)) {
+  async detail(user, orderId) {
+    
+    if (!Types.ObjectId.isValid(user._id)) {
       throw new NotFoundError(USER_NOT_FOUND);
     }
 
@@ -93,7 +96,6 @@ const orderService = {
 
     const order = await Order.findOne({
       _id: orderId,
-      user: userId,
       deletedAt: { $exists: false },
     })
       .populate({
@@ -119,6 +121,13 @@ const orderService = {
         ],
       })
       .exec();
+
+    if (order) {
+      if (order._id.toString() !== user._id.toString() && user.authority !== AUTHORITY_ADMIN) {
+        throw new AuthError(UNAUTHORIZED_ERROR);
+      }
+    }
+
     return order;
   },
 

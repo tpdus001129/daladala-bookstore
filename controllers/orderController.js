@@ -13,8 +13,8 @@ const orderController = {
   },
 
   async detail(req, res) {
-    const { userId, orderId } = req.params;
-    const orders = await orderService.detail(userId, orderId);
+    const { orderId } = req.params;
+    const orders = await orderService.detail(req.user, orderId);
     res.status(200).json(orders);
   },
 
