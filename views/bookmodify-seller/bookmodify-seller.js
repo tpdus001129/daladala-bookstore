@@ -1,3 +1,5 @@
+import path from "../path.js";
+
 // 카테고리 선택
 const mainCategory = document.querySelector(".mainCategory");
 mainCategory.addEventListener("change", (e) => {
@@ -141,20 +143,14 @@ saveBtn.addEventListener("click", async (e) => {
     formData.set("releaseDate", `${year}-${month}-${date}`);
 
     try {
-      const res = await fetch(`/api/v1/books/${queryParameter}`, {
+      await fetch(`/api/v1/books/${queryParameter}`, {
         method: "PUT",
         body: formData,
       });
-
-      if (res.ok) {
-        console.log("PUT 요청");
-        console.log(imgUpload.files[0]);
-      }
     } catch (error) {
       console.error(error);
     }
   } else {
-    console.log("등록");
     formData.append("category", subKey);
     formData.append("image", imgUpload.files[0]);
     formData.append("title", title.value);
@@ -172,9 +168,9 @@ saveBtn.addEventListener("click", async (e) => {
         body: formData,
       });
 
-      if (res.ok) {
-        console.log("저장 완료");
-      }
+      if (!res.ok) throw new Error(res);
+      alert("등록이 완료되었습니다.");
+      location.href = path.ADMIN_BOOK_LIST;
     } catch (error) {
       console.error(error);
     }

@@ -1,7 +1,8 @@
-const sellerId = "6545dc26e7a26c5e20c8cdea";
+import { storage, storageKey } from "../storage.js";
 
-async function fetchData(sellerId) {
+async function fetchData() {
   try {
+    const sellerId = storage.getItem(storageKey.userId);
     const res = await fetch(`/api/v1/users/${sellerId}/books`);
     if (res.status === 200) {
       const data = await res.json();
@@ -10,7 +11,7 @@ async function fetchData(sellerId) {
 
       data.forEach((book) => {
         console.log(book);
-        console.log(book['category']);
+        console.log(book["category"]);
         // console.log(book.category.parent);
         const clone = document.importNode(template.content, true);
 
@@ -18,8 +19,11 @@ async function fetchData(sellerId) {
           clone.querySelector(".parent-category").textContent = "";
           clone.querySelector(".sub-category").textContent = "";
         } else {
-          clone.querySelector(".parent-category").textContent = book.category.parent.name
-          clone.querySelector(".sub-category").textContent = `/ ${book.category.name}`;
+          clone.querySelector(".parent-category").textContent =
+            book.category.parent.name;
+          clone.querySelector(
+            ".sub-category",
+          ).textContent = `/ ${book.category.name}`;
         }
 
         clone.querySelector("img").src = book.image.path;
@@ -79,4 +83,4 @@ async function fetchData(sellerId) {
 }
 
 // 호출
-fetchData(sellerId);
+fetchData();
