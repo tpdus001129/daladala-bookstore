@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../common/reset.css" />
+    <link rel="stylesheet" href="../common/common.css" />
+    <link rel="stylesheet" href="../common/table.css" />
+    <link rel="stylesheet" href="admin-order-list.css" />
+
+    <script type="module" src="../common/header-component.js"></script>
+    <script type="module" src="../common/sidebar-container.js"></script>
+    <script type="module" src="../common/footer-component.js"></script>
+    <script type="module" src="admin-order-list.js"></script>
+    <title>주문/배송 관리</title>
+  </head>
+
+  <body class="flex-container">
+    <header-component></header-component>
+    <sidebar-container class="flex-item">
+      <main>
+        <h1>주문/배송 관리</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>주문번호(클릭시 주문 상세보기)</th>
+              <th>주문날짜</th>
+              <th>주문내역</th>
+              <th>주문금액/총수량</th>
+              <th>주문상태</th>
+              <th>주문삭제</th>
+            </tr>
+          </thead>
+          <tbody id="order-table-body">
+            <template id="order-template">
+              <tr>
+                <td>
+                  <a class="order-detail-link">
+                    <!-- 주문 상세 페이지 링크 -->
+                  </a>
+                </td>
+                <td>
+                  <!-- 2023.10.10 -->
+                </td>
+                <td>
+                  <!-- 책제목 외 2종 -->
+                </td>
+                <td>
+                  <!-- 총금액 / 수량 -->
+                </td>
+                <td>
+                  <select>
+                    <option value="배송준비중">배송준비중</option>
+                    <option value="배송중">배송중</option>
+                    <option value="배송완료">배송완료</option>
+                  </select>
+                </td>
+                <td>
+                  <button>X</button>
+                </td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </main>
+    </sidebar-container>
+    <footer-component></footer-component>
+  </body>
+</html>

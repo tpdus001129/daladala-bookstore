@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="../common/common.css" />
     <link rel="stylesheet" href="../common/table.css" />
     <link rel="stylesheet" href="../common/form.css" />
-    <link rel="stylesheet" href="../order/order.css" />
+    <link rel="stylesheet" href="order.css" />
 
     <script type="module" src="../common/header-component.js"></script>
     <script src="../common/footer-component.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="module" src="order.js"></script>
 
     <title>order</title>
   </head>
@@ -68,13 +69,14 @@
                     id="name"
                     type="text"
                     name="name"
-                    placeholder="김춘향"
+                    placeholder="수령인"
                   />
                   <input
                     class="form-input-alone"
                     id="phone-number"
                     type="text"
                     name="phone-number"
+                    placeholder="010-8888-9999"
                   />
                 </div>
                 <div class="address-container">
@@ -190,56 +192,6 @@
         </div>
       </div>
     </main>
-    <!-- <footer-component></footer-component> -->
-    <script type="module" src="order.js"></script>
-    <!-- 주소 api js 파일에 넣으니 오류가 떠서 코드 이동 -->
-    <script>
-      const openAddressButtonElement = document.querySelector(
-        "#address-popup-button",
-      );
-      const zipCodeElement = document.querySelector("#zip-code");
-      const detail1Element = document.querySelector("#detail1");
-      const detail2Element = document.querySelector("#detail2");
-
-      openAddressButtonElement.addEventListener("click", openAddressPopup);
-      zipCodeElement.addEventListener("click", openAddressPopup);
-      detail1Element.addEventListener("click", openAddressPopup);
-
-      function openAddressPopup() {
-        new daum.Postcode({
-          oncomplete: function (data) {
-            var address = "";
-            var extraAddress = "";
-
-            if (data.userSelectedType === "R") {
-              address = data.roadAddress;
-            } else {
-              address = data.jibunAddress;
-            }
-
-            if (data.userSelectedType === "R") {
-              if (data.bname !== "" && /[동|로|가]$/g.test(data.bname)) {
-                extraAddress += data.bname;
-              }
-              if (data.buildingName !== "" && data.apartment === "Y") {
-                extraAddress +=
-                  extraAddress !== ""
-                    ? ", " + data.buildingName
-                    : data.buildingName;
-              }
-              if (extraAddress !== "") {
-                extraAddress = " (" + extraAddress + ")";
-              }
-              zipCodeElement.value = data.zonecode;
-              detail1Element.value = address;
-              document.getElementById("detail2").focus();
-            } else {
-              zipCodeElement.value = "";
-              detail1Element.value = "";
-            }
-          },
-        }).open();
-      }
-    </script>
+    <footer-component></footer-component>
   </body>
 </html>

@@ -119,10 +119,6 @@ export function clearCartItems() {
 
   const request = cartStore.clear();
 
-  request.onsuccess = () => {
-    location.reload();
-  };
-
   request.onerror = (event) => {
     console.error(
       "카트를 비우는 중에 오류가 발생했습니다:",
@@ -136,10 +132,6 @@ export function deleteCartItem(bookId) {
   const cartStore = transaction.objectStore("cart");
 
   const request = cartStore.delete(bookId);
-
-  request.onsuccess = () => {
-    location.reload();
-  };
 
   request.onerror = (event) => {
     console.error(

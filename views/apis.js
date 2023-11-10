@@ -1,6 +1,10 @@
+import { storage, storageKey } from "./storage.js";
+
+const userId = storage.getItem(storageKey.userId);
+
 export default {
   users: {
-    get: ({ userId }) => customFetch("GET", `/users/${userId}`),
+    profile: () => customFetch("GET", `/users/${userId}`),
     editPassword: ({ userId, password, newPassword }) =>
       customFetch("PATCH", `/users/${userId}/password`, {
         password,
@@ -8,6 +12,19 @@ export default {
       }),
     delete: ({ userId, password }) =>
       customFetch("DELETE", `/users/${userId}`, { userId, password }),
+    orderList: () => customFetch("GET", `/users/${userId}/orders`),
+    orderPost: (props) => customFetch("POST", `/users/${userId}/orders`, props),
+    orderDetail: ({ orderId }) => customFetch("GET", `/orders/${orderId}`),
+    orderDelete: ({ orderId }) =>
+      customFetch("DELETE", `/users/${userId}/orders/${orderId}`),
+    orderEdit: ({ orderId, recipient }) =>
+      customFetch("PATCH", `/users/${userId}/orders/${orderId}`, {
+        recipient,
+      }),
+    orderCancel: ({ orderId }) =>
+      customFetch("PATCH", `/users/${userId}/orders/${orderId}`, {
+        deliveryState: "주문취소",
+      }),
   },
   auth: {
     signup: ({ email, password, phoneNumber }) =>
@@ -20,6 +37,13 @@ export default {
     detail: ({ bookId }) => customFetch("GET", `/books/${bookId}`),
     category: ({ category }) =>
       customFetch("GET", `/books?category=${category}`),
+  },
+  admin: {
+    orderList: () => customFetch("GET", `/orders`),
+    orderStateEdit: ({ userId, orderId, deliveryState }) =>
+      customFetch("PATCH", `/users/${userId}/orders/${orderId}`, {
+        deliveryState,
+      }),
   },
 };
 

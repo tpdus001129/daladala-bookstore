@@ -29,6 +29,7 @@ class SidebarContainer extends HTMLElement {
         .sidebar-container {
           padding: 20px;
           width: 230px;
+          flex-shrink: 0;
         }
 
         .sidebar-container li {
@@ -62,9 +63,10 @@ class SidebarContainer extends HTMLElement {
 
               <div class="admin-menu" id="admin-menu">
                 <ul>
-                  <li><a href=${path.ADMIN_BOOK_LIST}>도서목록 조회</a></li>
+                  <li><a href=${path.ADMIN_BOOK_LIST}>도서 목록 조회</a></li>
                   <li><a href=${path.ADMIN_BOOK_EDIT}>도서 등록/수정</a></li>
-                  <li><a href=${path.ADMIN_CATEGORY_EDIT}>도서카테고리 등록/수정</a></li>
+                  <li><a href=${path.ADMIN_CATEGORY_EDIT}>도서 카테고리 등록/수정</a></li>
+                  <li><a href=${path.ADMIN_ORDER_LIST}>주문/배송 관리</a></li>
                 </ul>
               </div>
             </nav>
