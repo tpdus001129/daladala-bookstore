@@ -5,11 +5,12 @@ const productImg = document.querySelector("img");
 const productName = document.querySelector(".product-name");
 const productAuthor = document.querySelector(".product-author");
 const productCompany = document.querySelector(".product-company");
+const productPrice = document.querySelector(".product-price");
 const productContent = document.querySelector(".product-content");
 const productNum = document.querySelector(".product-num");
 const minusBtn = document.querySelector(".minus-btn");
 const plusBtn = document.querySelector(".plus-btn");
-const productPrice = document.querySelector(".product-price");
+const productTotalPrice = document.querySelector(".product-total-price");
 const resultElement = document.getElementById("result");
 const addBtn = document.querySelector(".add-btn");
 const buyBtn = document.querySelector(".buy-btn");
@@ -25,8 +26,9 @@ function updateBookInfo(data) {
   productName.innerHTML = data.title;
   productAuthor.innerHTML = data.author;
   productCompany.innerHTML = data.publisher;
+  productPrice.innerHTML = data.price.toLocaleString("ko-KR") + "원";
   productContent.innerHTML = data.content;
-  productNum.innerHTML = data.inventoryCount;
+  productNum.innerHTML = `${data.inventoryCount}권`;
 
   bookData = data;
 }
@@ -35,7 +37,7 @@ function updatePrice() {
   let resultNum = Number(resultElement.innerText);
   if (bookData) {
     let priceToKr = bookData.price;
-    productPrice.innerHTML =
+    productTotalPrice.innerHTML =
       (priceToKr * resultNum).toLocaleString("ko-KR") + "원";
   }
 }
@@ -46,7 +48,7 @@ function count(type) {
   if (type === "plus") {
     number = parseInt(number) + 1;
   } else if (type === "minus") {
-    if (number < 1) {
+    if (number < 2) {
       alert("구매가능한 수량이 없습니다.");
       location.reload();
     }
