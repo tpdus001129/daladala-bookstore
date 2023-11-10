@@ -153,7 +153,7 @@ class FooterComponent extends HTMLElement {
             <ul class="footer-links">
               <li>대표이사 <a href="">오강산</a></li>
               <li>BE <a href="">박철휘</a></li>
-              <li>FE <a href="">송지은</a> <a href="">김세연</a> <a href="">김민희</a></li>
+              <li>FE <a href="">송은지</a> <a href="">김세연</a> <a href="">김민희</a></li>
             </ul>
           </div>
 

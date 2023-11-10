@@ -4,7 +4,6 @@ ul {
 }
 img {
   /* TODO: 이미지 크기 정하기 */
-  border: 1px solid;
   width: 400px;
   height: 600px;
 }
@@ -69,11 +68,10 @@ figure {
 .product-price {
   font-size: 25px;
   font-weight: bold;
-  margin-top: 10px;
 }
 .product-detail-info-content {
   overflow-y: scroll;
-  height: 350px;
+  height: 200px;
   margin: 10px 10px 50px 10px;
 }
 #right {
@@ -99,7 +97,6 @@ figure {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 30px;
 }
 .product-buy-confirm > button {
   width: 100%;
