@@ -163,7 +163,8 @@ const orderService = {
         user: userId,
       },
       {
-        deliveryState: orderData.deliveryState,
+        deliveryState: orderData.deliveryState ? orderData.deliveryState : order.deliveryState,
+        recipient: orderData.recipient ? orderData.recipient : order.recipient
       },
     );
 

@@ -644,6 +644,32 @@ paths:
                   type: string
                   example: 주문취소
                   description: 배송 상태
+                recipient:
+                  type: object
+                  properties:
+                    phoneNumber:
+                      type: string
+                      example: 010-1234-1234
+                      description: 받는사람 전화번호
+                    name:
+                      type: string
+                      example: 오강산
+                      description: 받는사람
+                    address:
+                      type: object
+                      properties:
+                        zipCode:
+                          type: string
+                          example: 11234
+                          description: 받는사람 우편번호
+                        detail1:
+                          type: string
+                          example: 서울시 강남구 역삼동 8-2
+                          description: 받는사람 주소
+                        detail2:
+                          type: string
+                          example: 402호
+                          description: 받는사람 주소(상세)
       responses:
         "200":
           description: 성공
