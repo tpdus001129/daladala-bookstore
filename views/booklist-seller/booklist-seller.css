@@ -48,8 +48,16 @@ hr {
 .modifyBtn:hover a {
   color: var(--white);
 }
-.listAddBtn a,
-.modifyBtn a {
+.listAddBtn:hover,
+.modifyBtn:hover,
+.deleteBtn:hover {
+  background-color: var(--point-color);
+  color: var(--white);
+}
+.listAddBtn:hover a {
+  color: var(--white);
+}
+.listAddBtn a {
   color: var(--black);
   text-decoration: none;
 }
@@ -76,9 +84,6 @@ hr {
   justify-content: center;
   gap: 10px;
   padding: 20px 30px;
-}
-.category {
-  color: var(--point-color);
 }
 .bookImg {
   border: 1px solid;
