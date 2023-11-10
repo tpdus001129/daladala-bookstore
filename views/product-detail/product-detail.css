@@ -104,4 +104,13 @@ figure {
 .product-buy-confirm > button {
   width: 100%;
   height: 50px;
+  background-color: var(--light-gray);
+  border: 0px;
+  border-radius: 10px;
+  cursor: pointer;
 }
+.product-buy-confirm > button:hover {
+  background-color: var(--point-color);
+  color: var(--white);
+}
+
