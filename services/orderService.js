@@ -1,13 +1,19 @@
 import { Types } from "mongoose";
 import { Order } from "../models/index.js";
-import { CustomError } from "../utils/errors.js";
+import { CustomError, DeliveryError } from "../utils/errors.js";
 import { ORDER_ERROR } from "../config/errorMessagesConstants.js";
 import { NotFoundError } from "../utils/errors.js";
+import {
+  ORDER_CANCELED,
+  ORDER_IN_TRANSIT,
+  ORDER_DELIVERED
+} from "../config/constants.js";
 import {
   USER_NOT_FOUND,
   BOOK_NOT_FOUND,
   ORDER_NOT_FOUND,
   ORDER_DELIVERY_STATE_ERROR,
+  DELIVERY_IN_PROGRESS_CANCELLATION_ERROR,
 } from "../config/errorMessagesConstants.js";
 
 const orderService = {
@@ -104,7 +110,14 @@ const orderService = {
       throw new NotFoundError(ORDER_NOT_FOUND);
     }
 
-    const order = await Order.findOneAndUpdate(
+    let order = await Order.findById({ _id: orderId }).exec();
+    if (orderData.deliveryState === ORDER_CANCELED) {
+      if ([ORDER_IN_TRANSIT, ORDER_DELIVERED].includes(order.deliveryState)) {
+        throw new DeliveryError(DELIVERY_IN_PROGRESS_CANCELLATION_ERROR);
+      }
+    }
+
+    order = await Order.findOneAndUpdate(
       {
         _id: orderId,
         user: userId,

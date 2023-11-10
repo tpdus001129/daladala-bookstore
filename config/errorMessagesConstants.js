@@ -47,6 +47,9 @@ export const ORDER_DELIVERY_STATE_ERROR = "배송상태 수정에 실패했습�
 export const ORDER_TOTAL_PRICE_FORMAT = "상품 총 가격을 입력해주세요.";
 export const ORDER_ERROR = "주문에 실패했습니다.";
 
+// 배송 정보
+export const DELIVERY_IN_PROGRESS_CANCELLATION_ERROR = "배송 시작된 상품은 취소 하실 수 없습니다.";
+
 // 유저 정보
 export const USER_NOT_FOUND = "유저 정보를 찾을 수 없습니다.";
 export const USER_PASSWORD_MISMATCH = "비밀번호가 일치하지 않습니다.";

@@ -45,6 +45,12 @@ class DuplicateError extends CustomError {
   }
 }
 
+class DeliveryError extends CustomError {
+  constructor(message) {
+    super(message, 500, "DeliveryError");
+  }
+}
+
 export {
   CustomError,
   NotFoundError,
@@ -53,4 +59,5 @@ export {
   SchemaNotFoundError,
   AuthError,
   DuplicateError,
+  DeliveryError,
 };
