@@ -2,10 +2,11 @@
   --max-width: 1280px;
   --point-color: #C60167;
   --red: #e53935;
-  --white: #f6f6f6;
-  --light-gray: rgba(235, 235, 235, 1);
-  --dark-gray: rgba(72, 72, 72, 1);
-  --black: #121212;
+  --white: #FFFFFF;
+  --light-gray: #EBEBEB;
+  --gray: #C5C5C5;
+  --dark-gray: #484848;
+  --black: #000000;
 }
 
 .flex-container {
