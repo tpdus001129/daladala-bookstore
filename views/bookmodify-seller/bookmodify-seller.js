@@ -1,27 +1,75 @@
 import path from "../path.js";
 
-// 카테고리 선택
-const mainCategory = document.querySelector(".mainCategory");
-mainCategory.addEventListener("change", (e) => {
-  const mainValue = e.target.value;
-  const allSubCategory = document.querySelectorAll(".subCategory");
-
-  allSubCategory.forEach((sub) => {
-    sub.classList.add("hidden-category");
-  });
-
-  const subCategoryCreate = document.querySelector("." + mainValue);
-  if (mainValue) {
-    subCategoryCreate.classList.remove("hidden-category");
-
-    subCategoryCreate.addEventListener("change", (e) => {
-      const subValue = e.target.value;
-      localStorage.setItem("subCategory", subValue);
-    });
-  }
+window.addEventListener("beforeunload", function () {
+  localStorage.removeItem("subCategory");
 });
-// 서브카테고리에서 선택한 value값 => 로컬스토리지 value값 => 도서 POST/PUT 에서 사용
-const subKey = localStorage.getItem("subCategory");
+
+// 카테고리 api - GET
+const selectCreate = document.querySelector(".selectCreate");
+const mainCategory = document.createElement("select");
+
+async function getCategory() {
+  try {
+    const res = await fetch(`/api/v1/categories`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const jsonData = await res.json();
+
+    jsonData.forEach((category) => {
+      // 메인 카테고리 생성
+      const hiddenOption = new Option("", "");
+      hiddenOption.hidden = true;
+      const option = new Option(category.name, category._id);
+      mainCategory.add(hiddenOption);
+      mainCategory.add(option);
+
+      // 서브 카테고리 생성
+      if (category.subCategories && category.subCategories.length > 0) {
+        const subMenu = document.createElement("select");
+
+        const hiddenOption = new Option("", "");
+        hiddenOption.hidden = true;
+        subMenu.add(hiddenOption);
+
+        category.subCategories.forEach((subCategory) => {
+          const subOption = new Option(subCategory.name, subCategory._id);
+          subMenu.add(subOption);
+          subMenu.classList.add("subCategory");
+          subMenu.classList.add("hidden-category");
+          subMenu.classList.add(category._id);
+        });
+        selectCreate.appendChild(subMenu);
+      }
+      selectCreate.appendChild(mainCategory);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+getCategory();
+
+// 카테고리 선택
+mainCategory.addEventListener("change", () => {
+  const mainValue = mainCategory.value;
+  const subMenus = document.querySelectorAll(".subCategory");
+
+  subMenus.forEach((subMenu) => {
+    if (subMenu.classList.contains(mainValue)) {
+      subMenu.classList.remove("hidden-category");
+
+      subMenu.addEventListener("change", (e) => {
+        const subValue = e.target.value;
+        localStorage.setItem("subCategory", subValue);
+        console.log(subValue);
+      });
+    } else {
+      subMenu.classList.add("hidden-category");
+    }
+  });
+});
 
 // 이미지 업로드
 const imgUpload = document.getElementById("imgUpload");
@@ -50,10 +98,12 @@ minusBtn.addEventListener("click", (e) => {
 });
 plusBtn.addEventListener("click", (e) => {
   e.preventDefault();
+  if (inventoryCount.value == "") {
+    inventoryCount.value = 0;
+  }
   inventoryCount.value = parseInt(inventoryCount.value) + 1;
 });
 
-const subCategory = document.querySelector(".subCategory");
 const title = document.querySelector(".title");
 const author = document.querySelector(".author");
 const publisher = document.querySelector(".publisher");
@@ -78,27 +128,33 @@ async function getBooksData() {
       const jsonData = await res.json();
       console.log("GET 요청", jsonData);
 
-      const mainValue = jsonData.category.parent.name;
+      const mainValue = jsonData.category.parent._id;
       const subValue = jsonData.category._id;
-
       const allSubCategory = document.querySelectorAll(".subCategory");
-      for (let i = 0; i < allSubCategory.length; i++) {
-        if (allSubCategory[i].classList.contains(mainValue)) {
-          allSubCategory[i].classList.remove("hidden-category");
-        }
-      }
 
+      // 메인 카테고리
       for (let i = 0; i < mainCategory.options.length; i++) {
         if (mainCategory.options[i].value == mainValue) {
           mainCategory.options[i].selected = true;
         }
       }
 
-      for (let i = 0; i < subCategory.options.length; i++) {
-        if (subCategory.options[i].value == subValue) {
-          subCategory.options[i].selected = true;
+      // 서브 카테고리
+      for (let i = 0; i < allSubCategory.length; i++) {
+        if (allSubCategory[i].classList.contains(mainValue)) {
+          allSubCategory[i].classList.remove("hidden-category");
+
+          const subSelect = allSubCategory[i];
+          for (let j = 0; j < subSelect.options.length; j++) {
+            if (subSelect.options[j].value == subValue) {
+              subSelect.options[j].selected = true;
+            }
+          }
+        } else {
+          allSubCategory[i].classList.add("hidden-category");
         }
       }
+
       const imgSrc = document.createElement("img");
       imgSrc.classList = "imgSrc";
       imgSrc.src = jsonData.image.path;
@@ -128,6 +184,7 @@ const saveBtn = document.querySelector(".saveBtn");
 saveBtn.addEventListener("click", async (e) => {
   e.preventDefault();
   const formData = new FormData();
+  const subKey = localStorage.getItem("subCategory");
 
   if (queryParameter) {
     formData.set("category", subKey);
@@ -147,6 +204,9 @@ saveBtn.addEventListener("click", async (e) => {
         method: "PUT",
         body: formData,
       });
+
+      alert("수정이 완료되었습니다.");
+      location.href = path.ADMIN_BOOK_LIST;
     } catch (error) {
       console.error(error);
     }
