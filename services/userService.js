@@ -127,7 +127,22 @@ const userService = {
       throw new NotFoundError(USER_NOT_FOUND);
     }
 
-    const books = await Book.find({ deletedAt: { $exists: false }, seller: { $eq: userId } })
+    const books = await Book.find({
+      deletedAt: { $exists: false },
+      seller: { $eq: userId },
+    })
+      .populate([
+        {
+          path: "category",
+          populate: [
+            {
+              path: "parent",
+              select: "_id name parent",
+            },
+          ],
+          select: "_id name",
+        },
+      ])
       .sort({ createdAt: -1 })
       .exec();
 
