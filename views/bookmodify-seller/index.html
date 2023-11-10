@@ -21,16 +21,17 @@
           <tr>
             <td colspan="3">
               <select name="" class="mainCategory">
-                <option value="">국내도서</option>
-                <option value="">해외도서</option>
+                <option value="korean">국내도서</option>
+                <option value="overseas">해외도서</option>
               </select>
 
               <select name="" class="subCategory">
-                <option value="">소설</option>
-                <option value="">경제/경영</option>
-                <option value="">종교</option>
-                <option value="">과학</option>
-                <option value="">자기개발</option>
+                <option value="hidden" hidden></option>
+                <option value="6543b8d140274d4982ec7e8f">소설</option>
+                <option value="6543b8d140274d4982ec7e91">경제/경영</option>
+                <option value="6543b8d140274d4982ec7e92">종교</option>
+                <option value="6543b8d140274d4982ec7e93">과학</option>
+                <option value="6543b8d140274d4982ec7e90">자기개발</option>
               </select>
             </td>
           </tr>
@@ -41,21 +42,20 @@
             </td>
           </tr>
           <tr>
-            <td><input type="text" placeholder="저자" class="writer" /></td>
+            <td><input type="text" placeholder="저자" class="author" /></td>
             <td>
               <input type="text" placeholder="출판사" class="publisher" />
             </td>
           </tr>
           <tr>
-            <td colspan="2">
-              <input type="text" placeholder="가격" class="price" />원
-            </td>
+            <td><input type="text" placeholder="가격" class="price" />원</td>
+            <td><input type="text" class="pages" />pages</td>
           </tr>
           <tr>
             <td>
               <input
                 type="file"
-                class="imgUpload"
+                id="imgUpload"
                 name="imgUpload"
                 accept="image/*"
               />
@@ -63,9 +63,9 @@
             </td>
             <td colspan="2">
               <div class="quantityBox">
-                <button>-</button>
+                <button class="minusBtn">-</button>
                 <input type="text" placeholder="재고" class="quantity" />
-                <button>+</button>
+                <button class="plusBtn">+</button>
               </div>
             </td>
           </tr>
@@ -81,11 +81,12 @@
             <button class="cancleBtn">
               <a href="../booklist-seller/index.html">취소</a>
             </button>
-            <button class="saveBtn">등록</button>
+            <button class="saveBtn" type="submit">등록</button>
           </div>
         </div>
       </form>
     </sidebar-container>
     <footer-component></footer-component>
+    <script src="./bookmodify-seller.js"></script>
   </body>
 </html>
