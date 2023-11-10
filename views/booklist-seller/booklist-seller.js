@@ -19,6 +19,11 @@ async function fetchData(sellerId) {
         clone.querySelector(".author").textContent = book.author;
         clone.querySelector(".publisher").textContent = ` / ${book.publisher}`;
 
+        const editBtn = clone.querySelector(".modifyBtn");
+        editBtn.addEventListener("click", function () {
+          location.href = `/bookmodify-seller?id=${book._id}`;
+        });
+
         const deleteBtn = clone.querySelector(".deleteBtn");
         deleteBtn.addEventListener("click", function () {
           if (confirm("삭제하시겠습니까?")) {

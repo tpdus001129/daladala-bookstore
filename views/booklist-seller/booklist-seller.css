@@ -38,10 +38,17 @@ hr {
   cursor: pointer;
   font-size: 16px;
 }
-.listAddBtn a,
-.modifyBtn a {
-  display: block;
-  color: black;
+.listAddBtn:hover,
+.modifyBtn:hover,
+.deleteBtn:hover {
+  background-color: var(--point-color);
+  color: var(--white);
+}
+.listAddBtn:hover a {
+  color: var(--white);
+}
+.listAddBtn a {
+  color: var(--black);
   text-decoration: none;
 }
 .modifyBtn,
@@ -68,9 +75,6 @@ hr {
   justify-content: center;
   gap: 10px;
   padding: 20px 30px;
-}
-.category {
-  color: var(--point-color);
 }
 .bookImg {
   border: 1px solid;
