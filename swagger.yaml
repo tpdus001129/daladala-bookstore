@@ -551,20 +551,24 @@ paths:
                   items:
                     type: object
                     properties:
-                      bookId:
+                      book:
                         type: string
                         example: ObjectId(asdfkv3D2Ec)
                       count:
                         type: number
                         example: 1
                   example:
-                    - bookId: ObjectId(asdfkv3D2Ec)
+                    - book: ObjectId(asdfkv3D2Ec)
                       count: 1
                   description: 주문한 책 정보 목록
                 deliveryPrice:
                   type: integer
                   example: 3000
                   description: 배송비
+                productsPrice:
+                  type: integer
+                  example: 42000
+                  description: 도서 총 주문가격
       responses:
         "201":
           description: 생성 성공
@@ -1011,17 +1015,17 @@ components:
           items:
             type: object
             required:
-              - bookId
+              - book
               - count
             properties:
-              bookId:
+              book:
                 type: string
                 example: ObjectId(asdfkv3D2Ec)
               count:
                 type: number
                 example: 1
           example:
-            - bookId: sdfasdfadsad
+            - book: sdfasdfadsad
               count: 1
           description: 주문한 책 정보 목록
         deliveryPrice:

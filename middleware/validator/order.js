@@ -35,7 +35,7 @@ const order = {
 
       books: Joi.array().items(
         Joi.object().keys({
-          bookId: Joi.string()
+          book: Joi.string()
             .required()
             .messages(error.orderErrorMessage.bookId),
           count: Joi.number()
