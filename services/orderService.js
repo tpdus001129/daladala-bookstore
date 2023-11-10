@@ -123,7 +123,7 @@ const orderService = {
       .exec();
 
     if (order) {
-      if (order._id.toString() !== user._id.toString() && user.authority !== AUTHORITY_ADMIN) {
+      if (order.user._id.toString() !== user._id.toString() && user.authority !== AUTHORITY_ADMIN) {
         throw new AuthError(UNAUTHORIZED_ERROR);
       }
     }
