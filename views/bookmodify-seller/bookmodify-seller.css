@@ -126,3 +126,7 @@ label[for="imgUpload"] {
   color: black;
   text-decoration: none;
 }
+
+.hidden-category {
+  display: none;
+}

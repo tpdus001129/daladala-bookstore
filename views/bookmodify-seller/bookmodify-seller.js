@@ -1,3 +1,26 @@
+// 카테고리 선택
+const mainCategory = document.querySelector(".mainCategory");
+mainCategory.addEventListener("change", (e) => {
+  const mainValue = e.target.value;
+  const allSubCategory = document.querySelectorAll(".subCategory");
+
+  allSubCategory.forEach((sub) => {
+    sub.classList.add("hidden-category");
+  });
+
+  const subCategoryCreate = document.querySelector("." + mainValue);
+  if (mainValue) {
+    subCategoryCreate.classList.remove("hidden-category");
+
+    subCategoryCreate.addEventListener("change", (e) => {
+      const subValue = e.target.value;
+      localStorage.setItem("subCategory", subValue);
+    });
+  }
+});
+// 서브카테고리에서 선택한 value값 => 로컬스토리지 value값 => 도서 POST/PUT 에서 사용
+const subKey = localStorage.getItem("subCategory");
+
 // 이미지 업로드
 const imgUpload = document.getElementById("imgUpload");
 const bookImg = document.querySelector(".bookImg");
@@ -28,7 +51,6 @@ plusBtn.addEventListener("click", (e) => {
   inventoryCount.value = parseInt(inventoryCount.value) + 1;
 });
 
-const mainCategory = document.querySelector(".mainCategory");
 const subCategory = document.querySelector(".subCategory");
 const title = document.querySelector(".title");
 const author = document.querySelector(".author");
@@ -56,11 +78,20 @@ async function getBooksData() {
 
       const mainValue = jsonData.category.parent.name;
       const subValue = jsonData.category._id;
+
+      const allSubCategory = document.querySelectorAll(".subCategory");
+      for (let i = 0; i < allSubCategory.length; i++) {
+        if (allSubCategory[i].classList.contains(mainValue)) {
+          allSubCategory[i].classList.remove("hidden-category");
+        }
+      }
+
       for (let i = 0; i < mainCategory.options.length; i++) {
         if (mainCategory.options[i].value == mainValue) {
           mainCategory.options[i].selected = true;
         }
       }
+
       for (let i = 0; i < subCategory.options.length; i++) {
         if (subCategory.options[i].value == subValue) {
           subCategory.options[i].selected = true;
@@ -71,7 +102,6 @@ async function getBooksData() {
       imgSrc.src = jsonData.image.path;
       bookImg.innerHTML = "";
       bookImg.appendChild(imgSrc);
-      console.log(imgSrc.src);
 
       title.value = jsonData.title;
       author.value = jsonData.author;
@@ -98,7 +128,7 @@ saveBtn.addEventListener("click", async (e) => {
   const formData = new FormData();
 
   if (queryParameter) {
-    formData.set("category", subCategory.value);
+    formData.set("category", subKey);
     formData.set("image", imgUpload.files[0]);
     formData.set("title", title.value);
     formData.set("author", author.value);
@@ -118,16 +148,14 @@ saveBtn.addEventListener("click", async (e) => {
 
       if (res.ok) {
         console.log("PUT 요청");
-        for (const pair of formData.entries()) {
-          console.log(pair[0] + ", " + pair[1]);
-        }
+        console.log(imgUpload.files[0]);
       }
     } catch (error) {
       console.error(error);
     }
   } else {
     console.log("등록");
-    formData.append("category", subCategory.value);
+    formData.append("category", subKey);
     formData.append("image", imgUpload.files[0]);
     formData.append("title", title.value);
     formData.append("author", author.value);
