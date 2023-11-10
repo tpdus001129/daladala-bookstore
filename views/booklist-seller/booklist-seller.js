@@ -9,7 +9,20 @@ async function fetchData(sellerId) {
       const container = document.getElementById("main-container");
 
       data.forEach((book) => {
+        console.log(book);
+        console.log(book['category']);
+        // console.log(book.category.parent);
         const clone = document.importNode(template.content, true);
+
+        if (book.category === null) {
+          clone.querySelector(".parent-category").textContent = "";
+          clone.querySelector(".sub-category").textContent = "";
+        } else {
+          clone.querySelector(".parent-category").textContent = book.category.parent.name
+          clone.querySelector(".sub-category").textContent = `/ ${book.category.name}`;
+        }
+
+        clone.querySelector("img").src = book.image.path;
         clone.querySelector(".title").textContent = book.title;
         clone.querySelector(".price").textContent =
           book.price.toLocaleString("ko-KR") + "원";
