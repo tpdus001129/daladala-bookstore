@@ -1,6 +1,7 @@
+import fs from "fs";
 import { Types } from "mongoose";
 import { Book, Category } from "../models/index.js";
-import { NotFoundError } from "../utils/errors.js";
+import { CustomError, NotFoundError } from "../utils/errors.js";
 import {
   BOOK_NOT_FOUND,
   CATEGORY_NOT_FOUND,
@@ -158,6 +159,14 @@ const bookService = {
 
     if (!book) {
       throw new Error("삭제할 도서가 존재하지 않습니다.");
+    }
+
+    if (fs.existsSync(book.image.path.slice(1))) {
+      try {
+        fs.unlinkSync(book.image.path.slice(1));
+      } catch (error) {
+        throw new CustomError("사진삭제에 실패했습니다.");
+      }
     }
 
     return true;
