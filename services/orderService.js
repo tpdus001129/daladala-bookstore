@@ -52,7 +52,7 @@ const orderService = {
     }
 
     orderData.books.forEach((book) => {
-      if (!Types.ObjectId.isValid(book.bookId)) {
+      if (!Types.ObjectId.isValid(book.book)) {
         throw new NotFoundError(BOOK_NOT_FOUND);
       }
     });
