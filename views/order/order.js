@@ -2,11 +2,13 @@ import apis from "../apis.js";
 import path from "../path.js";
 import { deleteCartItem, getCartItems, initIndexedDB } from "../indexedDB.js";
 import { storage, storageKey } from "../storage.js";
+import { checkAuth } from "../auth.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  handleOrderList();
+  checkAuth();
+  await handleOrderList();
   handlePaymentMethod();
-  handleAddress();
+  await handleAddress();
 });
 
 async function handleOrderList() {

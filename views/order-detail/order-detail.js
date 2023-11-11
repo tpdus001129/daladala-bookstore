@@ -1,5 +1,8 @@
 import apis from "../apis.js";
+import { checkAuth } from "../auth.js";
 import path from "../path.js";
+
+checkAuth();
 
 document.addEventListener("DOMContentLoaded", async () => {
   const searchParams = new URLSearchParams(location.search);
