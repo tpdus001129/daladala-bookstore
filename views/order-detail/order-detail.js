@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     order;
 
   books.forEach(({ book, count }) => {
-    renderTemplate({ bookId: book._id, quantity: count });
+    renderTemplate({ book: book, quantity: count });
   });
 
   document.querySelector("#products-price").innerText =
@@ -75,12 +75,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 });
 
-async function renderTemplate({ bookId, quantity }) {
+async function renderTemplate({ book, quantity }) {
   const orderTableBodyElement = document.querySelector("#order-table-body");
   const orderTemplateElement = document.querySelector("#order-template");
 
-  const res = await apis.books.detail({ bookId });
-  const { title, image, price } = await res.json();
+  const { title, image, price } = book;
 
   const orderTemplateClone = document.importNode(
     orderTemplateElement.content,
