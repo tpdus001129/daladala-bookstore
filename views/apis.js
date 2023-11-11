@@ -10,8 +10,8 @@ export default {
         password,
         newPassword,
       }),
-    delete: ({ userId, password }) =>
-      customFetch("DELETE", `/users/${userId}`, { userId, password }),
+    delete: ({ password }) =>
+      customFetch("DELETE", `/users/${userId}`, { password }),
     orderList: () => customFetch("GET", `/users/${userId}/orders`),
     orderPost: (props) => customFetch("POST", `/users/${userId}/orders`, props),
     orderDetail: ({ orderId }) => customFetch("GET", `/orders/${orderId}`),
