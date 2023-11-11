@@ -138,8 +138,26 @@ const bookService = {
     if (!Types.ObjectId.isValid(bookId)) {
       throw new NotFoundError(BOOK_NOT_FOUND);
     }
+    let book = await Book.find({ _id: bookId }).exec();
+    if (!book) {
+      throw new Error("수정할 도서가 존재하지 않습니다.");
+    }
 
-    const book = await Book.findByIdAndUpdate(bookId, bookData);
+    book = await Book.findByIdAndUpdate(bookId, {
+      publisher: bookData.publisher ?? book.publisher,
+      title: bookData.title ?? book.title,
+      author: bookData.author ?? book.author,
+      content: bookData.content ?? book.content,
+      pages: bookData.pages ?? book.pages,
+      publicationDate: bookData.publicationDate ?? book.publicationDate,
+      releaseDate: bookData.releaseDate ?? book.releaseDate,
+      image: bookData.image === "undefined" ? book.image : bookData.image,
+      price: bookData.price ?? book.price,
+      inventoryCount: bookData.inventoryCount ?? book.inventoryCount,
+      category: bookData.category ?? book.category,
+      seller: bookData.seller ?? book.seller,
+    });
+
     if (!book) {
       throw new Error("수정할 도서가 존재하지 않습니다.");
     }
