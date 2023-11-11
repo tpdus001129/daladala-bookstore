@@ -63,7 +63,6 @@ mainCategory.addEventListener("change", () => {
       subMenu.addEventListener("change", (e) => {
         const subValue = e.target.value;
         localStorage.setItem("subCategory", subValue);
-        console.log(subValue);
       });
     } else {
       subMenu.classList.add("hidden-category");
@@ -161,6 +160,9 @@ async function getBooksData() {
       bookImg.innerHTML = "";
       bookImg.appendChild(imgSrc);
 
+      // 수정되는 데이터
+      localStorage.setItem("subCategory", jsonData.category._id);
+
       title.value = jsonData.title;
       author.value = jsonData.author;
       publisher.value = jsonData.publisher;
@@ -200,11 +202,12 @@ saveBtn.addEventListener("click", async (e) => {
     formData.set("releaseDate", `${year}-${month}-${date}`);
 
     try {
-      await fetch(`/api/v1/books/${queryParameter}`, {
+      const res = await fetch(`/api/v1/books/${queryParameter}`, {
         method: "PUT",
         body: formData,
       });
 
+      if (!res.ok) throw new Error(res);
       alert("수정이 완료되었습니다.");
       location.href = path.ADMIN_BOOK_LIST;
     } catch (error) {
