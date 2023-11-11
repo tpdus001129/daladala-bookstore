@@ -1,5 +1,6 @@
 export default {
   HOME: "/",
+  LOGIN: "/login",
   BOOKS: "/product-list",
   ORDER_PAYMENT: "/order",
   ORDER_LIST: "/order-list",

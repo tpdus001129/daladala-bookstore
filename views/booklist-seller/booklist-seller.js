@@ -1,4 +1,7 @@
+import { checkAuth } from "../auth.js";
 import { storage, storageKey } from "../storage.js";
+
+checkAuth();
 
 async function fetchData() {
   try {

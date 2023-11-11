@@ -1,9 +1,14 @@
+import { checkAuth } from "../auth.js";
+
+checkAuth();
+
 const UPDATE_BUTTON_TEXT = "수정";
 const ADD_BUTTON_TEXT = "추가";
 const DELETE_BUTTON_TEXT = "삭제";
 const SUB_CATEGORY_BUTTON_TEXT = "▼";
 
-const categoryContainer = document.getElementsByClassName("category-container")[0];
+const categoryContainer =
+  document.getElementsByClassName("category-container")[0];
 const addCategoryButton = document.getElementsByClassName("add-category")[0];
 
 addCategoryButton.addEventListener("click", () => {
@@ -26,10 +31,10 @@ addCategoryButton.addEventListener("click", () => {
 
 document.addEventListener("DOMContentLoaded", async () => {
   const categories = await getCategories();
-  categories.forEach(category => {
+  categories.forEach((category) => {
     const dom = createCategoryDOM(category);
     categoryContainer.appendChild(dom);
-  })
+  });
 });
 
 async function getCategories() {
@@ -71,7 +76,7 @@ function createSubCategoryDOM(subCategories) {
   categoryGroupDiv.appendChild(subCategoryAddButton);
 
   subCategories.forEach((subCategory) => {
-    const subCategoryDiv = createSubCategoryGroup(subCategory); 
+    const subCategoryDiv = createSubCategoryGroup(subCategory);
     categoryGroupDiv.appendChild(subCategoryDiv);
   });
 
@@ -112,7 +117,8 @@ function subCategoryButton(category) {
   categorySubCategoryBtnDiv.classList.add("column");
   subBtn.innerHTML = SUB_CATEGORY_BUTTON_TEXT;
   subBtn.addEventListener("click", (e) => {
-    const subcategories = e.target.parentElement.parentElement.nextElementSibling;
+    const subcategories =
+      e.target.parentElement.parentElement.nextElementSibling;
     subcategories.classList.toggle("show");
   });
 
@@ -138,11 +144,17 @@ function updateButtonDOM(category, flg) {
     updateBtn.addEventListener("click", async (e) => {
       if (flg === "parent") {
         const parentInput =
-          e.target.parentElement.parentElement.parentElement.querySelector("input");
+          e.target.parentElement.parentElement.parentElement.querySelector(
+            "input",
+          );
         await postCategory(parentInput.value);
       } else if (flg === "sub") {
-        const input = e.target.parentElement.parentElement.querySelector("input");
-        const parentInput = e.target.parentElement.parentElement.parentElement.previousSibling.querySelector("input");
+        const input =
+          e.target.parentElement.parentElement.querySelector("input");
+        const parentInput =
+          e.target.parentElement.parentElement.parentElement.previousSibling.querySelector(
+            "input",
+          );
         await postCategory(input.value, parentInput.getAttribute("data-id"));
       }
     });
@@ -155,7 +167,7 @@ function updateButtonDOM(category, flg) {
 function subCategoryAddButtonDOM() {
   const divContainer = document.createElement("div");
   divContainer.style.paddingLeft = "663px";
-  
+
   const button = document.createElement("button");
   button.innerHTML = ADD_BUTTON_TEXT;
   button.addEventListener("click", (e) => {
@@ -174,7 +186,7 @@ function subCategoryAddButtonDOM() {
     }
     const div = createSubCategoryGroup();
     e.target.parentElement.parentElement.appendChild(div);
-  })
+  });
 
   divContainer.appendChild(button);
 
@@ -189,7 +201,7 @@ function deleteButtonDOM(category) {
   if (category) {
     deleteBtn.addEventListener("click", async () => {
       await deleteCategory(category._id);
-    })
+    });
     deleteBtnDiv.appendChild(deleteBtn);
   }
 

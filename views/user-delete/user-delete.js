@@ -1,5 +1,8 @@
 import { storage, storageKey } from "../storage.js";
 import apis from "../apis.js";
+import { checkAuth } from "../auth.js";
+
+checkAuth();
 
 const formElement = document.querySelector("#user-delete-form");
 

@@ -1,4 +1,7 @@
+import { checkAuth } from "../auth.js";
 import path from "../path.js";
+
+checkAuth();
 
 window.addEventListener("beforeunload", function () {
   localStorage.removeItem("subCategory");
