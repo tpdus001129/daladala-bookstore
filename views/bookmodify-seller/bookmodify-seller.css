@@ -130,3 +130,8 @@ label[for="imgUpload"] {
 .hidden-category {
   display: none;
 }
+.selectCreate {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: left;
+}
