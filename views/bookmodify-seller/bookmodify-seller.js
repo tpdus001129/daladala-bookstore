@@ -62,15 +62,18 @@ mainCategory.addEventListener("change", () => {
   subMenus.forEach((subMenu) => {
     if (subMenu.classList.contains(mainValue)) {
       subMenu.classList.remove("hidden-category");
-
-      subMenu.addEventListener("change", (e) => {
-        const subValue = e.target.value;
-        localStorage.setItem("subCategory", subValue);
-      });
     } else {
       subMenu.classList.add("hidden-category");
     }
   });
+});
+
+document.addEventListener("change", (e) => {
+  const subMenu = e.target;
+  if (subMenu.classList.contains("subCategory")) {
+    const subValue = subMenu.value;
+    localStorage.setItem("subCategory", subValue);
+  }
 });
 
 // 이미지 업로드
