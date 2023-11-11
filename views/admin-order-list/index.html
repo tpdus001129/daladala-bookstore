@@ -1,9 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주문/배송 관리</title>
+
     <link rel="icon" type="image/png" href="../public/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../common/reset.css" />
     <link rel="stylesheet" href="../common/common.css" />
     <link rel="stylesheet" href="../common/table.css" />
@@ -13,7 +21,6 @@
     <script type="module" src="../common/sidebar-container.js"></script>
     <script type="module" src="../common/footer-component.js"></script>
     <script type="module" src="admin-order-list.js"></script>
-    <title>주문/배송 관리</title>
   </head>
 
   <body class="flex-container">
@@ -24,7 +31,7 @@
         <table>
           <thead>
             <tr>
-              <th>주문번호(클릭시 주문 상세보기)</th>
+              <th>주문번호<br />(클릭시 주문 상세보기)</th>
               <th>주문날짜</th>
               <th>주문내역</th>
               <th>주문금액/총수량</th>
@@ -32,11 +39,11 @@
               <th>주문삭제</th>
             </tr>
           </thead>
-          <tbody id="order-table-body">
+          <tbody id="order-table-body" class="order-table-body">
             <template id="order-template">
               <tr>
                 <td>
-                  <a class="order-detail-link">
+                  <a class="order-detail-link text-overflow">
                     <!-- 주문 상세 페이지 링크 -->
                   </a>
                 </td>

@@ -22,7 +22,7 @@
   padding: 15px;
   color: #616161;
   font-size: 14px;
-  width: 30%;
+  width: 88px;
   border: none;
 }
 
@@ -52,7 +52,7 @@
   border-radius: 10px;
   cursor: pointer;
 }
-.form-button:hover{
+.form-button:hover {
   background-color: var(--point-color);
   color: var(--white);
 }

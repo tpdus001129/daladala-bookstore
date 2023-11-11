@@ -1,5 +1,6 @@
 import apis from "../apis.js";
 import { storage, storageKey } from "../storage.js";
+import { emailValidator, passwordValidator } from "../inputValidator.js";
 
 const form = document.getElementById("signup-form");
 const emailInput = document.getElementById("email");
@@ -12,18 +13,18 @@ form.addEventListener("submit", function (event) {
 
   let isValid = true;
 
-  if (!emailInput.value.includes("@") || !emailInput.value.includes(".")) {
+  if (!emailValidator(emailInput.value).isValid) {
     isValid = false;
     document.getElementById("email-error").textContent =
-      "'@'와 '.'를 포함한 올바른 이메일 주소를 입력해주세요.";
+      emailValidator().message;
   } else {
     document.getElementById("email-error").textContent = "";
   }
 
-  if (!/^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/.test(passwordInput.value)) {
+  if (!passwordValidator(passwordConfirmInput.value).isValid) {
     isValid = false;
     document.getElementById("password-error").textContent =
-      "영문, 숫자를 포함한 8자 이상 20이하의 문자를 입력해주세요.";
+      passwordValidator().message;
   } else {
     document.getElementById("password-error").textContent = "";
   }

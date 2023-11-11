@@ -40,7 +40,7 @@ function renderOrderRowTemplate(order) {
     books[0].book.title + (books.length > 1 ? ` 외 ${books.length - 1}종` : "");
 
   priceCell.innerText =
-    productsPrice.toLocaleString("ko-KR") + `원/${books.length}`;
+    productsPrice.toLocaleString("ko-KR") + `원 / ${books.length}`;
 
   const deliveryStateSelectElement = deliveryStateCell.querySelector("select");
   deliveryStateSelectElement.value = deliveryState;
@@ -89,10 +89,9 @@ function formatDate(_date) {
   const day = String(date.getDate()).padStart(2, "0");
   const hours = String(date.getHours()).padStart(2, "0");
   const minutes = String(date.getMinutes()).padStart(2, "0");
-  const seconds = String(date.getSeconds()).padStart(2, "0");
 
   // Concatenate the components
-  const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}`;
 
   return formattedDate;
 }

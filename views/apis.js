@@ -4,7 +4,7 @@ const userId = storage.getItem(storageKey.userId);
 
 export default {
   users: {
-    profile: () => customFetch("GET", `/users/${userId}`),
+    profile: (userId) => customFetch("GET", `/users/${userId}`),
     editPassword: ({ userId, password, newPassword }) =>
       customFetch("PATCH", `/users/${userId}/password`, {
         password,
