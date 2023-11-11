@@ -39,7 +39,7 @@ router.put(
   jwtAuthentication,
   isAuthority([AUTHORITY_ADMIN, AUTHORITY_SELLER]),
   upload.single("image"),
-  inputValidator(book.post),
+  inputValidator(book.put),
   asyncHandler(bookController.update),
 );
 
