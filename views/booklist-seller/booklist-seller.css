@@ -18,7 +18,8 @@
 }
 h2 {
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
+  line-height: 150%;
 }
 hr {
   border-top-color: var(--light-gray);
@@ -71,8 +72,7 @@ img{
   margin: 10px auto;
 }
 #main-container {
-  border-top: 8px solid;
-  border-bottom: 8px solid;
+  border-top: 5px solid var(--dark-gray);
   display: flex;
   flex-direction: column;
   width: 100%;
