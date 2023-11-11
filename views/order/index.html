@@ -63,66 +63,73 @@
               </section>
               <section class="section-container section-container-left">
                 <h2>배송 정보</h2>
-                <div class="recipient-info-container">
-                  <input
-                    class="form-input-alone"
-                    id="name"
-                    type="text"
-                    name="name"
-                    placeholder="수령인"
-                  />
-                  <input
-                    class="form-input-alone"
-                    id="phone-number"
-                    type="text"
-                    name="phone-number"
-                    placeholder="010-8888-9999"
-                  />
+                <div class="address-all">
+                  <div class="recipient-info-container">
+                    <input
+                      class="form-input-alone"
+                      id="name"
+                      type="text"
+                      name="name"
+                      placeholder="수령인"
+                    />
+                    <input
+                      class="form-input-alone"
+                      id="phone-number"
+                      type="text"
+                      name="phone-number"
+                      placeholder="010-8888-9999"
+                    />
+                  </div>
+                  <div class="address-container">
+                    <input
+                      class="form-input-alone"
+                      id="zip-code"
+                      type="text"
+                      name="zipCode"
+                      placeholder="우편번호"
+                    />
+                    <button id="address-popup-button">주소 검색</button>
+                    <input
+                      class="form-input-alone"
+                      id="detail1"
+                      type="text"
+                      name="detail"
+                      placeholder="주소"
+                    />
+                    <input
+                      class="form-input-alone"
+                      id="detail2"
+                      type="text"
+                      name="UserAddressDetail"
+                      placeholder="상세주소"
+                    />
+                  </div>
                 </div>
-                <div class="address-container">
-                  <input
-                    class="form-input-alone"
-                    id="zip-code"
-                    type="text"
-                    name="zipCode"
-                    placeholder="우편번호"
-                  />
-                  <button id="address-popup-button">주소 검색</button>
-                  <input
-                    class="form-input-alone"
-                    id="detail1"
-                    type="text"
-                    name="detail"
-                    placeholder="주소"
-                  />
-                  <input
-                    class="form-input-alone"
-                    id="detail2"
-                    type="text"
-                    name="UserAddressDetail"
-                    placeholder="상세주소"
-                  />
-                </div>
-                <h3>배송 메모</h3>
-                <select id="deliverySelect" class="section-container">
-                  <option value="">배송메모를 선택해 주세요.</option>
-                  <option value="배송 전에 미리 연락 바랍니다.">
-                    배송 전에 미리 연락 바랍니다.
-                  </option>
-                  <option value="부재시 경비실에 맡겨주세요.">
-                    부재시 경비실에 맡겨주세요.
-                  </option>
-                  <option value="부재시 전화나 문자를 남겨주세요.">
-                    부재시 전화나 문자를 남겨주세요.
-                  </option>
-                  <option value="custom">직접입력</option>
-                </select>
-                <div id="custom" style="display: none">
-                  <input
-                    type="text"
-                    id="customInput"
-                    placeholder="입력해주세요."
-                  />
+                <div class="address-memorandum">
+                  <h4>배송 메모</h4>
+                  <select
+                    id="deliverySelect"
+                    class="section-container-delivery"
+                  >
+                    <option value="">배송메모를 선택해 주세요.</option>
+                    <option value="배송 전에 미리 연락 바랍니다.">
+                      배송 전에 미리 연락 바랍니다.
+                    </option>
+                    <option value="부재시 경비실에 맡겨주세요.">
+                      부재시 경비실에 맡겨주세요.
+                    </option>
+                    <option value="부재시 전화나 문자를 남겨주세요.">
+                      부재시 전화나 문자를 남겨주세요.
+                    </option>
+                    <option value="custom">직접입력</option>
+                  </select>
+                  <div id="custom" style="display: none">
+                    <input
+                      type="text"
+                      id="customInput"
+                      placeholder="입력해주세요."
+                    />
+                  </div>
                 </div>
               </section>
             </div>
@@ -153,41 +160,32 @@
               <section class="section-container section-container-right">
                 <h2>결제수단</h2>
                 <div>
-                  <div class="pay-1box">
-                    <input
-                      type="radio"
-                      name="pay-type"
-                      value="card"
-                      id="card"
-                    />
-                    <label for="card">신용카드</label>
+                  <input type="radio" name="pay-type" value="card" id="card" />
+                  <label for="card">신용카드</label>
 
-                    <input
-                      type="radio"
-                      name="pay-type"
-                      value="payment-method-1"
-                      id="kakaopay"
-                    />
-                    <label for="kakaopay">카카오페이</label>
-                  </div>
+                  <input
+                    type="radio"
+                    name="pay-type"
+                    value="payment-method-1"
+                    id="kakaopay"
+                  />
+                  <label for="kakaopay">카카오페이</label>
 
-                  <div class="pay-2box">
-                    <input
-                      type="radio"
-                      name="pay-type"
-                      value="payment-method-2"
-                      id="naverpay"
-                    />
-                    <label for="naverpay">네이버페이</label>
+                  <input
+                    type="radio"
+                    name="pay-type"
+                    value="payment-method-2"
+                    id="naverpay"
+                  />
+                  <label for="naverpay">네이버페이</label>
 
-                    <input
-                      type="radio"
-                      name="pay-type"
-                      value="bank-pay"
-                      id="bankPay"
-                    />
-                    <label for="bankPay">무통장입금</label>
-                  </div>
+                  <input
+                    type="radio"
+                    name="pay-type"
+                    value="bank-pay"
+                    id="bankPay"
+                  />
+                  <label for="bankPay">무통장입금</label>
 
                   <div class="bank-pay-details" style="display: none">
                     <h4>입금계좌</h4>
