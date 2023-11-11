@@ -236,9 +236,12 @@ paths:
               schema:
                 type: object
                 properties:
-                  access_token:
+                  userId:
                     type: string
-                    example: aksdjvlajeiajefliajdsflk
+                    example: ObjectId(userid)
+                  authority:
+                    type: string
+                    example: 일반
         "400":
           description: 잘못된 요청
         "500":
@@ -275,9 +278,12 @@ paths:
               schema:
                 type: object
                 properties:
-                  access_token:
+                  userId:
                     type: string
-                    example: aksdjvlajeiajefliajdsflk
+                    example: ObjectId(userid)
+                  authority:
+                    type: string
+                    example: 일반
         "400":
           description: 잘못된 요청
         "500":
