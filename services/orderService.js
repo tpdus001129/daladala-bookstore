@@ -195,8 +195,7 @@ const orderService = {
 
     const order = await Order.findOneAndUpdate(
       {
-        _id: orderId,
-        user: userId,
+        _id: orderId
       },
       {
         deletedAt: new Date(),
