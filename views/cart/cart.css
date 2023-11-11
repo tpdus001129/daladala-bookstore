@@ -2,59 +2,55 @@ h1 {
   font-size: 20px;
   margin: 20px 0px;
 }
-
 button {
-  background-color: #ffffff;
-  border: 1px solid var(--gray);
-  border-radius: 3px;
+  background-color: var(--light-gray);
+  border: none;
+  border-radius: 10px;
+  height: 40px;
+  margin: 20px 0;
   padding: 8px 16px;
   cursor: pointer;
 }
-
+button:hover {
+  background-color: var(--point-color);
+  color: var(--white);
+}
 .container {
   display: flex;
   justify-content: center;
 }
-
 .wrapper {
   max-width: var(--max-width);
   width: 100%;
 }
-
 .table-bill-container {
   display: flex;
   justify-content: space-between;
 }
-
 .cart-options {
   display: flex;
   width: 100%;
   justify-content: end;
 }
-
 .table-container {
   width: 100%;
 }
-
 .payment-item {
   display: flex;
   justify-content: space-between;
 }
-
 .bill {
-  border: 1px solid black;
-  border-radius: 3px;
+  border: 1px solid var(--black);
+  border-radius: 10px;
   margin-left: 24px;
   width: 280px;
   height: 100%;
-  padding: 32px 16px;
+  padding: 30px 16px 10px 16px;
   flex-shrink: 0;
 }
-
 .bill li {
   padding-bottom: 16px;
 }
-
 .bill button {
   width: 100%;
 }

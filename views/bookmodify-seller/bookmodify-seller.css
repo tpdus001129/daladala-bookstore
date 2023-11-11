@@ -1,22 +1,21 @@
 :root {
   --text-size: 15px;
 }
-
 table {
-  border: 1px solid black;
   margin: 50px auto;
   width: 800px;
   height: 420px;
 }
 tr,
 td {
-  border: 1px solid black;
+  border: 1px solid var(--black);
   vertical-align: middle;
   height: 80px;
 }
 table select {
-  width: 200px;
+  width: 150px;
   height: 40px;
+  border-radius: 10px;
   margin-left: 20px;
   padding: 5px;
   font-size: var(--text-size);
@@ -26,12 +25,17 @@ table select {
 .publisher {
   border: none;
   display: block;
-  margin: 0 auto;
-  width: 100%;
-  height: 50px;
+  margin: 0 10px;
+  width: 80%;
+  height: 30px;
   padding: 10px;
-  box-sizing: border-box;
   font-size: var(--text-size);
+}
+input:focus{
+  outline: none;
+}
+input:focus::placeholder{
+  color:transparent;
 }
 .price,
 .pages,
@@ -53,14 +57,14 @@ table select {
   margin: 5px;
 }
 .quantityBox button {
-  background-color: white;
+  background-color: var(--white);
   vertical-align: middle;
   font-size: 30px;
   border: none;
   cursor: pointer;
 }
 label[for="imgUpload"] {
-  border: 1px solid black;
+  background-color: var(--light-gray);
   border-radius: 10px;
   width: 100px;
   height: 40px;
@@ -70,6 +74,10 @@ label[for="imgUpload"] {
   display: flex;
   justify-content: center;
   margin: 0 auto;
+}
+label[for="imgUpload"]:hover{
+  background-color: var(--point-color);
+  color: var(--white);
 }
 .bookImg {
   width: 30%;
@@ -83,9 +91,13 @@ label[for="imgUpload"] {
   display: none;
 }
 .explainBox {
-  border-top: 2px solid black;
   width: 80%;
   margin: 50px auto;
+}
+hr {
+  border-top-color: var(--light-gray);
+  opacity: 0.5;
+  width: 100%;
 }
 .explain p {
   margin-top: 30px;
@@ -96,6 +108,7 @@ label[for="imgUpload"] {
   margin: 30px auto;
   padding: 10px;
   width: 100%;
+  height: 300px;
   box-sizing: border-box;
   resize: none;
   font-size: var(--text-size);
@@ -106,6 +119,7 @@ label[for="imgUpload"] {
 }
 .cancleBtn,
 .saveBtn {
+  background-color: var(--light-gray);
   border: none;
   border-radius: 10px;
   width: 100px;
@@ -116,10 +130,17 @@ label[for="imgUpload"] {
   font-size: 16px;
   margin: 0 20px;
 }
-
+.cancleBtn:hover,
+.saveBtn:hover {
+  background-color: var(--point-color);
+  color: var(--white);
+}
+.cancleBtn:hover a {
+  color: var(--white);
+}
 .cancleBtn a {
   display: block;
-  color: black;
+  color: var(--black);
   text-decoration: none;
 }
 
