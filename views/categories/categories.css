@@ -1,13 +1,30 @@
 .category-container {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 5px;
 }
-
+button {
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: var(--light-gray);
+}
+button:hover {
+  background-color: var(--point-color);
+  color: var(--white);
+}
 .btn-container {
   display: flex;
   justify-content: flex-end;
   margin: 10px 0;
+}
+.add-category {
+  width: 100px;
+  height: 40px;
 }
 
 .category-header:first-child {

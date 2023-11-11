@@ -1,7 +1,7 @@
 const UPDATE_BUTTON_TEXT = "수정";
 const ADD_BUTTON_TEXT = "추가";
 const DELETE_BUTTON_TEXT = "삭제";
-const SUB_CATEGORY_BUTTON_TEXT = "서브카테고리";
+const SUB_CATEGORY_BUTTON_TEXT = "추가";
 
 const categoryContainer = document.getElementsByClassName("category-container")[0];
 const addCategoryButton = document.getElementsByClassName("add-category")[0];
