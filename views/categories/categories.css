@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  margin-bottom: 100px;
 }
 button {
   border: none;
@@ -64,7 +65,16 @@ button:hover {
   justify-content: flex-end;
   padding: 10px 0;
 }
-
+.column > input{
+  border-radius: 10px;
+  border: 1px solid var(--light-gray);
+  height: 20px !important;
+  padding: 10px;
+}
+.column > input:focus{
+  border: 3px solid var(--point-color);
+  outline: none;
+}
 .subcategory > .column:first-child {
   padding-left: 40px;
   align-items: center;
