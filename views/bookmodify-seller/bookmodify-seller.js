@@ -49,7 +49,10 @@ async function getCategory() {
     console.error(error);
   }
 }
-getCategory();
+(async function () {
+  await getCategory();
+  await getBooksData();
+})();
 
 // 카테고리 선택
 mainCategory.addEventListener("change", () => {
@@ -175,7 +178,6 @@ async function getBooksData() {
     }
   }
 }
-getBooksData();
 
 // 도서 등록/수정 api - POST/PUT
 const today = new Date();
