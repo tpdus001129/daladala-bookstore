@@ -1,3 +1,7 @@
+import { checkAuth } from "../auth.js";
+
+checkAuth();
+
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const userName = document.getElementById("name");

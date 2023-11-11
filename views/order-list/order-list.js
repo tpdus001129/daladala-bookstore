@@ -1,4 +1,7 @@
 import apis from "../apis.js";
+import { checkAuth } from "../auth.js";
+
+checkAuth();
 
 (async () => {
   const res = await apis.users.orderList();

@@ -1,6 +1,9 @@
 import { passwordValidator } from "../inputValidator.js";
 import apis from "../apis.js";
 import { storage, storageKey } from "../storage.js";
+import { checkAuth } from "../auth.js";
+
+checkAuth();
 
 const form = document.getElementById("password-edit-form");
 const passwordOriginInput = document.getElementById("password-origin");
