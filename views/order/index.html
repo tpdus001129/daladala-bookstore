@@ -25,7 +25,7 @@
         <div class="wrapper">
           <h1>주문 확인 / 결제</h1>
           <div class="order-bill-container">
-            <div>
+            <div class="order-box">
               <section class="section-container section-container-left">
                 <h2>주문 상품 정보</h2>
                 <table>
@@ -64,66 +64,73 @@
               </section>
               <section class="section-container section-container-left">
                 <h2>배송 정보</h2>
-                <div class="recipient-info-container">
-                  <input
-                    class="form-input-alone"
-                    id="name"
-                    type="text"
-                    name="name"
-                    placeholder="수령인"
-                  />
-                  <input
-                    class="form-input-alone"
-                    id="phone-number"
-                    type="text"
-                    name="phone-number"
-                    placeholder="010-8888-9999"
-                  />
+                <div class="address-all">
+                  <div class="recipient-info-container">
+                    <input
+                      class="form-input-alone"
+                      id="name"
+                      type="text"
+                      name="name"
+                      placeholder="수령인"
+                    />
+                    <input
+                      class="form-input-alone"
+                      id="phone-number"
+                      type="text"
+                      name="phone-number"
+                      placeholder="010-8888-9999"
+                    />
+                  </div>
+                  <div class="address-container">
+                    <input
+                      class="form-input-alone"
+                      id="zip-code"
+                      type="text"
+                      name="zipCode"
+                      placeholder="우편번호"
+                    />
+                    <button id="address-popup-button">주소 검색</button>
+                    <input
+                      class="form-input-alone"
+                      id="detail1"
+                      type="text"
+                      name="detail"
+                      placeholder="주소"
+                    />
+                    <input
+                      class="form-input-alone"
+                      id="detail2"
+                      type="text"
+                      name="UserAddressDetail"
+                      placeholder="상세주소"
+                    />
+                  </div>
                 </div>
-                <div class="address-container">
-                  <input
-                    class="form-input-alone"
-                    id="zip-code"
-                    type="text"
-                    name="zipCode"
-                    placeholder="우편번호"
-                  />
-                  <button id="address-popup-button">주소 검색</button>
-                  <input
-                    class="form-input-alone"
-                    id="detail1"
-                    type="text"
-                    name="detail"
-                    placeholder="주소"
-                  />
-                  <input
-                    class="form-input-alone"
-                    id="detail2"
-                    type="text"
-                    name="UserAddressDetail"
-                    placeholder="상세주소"
-                  />
-                </div>
-                <h3>배송 메모</h3>
-                <select id="deliverySelect" class="section-container">
-                  <option value="">배송메모를 선택해 주세요.</option>
-                  <option value="배송 전에 미리 연락 바랍니다.">
-                    배송 전에 미리 연락 바랍니다.
-                  </option>
-                  <option value="부재시 경비실에 맡겨주세요.">
-                    부재시 경비실에 맡겨주세요.
-                  </option>
-                  <option value="부재시 전화나 문자를 남겨주세요.">
-                    부재시 전화나 문자를 남겨주세요.
-                  </option>
-                  <option value="custom">직접입력</option>
-                </select>
-                <div id="custom" style="display: none">
-                  <input
-                    type="text"
-                    id="customInput"
-                    placeholder="입력해주세요."
-                  />
+                <div class="address-memorandum">
+                  <h4>배송 메모</h4>
+                  <select
+                    id="deliverySelect"
+                    class="section-container-delivery"
+                  >
+                    <option value="">배송메모를 선택해 주세요.</option>
+                    <option value="배송 전에 미리 연락 바랍니다.">
+                      배송 전에 미리 연락 바랍니다.
+                    </option>
+                    <option value="부재시 경비실에 맡겨주세요.">
+                      부재시 경비실에 맡겨주세요.
+                    </option>
+                    <option value="부재시 전화나 문자를 남겨주세요.">
+                      부재시 전화나 문자를 남겨주세요.
+                    </option>
+                    <option value="custom">직접입력</option>
+                  </select>
+                  <div id="custom" style="display: none">
+                    <input
+                      type="text"
+                      id="customInput"
+                      placeholder="입력해주세요."
+                    />
+                  </div>
                 </div>
               </section>
             </div>
@@ -141,17 +148,22 @@
                   </li>
                   <hr />
                   <li class="payments-item">
-                    <h3>총 주문금액</h3>
-                    <p><span id="total-price">0</span><span>원</span></p>
+                    <h3 class="h3">총 주문금액</h3>
+                    <p class="h3">
+                      <span id="total-price">0</span><span>원</span>
+                    </p>
                   </li>
                 </ul>
-                <button id="payment-button">결제하기</button>
+                <div class="box">
+                  <button id="payment-button">결제하기</button>
+                </div>
               </section>
               <section class="section-container section-container-right">
                 <h2>결제수단</h2>
                 <div>
                   <input type="radio" name="pay-type" value="card" id="card" />
                   <label for="card">신용카드</label>
+
                   <input
                     type="radio"
                     name="pay-type"
@@ -159,6 +171,7 @@
                     id="kakaopay"
                   />
                   <label for="kakaopay">카카오페이</label>
+
                   <input
                     type="radio"
                     name="pay-type"
@@ -166,6 +179,7 @@
                     id="naverpay"
                   />
                   <label for="naverpay">네이버페이</label>
+
                   <input
                     type="radio"
                     name="pay-type"
@@ -173,18 +187,29 @@
                     id="bankPay"
                   />
                   <label for="bankPay">무통장입금</label>
+
                   <div class="bank-pay-details" style="display: none">
-                    <input
-                      class="pay-name"
-                      type="text"
-                      name="pay-name"
-                      placeholder="입금자명(주문자명)"
-                    />
-                    <h3>입금계좌</h3>
-                    <p>NH농협 302-0000-0000-00 이춘향</p>
-                    <h3>입금자명</h3>
-                    <input type="text" />
-                    <p>주문 후 48시간 이내 미입금시 자동 취소됩니다.</p>
+                    <h4>입금계좌</h4>
+                    <div class="nh-pay">
+                      <p>NH농협<br />302-0000-0000-00 이춘향</p>
+                    </div>
+                    <h4>입금자명</h4>
+                    <div class="pay-input">
+                      <input
+                        class="pay-name"
+                        type="text"
+                        name="pay-name"
+                        placeholder="입금자명(주문자명)"
+                      />
+                      <input
+                        class="pay-name"
+                        type="text"
+                        placeholder="입금자(주문자명) 계좌번호"
+                      />
+                      <div class="pay-text">
+                        <p>주문 후 48시간 이내 미입금시 자동 취소됩니다.</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </section>

@@ -1,15 +1,56 @@
 h1 {
   font-size: 20px;
-  margin: 20px 0px;
+  font-weight: bold;
+  margin: 25px 20px 20px 20px;
 }
 
 h2 {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 20px;
+  margin-left: 15px;
 }
 
-button {
+h3 {
+  font-size: 15px;
+  /* margin-left: 15px; */
+  line-height: 1.5;
+}
+
+.h3 {
+  font-weight: bold;
+}
+
+h4{
+  font-weight: bold;
+  margin-top: 30px;
+  line-height: 1.5;
+}
+
+.nh-pay {
+  margin: 10px 0px 30px 0px;
+}
+
+.pay-input {
+  margin: 10px 0px;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+#payment-button {
+  background-color: #ffffff;
+  border: 1px solid var(--gray);
+  border-radius: 10px;
+  padding: 8px 85px;
+  cursor: pointer;
+}
+
+#address-popup-button {
   background-color: #ffffff;
   border: 1px solid var(--gray);
   border-radius: 3px;
@@ -67,7 +108,11 @@ button {
 .payments-item {
   display: flex;
   justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
 }
+
+
 
 .bill {
   width: 280px;
@@ -80,4 +125,37 @@ button {
 
 .bill button {
   width: 100%;
+}
+
+/* .bank-pay-details {
+  display: flex;
+  border: 1px solid #dadada;
+  padding: 10px;
+  margin-top: 30px;
+} */
+
+.pay-text {
+  display: flex;
+  margin-top: 2px;
+  font-size: 12px;
+  color: #3a0d0d;
+  line-height: 1.5;
+}
+
+.pay-name {
+  width: 220px;
+}
+
+.address-all {
+  padding-left: 10px;
+}
+
+.address-memorandum {
+  padding-left: 10px;
+}
+
+.section-container-delivery {
+  width:400px;
+  height: 30px;
+  margin-top: 10px;
 }
