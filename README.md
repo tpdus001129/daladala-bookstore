@@ -1,6 +1,62 @@
-# 달라달라 - 도서 판매 사이트
+# 💖달라달라 - 도서 판매 사이트💖
+<br/>
 
-## 기능 구현 사항
+## 📅프로젝트 기간📅
+
+2023.10.30(월) - 2023.11.12(일)
+<br/>
+
+## ✏️기술 스택 및 도구✏️
+
+### 프론트엔드
+  ![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=ffffff)
+  ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=ffffff)
+  ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=000000)
+
+### 백엔드
+  ![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=ffffff)
+  ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=ffffff)
+  ![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=ffffff)
+  ![SWAGGER](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=000000)
+
+### 기획 및 배포
+  ![GITLAB](https://img.shields.io/badge/GitLab-FCA121?style=for-the-badge&logo=gitlab&logoColor=ffffff)
+  ![FIGMA](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=ffffff)
+  ![NOTION](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=ffffff)
+
+<br/>
+
+## 🤸‍♀️프로젝트 팀원🤸
+
+|  이름  |    포지션    |
+| :----: | :--------: |
+| 오강산(팀장) | B.E, F.E  |
+| 박철휘 |  B.E, F.E   |
+| 김민희 | F.E  |
+| 김세연 | F.E  |
+| 송은지 | F.E  |
+<br/>
+
+## 📌주요 화면 구성📌
+
+- 공통
+  - header, sidebar, footer
+- 메인 페이지
+  - 상품 리스트, 상품 상세
+- 로그인, 로그아웃, 회원가입
+- 유저 페이지
+  - 회원정보 수정
+  - 비밀번호 변경
+  - 주문, 배송조회
+  - 장바구니, 주문, 결제
+- 관리자 페이지 
+  - 도서 목록 조회, 등록, 수정 / 카테고리 등록, 수정
+  - 주문, 배송 관리
+  - 장바구니
+- 회원 탈퇴
+<br/>
+
+## ✔️기능 구현 사항✔️
 
 - 사용자 관련 기능
   - [x] 회원가입 - 회원가입 폼의 입력 값이 조건에 안 맞을 시 (이메일 형식, 비밀번호와 비밀번호확인의 일치 여부 등) 이를 사용자에게 알려준다.
@@ -45,8 +101,9 @@
   - [x] 주문 삭제 - 관리자는 관리 페이지에서 사용자들의 주문 내역을 삭제할 수 있다.
   - [x] 주문 정보 - db에 배송 상태가 저장된다.
   - [x] 주문 정보 - db에 배송지 정보, 주문 총액, 수령자 이름 및 연락처가 저장된다.
+<br/>
 
-## 사용법
+## ❓사용법❓
 
 ### 로컬에서 사용하기
 
@@ -87,35 +144,4 @@ PW: user1User1!
 ```
 
 
-## 프로젝트 기간
 
-- 2023.10.30(월) - 2023.11.11(토)
-
-## 기술 스택 및 도구
-
-### 프론트엔드
-  ![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=ffffff)
-  ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=ffffff)
-  ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=000000)
-
-### 백엔드
-  ![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=ffffff)
-  ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=ffffff)
-  ![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=ffffff)
-  ![SWAGGER](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=000000)
-
-### 기획 및 배포
-  ![GITLAB](https://img.shields.io/badge/GitLab-FCA121?style=for-the-badge&logo=gitlab&logoColor=ffffff)
-  ![FIGMA](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=ffffff)
-  ![NOTION](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=ffffff)
-
-
-## 프로젝트 팀원
-
-|  이름  |    포지션    |
-| :----: | :--------: |
-| 오강산(팀장) | 백엔드, 프론트엔드  |
-| 김민희 | 프론트엔드 |
-| 김세연 | 프론트엔드 |
-| 송은지 | 프론트엔드 |
-| 박철휘 |   백엔드   |
