@@ -42,7 +42,7 @@ a.category:hover {
 .product-image {
   width: 60%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 .product-item-info > div {
   padding: 8px;

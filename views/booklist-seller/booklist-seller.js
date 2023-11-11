@@ -23,7 +23,7 @@ async function fetchData() {
             book.category.parent.name;
           clone.querySelector(
             ".sub-category",
-          ).textContent = `/ ${book.category.name}`;
+          ).textContent = `> ${book.category.name}`;
         }
 
         clone.querySelector("img").src = book.image.path;

@@ -1,7 +1,7 @@
 const UPDATE_BUTTON_TEXT = "수정";
 const ADD_BUTTON_TEXT = "추가";
 const DELETE_BUTTON_TEXT = "삭제";
-const SUB_CATEGORY_BUTTON_TEXT = "서브카테고리";
+const SUB_CATEGORY_BUTTON_TEXT = "▼";
 
 const categoryContainer = document.getElementsByClassName("category-container")[0];
 const addCategoryButton = document.getElementsByClassName("add-category")[0];
@@ -126,7 +126,7 @@ function subCategoryButton(category) {
 function updateButtonDOM(category, flg) {
   const updateBtnDiv = document.createElement("div");
   const updateBtn = document.createElement("button");
-  updateBtn.innerHTML = category ? UPDATE_BUTTON_TEXT : ADD_BUTTON_TEXT;
+  updateBtn.innerHTML = category ? UPDATE_BUTTON_TEXT : "등록";
   updateBtnDiv.classList.add("column");
   if (category) {
     updateBtn.addEventListener("click", async (e) => {
@@ -154,7 +154,7 @@ function updateButtonDOM(category, flg) {
 
 function subCategoryAddButtonDOM() {
   const divContainer = document.createElement("div");
-  divContainer.style.paddingLeft = "40px";
+  divContainer.style.paddingLeft = "663px";
   
   const button = document.createElement("button");
   button.innerHTML = ADD_BUTTON_TEXT;

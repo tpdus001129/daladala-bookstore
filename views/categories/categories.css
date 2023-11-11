@@ -1,13 +1,31 @@
 .category-container {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 5px;
+  margin-bottom: 100px;
 }
-
+button {
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: var(--light-gray);
+}
+button:hover {
+  background-color: var(--point-color);
+  color: var(--white);
+}
 .btn-container {
   display: flex;
   justify-content: flex-end;
   margin: 10px 0;
+}
+.add-category {
+  width: 100px;
+  height: 40px;
 }
 
 .category-header:first-child {
@@ -47,7 +65,16 @@
   justify-content: flex-end;
   padding: 10px 0;
 }
-
+.column > input{
+  border-radius: 10px;
+  border: 1px solid var(--light-gray);
+  height: 20px !important;
+  padding: 10px;
+}
+.column > input:focus{
+  border: 3px solid var(--point-color);
+  outline: none;
+}
 .subcategory > .column:first-child {
   padding-left: 40px;
   align-items: center;
