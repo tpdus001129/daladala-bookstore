@@ -1,6 +1,7 @@
 import apis from "../apis.js";
 import path from "../path.js";
 import { deleteCartItem, getCartItems, initIndexedDB } from "../indexedDB.js";
+import { storage, storageKey } from "../storage.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   handleOrderList();
@@ -174,8 +175,12 @@ async function handleAddress() {
   });
 
   /** 주소 값 미리 가져오기 */
+  const userId = storage.getItem(storageKey.userId);
+
+  if (!userId) return;
+
   const { name, phoneNumber, address } = await (
-    await apis.users.profile()
+    await apis.users.profile(userId)
   ).json();
 
   if (name) {

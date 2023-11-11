@@ -21,7 +21,7 @@ h3 {
   font-weight: bold;
 }
 
-h4{
+h4 {
   font-weight: bold;
   margin-top: 30px;
   line-height: 1.5;
@@ -43,15 +43,19 @@ h4{
 }
 
 #payment-button {
-  background-color: #ffffff;
+  background-color: var(--white);
   border: 1px solid var(--gray);
   border-radius: 10px;
   padding: 8px 85px;
   cursor: pointer;
 }
 
+#payment-button:hover {
+  background-color: var(--point-color);
+  color: var(--white);
+}
+
 #address-popup-button {
-  background-color: #ffffff;
   border: 1px solid var(--gray);
   border-radius: 3px;
   padding: 8px 16px;
@@ -79,12 +83,10 @@ h4{
   width: 100%;
 }
 
-.address-container {
-}
-
 .order-bill-container {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 100px;
 }
 
 .section-container {
@@ -112,10 +114,8 @@ h4{
   padding-right: 15px;
 }
 
-
-
 .bill {
-  width: 280px;
+  width: 294px;
   flex-shrink: 0;
 }
 
@@ -126,13 +126,6 @@ h4{
 .bill button {
   width: 100%;
 }
-
-/* .bank-pay-details {
-  display: flex;
-  border: 1px solid #dadada;
-  padding: 10px;
-  margin-top: 30px;
-} */
 
 .pay-text {
   display: flex;
@@ -154,8 +147,24 @@ h4{
   padding-left: 10px;
 }
 
+.address-wrapper {
+  width: 300px;
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.address-wrapper input {
+  width: 100%;
+  flex: 2;
+}
+.address-wrapper button {
+  flex: 1;
+  background-color: var(--light-gray);
+}
+
 .section-container-delivery {
-  width:400px;
+  width: 400px;
   height: 30px;
   margin-top: 10px;
 }

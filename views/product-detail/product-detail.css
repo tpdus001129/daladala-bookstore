@@ -10,7 +10,7 @@ img {
 }
 h2 {
   font-size: 30px !important;
-  line-height: 150%;;
+  line-height: 150%;
 }
 hr {
   border-top-color: #bbb;
@@ -26,7 +26,7 @@ hr {
   display: flex;
   flex-direction: column;
   gap: 50px;
-  margin: 150px auto 150px auto;
+  margin: 100px auto 150px;
 }
 .product-info-board {
   display: flex;
@@ -71,17 +71,27 @@ figure {
   font-weight: bold;
 }
 .product-content {
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 250px;
   margin: 10px 10px 50px 10px;
   line-height: 150%;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  
 }
+
 .product-content::-webkit-scrollbar {
-  display: none;
+  width: 5px;
 }
+.product-content::-webkit-scrollbar-thumb {
+  height: 20%;
+  background: var(--point-color);
+
+  border-radius: 10px;
+}
+.product-content::-webkit-scrollbar-track {
+  background: var(--light-gray);
+}
+
 #right {
   text-align: right;
   margin-left: auto;

@@ -4,8 +4,7 @@ export const emailValidator = (value) => {
       /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/.test(
         value,
       ),
-    message:
-      "영문 대/소문자, 숫자, 특수문자(!.@#$%^&*)를 각 1자 이상 포함한 8자 이상의 문자를 입력해주세요.",
+    message: "올바른 이메일 주소를 입력해주세요.",
   };
 };
 

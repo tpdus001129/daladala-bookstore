@@ -3,7 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주문 확인/결제</title>
     <link rel="icon" type="image/png" href="../public/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../common/reset.css" />
     <link rel="stylesheet" href="../common/common.css" />
     <link rel="stylesheet" href="../common/table.css" />
@@ -14,8 +21,6 @@
     <script src="../common/footer-component.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script type="module" src="order.js"></script>
-
-    <title>주문 확인/결제</title>
   </head>
 
   <body>
@@ -81,29 +86,35 @@
                       placeholder="010-8888-9999"
                     />
                   </div>
-                  <div class="address-container">
-                    <input
-                      class="form-input-alone"
-                      id="zip-code"
-                      type="text"
-                      name="zipCode"
-                      placeholder="우편번호"
-                    />
-                    <button id="address-popup-button">주소 검색</button>
-                    <input
-                      class="form-input-alone"
-                      id="detail1"
-                      type="text"
-                      name="detail"
-                      placeholder="주소"
-                    />
-                    <input
-                      class="form-input-alone"
-                      id="detail2"
-                      type="text"
-                      name="UserAddressDetail"
-                      placeholder="상세주소"
-                    />
+                  <div>
+                    <div class="address-wrapper">
+                      <input
+                        class="form-input-alone zip-code"
+                        id="zip-code"
+                        type="text"
+                        name="zipCode"
+                        placeholder="우편번호"
+                      />
+                      <button id="address-popup-button">주소 검색</button>
+                    </div>
+                    <div class="address-wrapper">
+                      <input
+                        class="form-input-alone"
+                        id="detail1"
+                        type="text"
+                        name="detail"
+                        placeholder="주소"
+                      />
+                    </div>
+                    <div class="address-wrapper">
+                      <input
+                        class="form-input-alone"
+                        id="detail2"
+                        type="text"
+                        name="UserAddressDetail"
+                        placeholder="상세주소"
+                      />
+                    </div>
                   </div>
                 </div>
                 <div class="address-memorandum">
@@ -134,7 +145,7 @@
                 </div>
               </section>
             </div>
-            <aside>
+            <aside class="bill">
               <section class="section-container section-container-right">
                 <h2>주문 요약</h2>
                 <ul>
@@ -161,33 +172,42 @@
               <section class="section-container section-container-right">
                 <h2>결제수단</h2>
                 <div>
-                  <input type="radio" name="pay-type" value="card" id="card" />
-                  <label for="card">신용카드</label>
-
-                  <input
-                    type="radio"
-                    name="pay-type"
-                    value="payment-method-1"
-                    id="kakaopay"
-                  />
-                  <label for="kakaopay">카카오페이</label>
-
-                  <input
-                    type="radio"
-                    name="pay-type"
-                    value="payment-method-2"
-                    id="naverpay"
-                  />
-                  <label for="naverpay">네이버페이</label>
-
-                  <input
-                    type="radio"
-                    name="pay-type"
-                    value="bank-pay"
-                    id="bankPay"
-                  />
-                  <label for="bankPay">무통장입금</label>
-
+                  <div>
+                    <input
+                      type="radio"
+                      name="pay-type"
+                      value="card"
+                      id="card"
+                    />
+                    <label for="card">신용카드</label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="pay-type"
+                      value="payment-method-1"
+                      id="kakaopay"
+                    />
+                    <label for="kakaopay">카카오페이</label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="pay-type"
+                      value="payment-method-2"
+                      id="naverpay"
+                    />
+                    <label for="naverpay">네이버페이</label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="pay-type"
+                      value="bank-pay"
+                      id="bankPay"
+                    />
+                    <label for="bankPay">무통장입금</label>
+                  </div>
                   <div class="bank-pay-details" style="display: none">
                     <h4>입금계좌</h4>
                     <div class="nh-pay">

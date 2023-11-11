@@ -1,14 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>회원 정보</title>
     <link rel="icon" type="image/png" href="../public/favicon.png" />
-    <link rel="stylesheet" href="../common/form.css" />
-    <link rel="stylesheet" href="../common/common.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../common/reset.css" />
+    <link rel="stylesheet" href="../common/common.css" />
+    <link rel="stylesheet" href="../common/form.css" />
     <link rel="stylesheet" href="my-page.css" />
+
     <script type="module" src="../common/header-component.js"></script>
     <script type="module" src="../common/sidebar-container.js"></script>
     <script src="../common/footer-component.js"></script>
@@ -61,6 +68,7 @@
                   class="form-input"
                   id="postNumber"
                   name="postNumber"
+                  placeholder="우편번호"
                   required
                 />
               </div>
@@ -70,6 +78,7 @@
                   class="form-input"
                   id="address1"
                   name="address1"
+                  placeholder="주소"
                 />
               </div>
               <div class="form-group">
@@ -78,6 +87,7 @@
                   class="form-input"
                   id="address2"
                   name="address2"
+                  placeholder="상세주소"
                 />
               </div>
 
@@ -94,29 +104,5 @@
       <footer-component></footer-component>
     </div>
     <script src="./my-page.js"></script>
-    <script>
-      const postNumber = document.getElementById("postNumber");
-
-      postNumber.addEventListener("click", () => {
-        new daum.Postcode({
-          oncomplete: function (data) {
-            let fullAddress = data.roadAddress;
-            let building = "";
-
-            if (data.userSelectedType == "R") {
-              if (data.bname !== "" || data.buildingName !== "") {
-                fullAddress += ` (${data.bname} ${data.buildingName})`;
-              }
-              fullAddress += building !== "" ? " (" + building + ")" : "";
-            } else {
-              fullAddress = data.jibunAddress;
-            }
-            document.userForm.postNumber.value = data.zonecode;
-            document.userForm.address1.value = fullAddress;
-            document.userForm.address2.focus();
-          },
-        }).open();
-      });
-    </script>
   </body>
 </html>

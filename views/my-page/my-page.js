@@ -65,3 +65,27 @@ submitBtn.addEventListener("click", async (e) => {
     console.error(error);
   }
 });
+
+const postNumber = document.getElementById("postNumber");
+
+postNumber.addEventListener("click", () => {
+  // eslint-disable-next-line no-undef
+  new daum.Postcode({
+    oncomplete: function (data) {
+      let fullAddress = data.roadAddress;
+      let building = "";
+
+      if (data.userSelectedType == "R") {
+        if (data.bname !== "" || data.buildingName !== "") {
+          fullAddress += ` (${data.bname} ${data.buildingName})`;
+        }
+        fullAddress += building !== "" ? " (" + building + ")" : "";
+      } else {
+        fullAddress = data.jibunAddress;
+      }
+      document.userForm.postNumber.value = data.zonecode;
+      document.userForm.address1.value = fullAddress;
+      document.userForm.address2.focus();
+    },
+  }).open();
+});

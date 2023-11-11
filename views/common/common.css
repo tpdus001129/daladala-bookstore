@@ -8,6 +8,8 @@
   --dark-gray: #484848;
   --black: #000000;
   --blue: #2341dd;
+
+  font-family: "Noto Sans KR";
 }
 
 .flex-container {
@@ -23,4 +25,10 @@
 
 button:disabled {
   cursor: not-allowed;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 25px;
+  margin: 20px;
 }
