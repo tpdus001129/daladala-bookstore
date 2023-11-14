@@ -1,98 +1,197 @@
+import apis from "../apis.js";
 import {
   initIndexedDB,
-  getCart,
-  editCart,
-  deleteCart,
-  clearCart,
+  getCartItems,
+  editCartItemQuantity,
+  deleteCartItem,
+  clearCartItems,
+  editCartItemCheckStatus,
 } from "../indexedDB.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  document
-    .querySelector("#clear-cart")
-    .addEventListener("click", () => clearCart());
   await initIndexedDB();
 
-  const cartTableBody = document.querySelector("#cart-body");
+  const clearCartButtonElement = document.querySelector("#clear-cart");
+  clearCartButtonElement.addEventListener("click", () => {
+    clearCartItems();
+    location.reload();
+  });
 
-  const items = await getCart();
+  const orderButtonElement = document.querySelector("#order-button");
+  orderButtonElement.addEventListener("click", () => {
+    location.href = "/order";
+  });
 
-  if (items.length === 0) {
-    const empty = document.createElement("td");
-    empty.innerText = "장바구니가 비어있습니다.";
-    empty.colSpan = "6";
-    cartTableBody.appendChild(empty);
+  const cartItems = await getCartItems();
+  await renderCartItems(cartItems);
+});
+
+function appendTdElement(tablebody, text) {
+  const tdElement = document.createElement("td");
+  tdElement.innerText = text;
+  tdElement.colSpan = "7";
+  tablebody.appendChild(tdElement);
+  return tdElement;
+}
+
+async function renderCartItems(cartItems) {
+  const cartTableBodyElement = document.querySelector("#cart-body");
+  const cartTemplateElement = document.querySelector("#cart-template");
+  const loadingElement = appendTdElement(
+    cartTableBodyElement,
+    "장바구니를 불러오는 중입니다.",
+  );
+
+  if (cartItems.length === 0) {
+    cartTableBodyElement.removeChild(loadingElement);
+    appendTdElement(cartTableBodyElement, "장바구니가 비어있습니다.");
     return;
   }
 
-  const loadingElement = document.createElement("td");
-  loadingElement.innerText = "장바구니를 불러오는 중입니다.";
-  loadingElement.colSpan = "6";
-  cartTableBody.appendChild(loadingElement);
-
-  const templateCartElement = document.querySelector("#template-cart");
-
-  let bookPrice = 0;
   let isLoading = true;
-  await Promise.all(
-    items.map(async ({ bookId, quantity }) => {
-      const { title, image, price } = await (
-        await fetch(`/api/v1/books/${bookId}`)
-      ).json();
-      bookPrice += price * quantity;
+  try {
+    await Promise.all(
+      cartItems.map(async ({ bookId, quantity, isChecked }) => {
+        const itemInfo = await renderCartItem(
+          cartTableBodyElement,
+          cartTemplateElement,
+          { bookId, quantity, isChecked },
+        );
+        const { price } = itemInfo;
+        if (isChecked) {
+          const currentProductsPrice = getRenderedProductsPrice();
+          setRenderedProductsPrice(currentProductsPrice + price * quantity);
+        }
+      }),
+    );
+  } catch (err) {
+    appendTdElement(cartTableBodyElement, "장바구니 로딩에 실패했습니다.");
+    console.error(err);
+  } finally {
+    if (isLoading) {
+      cartTableBodyElement.removeChild(loadingElement);
+      isLoading = false;
+    }
+  }
+}
 
-      const clone = document.importNode(templateCartElement.content, true);
+async function renderCartItem(
+  cartTableBodyElement,
+  cartTemplateElement,
+  { bookId, quantity, isChecked },
+) {
+  const res = await apis.books.detail({ bookId });
+  const { title, image, price } = await res.json();
 
-      const [
-        imageCell,
-        titleCell,
-        priceCell,
-        quantityCell,
-        totalCell,
-        deleteCell,
-      ] = clone.querySelectorAll("td");
-
-      const imageElement = imageCell.querySelector("img");
-      imageElement.src = image;
-      imageElement.alt = title;
-
-      titleCell.innerText = title;
-
-      priceCell.innerText = price.toLocaleString("ko-KR") + " 원";
-
-      quantityCell.querySelector("span").innerText = quantity;
-
-      const [plusButton, minusButton] = quantityCell.querySelectorAll("button");
-      plusButton.addEventListener("click", () => {
-        editCart(bookId, quantity - 1);
-      });
-      minusButton.addEventListener("click", () => {
-        editCart(bookId, quantity + 1);
-      });
-
-      totalCell.innerText = (price * quantity).toLocaleString("ko-KR") + " 원";
-
-      deleteCell.querySelector("button").addEventListener("click", () => {
-        deleteCart(bookId);
-      });
-      cartTableBody.appendChild(clone);
-
-      if (isLoading) {
-        cartTableBody.removeChild(loadingElement);
-        isLoading = false;
-      }
-    }),
+  const cartTemplateClone = document.importNode(
+    cartTemplateElement.content,
+    true,
   );
+
+  const [
+    checkboxCell,
+    imageCell,
+    titleCell,
+    priceCell,
+    quantityCell,
+    totalCell,
+    deleteCell,
+  ] = cartTemplateClone.querySelectorAll("td");
+
+  const quantitySpanElement = quantityCell.querySelector("span");
+  quantitySpanElement.innerText = quantity;
+
+  const checkboxElement = checkboxCell.querySelector("input");
+  checkboxElement.checked = isChecked;
+  checkboxElement.addEventListener("change", (event) => {
+    editCartItemCheckStatus(bookId, event.target.checked);
+    const productsPrice = getRenderedProductsPrice();
+
+    const currentQuantity = Number(quantitySpanElement.innerText);
+    setRenderedProductsPrice(
+      event.target.checked
+        ? productsPrice + price * currentQuantity
+        : productsPrice - price * currentQuantity,
+    );
+    renderBill();
+  });
+
+  const imageElement = imageCell.querySelector("img");
+  imageElement.src = image.path;
+  imageElement.alt = title;
+
+  titleCell.innerText = title;
+
+  priceCell.innerText = price.toLocaleString("ko-KR") + " 원";
+
+  const [minusButton, plusButton] = quantityCell.querySelectorAll("button");
+  minusButton.addEventListener("click", () => {
+    const currentQuantity = Number(quantitySpanElement.innerText);
+    const nextQuantity = currentQuantity - 1;
+    editCartItemQuantity(bookId, nextQuantity);
+    if (nextQuantity <= 0) {
+      location.reload();
+      return;
+    }
+    quantitySpanElement.innerText = nextQuantity;
+
+    if (checkboxElement.checked) {
+      const productsPrice = getRenderedProductsPrice();
+      setRenderedProductsPrice(productsPrice - price);
+    }
+    totalCell.innerText =
+      (price * nextQuantity).toLocaleString("ko-KR") + " 원";
+  });
+  plusButton.addEventListener("click", () => {
+    const currentQuantity = Number(quantitySpanElement.innerText);
+    const nextQuantity = currentQuantity + 1;
+    editCartItemQuantity(bookId, nextQuantity);
+    quantitySpanElement.innerText = nextQuantity;
+
+    if (checkboxElement.checked) {
+      const productsPrice = getRenderedProductsPrice();
+      setRenderedProductsPrice(productsPrice + price);
+    }
+    totalCell.innerText =
+      (price * nextQuantity).toLocaleString("ko-KR") + " 원";
+  });
+
+  totalCell.innerText = (price * quantity).toLocaleString("ko-KR") + " 원";
+
+  deleteCell.querySelector("button").addEventListener("click", () => {
+    deleteCartItem(bookId);
+    location.reload();
+  });
+  cartTableBodyElement.appendChild(cartTemplateClone);
+
+  return { title, image, price };
+}
+
+function getRenderedProductsPrice() {
+  const productsPriceElement = document.querySelector("#products-price");
+  return Number(productsPriceElement.innerText.replace(/[^\d]/g, ""));
+}
+
+function setRenderedProductsPrice(_productsPrice) {
+  const productsPrice = Number(_productsPrice);
+  const productsPriceElement = document.querySelector("#products-price");
+  productsPriceElement.innerText = productsPrice.toLocaleString("ko-KR");
+  renderBill();
+}
+
+function renderBill() {
+  const deliveryFeeElement = document.querySelector("#delivery-fee");
+  const totalPriceElement = document.querySelector("#total-price");
 
   const DELIVERY_FEE = 3000;
 
-  const bookPriceElement = document.querySelector("#book-price");
-  bookPriceElement.innerText = bookPrice.toLocaleString("ko-KR");
+  const productsPrice = getRenderedProductsPrice();
 
-  const deliveryFeeElement = document.querySelector("#delivery-fee");
   deliveryFeeElement.innerText =
-    bookPrice > 0 ? DELIVERY_FEE.toLocaleString("ko-KR") : 0;
+    productsPrice > 0 ? DELIVERY_FEE.toLocaleString("ko-KR") : 0;
 
-  const totalPriceElement = document.querySelector("#total-price");
   totalPriceElement.innerText =
-    bookPrice > 0 ? (bookPrice + DELIVERY_FEE).toLocaleString("ko-KR") : 0;
-});
+    productsPrice > 0
+      ? (productsPrice + DELIVERY_FEE).toLocaleString("ko-KR")
+      : 0;
+}

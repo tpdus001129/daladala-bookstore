@@ -1,0 +1,14 @@
+.order-detail-link {
+  color: var(--blue);
+}
+
+.text-overflow {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.order-table-body td {
+  line-height: 150%;
+}

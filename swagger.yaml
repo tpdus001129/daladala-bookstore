@@ -14,6 +14,8 @@ tags:
     description: 유저 API
   - name: categories
     description: 카테고리 API
+  - name: orders
+    description: 주문 API
 
 paths:
   /books:
@@ -22,6 +24,13 @@ paths:
         - books
       summary: 도서 목록
       description: 도서 목록을 가져오는 API
+      parameters:
+        - name: category
+          in: query
+          description: 카테고리 ID
+          required: false
+          schema:
+            type: string
       responses:
         "200":
           description: 성공
@@ -81,7 +90,7 @@ paths:
                   example: 50
                 category:
                   type: string
-                  example: asX31sdF3cVs
+                  example: 6543b8d140274d4982ec7e91
         required: true
       responses:
         "201":
@@ -132,7 +141,7 @@ paths:
             type: string
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
               properties:
@@ -158,7 +167,7 @@ paths:
                   type: string
                   example: 2023-11-01
                 image:
-                  type: string
+                  type: file
                   example: https://example.com/image/image.png
                 price:
                   type: integer
@@ -168,10 +177,7 @@ paths:
                   example: 50
                 category:
                   type: string
-                  example: asX31sdF3cVs
-                seller:
-                  type: string
-                  example: asX31sdF3cVs
+                  example: 6543b8d140274d4982ec7e91
         required: true
       responses:
         "200":
@@ -217,7 +223,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: example@example.comm
+                  example: example@example.com
                 password:
                   type: string
                   example: password
@@ -230,9 +236,12 @@ paths:
               schema:
                 type: object
                 properties:
-                  access_token:
+                  userId:
                     type: string
-                    example: aksdjvlajeiajefliajdsflk
+                    example: ObjectId(userid)
+                  authority:
+                    type: string
+                    example: 일반
         "400":
           description: 잘못된 요청
         "500":
@@ -253,7 +262,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: example@example.comm
+                  example: example@example.com
                 password:
                   type: string
                   example: password
@@ -269,9 +278,12 @@ paths:
               schema:
                 type: object
                 properties:
-                  access_token:
+                  userId:
                     type: string
-                    example: aksdjvlajeiajefliajdsflk
+                    example: ObjectId(userid)
+                  authority:
+                    type: string
+                    example: 일반
         "400":
           description: 잘못된 요청
         "500":
@@ -464,34 +476,6 @@ paths:
           description: 서버 에러
 
   /users/{userId}/orders:
-    get:
-      tags:
-        - users
-      summary: 주문 조회
-      description: 특정 유저의 주문 정보를 조회하는 API
-      security:
-        - BearerAuth: []
-      parameters:
-        - name: userId
-          in: path
-          description: "유저 ID"
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: 성공
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Order"
-        "400":
-          description: 잘못된 요청
-        "500":
-          description: 서버 에러
-
     post:
       tags:
         - users
@@ -544,20 +528,24 @@ paths:
                   items:
                     type: object
                     properties:
-                      bookId:
+                      book:
                         type: string
                         example: ObjectId(asdfkv3D2Ec)
                       count:
                         type: number
                         example: 1
                   example:
-                    - bookId: ObjectId(asdfkv3D2Ec)
+                    - book: ObjectId(asdfkv3D2Ec)
                       count: 1
                   description: 주문한 책 정보 목록
                 deliveryPrice:
                   type: integer
                   example: 3000
                   description: 배송비
+                productsPrice:
+                  type: integer
+                  example: 42000
+                  description: 도서 총 주문가격
       responses:
         "201":
           description: 생성 성공
@@ -599,6 +587,83 @@ paths:
                   type: string
                   example: 주문취소
                   description: 배송 상태
+                recipient:
+                  type: object
+                  properties:
+                    phoneNumber:
+                      type: string
+                      example: 010-1234-1234
+                      description: 받는사람 전화번호
+                    name:
+                      type: string
+                      example: 오강산
+                      description: 받는사람
+                    address:
+                      type: object
+                      properties:
+                        zipCode:
+                          type: string
+                          example: 11234
+                          description: 받는사람 우편번호
+                        detail1:
+                          type: string
+                          example: 서울시 강남구 역삼동 8-2
+                          description: 받는사람 주소
+                        detail2:
+                          type: string
+                          example: 402호
+                          description: 받는사람 주소(상세)
+      responses:
+        "200":
+          description: 성공
+        "400":
+          description: 잘못된 요청
+        "500":
+          description: 서버 에러
+
+    delete:
+      tags:
+        - users
+      summary: 주문 삭제
+      description: 주문 상태를 삭제하는 API
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          description: "유저 ID"
+          required: true
+          schema:
+            type: string
+        - name: orderId
+          in: path
+          description: "주문 ID"
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 성공
+        "400":
+          description: 잘못된 요청
+        "500":
+          description: 서버 에러
+
+  /users/{userId}/books:
+    get:
+      tags:
+        - users
+      summary: 판매자(관리자)가 등록한 상품(도서) 목록
+      description: 판매자(관리자)가 등록한 상품(도서) 목록 API
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          description: "관리자 ID"
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: 성공
@@ -641,6 +706,137 @@ paths:
                           name:
                             type: string
                             example: 소설
+        "400":
+          description: 잘못된 요청
+        "500":
+          description: 서버 에러
+
+    post:
+      tags:
+        - categories
+      summary: 카테고리 등록
+      description: 카테고리 등록 API
+      security:
+        - BearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: 카테고리명
+                  description: 카테고리 이름
+      responses:
+        "201":
+          description: 성공
+        "400":
+          description: 잘못된 요청
+        "500":
+          description: 서버 에러
+
+  /categories/{categoryId}:
+    delete:
+      tags:
+        - categories
+      summary: 카테고리 삭제
+      description: 카테고리 삭제 API
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: categoryId
+          in: path
+          description: 카테고리 ID
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 성공
+        "400":
+          description: 잘못된 요청
+        "500":
+          description: 서버 에러
+
+    put:
+      tags:
+        - categories
+      summary: 카테고리 수정
+      description: 카테고리 수정 API
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: categoryId
+          in: path
+          description: 카테고리 ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: 카테고리명
+                  description: 카테고리 이름
+      responses:
+        "200":
+          description: 성공
+        "400":
+          description: 잘못된 요청
+        "500":
+          description: 서버 에러
+
+  /orders:
+    get:
+      tags:
+        - orders
+      summary: 주문 목록
+      description: 도서 주문 목록을 가져오는 API
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Order"
+        "400":
+          description: 잘못된 요청
+        "500":
+          description: 서버 에러
+
+  /orders/{orderId}:
+    get:
+      tags:
+        - orders
+      summary: 주문 조회
+      description: 특정 유저의 주문 정보를 조회하는 API
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: orderId
+          in: path
+          description: "주문 ID"
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Order"
         "400":
           description: 잘못된 요청
         "500":
@@ -765,9 +961,32 @@ components:
           example: 2023-11-01T17:32:28Z
           description: 출시일자
         image:
-          type: string
-          example: https://example.com/images/image.png
-          description: 도서 사진
+          type: object
+          properties:
+            fieldname:
+              type: string
+              example: image
+            originalname:
+              type: string
+              example: image.jpg
+            encoding:
+              type: string
+              example: 7bit
+            mimetype:
+              type: string
+              example: image/jpeg
+            destination:
+              type: string
+              example: public/images/books/
+            filename:
+              type: string
+              example: 1699358026207-383193119image.jpg
+            path:
+              type: string
+              example: /public/images/books/1699358026207-383193119image.jpg
+            size:
+              type: number
+              example: 89349
         price:
           type: integer
           example: 15000
@@ -777,13 +996,9 @@ components:
           example: 50
           description: 재고 수량
         category:
-          type: string
-          example: ObjectId(asX31sdF3cVs)
-          description: Category 스키마 ObjectId
+          $ref: "#/components/schemas/Category"
         seller:
-          type: string
-          example: ObjectId(asX31sdF3cVs)
-          description: User 스키마 ObjectId
+          $ref: "#/components/schemas/User"
         createdAt:
           type: string
           example: 2023-11-01T17:32:28Z
@@ -854,17 +1069,17 @@ components:
           items:
             type: object
             required:
-              - bookId
+              - book
               - count
             properties:
-              bookId:
+              book:
                 type: string
                 example: ObjectId(asdfkv3D2Ec)
               count:
                 type: number
                 example: 1
           example:
-            - bookId: sdfasdfadsad
+            - book: sdfasdfadsad
               count: 1
           description: 주문한 책 정보 목록
         deliveryPrice:

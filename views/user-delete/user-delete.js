@@ -1,5 +1,8 @@
 import { storage, storageKey } from "../storage.js";
 import apis from "../apis.js";
+import { checkAuth } from "../auth.js";
+
+checkAuth();
 
 const formElement = document.querySelector("#user-delete-form");
 
@@ -8,9 +11,7 @@ formElement.addEventListener("submit", async (e) => {
 
   const password = e.target[0].value;
 
-  const userId = storage.getItem(storageKey.userId);
-
-  const res = await apis.users.delete({ userId, password });
+  const res = await apis.users.delete({ password });
 
   if (res.ok) {
     alert("회원 탈퇴에 성공했습니다. 이용해주셔서 감사합니다.");

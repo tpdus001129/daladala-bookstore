@@ -2,7 +2,7 @@ const dbName = "CartDB";
 
 let db;
 
-function initIndexedDB() {
+export function initIndexedDB() {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(dbName, 1);
 
@@ -22,12 +22,13 @@ function initIndexedDB() {
       if (!db.objectStoreNames.contains("cart")) {
         const cartStore = db.createObjectStore("cart", { keyPath: "bookId" });
         cartStore.createIndex("quantity", "quantity", { unique: false });
+        cartStore.createIndex("isChecked", "isChecked", { unique: false });
       }
     };
   });
 }
 
-function addCart(bookId) {
+export function addCartItem(bookId, quantity = 1) {
   const transaction = db.transaction(["cart"], "readwrite");
   const cartStore = transaction.objectStore("cart");
 
@@ -37,10 +38,11 @@ function addCart(bookId) {
   request.onsuccess = (event) => {
     const existingItem = event.target.result;
     if (existingItem) {
-      existingItem.quantity++;
+      existingItem.quantity += quantity;
+      existingItem.isChecked = true;
       cartStore.put(existingItem);
     } else {
-      cartStore.add({ bookId, quantity: 1 });
+      cartStore.add({ bookId, quantity, isChecked: true });
     }
   };
 
@@ -51,7 +53,7 @@ function addCart(bookId) {
   };
 }
 
-function getCart() {
+export function getCartItems() {
   return new Promise((resolve) => {
     const transaction = db.transaction(["cart"], "readonly");
     const cartStore = transaction.objectStore("cart");
@@ -71,7 +73,7 @@ function getCart() {
   });
 }
 
-function editCart(bookId, newQuantity) {
+export function editCartItemQuantity(bookId, quantity) {
   const transaction = db.transaction(["cart"], "readwrite");
   const cartStore = transaction.objectStore("cart");
 
@@ -79,27 +81,43 @@ function editCart(bookId, newQuantity) {
 
   request.onsuccess = (event) => {
     const cartItem = event.target.result;
-    if (cartItem) {
-      cartItem.quantity = newQuantity;
-      if (newQuantity <= 0) {
-        cartStore.delete(bookId);
-      } else {
-        cartStore.put(cartItem);
-      }
-      location.reload();
+    /** TODO: 에러핸들링 */
+    if (!cartItem) {
+      console.error("no cartItem");
+      return;
+    }
+    if (quantity <= 0) {
+      cartStore.delete(bookId);
+    } else {
+      cartItem.quantity = quantity;
+      cartStore.put(cartItem);
     }
   };
 }
 
-function clearCart() {
+export function editCartItemCheckStatus(bookId, isChecked) {
+  const transaction = db.transaction(["cart"], "readwrite");
+  const cartStore = transaction.objectStore("cart");
+
+  const request = cartStore.get(bookId);
+
+  request.onsuccess = (event) => {
+    const cartItem = event.target.result;
+    /** TODO: 에러핸들링 */
+    if (!cartItem) {
+      console.error("no cartItem");
+      return;
+    }
+    cartItem.isChecked = isChecked;
+    cartStore.put(cartItem);
+  };
+}
+
+export function clearCartItems() {
   const transaction = db.transaction(["cart"], "readwrite");
   const cartStore = transaction.objectStore("cart");
 
   const request = cartStore.clear();
-
-  request.onsuccess = () => {
-    location.reload();
-  };
 
   request.onerror = (event) => {
     console.error(
@@ -109,15 +127,11 @@ function clearCart() {
   };
 }
 
-function deleteCart(bookId) {
+export function deleteCartItem(bookId) {
   const transaction = db.transaction(["cart"], "readwrite");
   const cartStore = transaction.objectStore("cart");
 
   const request = cartStore.delete(bookId);
-
-  request.onsuccess = () => {
-    location.reload();
-  };
 
   request.onerror = (event) => {
     console.error(
@@ -126,5 +140,3 @@ function deleteCart(bookId) {
     );
   };
 }
-
-export { initIndexedDB, addCart, getCart, editCart, clearCart, deleteCart };

@@ -1,90 +1,90 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product Information</title>
-    <link rel="stylesheet" href="./product-detail.css" />
+    <title>도서 정보</title>
+    <link rel="icon" type="image/png" href="../public/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="../common/reset.css" />
     <link rel="stylesheet" href="../common/common.css" />
+    <link rel="stylesheet" href="./product-detail.css" />
+
     <script type="module" src="../common/header-component.js"></script>
     <script src="../common/footer-component.js"></script>
+    <script defer type="module" src="./product-detail.js"></script>
   </head>
 
   <body>
-    <header-component></header-component>
+    <div class="flex-container">
+      <header-component></header-component>
 
-    <div class="product-box">
-      <!-- 카테고리 -->
-      <div class="current-category-bar">
-        <div class="second-category">국내</div>
-        <div class="third-category">> 경영 / 경제</div>
-      </div>
-
-      <!-- 도서 이미지, 제목, 가격, 각 버튼부분 -->
-      <div class="product-info-wrapper">
-        <div class="product-info-board">
-          <div class="product-info-box">
-            <div class="product-image">
-              <figure>
-                <img src="../product-list/엘리스도서.jpg" />
-              </figure>
-            </div>
-
-            <div class="product-detial-info-01">
-              <div class="product-detail-info-book">
-                <h2>엘리스 도서</h2>
-                <span>엘리스코딩(지은이)</span>
-                <span>출판사</span>
-                <span>출간일</span>
+      <div class="product-box flex-item">
+        <!-- 도서 이미지, 제목, 가격, 각 버튼부분 -->
+        <div class="product-info-wrapper">
+          <div class="product-info-board">
+            <div class="product-info-box">
+              <div class="product-image">
+                <figure>
+                  <img />
+                </figure>
               </div>
 
-              <div class="product-detail-info-delivery">
-                <div class="product-detail-info-delivery-01">
-                  <div>배송안내</div>
-                  <div id="right">무료</div>
+              <div class="product-detial-info-01">
+                <div class="product-detail-info-book">
+                  <h2 class="product-name"></h2>
+                  <span class="product-author"></span>
+                  <span class="product-company"></span>
+                  <span class="product-price"></span>
+                </div>
+                <hr />
+                <div class="product-detail-info-content">
+                  <p class="product-content"></p>
                 </div>
 
-                <div class="product-detail-info-delivery-02">
-                  <div>현재재고</div>
-                  <div id="right">3권</div>
+                <div class="product-detail-info-delivery">
+                  <div class="product-detail-info-delivery-01">
+                    <div>배송비</div>
+                    <div id="right" class="product-delivery">3,000원</div>
+                  </div>
+                  <div class="product-detail-info-delivery-02">
+                    <div>현재 재고</div>
+                    <div id="right" class="product-num"></div>
+                  </div>
                 </div>
-              </div>
+                <hr />
+                <div class="product-detail-info-price">
+                  <div>
+                    <div>구매 수량</div>
+                    <div id="right-count">
+                      <button class="minus-btn">-</button>
+                      <div id="result">1</div>
+                      <button class="plus-btn">+</button>
+                    </div>
+                  </div>
 
-              <div class="product-detail-info-price">
-                <div>
-                  <div>구매 수량</div>
-                  <div id="right-count">
-                    <input type="button" onclick='count("plus")' value="+" />
-                    <div id="result">0</div>
-                    <input type="button" onclick='count("minus")' value="-" />
+                  <div>
+                    <div>총 구매 금액</div>
+                    <div id="right" class="product-total-price"></div>
                   </div>
                 </div>
 
-                <div>
-                  <div>구매 금액</div>
-                  <div id="right">20,000</div>
+                <div class="product-buy-confirm">
+                  <button class="add-btn">장바구니</button>
+                  <button class="buy-btn">바로 구매</button>
                 </div>
-
-                <div>
-                  <div>적립</div>
-                  <div id="right">100P</div>
-                </div>
-              </div>
-
-              <div class="product-buy-confirm">
-                <button class="add-btn">장바구니</button>
-                <button class="buy-btn">바로구매</button>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="product-detail-info-02">
-          <div class="product-detail-content">책의 세부 내용을 담아요</div>
-        </div>
       </div>
+      <footer-component></footer-component>
     </div>
-    <footer-component></footer-component>
   </body>
 </html>

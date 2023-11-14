@@ -1,5 +1,5 @@
 import { Types } from "mongoose";
-import { User } from "../models/index.js";
+import { User, Book } from "../models/index.js";
 import { hashPassword, comparePassword } from "../utils/utils.js";
 import { NotFoundError } from "../utils/errors.js";
 import {
@@ -24,7 +24,21 @@ const userService = {
     }
 
     const { _id, email, authority, phoneNumber, address, name, createdAt, updatedAt } = user;
-    return { _id, email, authority, phoneNumber, address, name, createdAt, updatedAt };
+    const userData = {
+      _id,
+      email,
+      authority,
+      phoneNumber,
+      createdAt,
+      updatedAt,
+    };
+    if (Object.values(address).filter(value => value).length > 0) {
+      userData.address = address;
+    }
+    if (name) {
+      userData.name = name;
+    }
+    return userData;
   },
 
   async update(userId, userData) {
@@ -107,6 +121,33 @@ const userService = {
 
     return true;
   },
+
+  async getMyBooks(userId) {
+    if (!Types.ObjectId.isValid(userId)) {
+      throw new NotFoundError(USER_NOT_FOUND);
+    }
+
+    const books = await Book.find({
+      deletedAt: { $exists: false },
+      seller: { $eq: userId },
+    })
+      .populate([
+        {
+          path: "category",
+          populate: [
+            {
+              path: "parent",
+              select: "_id name parent",
+            },
+          ],
+          select: "_id name",
+        },
+      ])
+      .sort({ createdAt: -1 })
+      .exec();
+
+    return books;
+  }
 };
 
 export default userService;

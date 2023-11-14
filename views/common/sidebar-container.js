@@ -1,16 +1,10 @@
+import path from "../path.js";
+import { authorityEnum, storage, storageKey } from "../storage.js";
+
 class SidebarContainer extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-
-    const PATH = {
-      editUser: "/my-page",
-      editPassword: "/password",
-      getOrder: "/order",
-      getProducts: "/products",
-      postProducts: "/newproducts",
-      editProducts: "/editproducts",
-    };
 
     const template = document.createElement("template");
 
@@ -35,6 +29,7 @@ class SidebarContainer extends HTMLElement {
         .sidebar-container {
           padding: 20px;
           width: 230px;
+          flex-shrink: 0;
         }
 
         .sidebar-container li {
@@ -45,7 +40,7 @@ class SidebarContainer extends HTMLElement {
           flex-grow: 1;
         }
 
-        .seller-menu {
+        .admin-menu {
           display: none;
         }
 
@@ -58,19 +53,20 @@ class SidebarContainer extends HTMLElement {
             <nav>
               <div>
                 <ul>
-                  <li><a href=${PATH.editUser}>회원정보수정</a></li>
-                  <li><a href=${PATH.editPassword}>비밀번호변경</a></li>
-                  <li><a href=${PATH.getOrder}>주문/배송조회</a></li>
+                  <li><a href=${path.EDIT_PROFILE}>회원정보 수정</a></li>
+                  <li><a href=${path.EDIT_PASSWORD}>비밀번호 변경</a></li>
+                  <li><a href=${path.ORDER_LIST}>주문/배송 조회</a></li>
                 </ul>
               <div>
 
               <hr/>
 
-              <div class="seller-menu">
+              <div class="admin-menu" id="admin-menu">
                 <ul>
-                  <li><a href=${PATH.getProducts}>상품목록조회</a></li>
-                  <li><a href=${PATH.postProducts}>상품등록</a></li>
-                  <li><a href=${PATH.editProducts}>상품수정</a></li>
+                  <li><a href=${path.ADMIN_BOOK_LIST}>도서 목록 조회</a></li>
+                  <li><a href=${path.ADMIN_BOOK_EDIT}>도서 등록/수정</a></li>
+                  <li><a href=${path.ADMIN_CATEGORY_EDIT}>도서 카테고리 등록/수정</a></li>
+                  <li><a href=${path.ADMIN_ORDER_LIST}>주문/배송 관리</a></li>
                 </ul>
               </div>
             </nav>
@@ -88,12 +84,10 @@ class SidebarContainer extends HTMLElement {
     const activedMenu = this.shadowRoot.querySelector(`a[href='${pathname}']`);
     if (activedMenu) activedMenu.style["font-weight"] = "bold";
 
-    const sellerMenu = this.shadowRoot.querySelector(".seller-menu");
-    const queryString = window.location.search;
-    const params = new URLSearchParams(queryString);
+    const adminMenu = this.shadowRoot.querySelector(".admin-menu");
 
-    if (params.get("seller") === "true") {
-      sellerMenu.style.display = "block";
+    if (storage.getItem(storageKey.authority) === authorityEnum.admin) {
+      adminMenu.style.display = "block";
     }
   }
 }

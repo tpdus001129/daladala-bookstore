@@ -1,55 +1,78 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="../common/common.css" />
+    <title>도서목록</title>
+
+    <link rel="icon" type="image/png" href="../public/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../common/reset.css" />
+    <link rel="stylesheet" href="../common/common.css" />
     <link rel="stylesheet" href="booklist-seller.css" />
+
     <script type="module" src="../common/header-component.js"></script>
-    <script src="../common/sidebar-container.js"></script>
+    <script type="module" src="../common/sidebar-container.js"></script>
     <script src="../common/footer-component.js"></script>
+    <script defer type="module" src="./booklist-seller.js"></script>
   </head>
 
   <body>
-    <header-component></header-component>
-    <sidebar-container>
-      <p class="topTitle">도서 목록</p>
+    <div class="flex-container">
+      <header-component></header-component>
+      <div class="flex-item">
+        <sidebar-container>
+          <h1>도서 목록</h1>
 
-      <div class="container">
-        <div class="buttonBox">
-          <button class="listAddBtn">
-            <a href="../bookmodify-seller/index.html">등록</a>
-          </button>
-          <button class="deleteAllBtn">전체삭제</button>
-        </div>
-
-        <table>
-          <tr>
-            <td class="bookImg" rowspan="4"></td>
-            <td class="category" colspan="3">국내도서 / 소설</td>
-            <td class="manageBox" rowspan="4">
-              <button class="modifyBtn">
-                <a href="../bookmodify-seller/index.html">수정</a>
+          <div class="container">
+            <div class="buttonBox">
+              <button class="listAddBtn">
+                <a href="../bookmodify-seller/index.html">등록</a>
               </button>
-              <button class="deleteBtn">삭제</button>
-            </td>
-          </tr>
-          <tr>
-            <td class="title" colspan="3">짜라투스트라는 이렇게 말했다</td>
-          </tr>
-          <tr>
-            <td class="price">가격</td>
-            <td class="writer">저자</td>
-            <td class="publisher">출판</td>
-          </tr>
-          <tr>
-            <td class="quantity" colspan="3">재고 10개</td>
-          </tr>
-        </table>
+            </div>
+
+            <div id="main-container">
+              <!-- 1 -->
+              <template id="template-product">
+                <div class="contain-inner">
+                  <div class="contain-inner-01">
+                    <span class="parent-category"></span>
+                    <span class="sub-category"></span>
+                    <div class="bookImg">
+                      <img />
+                    </div>
+                  </div>
+
+                  <div class="contain-inner-02">
+                    <h2 class="title"></h2>
+                    <span class="price"></span>
+                    <span class="author"></span>
+                    <span class="publisher"></span>
+                  </div>
+
+                  <div class="contain-inner-03">
+                    <span>현재재고</span>
+                    <span class="quantity"></span>
+                  </div>
+
+                  <div class="contain-inner-04">
+                    <button class="modifyBtn">수정</button>
+                    <button class="deleteBtn">삭제</button>
+                  </div>
+                </div>
+                <hr />
+              </template>
+            </div>
+          </div>
+        </sidebar-container>
       </div>
-    </sidebar-container>
-    <footer-component></footer-component>
+
+      <footer-component></footer-component>
+    </div>
   </body>
 </html>

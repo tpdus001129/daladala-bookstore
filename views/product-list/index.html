@@ -4,50 +4,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product List</title>
-    <link rel="stylesheet" href="./product-list.css" />
+    <title>도서 목록</title>
+    <link rel="icon" type="image/png" href="../public/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../common/reset.css" />
+    <link rel="stylesheet" href="./product-list.css" />
     <link rel="stylesheet" href="../common/common.css" />
+
     <script type="module" src="../common/header-component.js"></script>
     <script src="../common/footer-component.js"></script>
     <script type="module" src="product-list.js"></script>
   </head>
 
   <body>
-    <header-component></header-component>
+    <div class="flex-container">
+      <header-component></header-component>
 
-    <main class="container">
-      <div class="wrapper">
-        <!-- 카테고리 -->
-        <div class="category-container" id="category-container">
-          <a class="category" href="/product-list">전체</a>
-          <template id="template-category">
-            <!-- 서브 카테고리 -->
-          </template>
-        </div>
-        <!-- 상품목록 -->
-        <div class="product-list" id="product-list">
-          <template id="template-product">
-            <div class="product-item">
-              <a class="product-link">
-                <div class="product-image-container">
-                  <img class="product-image" />
+      <main class="container flex-item">
+        <div class="wrapper">
+          <!-- 카테고리 -->
+          <div class="category-container" id="category-container">
+            <a class="category" href="/product-list">전체</a>
+            <template id="template-category">
+              <!-- 서브 카테고리 -->
+              <span> > </span>
+              <a class="category"></a>
+            </template>
+          </div>
+          <!-- 상품목록 -->
+          <div class="product-list" id="product-list">
+            <template id="template-product">
+              <div class="product-item">
+                <a class="product-link">
+                  <div class="product-image-container">
+                    <img class="product-image" />
+                  </div>
+                  <div class="product-item-info">
+                    <div class="product-name"></div>
+                    <div class="product-author"></div>
+                    <div class="product-price"></div>
+                  </div>
+                </a>
+                <div class="product-button-container">
+                  <button id="add-cart-button" class="add-cart-button">
+                    장바구니
+                  </button>
+                  <button id="direct-buy-button">바로구매</button>
                 </div>
-                <div class="product-item-info">
-                  <div class="product-name"></div>
-                  <div class="product-author"></div>
-                  <div class="product-price"></div>
-                </div>
-              </a>
-              <div class="product-button-container">
-                <button class="add-cart-button">장바구니</button>
-                <button>바로구매</button>
               </div>
-            </div>
-          </template>
+            </template>
+          </div>
         </div>
-      </div>
-    </main>
-    <footer-component></footer-component>
+      </main>
+      <footer-component></footer-component>
+    </div>
   </body>
 </html>

@@ -1,52 +1,70 @@
-.topTitle {
-  font-size: 25px;
-  margin: 30px;
+:root {
+  --text-size: 15px;
 }
 table {
-  border: 1px solid black;
   margin: 50px auto;
-  width: 80%;
+  width: 800px;
+  height: 420px;
 }
 tr,
 td {
-  border: 1px solid black;
+  border: 1px solid var(--black);
   vertical-align: middle;
   height: 80px;
 }
 table select {
-  width: 200px;
+  width: 150px;
   height: 40px;
+  border-radius: 10px;
   margin-left: 20px;
   padding: 5px;
-  font-size: 15px;
+  font-size: var(--text-size);
 }
-table input {
+.title,
+.author,
+.publisher {
+  border: none;
+  display: block;
+  margin: 0 10px;
   width: 80%;
   height: 30px;
-  margin: auto 20px;
-  padding: 5px;
+  padding: 10px;
+  font-size: var(--text-size);
 }
-.quantityBox input {
-  margin: 5px;
+input:focus{
+  outline: none;
+}
+input:focus::placeholder{
+  color:transparent;
+}
+.price,
+.pages,
+.quantity {
+  border: none;
+  padding: 10px;
+  width: 10%;
+  height: 30px;
+  text-align: center;
+  font-size: var(--text-size);
 }
 .price {
   width: 20%;
 }
-.quantity {
-  width: 15%;
-}
 .quantityBox {
   margin-left: 20px;
 }
+.quantityBox input {
+  margin: 5px;
+}
 .quantityBox button {
-  background-color: white;
+  background-color: var(--white);
   vertical-align: middle;
   font-size: 30px;
   border: none;
   cursor: pointer;
 }
 label[for="imgUpload"] {
-  border: 1px solid black;
+  background-color: var(--light-gray);
   border-radius: 10px;
   width: 100px;
   height: 40px;
@@ -57,16 +75,29 @@ label[for="imgUpload"] {
   justify-content: center;
   margin: 0 auto;
 }
-.bookImg {
-  width: 25%;
+label[for="imgUpload"]:hover{
+  background-color: var(--point-color);
+  color: var(--white);
 }
-.imgUpload {
+.bookImg {
+  width: 30%;
+  height: 250px;
+}
+.imgSrc {
+  width: 100%;
+  height: 250px;
+}
+#imgUpload {
   display: none;
 }
 .explainBox {
-  border-top: 2px solid black;
   width: 80%;
   margin: 50px auto;
+}
+hr {
+  border-top-color: var(--light-gray);
+  opacity: 0.5;
+  width: 100%;
 }
 .explain p {
   margin-top: 30px;
@@ -77,8 +108,10 @@ label[for="imgUpload"] {
   margin: 30px auto;
   padding: 10px;
   width: 100%;
+  height: 300px;
   box-sizing: border-box;
   resize: none;
+  font-size: var(--text-size);
 }
 .bottomBox {
   display: flex;
@@ -86,6 +119,7 @@ label[for="imgUpload"] {
 }
 .cancleBtn,
 .saveBtn {
+  background-color: var(--light-gray);
   border: none;
   border-radius: 10px;
   width: 100px;
@@ -96,9 +130,25 @@ label[for="imgUpload"] {
   font-size: 16px;
   margin: 0 20px;
 }
-
+.cancleBtn:hover,
+.saveBtn:hover {
+  background-color: var(--point-color);
+  color: var(--white);
+}
+.cancleBtn:hover a {
+  color: var(--white);
+}
 .cancleBtn a {
   display: block;
-  color: black;
+  color: var(--black);
   text-decoration: none;
+}
+
+.hidden-category {
+  display: none;
+}
+.selectCreate {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: left;
 }

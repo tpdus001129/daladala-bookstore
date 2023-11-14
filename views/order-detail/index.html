@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주문상세</title>
+    <link rel="icon" type="image/png" href="../public/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../common/reset.css" />
+    <link rel="stylesheet" href="../common/common.css" />
+    <link rel="stylesheet" href="../common/table.css" />
+    <link rel="stylesheet" href="../common/form.css" />
+    <link rel="stylesheet" href="order-detail.css" />
+
+    <script type="module" src="../common/header-component.js"></script>
+    <script type="module" src="../common/sidebar-container.js"></script>
+    <script src="../common/footer-component.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="module" src="order-detail.js"></script>
+  </head>
+
+  <body class="flex-container">
+    <header-component></header-component>
+    <sidebar-container class="flex-item">
+      <main>
+        <div class="container">
+          <div class="wrapper">
+            <h1>주문상세 / 수정 / 취소</h1>
+            <div class="order-bill-container">
+              <div>
+                <section class="section-container section-container-left">
+                  <h2>주문 상품 정보</h2>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>상품이미지</th>
+                        <th>상품명</th>
+                        <th>상품가격</th>
+                        <th>수량</th>
+                        <th>총가격</th>
+                      </tr>
+                    </thead>
+                    <tbody id="order-table-body">
+                      <template id="order-template">
+                        <tr>
+                          <td>
+                            <!-- 상품이미지 -->
+                            <img />
+                          </td>
+                          <td>
+                            <!-- 상품명 -->
+                          </td>
+                          <td>
+                            <!-- 상품가격 -->
+                          </td>
+                          <td>
+                            <!-- 수량 -->
+                          </td>
+                          <td class="products-price">
+                            <!-- 총가격 -->
+                          </td>
+                        </tr>
+                      </template>
+                    </tbody>
+                  </table>
+                </section>
+                <section
+                  class="section-container section-container-left"
+                  id="recipient-section"
+                >
+                  <h2>배송 정보</h2>
+                  <div class="recipient-info-container">
+                    <input
+                      class="form-input-alone"
+                      id="name"
+                      type="text"
+                      name="name"
+                      placeholder="김춘향"
+                    />
+                    <input
+                      class="form-input-alone"
+                      id="phone-number"
+                      type="text"
+                      name="phone-number"
+                    />
+                  </div>
+                  <div class="address-container">
+                    <input
+                      class="form-input-alone"
+                      id="zip-code"
+                      type="text"
+                      name="zipCode"
+                      placeholder="우편번호"
+                    />
+                    <button id="address-popup-button">주소 검색</button>
+                    <input
+                      class="form-input-alone"
+                      id="detail1"
+                      type="text"
+                      name="detail"
+                      placeholder="주소"
+                    />
+                    <input
+                      class="form-input-alone"
+                      id="detail2"
+                      type="text"
+                      name="UserAddressDetail"
+                      placeholder="상세주소"
+                    />
+                  </div>
+                  <h3>배송 메모</h3>
+                  <select id="deliverySelect" class="section-container">
+                    <option value="">배송메모를 선택해 주세요.</option>
+                    <option value="배송 전에 미리 연락 바랍니다.">
+                      배송 전에 미리 연락 바랍니다.
+                    </option>
+                    <option value="부재시 경비실에 맡겨주세요.">
+                      부재시 경비실에 맡겨주세요.
+                    </option>
+                    <option value="부재시 전화나 문자를 남겨주세요.">
+                      부재시 전화나 문자를 남겨주세요.
+                    </option>
+                    <option value="custom">직접입력</option>
+                  </select>
+                  <div id="custom" style="display: none">
+                    <input
+                      type="text"
+                      id="customInput"
+                      placeholder="입력해주세요."
+                    />
+                  </div>
+                  <button id="edit-recipient-button">수정하기</button>
+                </section>
+              </div>
+              <aside>
+                <section class="section-container section-container-right">
+                  <h2>주문 요약</h2>
+                  <ul>
+                    <li class="payments-item">
+                      <h3>상품금액</h3>
+                      <p><span id="products-price">0</span><span>원</span></p>
+                    </li>
+                    <li class="payments-item">
+                      <h3>배송비</h3>
+                      <p><span id="delivery-fee">0</span><span>원</span></p>
+                    </li>
+                    <hr />
+                    <li class="payments-item">
+                      <h3>총 주문금액</h3>
+                      <p><span id="total-price">0</span><span>원</span></p>
+                    </li>
+                  </ul>
+                  <button id="cancel-order-button">주문 취소</button>
+                </section>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </main>
+    </sidebar-container>
+
+    <footer-component></footer-component>
+  </body>
+</html>

@@ -34,7 +34,12 @@ app.use("/api", router);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(function (err, req, res, next) {
-  res.status(err.statusCode).json(err);
+  if (err.code === "ENOENT") {
+    // multer에러
+    res.status(404).json({ ...err });
+  } else {
+    res.status(err.statusCode).json({ ...err, message: err.message });
+  }
   next();
 });
 

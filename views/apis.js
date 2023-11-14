@@ -1,19 +1,54 @@
+import { storage, storageKey } from "./storage.js";
+
+const userId = storage.getItem(storageKey.userId);
+
 export default {
   users: {
-    delete: async ({ userId, password }) =>
-      makeFetch("DELETE", `/api/v1/users/${userId}`, { userId, password }),
+    profile: (userId) => customFetch("GET", `/users/${userId}`),
+    editPassword: ({ userId, password, newPassword }) =>
+      customFetch("PATCH", `/users/${userId}/password`, {
+        password,
+        newPassword,
+      }),
+    delete: ({ password }) =>
+      customFetch("DELETE", `/users/${userId}`, { password }),
+    orderList: () => customFetch("GET", `/users/${userId}/orders`),
+    orderPost: (props) => customFetch("POST", `/users/${userId}/orders`, props),
+    orderDetail: ({ orderId }) => customFetch("GET", `/orders/${orderId}`),
+    orderDelete: ({ orderId }) =>
+      customFetch("DELETE", `/users/${userId}/orders/${orderId}`),
+    orderEdit: ({ orderId, recipient }) =>
+      customFetch("PATCH", `/users/${userId}/orders/${orderId}`, {
+        recipient,
+      }),
+    orderCancel: ({ orderId }) =>
+      customFetch("PATCH", `/users/${userId}/orders/${orderId}`, {
+        deliveryState: "주문취소",
+      }),
   },
-
   auth: {
-    signup: async ({ email, password, phoneNumber }) =>
-      makeFetch("POST", "/api/v1/signup", { email, password, phoneNumber }),
-    logout: async () => makeFetch("POST", "/api/v1/logout"),
+    signup: ({ email, password, phoneNumber }) =>
+      customFetch("POST", `/signup`, { email, password, phoneNumber }),
+    logout: () => customFetch("POST", `/logout`),
   },
-  categories: async () => makeFetch("GET", "/api/v1/categories"),
+  categories: () => customFetch("GET", `/categories`),
+  books: {
+    list: () => customFetch("GET", `/books`),
+    detail: ({ bookId }) => customFetch("GET", `/books/${bookId}`),
+    category: ({ category }) =>
+      customFetch("GET", `/books?category=${category}`),
+  },
+  admin: {
+    orderList: () => customFetch("GET", `/orders`),
+    orderStateEdit: ({ userId, orderId, deliveryState }) =>
+      customFetch("PATCH", `/users/${userId}/orders/${orderId}`, {
+        deliveryState,
+      }),
+  },
 };
 
-async function makeFetch(method = "GET", url = "", body) {
-  return fetch(url, {
+function customFetch(method = "GET", url = "", body) {
+  return fetch(`/api/v1${url}`, {
     method,
     headers: {
       "Content-Type": "application/json",

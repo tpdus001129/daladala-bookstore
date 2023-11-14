@@ -34,7 +34,14 @@ router.post(
 
 router.get("/:bookId", asyncHandler(bookController.detail));
 
-router.put("/:bookId", jwtAuthentication, asyncHandler(bookController.update));
+router.put(
+  "/:bookId",
+  jwtAuthentication,
+  isAuthority([AUTHORITY_ADMIN, AUTHORITY_SELLER]),
+  upload.single("image"),
+  inputValidator(book.put),
+  asyncHandler(bookController.update),
+);
 
 router.delete(
   "/:bookId",

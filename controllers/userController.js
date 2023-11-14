@@ -1,4 +1,5 @@
 import userService from "../services/userService.js";
+import cookieOptions from "../config/cookieOptions.js";
 
 const userController = {
   async detail(req, res) {
@@ -31,9 +32,16 @@ const userController = {
 
     const user = await userService.passwordUpdate(userId, userPassword);
     if (user) {
+      res.clearCookie("accessToken", cookieOptions);
       res.status(200).json(user);
     }
   },
+
+  async getMyBooks(req, res) {
+    const { userId } = req.params;
+    const books = await userService.getMyBooks(userId);
+    res.status(200).json(books);
+  }
 };
 
 export default userController;

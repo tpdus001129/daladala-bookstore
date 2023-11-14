@@ -2,7 +2,8 @@ import bookService from "../services/bookService.js";
 
 const bookController = {
   async list(req, res) {
-    const books = await bookService.list();
+    const { category } = req.query;
+    const books = await bookService.list(category);
     res.status(200).json(books);
   },
 

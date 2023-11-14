@@ -2,15 +2,19 @@ main {
   width: 100%;
   height: 100%;
 }
+img{
+  width: 90%;
+  height: 100%;
+}
 .swiper {
   width: var(--max-width);
   height: 500px;
   position: relative;
-  padding: 200px 0;
+  padding: 100px 0;
 }
 .swiper .swiper-slide {
-  background-color: antiquewhite;
-  height: 500px;
+  background-color: rgb(255, 255, 255);
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,12 +25,10 @@ main {
   position: sticky !important;
 }
 .swiper .swiper-pagination-bullet {
-  background-color: #000;
+  width: 15px !important;
+  height: 15px !important;;
+  background-color: var(--black);
   margin: 0 10px !important;
-}
-.material-icons {
-  font-size: 30px;
-  color: rgb(4, 4, 4);
 }
 .swiper-button-prev::after,
 .swiper-button-next::after {
@@ -39,22 +41,29 @@ main {
   transform: translate3d(0, 0, 0);
   z-index: 10;
 }
+.material-symbols-outlined{
+  font-size: 80px !important;
+  color: rgb(4, 4, 4);
+}
 .swiper-button-prev,
 .swiper-button-next {
-  width: 30px;
-  height: 30px;
-  border: 2px solid rgb(0, 0, 0);
-  border-radius: 50%;
+  width: 100px;
+  height: 100px;
   position: absolute;
   z-index: 1;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 20% !important;
+}
+.swiper-button-prev:hover,
+.swiper-button-next:hover{
+  opacity: 100% !important;
 }
 .swiper-button-prev {
-  left: 120px;
+  left: -10px;
 }
 .swiper-button-next {
-  right: 120px;
+  right: -10px;
 }
